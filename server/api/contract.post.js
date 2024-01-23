@@ -1,6 +1,7 @@
 export default defineEventHandler(async (e) => {
   const body = await readBody(e);
   let params = new URLSearchParams();
+  // console.log(body);
   for (const table in body) {
     for (const key in body[table]) {
       // console.log(`${key}`);
