@@ -129,6 +129,10 @@ export default {
       }
     },
 
+    // poaPrinting() {
+    //   this.$router.push("./../img/poa.jpg");
+    // },
+
     poaOssKubunCompleted() {
       if (
         (this.normalCarDocuments.isFillIn &&
@@ -566,6 +570,18 @@ export default {
         >
           　▼クレジット書類
         </v-toolbar-title>
+        <v-col
+          cols="2"
+          class="mx-1 credit-completedDate"
+          v-if="this.contracts.paymentKubun === 'クレジット'"
+        >
+          <v-text-field
+            :class="{ 'completedDate-input': credit.completedDate != false }"
+            type="date"
+            v-model="credit.completedDate"
+            label="完了日"
+          ></v-text-field>
+        </v-col>
       </v-row>
 
       <v-row class="mt-5" v-if="this.contracts.paymentKubun === 'クレジット'">
@@ -588,7 +604,7 @@ export default {
           </v-checkbox>
         </v-col>
 
-        <v-col cols="2" class="mx-1 mx-1 d-flex align-center">
+        <v-col cols="2" class="mx-1 d-flex align-center">
           <v-checkbox
             @change="CreditDocumentsCompleted"
             v-model="credit.isRegisteredSeal"
@@ -596,14 +612,14 @@ export default {
           >
           </v-checkbox>
         </v-col>
-        <v-col cols="2" class="mx-1 credit-completedDate">
+        <!-- <v-col cols="2" class="mx-1 credit-completedDate">
           <v-text-field
             :class="{ 'completedDate-input': credit.completedDate != false }"
             type="date"
             v-model="credit.completedDate"
             label="完了日"
           ></v-text-field>
-        </v-col>
+        </v-col> -->
       </v-row>
       <v-row>
         <v-toolbar-title
@@ -612,10 +628,24 @@ export default {
         >
           　▼委任状・OSS
         </v-toolbar-title>
+        <v-col
+          cols="2"
+          class="mx-1 normalCarDocuments-completedDate"
+          v-if="this.contracts.normalCarLightCarKubun === '普通車'"
+        >
+          <v-text-field
+            :class="{
+              'completedDate-input': normalCarDocuments.completedDate != false,
+            }"
+            type="date"
+            v-model="normalCarDocuments.completedDate"
+            label="完了日"
+          ></v-text-field>
+        </v-col>
       </v-row>
 
       <v-row
-        class="mt-5"
+        class="mt-10"
         v-if="this.contracts.normalCarLightCarKubun === '普通車'"
       >
         <v-col cols="2" class="mx-10">
@@ -699,7 +729,7 @@ export default {
           </v-checkbox>
         </v-col>
 
-        <v-col
+        <!-- <v-col
           cols="2"
           class="mx-1 normalCarDocuments-completedDate"
           v-if="
@@ -715,6 +745,20 @@ export default {
             v-model="normalCarDocuments.completedDate"
             label="完了日"
           ></v-text-field>
+        </v-col> -->
+        <v-col
+          cols="1"
+          class="mx-10 d-flex align-center"
+          v-if="
+            this.normalCarDocuments.poaOssKubun === '委任状' ||
+            this.normalCarDocuments.poaOssKubun === 'OSS'
+          "
+        >
+          <v-btn
+            @click="poaPrinting"
+            density="compact"
+            icon="mdi-printer"
+          ></v-btn>
         </v-col>
       </v-row>
       <v-row>
@@ -727,7 +771,7 @@ export default {
       </v-row>
 
       <v-row
-        class="mt-5"
+        class="mt-10"
         v-if="this.contracts.normalCarLightCarKubun === '軽自動車'"
       >
         <v-col cols="2" class="mx-10">
@@ -789,6 +833,13 @@ export default {
             v-model="lightCarDocuments.completedDate"
             label="完了日"
           ></v-text-field>
+        </v-col>
+        <v-col
+          cols="2"
+          class="mx-10 lightCarDocuments-completedDate"
+          v-if="this.lightCarDocuments.lightCarDocumentsKubun === '申請依頼書'"
+        >
+          <v-btn @click="aaaaaaaa" density="compact" icon="mdi-printer"></v-btn>
         </v-col>
       </v-row>
       <v-row>
@@ -925,7 +976,14 @@ export default {
           ></v-text-field>
         </v-col>
       </v-row>
-
+      <v-row>
+        <v-toolbar-title
+          class="ml-11 d-flex align-center normalCarDocumentsGarageVerification"
+          v-if="this.normalCarDocuments.poaOssKubun === 'OSS'"
+        >
+          　▼車庫証明
+        </v-toolbar-title>
+      </v-row>
       <v-row
         class="mt-5"
         v-if="
@@ -986,7 +1044,6 @@ export default {
           ></v-text-field>
         </v-col>
       </v-row>
-
       <v-row
         class="mt-5"
         v-if="
@@ -1478,7 +1535,9 @@ export default {
   margin-top: 8%;
 }
 .credit {
-  max-width: 87%;
+  margin-top: 13px;
+  max-height: 55%;
+  max-width: 70%;
   background: #e6b422;
   color: #ffffff;
 }
@@ -1486,7 +1545,9 @@ export default {
   color: #ff0000;
 }
 .normalCarDocuments {
-  max-width: 87%;
+  margin-top: 13px;
+  max-height: 55%;
+  max-width: 70%;
   background: #4db56a;
   color: #ffffff;
 }
@@ -1511,7 +1572,7 @@ export default {
 }
 .lightCarDocumentsGarageVerification {
   max-width: 87%;
-  background: #000080;
+  background: #6e6eff;
   color: #ffffff;
 }
 .lightCarDocumentsGarageVerification-completedDate {
