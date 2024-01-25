@@ -129,9 +129,9 @@ export default {
       }
     },
 
-    // poaPrinting() {
-    //   this.$router.push("./../img/poa.jpg");
-    // },
+    poaPrinting() {
+      this.$router.push("./../img/poa.jpg");
+    },
 
     poaOssKubunCompleted() {
       if (
