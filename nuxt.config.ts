@@ -2,6 +2,9 @@ import { defineNuxtConfig } from "nuxt/config";
 
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
+  app: {
+    baseURL: "/CPRM/",
+  },
   css: ["vuetify/lib/styles/main.sass", "mdi/css/materialdesignicons.min.css"], // 修正
   build: {
     transpile: ["vuetify"],
@@ -11,7 +14,6 @@ export default defineNuxtConfig({
       "process.env.DEBUG": false,
     },
   },
+
   ssr: false,
 });
-
-
