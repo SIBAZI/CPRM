@@ -19,7 +19,7 @@ export default {
 <template>
   <div>
     <v-app>
-      <v-card width="400px" class="mx-auto mt-5">
+      <v-card width="400px" class="mx-auto mt-15">
         <v-card-title>
           <h1 class="display-1">ログイン</h1>
         </v-card-title>

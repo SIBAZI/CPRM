@@ -26,9 +26,18 @@ export default {
     <table border="1">
       <tbody>
         <tr>
-          <th>ID</th>
-          <th>userCode</th>
-          <th>orderDate</th>
+          <th>受注日</th>
+          <th>ユーザーID</th>
+          <th>成約車種</th>
+          <th>店舗</th>
+          <th>担当者</th>
+          <th>クレジット書類</th>
+          <th>委任状・OSS・申請依頼書</th>
+          <th>車庫証明</th>
+          <th>その他書類</th>
+          <th>保険</th>
+          <th>下取書類</th>
+          <th>メモ</th>
         </tr>
         <tr v-for="item in items" :key="item.id">
           <td>{{ item.id }}</td>
