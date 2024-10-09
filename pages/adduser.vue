@@ -633,7 +633,8 @@ export default {
           v-if="this.contracts.paymentKubun === 'クレジット'"
         >
           <v-btn
-            to="/https://www.mazdacr.co.jp/"
+            href="https://www.mazdacr.co.jp/"
+            target="_blank"
             density="compact"
             icon="mdi-help"
           ></v-btn>
@@ -766,7 +767,12 @@ export default {
           class="mx-15 d-flex align-center"
           v-if="this.normalCarDocuments.poaOssKubun === 'OSS'"
         >
-          <v-btn @click="aaa" density="compact" icon="mdi-printer"></v-btn>
+          <v-btn
+            href="/ininzyou.pdf"
+            target="_blank"
+            density="compact"
+            icon="mdi-printer"
+          ></v-btn>
         </v-col>
       </v-row>
       <v-row>
