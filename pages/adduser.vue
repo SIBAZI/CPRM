@@ -132,164 +132,164 @@ export default {
     //       });
     //       console.log(result);
     //     },
-    CreditDocumentsCompleted() {
-      if (
-        this.contracts.paymentKubun === "クレジット" &&
-        this.credit.isFillIn &&
-        this.credit.isRegisteredSeal
-      ) {
-        this.credit.completedDate = dayjs().format("YYYY-MM-DD");
-      } else {
-        this.credit.completedDate = "";
-      }
-    },
+    // CreditDocumentsCompleted() {
+    //   if (
+    //     this.contracts.paymentKubun === "クレジット" &&
+    //     this.credit.isFillIn &&
+    //     this.credit.isRegisteredSeal
+    //   ) {
+    //     this.credit.completedDate = dayjs().format("YYYY-MM-DD");
+    //   } else {
+    //     this.credit.completedDate = "";
+    //   }
+    // },
 
-    poaOssKubunCompleted() {
-      if (
-        (this.normalCarDocuments.isFillIn &&
-          this.normalCarDocuments.isRegisteredSeal &&
-          this.normalCarDocuments.isSealCertificate) ||
-        (this.normalCarDocuments.isFillIn &&
-          this.normalCarDocuments.isStamping &&
-          this.normalCarDocuments.isResidentCard)
-      ) {
-        this.normalCarDocuments.completedDate = dayjs().format("YYYY-MM-DD");
-      } else {
-        this.normalCarDocuments.completedDate = "";
-      }
-    },
+    // poaOssKubunCompleted() {
+    //   if (
+    //     (this.normalCarDocuments.isFillIn &&
+    //       this.normalCarDocuments.isRegisteredSeal &&
+    //       this.normalCarDocuments.isSealCertificate) ||
+    //     (this.normalCarDocuments.isFillIn &&
+    //       this.normalCarDocuments.isStamping &&
+    //       this.normalCarDocuments.isResidentCard)
+    //   ) {
+    //     this.normalCarDocuments.completedDate = dayjs().format("YYYY-MM-DD");
+    //   } else {
+    //     this.normalCarDocuments.completedDate = "";
+    //   }
+    // },
 
-    lightCarDocumentsKubunCompleted() {
-      if (
-        this.lightCarDocuments.isFillIn &&
-        this.lightCarDocuments.isStamping &&
-        this.lightCarDocuments.isResidentCard
-      ) {
-        this.lightCarDocuments.completedDate = dayjs().format("YYYY-MM-DD");
-      } else {
-        this.lightCarDocuments.completedDate = "";
-      }
-    },
+    // lightCarDocumentsKubunCompleted() {
+    //   if (
+    //     this.lightCarDocuments.isFillIn &&
+    //     this.lightCarDocuments.isStamping &&
+    //     this.lightCarDocuments.isResidentCard
+    //   ) {
+    //     this.lightCarDocuments.completedDate = dayjs().format("YYYY-MM-DD");
+    //   } else {
+    //     this.lightCarDocuments.completedDate = "";
+    //   }
+    // },
 
-    NCgarageVerificationKubunCompleted() {
-      if (this.normalCarDocumentsGarageVerification.isFillIn) {
-        this.normalCarDocumentsGarageVerification.completedDate =
-          dayjs().format("YYYY-MM-DD");
-      } else {
-        this.normalCarDocumentsGarageVerification.completedDate = "";
-      }
-    },
+    // NCgarageVerificationKubunCompleted() {
+    //   if (this.normalCarDocumentsGarageVerification.isFillIn) {
+    //     this.normalCarDocumentsGarageVerification.completedDate =
+    //       dayjs().format("YYYY-MM-DD");
+    //   } else {
+    //     this.normalCarDocumentsGarageVerification.completedDate = "";
+    //   }
+    // },
 
-    LCgarageVerificationKubunCompleted() {
-      if (this.lightCarDocumentsGarageVerification.isFillIn) {
-        this.lightCarDocumentsGarageVerification.completedDate =
-          dayjs().format("YYYY-MM-DD");
-      } else {
-        this.lightCarDocumentsGarageVerification.completedDate = "";
-      }
-    },
+    // LCgarageVerificationKubunCompleted() {
+    //   if (this.lightCarDocumentsGarageVerification.isFillIn) {
+    //     this.lightCarDocumentsGarageVerification.completedDate =
+    //       dayjs().format("YYYY-MM-DD");
+    //   } else {
+    //     this.lightCarDocumentsGarageVerification.completedDate = "";
+    //   }
+    // },
 
-    selfCertificationConsentToUseKubunCompleted() {
-      if (this.storingMethod.isFillIn) {
-        this.storingMethod.completedDate = dayjs().format("YYYY-MM-DD");
-      } else {
-        this.storingMethod.completedDate = "";
-      }
-    },
+    // selfCertificationConsentToUseKubunCompleted() {
+    //   if (this.storingMethod.isFillIn) {
+    //     this.storingMethod.completedDate = dayjs().format("YYYY-MM-DD");
+    //   } else {
+    //     this.storingMethod.completedDate = "";
+    //   }
+    // },
 
-    arrangementDiagramCompleted() {
-      if (this.arrangementDiagram.isFillIn) {
-        this.arrangementDiagram.completedDate = dayjs().format("YYYY-MM-DD");
-      } else {
-        this.arrangementDiagram.completedDate = "";
-      }
-    },
+    // arrangementDiagramCompleted() {
+    //   if (this.arrangementDiagram.isFillIn) {
+    //     this.arrangementDiagram.completedDate = dayjs().format("YYYY-MM-DD");
+    //   } else {
+    //     this.arrangementDiagram.completedDate = "";
+    //   }
+    // },
 
-    isDesiredNumberCompleted() {
-      if (this.desiredNumber.isFillIn) {
-        this.desiredNumber.completedDate = dayjs().format("YYYY-MM-DD");
-      } else {
-        this.desiredNumber.completedDate = "";
-      }
-    },
+    // isDesiredNumberCompleted() {
+    //   if (this.desiredNumber.isFillIn) {
+    //     this.desiredNumber.completedDate = dayjs().format("YYYY-MM-DD");
+    //   } else {
+    //     this.desiredNumber.completedDate = "";
+    //   }
+    // },
 
-    etcKubunCompleted() {
-      if (this.etc.isFillIn) {
-        this.etc.completedDate = dayjs().format("YYYY-MM-DD");
-      } else {
-        this.etc.completedDate = "";
-      }
-    },
+    // etcKubunCompleted() {
+    //   if (this.etc.isFillIn) {
+    //     this.etc.completedDate = dayjs().format("YYYY-MM-DD");
+    //   } else {
+    //     this.etc.completedDate = "";
+    //   }
+    // },
 
-    isExtendedWarrantyCompleted() {
-      if (this.extendedWarranty.isFillIn) {
-        this.extendedWarranty.completedDate = dayjs().format("YYYY-MM-DD");
-      } else {
-        this.extendedWarranty.completedDate = "";
-      }
-    },
+    // isExtendedWarrantyCompleted() {
+    //   if (this.extendedWarranty.isFillIn) {
+    //     this.extendedWarranty.completedDate = dayjs().format("YYYY-MM-DD");
+    //   } else {
+    //     this.extendedWarranty.completedDate = "";
+    //   }
+    // },
 
-    isMaintenancePackCompleted() {
-      if (this.maintenancePack.isFillIn) {
-        this.maintenancePack.completedDate = dayjs().format("YYYY-MM-DD");
-      } else {
-        this.maintenancePack.completedDate = "";
-      }
-    },
+    // isMaintenancePackCompleted() {
+    //   if (this.maintenancePack.isFillIn) {
+    //     this.maintenancePack.completedDate = dayjs().format("YYYY-MM-DD");
+    //   } else {
+    //     this.maintenancePack.completedDate = "";
+    //   }
+    // },
 
-    isJafPaymentKubunCompleted() {
-      if (
-        (this.jaf.isFillIn && this.jaf.isBankSeal) ||
-        (this.jaf.isJafPaymentKubun === "有（クレジット）" && this.jaf.isFillIn)
-      ) {
-        this.jaf.completedDate = dayjs().format("YYYY-MM-DD");
-      } else {
-        this.jaf.completedDate = "";
-      }
-    },
+    // isJafPaymentKubunCompleted() {
+    //   if (
+    //     (this.jaf.isFillIn && this.jaf.isBankSeal) ||
+    //     (this.jaf.isJafPaymentKubun === "有（クレジット）" && this.jaf.isFillIn)
+    //   ) {
+    //     this.jaf.completedDate = dayjs().format("YYYY-MM-DD");
+    //   } else {
+    //     this.jaf.completedDate = "";
+    //   }
+    // },
 
-    taxDeclarationCompleted() {
-      if (this.taxDeclaration.isFillIn) {
-        this.taxDeclaration.completedDate = dayjs().format("YYYY-MM-DD");
-      } else {
-        this.taxDeclaration.completedDate = "";
-      }
-    },
+    // taxDeclarationCompleted() {
+    //   if (this.taxDeclaration.isFillIn) {
+    //     this.taxDeclaration.completedDate = dayjs().format("YYYY-MM-DD");
+    //   } else {
+    //     this.taxDeclaration.completedDate = "";
+    //   }
+    // },
 
-    insuranceCompleted() {
-      if (this.insurance.joiningProcedure) {
-        this.insurance.completedDate = dayjs().format("YYYY-MM-DD");
-      } else {
-        this.insurance.completedDate = "";
-      }
-    },
+    // insuranceCompleted() {
+    //   if (this.insurance.joiningProcedure) {
+    //     this.insurance.completedDate = dayjs().format("YYYY-MM-DD");
+    //   } else {
+    //     this.insurance.completedDate = "";
+    //   }
+    // },
 
-    insuranceCompleted2() {
-      if (this.insurance.confirmationOfMembership) {
-        this.insurance.completedDate = dayjs().format("YYYY-MM-DD");
-      } else {
-        this.insurance.completedDate = "";
-      }
-    },
+    // insuranceCompleted2() {
+    //   if (this.insurance.confirmationOfMembership) {
+    //     this.insurance.completedDate = dayjs().format("YYYY-MM-DD");
+    //   } else {
+    //     this.insurance.completedDate = "";
+    //   }
+    // },
 
-    onSave() {
-      let params = new URLSearchParams();
-      for (const table in this.$data) {
-        for (const key in this.$data[table]) {
-          console.log(`${table}[${key}]`, this.$data[table][key]);
-          params.append(`${table}[${key}]`, this.$data[table][key]);
-        }
-      }
-      console.log(params.toString());
-      params.forEach((value, key) => console.log(key, ":", value));
+    // onSave() {
+    //   let params = new URLSearchParams();
+    //   for (const table in this.$data) {
+    //     for (const key in this.$data[table]) {
+    //       console.log(`${table}[${key}]`, this.$data[table][key]);
+    //       params.append(`${table}[${key}]`, this.$data[table][key]);
+    //     }
+    //   }
+    //   console.log(params.toString());
+    //   params.forEach((value, key) => console.log(key, ":", value));
 
-      console.log(this.$data);
-      const result = useFetch("/api/contract", {
-        method: "post",
-        body: this.$data,
-      });
-      console.log(result);
-    },
+    //   console.log(this.$data);
+    //   const result = useFetch("/api/contract", {
+    //     method: "post",
+    //     body: this.$data,
+    //   });
+    //   console.log(result);
+    // },
 
     memoField(memo) {
       if (memo.memoField) {
@@ -465,7 +465,7 @@ export default {
 <template>
   <div>
     <v-app>
-      <v-app-bar class="h-5" color="grey-lighten-2">
+      <!-- <v-app-bar class="h-5" color="grey-lighten-2">
         <v-app-bar-title> 　　　ユーザー登録画面 </v-app-bar-title>
         <v-col cols="1" class="mx-10">
           <v-btn
@@ -477,8 +477,8 @@ export default {
             保存
           </v-btn>
         </v-col>
-      </v-app-bar>
-      <v-row class="input-list">
+      </v-app-bar> -->
+      <!-- <v-row class="input-list">
         <v-col cols="2" class="mx-14 orderDate">
           <v-text-field
             :class="{
@@ -529,9 +529,9 @@ export default {
             variant="outlined"
           ></v-combobox>
         </v-col>
-      </v-row>
+      </v-row> -->
 
-      <v-row class="mt-5">
+      <v-row class="mt-15">
         <v-col cols="2" class="mx-14">
           <v-select
             v-model="contracts.newCarUsedCarKubun"
@@ -742,14 +742,14 @@ export default {
             this.normalCarDocuments.poaOssKubun === 'OSS'
           "
         >
-          <v-text-field
+          <!-- <v-text-field
             :class="{
               'completedDate-input': normalCarDocuments.completedDate != false,
             }"
             type="date"
             v-model="normalCarDocuments.completedDate"
             label="完了日"
-          ></v-text-field>
+          ></v-text-field> -->
         </v-col>
       </v-row>
       <v-row>
@@ -758,7 +758,7 @@ export default {
           class="mx-15 d-flex align-center"
           v-if="this.normalCarDocuments.poaOssKubun === '委任状'"
         >
-          <v-btn @click="aaa" density="compact" icon="mdi-printer"></v-btn>
+          <!-- <v-btn @click="aaa" density="compact" icon="mdi-printer"></v-btn> -->
         </v-col>
       </v-row>
       <v-row>
@@ -767,12 +767,12 @@ export default {
           class="mx-15 d-flex align-center"
           v-if="this.normalCarDocuments.poaOssKubun === 'OSS'"
         >
-          <v-btn
+          <!-- <v-btn
             href="/ininzyou.pdf"
             target="_blank"
             density="compact"
             icon="mdi-printer"
-          ></v-btn>
+          ></v-btn> -->
         </v-col>
       </v-row>
       <v-row>
@@ -839,21 +839,21 @@ export default {
           class="mx-1 lightCarDocuments-completedDate"
           v-if="this.lightCarDocuments.lightCarDocumentsKubun === '申請依頼書'"
         >
-          <v-text-field
+          <!-- <v-text-field
             :class="{
               'completedDate-input': lightCarDocuments.completedDate != false,
             }"
             type="date"
             v-model="lightCarDocuments.completedDate"
             label="完了日"
-          ></v-text-field>
+          ></v-text-field> -->
         </v-col>
         <v-col
           cols="2"
           class="mx-15 lightCarDocuments-completedDate"
           v-if="this.lightCarDocuments.lightCarDocumentsKubun === '申請依頼書'"
         >
-          <v-btn @click="aaaaaaaa" density="compact" icon="mdi-printer"></v-btn>
+          <!-- <v-btn @click="aaaaaaaa" density="compact" icon="mdi-printer"></v-btn> -->
         </v-col>
       </v-row>
       <v-row>
@@ -912,7 +912,7 @@ export default {
               .NCgarageVerificationKubun === '保管場所証明申請書'
           "
         >
-          <v-text-field
+          <!-- <v-text-field
             :class="{
               'completedDate-input':
                 normalCarDocumentsGarageVerification.completedDate != false,
@@ -920,7 +920,7 @@ export default {
             type="date"
             v-model="normalCarDocumentsGarageVerification.completedDate"
             label="完了日"
-          ></v-text-field>
+          ></v-text-field> -->
         </v-col>
       </v-row>
       <v-row>
@@ -932,7 +932,7 @@ export default {
               .NCgarageVerificationKubun === '保管場所証明申請書'
           "
         >
-          <v-btn @click="aaa" density="compact" icon="mdi-help"></v-btn>
+          <!-- <v-btn @click="aaa" density="compact" icon="mdi-help"></v-btn> -->
         </v-col>
       </v-row>
       <v-row>
@@ -991,7 +991,7 @@ export default {
               .LCgarageVerificationKubun === '保管場所届出書'
           "
         >
-          <v-text-field
+          <!-- <v-text-field
             :class="{
               'completedDate-input':
                 lightCarDocumentsGarageVerification.completedDate != false,
@@ -999,7 +999,7 @@ export default {
             type="date"
             v-model="lightCarDocumentsGarageVerification.completedDate"
             label="完了日"
-          ></v-text-field>
+          ></v-text-field> -->
         </v-col>
       </v-row>
       <v-row>
@@ -1011,7 +1011,7 @@ export default {
               .LCgarageVerificationKubun === '保管場所届出書'
           "
         >
-          <v-btn @click="aaa" density="compact" icon="mdi-help"></v-btn>
+          <!-- <v-btn @click="aaa" density="compact" icon="mdi-help"></v-btn> -->
         </v-col>
       </v-row>
       <v-row>
@@ -1072,14 +1072,14 @@ export default {
               '使用承諾証'
           "
         >
-          <v-text-field
+          <!-- <v-text-field
             :class="{
               'completedDate-input': storingMethod.completedDate != false,
             }"
             type="date"
             v-model="storingMethod.completedDate"
             label="完了日"
-          ></v-text-field>
+          ></v-text-field> -->
         </v-col>
       </v-row>
       <v-row>
@@ -1090,7 +1090,7 @@ export default {
             this.storingMethod.selfCertificationConsentToUseKubun === '自認書'
           "
         >
-          <v-btn @click="aaa" density="compact" icon="mdi-printer"></v-btn>
+          <!-- <v-btn @click="aaa" density="compact" icon="mdi-printer"></v-btn> -->
         </v-col>
       </v-row>
       <v-row>
@@ -1136,14 +1136,14 @@ export default {
           </v-checkbox>
         </v-col>
         <v-col cols="2" class="mx-1 arrangement-completedDate">
-          <v-text-field
+          <!-- <v-text-field
             :class="{
               'completedDate-input': arrangementDiagram.completedDate != false,
             }"
             type="date"
             v-model="arrangementDiagram.completedDate"
             label="完了日"
-          ></v-text-field>
+          ></v-text-field> -->
         </v-col>
       </v-row>
       <v-row>
@@ -1160,7 +1160,7 @@ export default {
               .LCgarageVerificationKubun === '代行不要'
           "
         >
-          <v-btn @click="aaa" density="compact" icon="mdi-printer"></v-btn>
+          <!-- <v-btn @click="aaa" density="compact" icon="mdi-printer"></v-btn> -->
         </v-col>
       </v-row>
       <v-row>
@@ -1209,14 +1209,14 @@ export default {
           class="mx-1 desiredNumber-completedDate"
           v-if="this.desiredNumber.isDesiredNumber === '有'"
         >
-          <v-text-field
+          <!-- <v-text-field
             :class="{
               'completedDate-input': desiredNumber.completedDate != false,
             }"
             type="date"
             v-model="desiredNumber.completedDate"
             label="完了日"
-          ></v-text-field>
+          ></v-text-field> -->
         </v-col>
       </v-row>
       <v-row>
@@ -1225,7 +1225,7 @@ export default {
           class="mx-15 d-flex align-center"
           v-if="this.desiredNumber.isDesiredNumber === '有'"
         >
-          <v-btn @click="aaa" density="compact" icon="mdi-printer"></v-btn>
+          <!-- <v-btn @click="aaa" density="compact" icon="mdi-printer"></v-btn> -->
         </v-col>
       </v-row>
       <v-row class="mt-5">
@@ -1262,14 +1262,14 @@ export default {
           class="mx-1 etc-completedDate"
           v-if="this.etc.etcKubun === 'ETC' || etc.etcKubun === 'ETC-2.0'"
         >
-          <v-text-field
+          <!-- <v-text-field
             :class="{
               'completedDate-input': etc.completedDate != false,
             }"
             type="date"
             v-model="etc.completedDate"
             label="完了日"
-          ></v-text-field>
+          ></v-text-field> -->
         </v-col>
       </v-row>
       <v-row>
@@ -1278,7 +1278,7 @@ export default {
           class="mx-15 d-flex align-center"
           v-if="this.etc.etcKubun === 'ETC' || etc.etcKubun === 'ETC-2.0'"
         >
-          <v-btn @click="aaa" density="compact" icon="mdi-help"></v-btn>
+          <!-- <v-btn @click="aaa" density="compact" icon="mdi-help"></v-btn> -->
         </v-col>
       </v-row>
       <v-row class="mt-5">
@@ -1315,14 +1315,14 @@ export default {
           class="mx-1 extendedWarranty-completedDate"
           v-if="this.extendedWarranty.isExtendedWarranty === '有'"
         >
-          <v-text-field
+          <!-- <v-text-field
             :class="{
               'completedDate-input': extendedWarranty.completedDate != false,
             }"
             type="date"
             v-model="extendedWarranty.completedDate"
             label="完了日"
-          ></v-text-field>
+          ></v-text-field> -->
         </v-col>
       </v-row>
       <v-row>
@@ -1331,7 +1331,7 @@ export default {
           class="mx-15 d-flex align-center"
           v-if="this.extendedWarranty.isExtendedWarranty === '有'"
         >
-          <v-btn @click="aaa" density="compact" icon="mdi-help"></v-btn>
+          <!-- <v-btn @click="aaa" density="compact" icon="mdi-help"></v-btn> -->
         </v-col>
       </v-row>
       <v-row class="mt-5">
@@ -1368,14 +1368,14 @@ export default {
           class="mx-1 maintenancePack-completedDate"
           v-if="this.maintenancePack.isMaintenancePack === '有'"
         >
-          <v-text-field
+          <!-- <v-text-field
             :class="{
               'completedDate-input': maintenancePack.completedDate != false,
             }"
             type="date"
             v-model="maintenancePack.completedDate"
             label="完了日"
-          ></v-text-field>
+          ></v-text-field> -->
         </v-col>
       </v-row>
       <v-row>
@@ -1384,7 +1384,7 @@ export default {
           class="mx-15 d-flex align-center"
           v-if="this.maintenancePack.isMaintenancePack === '有'"
         >
-          <v-btn @click="aaa" density="compact" icon="mdi-help"></v-btn>
+          <!-- <v-btn @click="aaa" density="compact" icon="mdi-help"></v-btn> -->
         </v-col>
       </v-row>
       <v-row class="mt-5">
@@ -1440,14 +1440,14 @@ export default {
             this.jaf.isJafPaymentKubun === '有（クレジット）'
           "
         >
-          <v-text-field
+          <!-- <v-text-field
             :class="{
               'completedDate-input': jaf.completedDate != false,
             }"
             type="date"
             v-model="jaf.completedDate"
             label="完了日"
-          ></v-text-field>
+          ></v-text-field> -->
         </v-col>
       </v-row>
       <v-row>
@@ -1459,7 +1459,7 @@ export default {
             this.jaf.isJafPaymentKubun === '有（クレジット）'
           "
         >
-          <v-btn @click="aaa" density="compact" icon="mdi-help"></v-btn>
+          <!-- <v-btn @click="aaa" density="compact" icon="mdi-help"></v-btn> -->
         </v-col>
       </v-row>
       <v-row
@@ -1485,14 +1485,14 @@ export default {
           </v-checkbox>
         </v-col>
         <v-col cols="2 taxDeclaration-completedDate" class="mx-1">
-          <v-text-field
+          <!-- <v-text-field
             :class="{
               'completedDate-input': taxDeclaration.completedDate != false,
             }"
             type="date"
             v-model="taxDeclaration.completedDate"
             label="完了日"
-          ></v-text-field>
+          ></v-text-field> -->
         </v-col>
       </v-row>
       <v-row>
@@ -1501,7 +1501,7 @@ export default {
           class="mx-15 d-flex align-center"
           v-if="this.contracts.normalCarLightCarKubun === '軽自動車'"
         >
-          <v-btn @click="aaa" density="compact" icon="mdi-printer"></v-btn>
+          <!-- <v-btn @click="aaa" density="compact" icon="mdi-printer"></v-btn> -->
         </v-col>
       </v-row>
       <v-row>
@@ -1524,16 +1524,16 @@ export default {
           <v-select
             label="保険会社"
             v-model="insurance.jocInsuranceCompany"
-            :items="['', 'A社', 'B社', 'C社']"
+            :items="['', '東京海上', '三井住友', '損保ジャパン']"
             variant="outlined"
           ></v-select>
         </v-col>
         <v-col
           cols="2"
           v-if="
-            this.insurance.jocInsuranceCompany === 'A社' ||
-            this.insurance.jocInsuranceCompany === 'B社' ||
-            this.insurance.jocInsuranceCompany === 'C社'
+            this.insurance.jocInsuranceCompany === '東京海上' ||
+            this.insurance.jocInsuranceCompany === '三井住友' ||
+            this.insurance.jocInsuranceCompany === '損保ジャパン'
           "
           class="mx-1 d-flex align-center"
         >
@@ -1553,21 +1553,21 @@ export default {
           "
           class="mx-1 insurance-completedDate"
         >
-          <v-text-field
+          <!-- <v-text-field
             :class="{
               'completedDate-input': insurance.completedDate != false,
             }"
             type="date"
             v-model="insurance.completedDate"
             label="完了日"
-          ></v-text-field>
+          ></v-text-field> -->
         </v-col>
       </v-row>
-      <v-row>
+      <!-- <v-row>
         <v-col
           cols="1"
           class="mx-15 d-flex align-center"
-          v-if="this.insurance.jocInsuranceCompany === 'A社'"
+          v-if="this.insurance.jocInsuranceCompany === '東京海上'"
         >
           <v-btn @click="aaa" density="compact" icon="mdi-help"></v-btn>
         </v-col>
@@ -1576,7 +1576,7 @@ export default {
         <v-col
           cols="1"
           class="mx-15 d-flex align-center"
-          v-if="this.insurance.jocInsuranceCompany === 'B社'"
+          v-if="this.insurance.jocInsuranceCompany === '三井住友'"
         >
           <v-btn @click="aaa" density="compact" icon="mdi-help"></v-btn>
         </v-col>
@@ -1585,11 +1585,11 @@ export default {
         <v-col
           cols="1"
           class="mx-15 d-flex align-center"
-          v-if="this.insurance.jocInsuranceCompany === 'C社'"
+          v-if="this.insurance.jocInsuranceCompany === '損保ジャパン'"
         >
           <v-btn @click="aaa" density="compact" icon="mdi-help"></v-btn>
         </v-col>
-      </v-row>
+      </v-row> -->
       <v-row class="mt-5">
         <v-col
           cols="2"
@@ -1620,26 +1620,26 @@ export default {
           v-if="this.contracts.insuranceKubun === '他社加入'"
           class="mx-1 insurance-completedDate"
         >
-          <v-text-field
+          <!-- <v-text-field
             :class="{
               'completedDate-input': insurance.completedDate != false,
             }"
             type="date"
             v-model="insurance.completedDate"
             label="完了日"
-          ></v-text-field>
+          ></v-text-field> -->
         </v-col>
       </v-row>
-      <v-row>
+      <!-- <v-row>
         <v-toolbar-title class="ml-15 d-flex align-center memo">
           　▼メモ
         </v-toolbar-title>
-      </v-row>
+      </v-row> -->
 
-      <v-row class="mt-5" v-for="(memo, index) in memos" :key="index">
-        <!-- <v-col>
+      <!-- <v-row class="mt-5" v-for="(memo, index) in memos" :key="index">
+        <v-col>
         {{ index }}
-      </v-col> -->
+      </v-col>
         <v-col cols="2" class="mx-14">
           <v-text-field
             type="date"
@@ -1678,7 +1678,7 @@ export default {
         >
           <v-btn @click="addMemo" density="compact" icon="mdi-plus"></v-btn>
         </v-col>
-      </v-row>
+      </v-row> -->
     </v-app>
     <div class="whole-bottom"></div>
   </div>
