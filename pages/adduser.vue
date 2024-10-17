@@ -531,8 +531,8 @@ export default {
         </v-col>
       </v-row> -->
 
-      <v-row class="mt-15">
-        <v-col cols="2" class="mx-14">
+      <v-row class="mt-15" justify="center">
+        <v-col cols="2" class="mx-0">
           <v-select
             v-model="contracts.newCarUsedCarKubun"
             label="新車or中古車"
@@ -582,76 +582,128 @@ export default {
 
       <v-row>
         <v-toolbar-title
-          class="ml-15 d-flex align-center credit"
-          v-if="this.contracts.paymentKubun === 'クレジット'"
+          class="ml-15 d-flex align-center normalCarDocuments"
+          v-if="
+            this.contracts.newCarUsedCarKubun === '新車' &&
+            this.contracts.normalCarLightCarKubun === '普通車'
+          "
         >
-          　▼クレジット書類
+          　▼委任状・OSS
+        </v-toolbar-title>
+
+        <v-toolbar-title
+          class="ml-15 d-flex align-center normalCarDocuments"
+          v-if="
+            this.contracts.newCarUsedCarKubun === '中古車' &&
+            this.contracts.normalCarLightCarKubun === '普通車'
+          "
+        >
+          　▼委任状
         </v-toolbar-title>
       </v-row>
-
-      <v-row class="mt-5" v-if="this.contracts.paymentKubun === 'クレジット'">
+      <v-row
+        class="mt-10"
+        v-if="
+          this.contracts.newCarUsedCarKubun === '中古車' &&
+          this.contracts.normalCarLightCarKubun === '普通車'
+        "
+      >
         <v-col cols="2" class="mx-14">
-          <v-combobox
-            v-model="credit.creditDocuments"
-            label=""
-            :items="[]"
+          <v-select
+            @update:modelValue="poaOssKubunChange"
+            v-model="normalCarDocuments.poaOssKubun"
+            label="委任状"
+            :items="['', '委任状', '代行不要']"
             variant="outlined"
-            readonly
-          ></v-combobox>
+          ></v-select>
         </v-col>
 
-        <v-col cols="2" class="mx-1 d-flex align-center">
+        <v-col
+          cols="2"
+          class="mx-1 d-flex align-center"
+          v-if="this.normalCarDocuments.poaOssKubun === '委任状'"
+        >
           <v-checkbox
-            @change="CreditDocumentsCompleted"
-            v-model="credit.isFillIn"
+            @change="poaOssKubunCompleted"
+            v-model="normalCarDocuments.isFillIn"
             label="記入"
           >
           </v-checkbox>
         </v-col>
-
         <v-col cols="2" class="mx-1 d-flex align-center">
           <v-checkbox
-            @change="CreditDocumentsCompleted"
-            v-model="credit.isRegisteredSeal"
-            label="銀行印"
+            @change="poaOssKubunCompleted"
+            v-if="
+              (this.contracts.paymentKubun === '現金' ||
+                this.contracts.paymentKubun === '銀行ローン') &&
+              this.normalCarDocuments.poaOssKubun === '委任状'
+            "
+            v-model="normalCarDocuments.isRegisteredSeal"
+            label="実印"
+          >
+          </v-checkbox>
+
+          <v-checkbox
+            @change="poaOssKubunCompleted"
+            v-if="
+              (this.contracts.paymentKubun === 'クレジット' ||
+                this.contracts.paymentKubun === '所有権留保') &&
+              this.normalCarDocuments.poaOssKubun === '委任状'
+            "
+            v-model="normalCarDocuments.isStamping"
+            label="認印"
           >
           </v-checkbox>
         </v-col>
-        <v-col cols="2" class="mx-1 credit-completedDate">
-          <v-text-field
-            :class="{ 'completedDate-input': credit.completedDate != false }"
-            type="date"
-            v-model="credit.completedDate"
-            label="完了日"
-          ></v-text-field>
+
+        <v-col cols="2" class="mx-1 d-flex align-center">
+          <v-checkbox
+            @change="poaOssKubunCompleted"
+            v-if="
+              (this.contracts.paymentKubun === '現金' ||
+                this.contracts.paymentKubun === '銀行ローン') &&
+              this.normalCarDocuments.poaOssKubun === '委任状'
+            "
+            v-model="normalCarDocuments.isSealCertificate"
+            label="印鑑証明"
+          >
+          </v-checkbox>
+
+          <v-checkbox
+            @change="poaOssKubunCompleted"
+            v-if="
+              (this.contracts.paymentKubun === 'クレジット' ||
+                this.contracts.paymentKubun === '所有権留保') &&
+              this.normalCarDocuments.poaOssKubun === '委任状'
+            "
+            v-model="normalCarDocuments.isResidentCard"
+            label="住民票"
+          >
+          </v-checkbox>
         </v-col>
-      </v-row>
-      <v-row>
+
         <v-col
-          cols="1"
-          class="mx-15 d-flex align-center"
-          v-if="this.contracts.paymentKubun === 'クレジット'"
+          cols="2"
+          class="mx-1 normalCarDocuments-completedDate"
+          v-if="this.normalCarDocuments.poaOssKubun === '委任状'"
         >
-          <v-btn
-            href="https://www.mazdacr.co.jp/"
-            target="_blank"
-            density="compact"
-            icon="mdi-help"
-          ></v-btn>
+          <!-- <v-text-field
+            :class="{
+              'completedDate-input': normalCarDocuments.completedDate != false,
+            }"
+            type="date"
+            v-model="normalCarDocuments.completedDate"
+            label="完了日"
+          ></v-text-field> -->
         </v-col>
-      </v-row>
-      <v-row>
-        <v-toolbar-title
-          class="ml-15 d-flex align-center normalCarDocuments"
-          v-if="this.contracts.normalCarLightCarKubun === '普通車'"
-        >
-          　▼委任状・OSS
-        </v-toolbar-title>
       </v-row>
 
       <v-row
         class="mt-10"
-        v-if="this.contracts.normalCarLightCarKubun === '普通車'"
+        v-if="
+          this.contracts.newCarUsedCarKubun === '新車' &&
+          this.contracts.normalCarLightCarKubun === '普通車'
+        "
       >
         <v-col cols="2" class="mx-14">
           <v-select
@@ -1102,7 +1154,6 @@ export default {
             '使用承諾証'
           "
         >
-          <v-btn @click="aaa" density="compact" icon="mdi-printer"></v-btn>
         </v-col>
       </v-row>
       <v-row
@@ -1180,8 +1231,10 @@ export default {
           cols="2"
           class="mx-14"
           v-if="
-            this.contracts.normalCarLightCarKubun === '普通車' ||
-            this.contracts.normalCarLightCarKubun === '軽自動車'
+            this.normalCarDocuments.poaOssKubun === '委任状' ||
+            this.lightCarDocuments.lightCarDocumentsKubun === '申請依頼書' ||
+            this.normalCarDocuments.poaOssKubun === '代行不要' ||
+            this.lightCarDocuments.lightCarDocumentsKubun === '代行不要'
           "
         >
           <v-select
@@ -1195,7 +1248,13 @@ export default {
         <v-col
           cols="2"
           class="mx-1 d-flex align-center"
-          v-if="this.desiredNumber.isDesiredNumber === '有'"
+          v-if="
+            (this.normalCarDocuments.poaOssKubun === '委任状' ||
+              this.lightCarDocuments.lightCarDocumentsKubun === '申請依頼書' ||
+              this.normalCarDocuments.poaOssKubun === '代行不要' ||
+              this.lightCarDocuments.lightCarDocumentsKubun === '代行不要') &&
+            this.desiredNumber.isDesiredNumber === '有'
+          "
         >
           <v-checkbox
             @change="isDesiredNumberCompleted"
@@ -1257,19 +1316,41 @@ export default {
           >
           </v-checkbox>
         </v-col>
+
         <v-col
+          cols="2"
+          class="mx-1 d-flex align-center"
+          v-if="this.etc.etcKubun === 'ETC' || etc.etcKubun === 'ETC-2.0'"
+        >
+        </v-col>
+
+        <!-- <v-col
           cols="2"
           class="mx-1 etc-completedDate"
           v-if="this.etc.etcKubun === 'ETC' || etc.etcKubun === 'ETC-2.0'"
         >
-          <!-- <v-text-field
+          <v-text-field
             :class="{
               'completedDate-input': etc.completedDate != false,
             }"
             type="date"
             v-model="etc.completedDate"
             label="完了日"
-          ></v-text-field> -->
+          ></v-text-field>
+        </v-col> -->
+      </v-row>
+      <v-row>
+        <v-col
+          cols="1"
+          class="mx-15 d-flex align-center"
+          v-if="this.etc.etcKubun === 'ETC' || etc.etcKubun === 'ETC-2.0'"
+        >
+          <v-btn
+            href="https://www.go-etc.jp/index.html"
+            target="_blank"
+            density="compact"
+            icon="mdi-help"
+          ></v-btn>
         </v-col>
       </v-row>
       <v-row>
@@ -1331,7 +1412,12 @@ export default {
           class="mx-15 d-flex align-center"
           v-if="this.extendedWarranty.isExtendedWarranty === '有'"
         >
-          <!-- <v-btn @click="aaa" density="compact" icon="mdi-help"></v-btn> -->
+          <v-btn
+            href="https://www.mazda.co.jp/purchase/carlife-care/encho-hosho/5years/"
+            target="_blank"
+            density="compact"
+            icon="mdi-help"
+          ></v-btn>
         </v-col>
       </v-row>
       <v-row class="mt-5">
@@ -1384,7 +1470,12 @@ export default {
           class="mx-15 d-flex align-center"
           v-if="this.maintenancePack.isMaintenancePack === '有'"
         >
-          <!-- <v-btn @click="aaa" density="compact" icon="mdi-help"></v-btn> -->
+          <v-btn
+            href="https://www.mazda.co.jp/purchase/carlife-care/encho-hosho/5years/"
+            target="_blank"
+            density="compact"
+            icon="mdi-help"
+          ></v-btn>
         </v-col>
       </v-row>
       <v-row class="mt-5">
@@ -1459,7 +1550,12 @@ export default {
             this.jaf.isJafPaymentKubun === '有（クレジット）'
           "
         >
-          <!-- <v-btn @click="aaa" density="compact" icon="mdi-help"></v-btn> -->
+          <v-btn
+            href="https://jaf.or.jp/individual"
+            target="_blank"
+            density="compact"
+            icon="mdi-help"
+          ></v-btn>
         </v-col>
       </v-row>
       <v-row
@@ -1495,6 +1591,67 @@ export default {
           ></v-text-field> -->
         </v-col>
       </v-row>
+      <v-row>
+        <v-toolbar-title
+          class="ml-15 d-flex align-center credit"
+          v-if="this.contracts.paymentKubun === 'クレジット'"
+        >
+          　▼クレジット書類
+        </v-toolbar-title>
+      </v-row>
+
+      <v-row class="mt-5" v-if="this.contracts.paymentKubun === 'クレジット'">
+        <v-col cols="2" class="mx-14">
+          <v-combobox
+            v-model="credit.creditDocuments"
+            label=""
+            :items="[]"
+            variant="outlined"
+            readonly
+          ></v-combobox>
+        </v-col>
+
+        <v-col cols="2" class="mx-1 d-flex align-center">
+          <v-checkbox
+            @change="CreditDocumentsCompleted"
+            v-model="credit.isFillIn"
+            label="記入"
+          >
+          </v-checkbox>
+        </v-col>
+
+        <v-col cols="2" class="mx-1 d-flex align-center">
+          <v-checkbox
+            @change="CreditDocumentsCompleted"
+            v-model="credit.isRegisteredSeal"
+            label="銀行印"
+          >
+          </v-checkbox>
+        </v-col>
+        <!-- <v-col cols="2" class="mx-1 credit-completedDate">
+          <v-text-field
+            :class="{ 'completedDate-input': credit.completedDate != false }"
+            type="date"
+            v-model="credit.completedDate"
+            label="完了日"
+          ></v-text-field>
+        </v-col> -->
+      </v-row>
+      <v-row>
+        <v-col
+          cols="1"
+          class="mx-15 d-flex align-center"
+          v-if="this.contracts.paymentKubun === 'クレジット'"
+        >
+          <v-btn
+            href="https://www.mazdacr.co.jp/lineup/lineup.html?mode=sky"
+            target="_blank"
+            density="compact"
+            icon="mdi-help"
+          ></v-btn>
+        </v-col>
+      </v-row>
+
       <v-row>
         <v-col
           cols="1"
@@ -1544,7 +1701,7 @@ export default {
           >
           </v-checkbox>
         </v-col>
-        <v-col
+        <!-- <v-col
           cols="2"
           v-if="
             this.insurance.jocInsuranceCompany === 'A社' ||
@@ -1552,8 +1709,8 @@ export default {
             this.insurance.jocInsuranceCompany === 'C社'
           "
           class="mx-1 insurance-completedDate"
-        >
-          <!-- <v-text-field
+        > -->
+        <!-- <v-text-field
             :class="{
               'completedDate-input': insurance.completedDate != false,
             }"
@@ -1561,8 +1718,47 @@ export default {
             v-model="insurance.completedDate"
             label="完了日"
           ></v-text-field> -->
+        <!-- </v-col> -->
+      </v-row>
+      <v-row>
+        <v-col
+          cols="1"
+          class="mx-15 d-flex align-center"
+          v-if="this.insurance.jocInsuranceCompany === '東京海上'"
+        >
+          <v-btn
+            href="https://www.tokiomarine-nichido.co.jp/"
+            target="_blank"
+            density="compact"
+            icon="mdi-help"
+          ></v-btn>
+        </v-col>
+        <v-col
+          cols="1"
+          class="mx-15 d-flex align-center"
+          v-if="this.insurance.jocInsuranceCompany === '三井住友'"
+        >
+          <v-btn
+            href="https://www.ms-ins.com/lp/car-2406h/?utm_source=yahoo&utm_medium=cpc&utm_campaign=prm_202406_ys_src_cv00001_h-name&utm_content=p-paid&yclid=YSS.1001283068.EAIaIQobChMI86yM-dCViQMVZG0PAh0HgCmzEAAYASAAEgJXePD_BwE"
+            target="_blank"
+            density="compact"
+            icon="mdi-help"
+          ></v-btn>
+        </v-col>
+        <v-col
+          cols="1"
+          class="mx-15 d-flex align-center"
+          v-if="this.insurance.jocInsuranceCompany === '損保ジャパン'"
+        >
+          <v-btn
+            href="https://www.sompo-japan.co.jp/"
+            target="_blank"
+            density="compact"
+            icon="mdi-help"
+          ></v-btn>
         </v-col>
       </v-row>
+
       <!-- <v-row>
         <v-col
           cols="1"
