@@ -15,12 +15,6 @@ export default {
         tradeInCarKubun: "", //下取車有・買取有・下取買取無区分
         insuranceKubun: "", //（保険）当社加入・他社加入
       },
-      credit: {
-        creditDocuments: "クレジット書類", //クレジット書類
-        isFillIn: "", //ご記入
-        isRegisteredSeal: false, //実印（銀行印）
-        completedDate: false, //完了日
-      },
       normalCarDocuments: {
         poaOssKubun: "", //委任状・OSS・代行不要区分
         isFillIn: "", //ご記入
@@ -86,6 +80,12 @@ export default {
       taxDeclaration: {
         taxDeclarationName: "税申告書", //税申告書
         isFillIn: "", //ご記入
+        completedDate: false, //完了日
+      },
+      credit: {
+        creditDocuments: "", //クレジット書類
+        isFillIn: "", //ご記入
+        isRegisteredSeal: false, //実印（銀行印）
         completedDate: false, //完了日
       },
 
@@ -364,6 +364,10 @@ export default {
       this.credit.isFillIn = "";
       this.credit.isRegisteredSeal = false;
       this.credit.completedDate = false;
+      this.credit.creditDocuments = "";
+      this.credit.isFillIn = "";
+      this.credit.isRegisteredSeal = false;
+      this.credit.completedDate = false;
     },
     insuranceKubunChange() {
       this.insurance.jocInsuranceCompany = "";
@@ -455,6 +459,13 @@ export default {
       this.jaf.isBankSeal = false;
       this.jaf.completedDate = false;
     },
+    isCreditChange() {
+      this.credit.creditDocuments = "";
+      this.credit.isFillIn = "";
+      this.credit.isRegisteredSeal = false;
+      this.credit.completedDate = false;
+    },
+
     // console.log(this.contracts.normalCarLightCarKubun);
     // console.log(this.normalCarDocuments);
     // console.log(event);
@@ -531,7 +542,7 @@ export default {
         </v-col>
       </v-row> -->
 
-      <v-row class="mt-15" justify="center">
+      <v-row class="mt-15 ml-12">
         <v-col cols="2" class="mx-0">
           <v-select
             v-model="contracts.newCarUsedCarKubun"
@@ -626,7 +637,7 @@ export default {
           <v-checkbox
             @change="poaOssKubunCompleted"
             v-model="normalCarDocuments.isFillIn"
-            label="記入"
+            label="ご記入"
           >
           </v-checkbox>
         </v-col>
@@ -682,20 +693,20 @@ export default {
           </v-checkbox>
         </v-col>
 
-        <v-col
+        <!-- <v-col
           cols="2"
           class="mx-1 normalCarDocuments-completedDate"
           v-if="this.normalCarDocuments.poaOssKubun === '委任状'"
         >
-          <!-- <v-text-field
+          <v-text-field
             :class="{
               'completedDate-input': normalCarDocuments.completedDate != false,
             }"
             type="date"
             v-model="normalCarDocuments.completedDate"
             label="完了日"
-          ></v-text-field> -->
-        </v-col>
+          ></v-text-field>
+        </v-col> -->
       </v-row>
 
       <v-row
@@ -726,7 +737,7 @@ export default {
           <v-checkbox
             @change="poaOssKubunCompleted"
             v-model="normalCarDocuments.isFillIn"
-            label="記入"
+            label="ご記入"
           >
           </v-checkbox>
         </v-col>
@@ -786,7 +797,7 @@ export default {
           </v-checkbox>
         </v-col>
 
-        <v-col
+        <!-- <v-col
           cols="2"
           class="mx-1 normalCarDocuments-completedDate"
           v-if="
@@ -794,15 +805,15 @@ export default {
             this.normalCarDocuments.poaOssKubun === 'OSS'
           "
         >
-          <!-- <v-text-field
+          <v-text-field
             :class="{
               'completedDate-input': normalCarDocuments.completedDate != false,
             }"
             type="date"
             v-model="normalCarDocuments.completedDate"
             label="完了日"
-          ></v-text-field> -->
-        </v-col>
+          ></v-text-field>
+        </v-col> -->
       </v-row>
       <v-row>
         <v-col
@@ -813,20 +824,20 @@ export default {
           <!-- <v-btn @click="aaa" density="compact" icon="mdi-printer"></v-btn> -->
         </v-col>
       </v-row>
-      <v-row>
+      <!-- <v-row>
         <v-col
           cols="1"
           class="mx-15 d-flex align-center"
           v-if="this.normalCarDocuments.poaOssKubun === 'OSS'"
         >
-          <!-- <v-btn
+          <v-btn
             href="/ininzyou.pdf"
             target="_blank"
             density="compact"
             icon="mdi-printer"
-          ></v-btn> -->
+          ></v-btn>
         </v-col>
-      </v-row>
+      </v-row> -->
       <v-row>
         <v-toolbar-title
           class="ml-15 d-flex align-center lightCarDocuments"
@@ -858,7 +869,7 @@ export default {
           <v-checkbox
             @change="lightCarDocumentsKubunCompleted"
             v-model="lightCarDocuments.isFillIn"
-            label="記入"
+            label="ご記入"
           >
           </v-checkbox>
         </v-col>
@@ -886,27 +897,27 @@ export default {
           >
           </v-checkbox>
         </v-col>
-        <v-col
+        <!-- <v-col
           cols="2"
           class="mx-1 lightCarDocuments-completedDate"
           v-if="this.lightCarDocuments.lightCarDocumentsKubun === '申請依頼書'"
         >
-          <!-- <v-text-field
+          <v-text-field
             :class="{
               'completedDate-input': lightCarDocuments.completedDate != false,
             }"
             type="date"
             v-model="lightCarDocuments.completedDate"
             label="完了日"
-          ></v-text-field> -->
-        </v-col>
-        <v-col
+          ></v-text-field>
+        </v-col> -->
+        <!-- <v-col
           cols="2"
           class="mx-15 lightCarDocuments-completedDate"
           v-if="this.lightCarDocuments.lightCarDocumentsKubun === '申請依頼書'"
         >
-          <!-- <v-btn @click="aaaaaaaa" density="compact" icon="mdi-printer"></v-btn> -->
-        </v-col>
+          <v-btn @click="aaaaaaaa" density="compact" icon="mdi-printer"></v-btn>
+        </v-col> -->
       </v-row>
       <v-row>
         <v-toolbar-title
@@ -951,12 +962,12 @@ export default {
           <v-checkbox
             @change="NCgarageVerificationKubunCompleted"
             v-model="normalCarDocumentsGarageVerification.isFillIn"
-            label="記入"
+            label="ご記入"
           >
           </v-checkbox>
         </v-col>
 
-        <v-col
+        <!-- <v-col
           cols="2"
           class="mx-1 normalCarDocumentsGarageVerification-completedDate"
           v-if="
@@ -964,7 +975,7 @@ export default {
               .NCgarageVerificationKubun === '保管場所証明申請書'
           "
         >
-          <!-- <v-text-field
+          <v-text-field
             :class="{
               'completedDate-input':
                 normalCarDocumentsGarageVerification.completedDate != false,
@@ -972,10 +983,10 @@ export default {
             type="date"
             v-model="normalCarDocumentsGarageVerification.completedDate"
             label="完了日"
-          ></v-text-field> -->
-        </v-col>
+          ></v-text-field>
+        </v-col> -->
       </v-row>
-      <v-row>
+      <!-- <v-row>
         <v-col
           cols="1"
           class="mx-15 d-flex align-center"
@@ -984,9 +995,9 @@ export default {
               .NCgarageVerificationKubun === '保管場所証明申請書'
           "
         >
-          <!-- <v-btn @click="aaa" density="compact" icon="mdi-help"></v-btn> -->
+          <v-btn @click="aaa" density="compact" icon="mdi-help"></v-btn>
         </v-col>
-      </v-row>
+      </v-row> -->
       <v-row>
         <v-toolbar-title
           class="ml-15 d-flex align-center lightCarDocumentsGarageVerification"
@@ -1030,12 +1041,12 @@ export default {
           <v-checkbox
             @change="LCgarageVerificationKubunCompleted"
             v-model="lightCarDocumentsGarageVerification.isFillIn"
-            label="記入"
+            label="ご記入"
           >
           </v-checkbox>
         </v-col>
 
-        <v-col
+        <!-- <v-col
           cols="2"
           class="mx-1 lightCarDocumentsGarageVerification-completedDate"
           v-if="
@@ -1043,7 +1054,7 @@ export default {
               .LCgarageVerificationKubun === '保管場所届出書'
           "
         >
-          <!-- <v-text-field
+          <v-text-field
             :class="{
               'completedDate-input':
                 lightCarDocumentsGarageVerification.completedDate != false,
@@ -1051,10 +1062,10 @@ export default {
             type="date"
             v-model="lightCarDocumentsGarageVerification.completedDate"
             label="完了日"
-          ></v-text-field> -->
-        </v-col>
+          ></v-text-field>
+        </v-col> -->
       </v-row>
-      <v-row>
+      <!-- <v-row>
         <v-col
           cols="1"
           class="mx-15 d-flex align-center"
@@ -1063,9 +1074,9 @@ export default {
               .LCgarageVerificationKubun === '保管場所届出書'
           "
         >
-          <!-- <v-btn @click="aaa" density="compact" icon="mdi-help"></v-btn> -->
+          <v-btn @click="aaa" density="compact" icon="mdi-help"></v-btn>
         </v-col>
-      </v-row>
+      </v-row> -->
       <v-row>
         <v-toolbar-title
           class="ml-15 d-flex align-center normalCarDocumentsGarageVerification"
@@ -1108,13 +1119,13 @@ export default {
         >
           <v-checkbox
             @change="selfCertificationConsentToUseKubunCompleted"
-            label="記入"
+            label="ご記入"
             v-model="storingMethod.isFillIn"
           >
           </v-checkbox>
         </v-col>
 
-        <v-col
+        <!-- <v-col
           cols="2"
           class="mx-1 storingMethod-completedDate"
           v-if="
@@ -1124,17 +1135,17 @@ export default {
               '使用承諾証'
           "
         >
-          <!-- <v-text-field
+          <v-text-field
             :class="{
               'completedDate-input': storingMethod.completedDate != false,
             }"
             type="date"
             v-model="storingMethod.completedDate"
             label="完了日"
-          ></v-text-field> -->
-        </v-col>
+          ></v-text-field>
+        </v-col> -->
       </v-row>
-      <v-row>
+      <!-- <v-row>
         <v-col
           cols="1"
           class="mx-15 d-flex align-center"
@@ -1142,9 +1153,9 @@ export default {
             this.storingMethod.selfCertificationConsentToUseKubun === '自認書'
           "
         >
-          <!-- <v-btn @click="aaa" density="compact" icon="mdi-printer"></v-btn> -->
+          <v-btn @click="aaa" density="compact" icon="mdi-printer"></v-btn>
         </v-col>
-      </v-row>
+      </v-row> -->
       <v-row>
         <v-col
           cols="1"
@@ -1181,23 +1192,23 @@ export default {
         <v-col cols="2" class="mx-1 d-flex align-center">
           <v-checkbox
             @change="arrangementDiagramCompleted"
-            label="記入"
+            label="ご記入"
             v-model="arrangementDiagram.isFillIn"
           >
           </v-checkbox>
         </v-col>
-        <v-col cols="2" class="mx-1 arrangement-completedDate">
-          <!-- <v-text-field
+        <!-- <v-col cols="2" class="mx-1 arrangement-completedDate">
+          <v-text-field
             :class="{
               'completedDate-input': arrangementDiagram.completedDate != false,
             }"
             type="date"
             v-model="arrangementDiagram.completedDate"
             label="完了日"
-          ></v-text-field> -->
-        </v-col>
+          ></v-text-field>
+        </v-col> -->
       </v-row>
-      <v-row>
+      <!-- <v-row>
         <v-col
           cols="1"
           class="mx-15 d-flex align-center"
@@ -1211,9 +1222,9 @@ export default {
               .LCgarageVerificationKubun === '代行不要'
           "
         >
-          <!-- <v-btn @click="aaa" density="compact" icon="mdi-printer"></v-btn> -->
+          <v-btn @click="aaa" density="compact" icon="mdi-printer"></v-btn>
         </v-col>
-      </v-row>
+      </v-row> -->
       <v-row>
         <v-toolbar-title
           class="ml-15 d-flex align-center other-documents"
@@ -1222,7 +1233,7 @@ export default {
             this.contracts.normalCarLightCarKubun === '軽自動車'
           "
         >
-          　▼その他書類
+          　▼その他
         </v-toolbar-title>
       </v-row>
 
@@ -1231,10 +1242,8 @@ export default {
           cols="2"
           class="mx-14"
           v-if="
-            this.normalCarDocuments.poaOssKubun === '委任状' ||
-            this.lightCarDocuments.lightCarDocumentsKubun === '申請依頼書' ||
-            this.normalCarDocuments.poaOssKubun === '代行不要' ||
-            this.lightCarDocuments.lightCarDocumentsKubun === '代行不要'
+            this.contracts.normalCarLightCarKubun === '普通車' ||
+            this.contracts.normalCarLightCarKubun === '軽自動車'
           "
         >
           <v-select
@@ -1249,44 +1258,41 @@ export default {
           cols="2"
           class="mx-1 d-flex align-center"
           v-if="
-            (this.normalCarDocuments.poaOssKubun === '委任状' ||
-              this.lightCarDocuments.lightCarDocumentsKubun === '申請依頼書' ||
-              this.normalCarDocuments.poaOssKubun === '代行不要' ||
-              this.lightCarDocuments.lightCarDocumentsKubun === '代行不要') &&
-            this.desiredNumber.isDesiredNumber === '有'
+            this.contracts.normalCarLightCarKubun === '普通車' ||
+            this.contracts.normalCarLightCarKubun === '軽自動車'
           "
         >
           <v-checkbox
             @change="isDesiredNumberCompleted"
-            label="記入"
+            label="ご記入"
             v-model="desiredNumber.isFillIn"
           >
           </v-checkbox>
         </v-col>
-        <v-col
+        <!-- <v-col
           cols="2"
           class="mx-1 desiredNumber-completedDate"
           v-if="this.desiredNumber.isDesiredNumber === '有'"
         >
-          <!-- <v-text-field
+          <v-text-field
             :class="{
               'completedDate-input': desiredNumber.completedDate != false,
             }"
             type="date"
             v-model="desiredNumber.completedDate"
             label="完了日"
-          ></v-text-field> -->
-        </v-col>
+          ></v-text-field>
+        </v-col> -->
       </v-row>
-      <v-row>
+      <!-- <v-row>
         <v-col
           cols="1"
           class="mx-15 d-flex align-center"
           v-if="this.desiredNumber.isDesiredNumber === '有'"
         >
-          <!-- <v-btn @click="aaa" density="compact" icon="mdi-printer"></v-btn> -->
+          <v-btn @click="aaa" density="compact" icon="mdi-printer"></v-btn>
         </v-col>
-      </v-row>
+      </v-row> -->
       <v-row class="mt-5">
         <v-col
           cols="2"
@@ -1311,7 +1317,7 @@ export default {
         >
           <v-checkbox
             @change="etcKubunCompleted"
-            label="記入"
+            label="ご記入"
             v-model="etc.isFillIn"
           >
           </v-checkbox>
@@ -1353,15 +1359,15 @@ export default {
           ></v-btn>
         </v-col>
       </v-row>
-      <v-row>
+      <!-- <v-row>
         <v-col
           cols="1"
           class="mx-15 d-flex align-center"
           v-if="this.etc.etcKubun === 'ETC' || etc.etcKubun === 'ETC-2.0'"
         >
-          <!-- <v-btn @click="aaa" density="compact" icon="mdi-help"></v-btn> -->
+          <v-btn @click="aaa" density="compact" icon="mdi-help"></v-btn>
         </v-col>
-      </v-row>
+      </v-row> -->
       <v-row class="mt-5">
         <v-col
           cols="2"
@@ -1386,25 +1392,25 @@ export default {
         >
           <v-checkbox
             @change="isExtendedWarrantyCompleted"
-            label="記入"
+            label="ご記入"
             v-model="extendedWarranty.isFillIn"
           >
           </v-checkbox>
         </v-col>
-        <v-col
+        <!-- <v-col
           cols="2"
           class="mx-1 extendedWarranty-completedDate"
           v-if="this.extendedWarranty.isExtendedWarranty === '有'"
         >
-          <!-- <v-text-field
+          <v-text-field
             :class="{
               'completedDate-input': extendedWarranty.completedDate != false,
             }"
             type="date"
             v-model="extendedWarranty.completedDate"
             label="完了日"
-          ></v-text-field> -->
-        </v-col>
+          ></v-text-field>
+        </v-col> -->
       </v-row>
       <v-row>
         <v-col
@@ -1444,25 +1450,25 @@ export default {
         >
           <v-checkbox
             @change="isMaintenancePackCompleted"
-            label="記入"
+            label="ご記入"
             v-model="maintenancePack.isFillIn"
           >
           </v-checkbox>
         </v-col>
-        <v-col
+        <!-- <v-col
           cols="2"
           class="mx-1 maintenancePack-completedDate"
           v-if="this.maintenancePack.isMaintenancePack === '有'"
         >
-          <!-- <v-text-field
+          <v-text-field
             :class="{
               'completedDate-input': maintenancePack.completedDate != false,
             }"
             type="date"
             v-model="maintenancePack.completedDate"
             label="完了日"
-          ></v-text-field> -->
-        </v-col>
+          ></v-text-field>
+        </v-col> -->
       </v-row>
       <v-row>
         <v-col
@@ -1471,7 +1477,7 @@ export default {
           v-if="this.maintenancePack.isMaintenancePack === '有'"
         >
           <v-btn
-            href="https://www.mazda.co.jp/purchase/carlife-care/encho-hosho/5years/"
+            href="https://www.efh.co.jp/after-service/maintenance/#pack"
             target="_blank"
             density="compact"
             icon="mdi-help"
@@ -1505,13 +1511,13 @@ export default {
         >
           <v-checkbox
             @change="isJafPaymentKubunCompleted"
-            label="記入"
+            label="電子手続き"
             v-model="jaf.isFillIn"
           >
           </v-checkbox>
         </v-col>
 
-        <v-col
+        <!-- <v-col
           cols="2"
           class="mx-1 d-flex align-center"
           v-if="this.jaf.isJafPaymentKubun === '有（口座振替）'"
@@ -1531,15 +1537,15 @@ export default {
             this.jaf.isJafPaymentKubun === '有（クレジット）'
           "
         >
-          <!-- <v-text-field
+          <v-text-field
             :class="{
               'completedDate-input': jaf.completedDate != false,
             }"
             type="date"
             v-model="jaf.completedDate"
             label="完了日"
-          ></v-text-field> -->
-        </v-col>
+          ></v-text-field>
+        </v-col> -->
       </v-row>
       <v-row>
         <v-col
@@ -1575,52 +1581,73 @@ export default {
         <v-col cols="2 taxDeclaration" class="mx-1 d-flex align-center">
           <v-checkbox
             @change="taxDeclarationCompleted"
-            label="記入"
+            label="ご記入"
             v-model="taxDeclaration.isFillIn"
           >
           </v-checkbox>
         </v-col>
-        <v-col cols="2 taxDeclaration-completedDate" class="mx-1">
-          <!-- <v-text-field
+        <!-- <v-col cols="2 taxDeclaration-completedDate" class="mx-1">
+          <v-text-field
             :class="{
               'completedDate-input': taxDeclaration.completedDate != false,
             }"
             type="date"
             v-model="taxDeclaration.completedDate"
             label="完了日"
-          ></v-text-field> -->
-        </v-col>
+          ></v-text-field>
+        </v-col> -->
       </v-row>
       <v-row>
         <v-toolbar-title
           class="ml-15 d-flex align-center credit"
           v-if="this.contracts.paymentKubun === 'クレジット'"
         >
-          　▼クレジット書類
+          　▼クレジット
         </v-toolbar-title>
       </v-row>
 
-      <v-row class="mt-5" v-if="this.contracts.paymentKubun === 'クレジット'">
+      <v-row class="mt-5">
         <v-col cols="2" class="mx-14">
-          <v-combobox
+          <v-select
+            @update:modelValue="isCreditChange"
+            v-if="this.contracts.paymentKubun === 'クレジット'"
             v-model="credit.creditDocuments"
-            label=""
-            :items="[]"
+            label="電子or書面"
+            :items="['', '電子（meats)', '書面']"
             variant="outlined"
-            readonly
-          ></v-combobox>
+          ></v-select>
         </v-col>
-
-        <v-col cols="2" class="mx-1 d-flex align-center">
+        <v-col
+          cols="2"
+          class="mx-1 d-flex align-center"
+          v-if="this.credit.creditDocuments === '電子（meats)'"
+        >
           <v-checkbox
             @change="CreditDocumentsCompleted"
             v-model="credit.isFillIn"
-            label="記入"
+            label="電子手続き(meats)"
           >
           </v-checkbox>
         </v-col>
 
-        <v-col cols="2" class="mx-1 d-flex align-center">
+        <v-col
+          cols="2"
+          class="mx-1 d-flex align-center"
+          v-if="this.credit.creditDocuments === '書面'"
+        >
+          <v-checkbox
+            @change="CreditDocumentsCompleted"
+            v-model="credit.isFillIn"
+            label="ご記入"
+          >
+          </v-checkbox>
+        </v-col>
+
+        <v-col
+          cols="2"
+          class="mx-1 d-flex align-center"
+          v-if="this.credit.creditDocuments === '書面'"
+        >
           <v-checkbox
             @change="CreditDocumentsCompleted"
             v-model="credit.isRegisteredSeal"
@@ -1641,7 +1668,10 @@ export default {
         <v-col
           cols="1"
           class="mx-15 d-flex align-center"
-          v-if="this.contracts.paymentKubun === 'クレジット'"
+          v-if="
+            this.credit.creditDocuments === '電子（meats)' ||
+            this.credit.creditDocuments === '書面'
+          "
         >
           <v-btn
             href="https://www.mazdacr.co.jp/lineup/lineup.html?mode=sky"
@@ -1652,15 +1682,15 @@ export default {
         </v-col>
       </v-row>
 
-      <v-row>
+      <!-- <v-row>
         <v-col
           cols="1"
           class="mx-15 d-flex align-center"
           v-if="this.contracts.normalCarLightCarKubun === '軽自動車'"
         >
-          <!-- <v-btn @click="aaa" density="compact" icon="mdi-printer"></v-btn> -->
+          <v-btn @click="aaa" density="compact" icon="mdi-printer"></v-btn>
         </v-col>
-      </v-row>
+      </v-row> -->
       <v-row>
         <v-toolbar-title
           class="ml-15 d-flex align-center insurance"
@@ -1696,7 +1726,7 @@ export default {
         >
           <v-checkbox
             @change="insuranceCompleted"
-            label="手続き"
+            label="電子手続き"
             v-model="insurance.joiningProcedure"
           >
           </v-checkbox>
@@ -1811,20 +1841,20 @@ export default {
           >
           </v-checkbox>
         </v-col>
-        <v-col
+        <!-- <v-col
           cols="2"
           v-if="this.contracts.insuranceKubun === '他社加入'"
           class="mx-1 insurance-completedDate"
         >
-          <!-- <v-text-field
+          <v-text-field
             :class="{
               'completedDate-input': insurance.completedDate != false,
             }"
             type="date"
             v-model="insurance.completedDate"
             label="完了日"
-          ></v-text-field> -->
-        </v-col>
+          ></v-text-field>
+        </v-col> -->
       </v-row>
       <!-- <v-row>
         <v-toolbar-title class="ml-15 d-flex align-center memo">
