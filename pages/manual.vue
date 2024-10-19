@@ -2080,12 +2080,7 @@ export default {
           ></v-text-field>
         </v-col> -->
       </v-row>
-      <v-row
-        v-if="
-          this.credit.creditDocuments === '電子' ||
-          this.credit.creditDocuments === '書面'
-        "
-      >
+      <v-row v-if="this.maintenancePack.isMaintenancePack === '有'">
         <p class="ml-15">
           ・お車のご成約時、メンテナンスパック（パックdeメンテ）にご加入頂いた際に頂く書類です。<br />
           　（ご商談の際は36Sコース（点検、5年後2回目の車検までがセットになったプラン）<br />
