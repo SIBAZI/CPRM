@@ -19,7 +19,8 @@ export default {
         insuranceKubun: "", //（保険）当社加入・他社加入
       },
       normalCarDocuments: {
-        poaOssKubun: "", //委任状・OSS・代行不要区分
+        poaKubun: "委任状", //委任状
+        poaOssKubun: "", //委任状・OSS
         isFillIn: "", //ご記入
         isRegisteredSeal: false, //実印（銀行印）
         isSealCertificate: false, //印鑑証明
@@ -28,7 +29,7 @@ export default {
         completedDate: false, //完了日
       },
       lightCarDocuments: {
-        lightCarDocumentsKubun: "", //申請依頼書・代行不要区分
+        lightCarDocumentsKubun: "申請依頼書", //申請依頼書
         isFillIn: "", //ご記入
         isStamping: false, //認印
         isResidentCard: false, //住民票
@@ -97,6 +98,7 @@ export default {
         jacInsuranceCompany: "", //他社加入保険会社
         joiningProcedure: "", //手続き
         confirmationOfMembership: "", //加入確認
+        skyPlus: "スカイプラス",
         completedDate: false, //完了日
       },
 
@@ -313,7 +315,9 @@ export default {
     removeMemo(index) {
       this.memos.splice(index, 1);
     },
-
+    newCarUsedCarKubunChange() {
+      this.normalCarDocuments.isFillIn = false;
+    },
     normalCarLightCarKubunChange() {
       this.normalCarDocuments.poaOssKubun = "";
       this.normalCarDocuments.isFillIn = false;
@@ -351,7 +355,7 @@ export default {
       this.insurance.joiningProcedure = "";
       this.insurance.confirmationOfMembership = "";
       this.insurance.completedDate = false;
-      this.lightCarDocuments.lightCarDocumentsKubun = "";
+
       this.lightCarDocuments.isFillIn = "";
       this.lightCarDocuments.isStamping = false;
       this.lightCarDocuments.isResidentCard = false;
@@ -397,7 +401,6 @@ export default {
       this.arrangementDiagram.completedDate = false;
     },
     lightCarDocumentsKubunChange() {
-      this.lightCarDocuments.lightCarDocumentsKubun = "";
       this.lightCarDocuments.isFillIn = "";
       this.lightCarDocuments.isStamping = false;
       this.lightCarDocuments.isResidentCard = false;
@@ -546,10 +549,10 @@ export default {
       </v-row> -->
       <div>
         <v-row class="mt-15 ml-12">
-          <v-col cols="2" class="">
+          <v-col cols="3" class="">
             <v-select
               v-model="start.startKubun"
-              label=""
+              label="手続き内容"
               :items="['', '成約時登録', '買取・下取り', '一般登録代行']"
               variant="outlined"
             ></v-select>
@@ -563,12 +566,13 @@ export default {
           </v-toolbar-title>
         </v-row>
         <v-row>
-          <p class="mt-5 ml-15">　ご成約頂いたお車の確認です。</p>
+          <p class="mt-5 ml-15">　ご成約頂いたお車は、</p>
         </v-row>
 
         <v-row class="ml-12 mt-10">
           <v-col cols="2" class="">
             <v-select
+              @update:modelValue="newCarUsedCarKubunChange"
               v-model="contracts.newCarUsedCarKubun"
               label="新車or中古車"
               :items="['', '新車', '中古車']"
@@ -622,7 +626,7 @@ export default {
           "
         >
           <v-toolbar-title class="ml-15 d-flex align-center normalCarDocuments">
-            　➀委任状（ご成約頂いたお車の登録、検査手続きを代行させて頂く事に同意頂くための手続きです。）
+            　➀委任状（お車の登録、検査手続きを代行させて頂く手続きです。）
           </v-toolbar-title>
         </v-row>
         <v-row
@@ -634,18 +638,18 @@ export default {
         >
           <v-col cols="2" class="ml-15">
             <v-select
-              @update:modelValue="poaOssKubunChange"
-              v-model="normalCarDocuments.poaOssKubun"
-              label="委任状"
-              :items="['', '委任状', '代行不要']"
+              v-model="normalCarDocuments.poaKubun"
+              label=""
+              :items="[]"
               variant="outlined"
+              readonly
             ></v-select>
           </v-col>
 
           <v-col
             cols="2"
             class="mx-1 d-flex align-center"
-            v-if="this.normalCarDocuments.poaOssKubun === '委任状'"
+            v-if="this.normalCarDocuments.poaKubun === '委任状'"
           >
             <v-checkbox
               @change="poaOssKubunCompleted"
@@ -660,7 +664,7 @@ export default {
               v-if="
                 (this.contracts.paymentKubun === '現金' ||
                   this.contracts.paymentKubun === '銀行ローン') &&
-                this.normalCarDocuments.poaOssKubun === '委任状'
+                this.normalCarDocuments.poaKubun === '委任状'
               "
               v-model="normalCarDocuments.isRegisteredSeal"
               label="実印"
@@ -672,7 +676,7 @@ export default {
               v-if="
                 (this.contracts.paymentKubun === 'クレジット' ||
                   this.contracts.paymentKubun === '所有権留保') &&
-                this.normalCarDocuments.poaOssKubun === '委任状'
+                this.normalCarDocuments.poaKubun === '委任状'
               "
               v-model="normalCarDocuments.isStamping"
               label="認印"
@@ -686,7 +690,7 @@ export default {
               v-if="
                 (this.contracts.paymentKubun === '現金' ||
                   this.contracts.paymentKubun === '銀行ローン') &&
-                this.normalCarDocuments.poaOssKubun === '委任状'
+                this.normalCarDocuments.poaKubun === '委任状'
               "
               v-model="normalCarDocuments.isSealCertificate"
               label="印鑑証明"
@@ -698,7 +702,7 @@ export default {
               v-if="
                 (this.contracts.paymentKubun === 'クレジット' ||
                   this.contracts.paymentKubun === '所有権留保') &&
-                this.normalCarDocuments.poaOssKubun === '委任状'
+                this.normalCarDocuments.poaKubun === '委任状'
               "
               v-model="normalCarDocuments.isResidentCard"
               label="住民票"
@@ -725,22 +729,62 @@ export default {
           v-if="
             this.contracts.newCarUsedCarKubun === '中古車' &&
             this.contracts.normalCarLightCarKubun === '普通車' &&
-            this.normalCarDocuments.poaOssKubun === '委任状'
+            this.contracts.paymentKubun === '現金' &&
+            this.normalCarDocuments.poaKubun === '委任状'
           "
         >
           <p class="ml-15">
-            ・ご成約頂いたお車の登録、検査手続きを代行させて頂く事に同意頂くための書類です。
+            ・現金でのお支払いの場合、お車の所有者はお客様になりますので<b>実印</b>と<b>印鑑証明</b>が必要となります。
           </p>
         </v-row>
+        <v-row
+          v-if="
+            this.contracts.newCarUsedCarKubun === '中古車' &&
+            this.contracts.normalCarLightCarKubun === '普通車' &&
+            this.contracts.paymentKubun === 'クレジット' &&
+            this.normalCarDocuments.poaKubun === '委任状'
+          "
+        >
+          <p class="ml-15">
+            ・クレジットでのお支払いの場合、<b>認印</b>と<b>住民票</b>が必要となります。
+          </p>
+        </v-row>
+
+        <v-row
+          v-if="
+            this.contracts.newCarUsedCarKubun === '中古車' &&
+            this.contracts.normalCarLightCarKubun === '普通車' &&
+            this.contracts.paymentKubun === '銀行ローン' &&
+            this.normalCarDocuments.poaKubun === '委任状'
+          "
+        >
+          <p class="ml-15">
+            ・銀行ローンでのお支払いの場合、お車の所有者はお客様になりますので<b>実印</b>と<b>印鑑証明</b>が必要となります。
+          </p>
+        </v-row>
+        <v-row
+          v-if="
+            this.contracts.newCarUsedCarKubun === '中古車' &&
+            this.contracts.normalCarLightCarKubun === '普通車' &&
+            this.contracts.paymentKubun === '所有権留保' &&
+            this.normalCarDocuments.poaKubun === '委任状'
+          "
+        >
+          <p class="ml-15">
+            ・所有権留保の場合、<b>認印</b>と<b>住民票</b>が必要となります。
+          </p>
+        </v-row>
+
         <v-row>
           <v-col
             cols="1"
             class="mt-3 ml-16 d-flex align-center"
             v-if="
               this.contracts.newCarUsedCarKubun === '中古車' &&
+              this.contracts.normalCarLightCarKubun === '普通車' &&
               (this.contracts.paymentKubun === '現金' ||
                 this.contracts.paymentKubun === '銀行ローン') &&
-              this.normalCarDocuments.poaOssKubun === '委任状'
+              this.normalCarDocuments.poaKubun === '委任状'
             "
           >
             <v-btn
@@ -755,9 +799,10 @@ export default {
             class="ml-16 d-flex align-center"
             v-if="
               this.contracts.newCarUsedCarKubun === '中古車' &&
+              this.contracts.normalCarLightCarKubun === '普通車' &&
               (this.contracts.paymentKubun === 'クレジット' ||
                 this.contracts.paymentKubun === '所有権留保') &&
-              this.normalCarDocuments.poaOssKubun === '委任状'
+              this.normalCarDocuments.poaKubun === '委任状'
             "
           >
             <v-btn
@@ -772,9 +817,10 @@ export default {
             class="mt-3 d-flex align-center"
             v-if="
               this.contracts.newCarUsedCarKubun === '中古車' &&
+              this.contracts.normalCarLightCarKubun === '普通車' &&
               (this.contracts.paymentKubun === '現金' ||
                 this.contracts.paymentKubun === '銀行ローン') &&
-              this.normalCarDocuments.poaOssKubun === '委任状'
+              this.normalCarDocuments.poaKubun === '委任状'
             "
           >
             <v-btn
@@ -789,9 +835,10 @@ export default {
             class="d-flex align-center"
             v-if="
               this.contracts.newCarUsedCarKubun === '中古車' &&
+              this.contracts.normalCarLightCarKubun === '普通車' &&
               (this.contracts.paymentKubun === 'クレジット' ||
                 this.contracts.paymentKubun === '所有権留保') &&
-              this.normalCarDocuments.poaOssKubun === '委任状'
+              this.normalCarDocuments.poaKubun === '委任状'
             "
           >
             <v-btn
@@ -811,7 +858,7 @@ export default {
         >
           <v-toolbar-title class="ml-15 d-flex align-center normalCarDocuments">
             　➀
-            委任状・OSS（ご成約頂いたお車の登録、検査手続きを代行させて頂く事に同意頂くための手続きです。）
+            委任状・OSS（お車の登録、検査手続きを代行させて頂く手続きです。）
           </v-toolbar-title>
         </v-row>
         <v-row
@@ -826,7 +873,7 @@ export default {
               @update:modelValue="poaOssKubunChange"
               v-model="normalCarDocuments.poaOssKubun"
               label="委任状 or OSS"
-              :items="['', '委任状', 'OSS', '代行不要']"
+              :items="['', '委任状', 'OSS']"
               variant="outlined"
             ></v-select>
           </v-col>
@@ -920,180 +967,264 @@ export default {
           ></v-text-field>
         </v-col> -->
         </v-row>
-        <v-row v-if="this.normalCarDocuments.poaOssKubun === 'OSS'">
+        <v-row
+          v-if="
+            this.contracts.newCarUsedCarKubun === '新車' &&
+            this.contracts.paymentKubun === '現金' &&
+            this.normalCarDocuments.poaOssKubun === 'OSS'
+          "
+        >
           <p class="ml-15">
-            ・ワンストップサービス（OSS）は、自動車を保有するために必要となる手続きと税金や手数料の納付を<br />
-            　インターネット上で一括して行うことを可能とした国土交通省が提供しているサービスです。
+            ・現金でのお支払いの場合、お車の所有者お客様になりますので<b>実印</b>と<b>印鑑証明</b>が必要となります。<br />
+            　　ワンストップサービス（OSS）は、自動車を保有するために必要となる手続きと税金や手数料の納付を<br />
+            　　インターネット上で一括して行うことを可能とした国土交通省が提供しているサービスです。
           </p>
         </v-row>
-        <v-row>
-          <v-col
-            cols="1"
-            class="mt-3 ml-16 d-flex align-center"
-            v-if="
-              (this.contracts.paymentKubun === '現金' ||
-                this.contracts.paymentKubun === '銀行ローン') &&
-              this.normalCarDocuments.poaOssKubun === 'OSS'
-            "
-          >
-            <v-btn
-              href=""
-              target="_blank"
-              density="compact"
-              icon="mdi-help"
-            ></v-btn>
-          </v-col>
-          <v-col
-            cols="1"
-            class="mt-3 ml-16 d-flex align-center"
-            v-if="
-              (this.contracts.paymentKubun === 'クレジット' ||
-                this.contracts.paymentKubun === '所有権留保') &&
-              this.normalCarDocuments.poaOssKubun === 'OSS'
-            "
-          >
-            <v-btn
-              href=""
-              target="_blank"
-              density="compact"
-              icon="mdi-help"
-            ></v-btn>
-          </v-col>
-          <v-col
-            cols="1"
-            class="mt-3 d-flex align-center"
-            v-if="
-              (this.contracts.paymentKubun === '現金' ||
-                this.contracts.paymentKubun === '銀行ローン') &&
-              this.normalCarDocuments.poaOssKubun === 'OSS'
-            "
-          >
-            <v-btn
-              href=""
-              target="_blank"
-              density="compact"
-              icon="mdi-printer"
-            ></v-btn>
-          </v-col>
-          <v-col
-            cols="1"
-            class="mt-3 d-flex align-center"
-            v-if="
-              (this.contracts.paymentKubun === 'クレジット' ||
-                this.contracts.paymentKubun === '所有権留保') &&
-              this.normalCarDocuments.poaOssKubun === 'OSS'
-            "
-          >
-            <v-btn
-              href=""
-              target="_blank"
-              density="compact"
-              icon="mdi-printer"
-            ></v-btn>
-          </v-col>
-        </v-row>
-
-        <v-row>
-          <v-col
-            cols="1"
-            class="mt-3 ml-16 d-flex align-center"
-            v-if="
-              this.contracts.newCarUsedCarKubun === '新車' &&
-              (this.contracts.paymentKubun === '現金' ||
-                this.contracts.paymentKubun === '銀行ローン') &&
-              this.normalCarDocuments.poaOssKubun === '委任状'
-            "
-          >
-            <v-btn
-              href=""
-              target="_blank"
-              density="compact"
-              icon="mdi-help"
-            ></v-btn>
-          </v-col>
-          <v-col
-            cols="1"
-            class="mt-3 ml-16 d-flex align-center"
-            v-if="
-              this.contracts.newCarUsedCarKubun === '新車' &&
-              (this.contracts.paymentKubun === 'クレジット' ||
-                this.contracts.paymentKubun === '所有権留保') &&
-              this.normalCarDocuments.poaOssKubun === '委任状'
-            "
-          >
-            <v-btn
-              href=""
-              target="_blank"
-              density="compact"
-              icon="mdi-help"
-            ></v-btn>
-          </v-col>
-          <v-col
-            cols="1"
-            class="mt-3 d-flex align-center"
-            v-if="
-              this.contracts.newCarUsedCarKubun === '新車' &&
-              (this.contracts.paymentKubun === '現金' ||
-                this.contracts.paymentKubun === '銀行ローン') &&
-              this.normalCarDocuments.poaOssKubun === '委任状'
-            "
-          >
-            <v-btn
-              href=""
-              target="_blank"
-              density="compact"
-              icon="mdi-printer"
-            ></v-btn>
-          </v-col>
-          <v-col
-            cols="1"
-            class="mt-3 d-flex align-center"
-            v-if="
-              this.contracts.newCarUsedCarKubun === '新車' &&
-              (this.contracts.paymentKubun === 'クレジット' ||
-                this.contracts.paymentKubun === '所有権留保') &&
-              this.normalCarDocuments.poaOssKubun === '委任状'
-            "
-          >
-            <v-btn
-              href=""
-              target="_blank"
-              density="compact"
-              icon="mdi-printer"
-            ></v-btn>
-          </v-col>
-        </v-row>
-
-        <v-row>
-          <v-col
-            cols="1"
-            class="ml-16 d-flex align-center"
-            v-if="this.normalCarDocuments.poaOssKubun === '委任状'"
-          >
-            <!-- <v-btn @click="aaa" density="compact" icon="mdi-printer"></v-btn> -->
-          </v-col>
-        </v-row>
-        <!-- <v-row>
-        <v-col
-          cols="1"
-          class="ml-16 d-flex align-center"
-          v-if="this.normalCarDocuments.poaOssKubun === 'OSS'"
+        <v-row
+          v-if="
+            this.contracts.newCarUsedCarKubun === '新車' &&
+            this.contracts.paymentKubun === 'クレジット' &&
+            this.normalCarDocuments.poaOssKubun === 'OSS'
+          "
         >
-          <v-btn
-            href="/ininzyou.pdf"
-            target="_blank"
-            density="compact"
-            icon="mdi-printer"
-          ></v-btn>
-        </v-col>
-      </v-row> -->
+          <p class="ml-15">
+            ・クレジットでのお支払いの場合、<b>認印</b>と<b>住民票</b>が必要となります。<br />
+            　　ワンストップサービス（OSS）は、自動車を保有するために必要となる手続きと税金や手数料の納付を<br />
+            　　インターネット上で一括して行うことを可能とした国土交通省が提供しているサービスです。
+          </p>
+        </v-row>
+        <v-row
+          v-if="
+            this.contracts.newCarUsedCarKubun === '新車' &&
+            this.contracts.paymentKubun === '銀行ローン' &&
+            this.normalCarDocuments.poaOssKubun === 'OSS'
+          "
+        >
+          <p class="ml-15">
+            ・銀行ローンでのお支払いの場合、お車の所有者はお客様になりますので<b>実印</b>と<b>印鑑証明</b>が必要となります。<br />
+            　　ワンストップサービス（OSS）は、自動車を保有するために必要となる手続きと税金や手数料の納付を<br />
+            　　インターネット上で一括して行うことを可能とした国土交通省が提供しているサービスです。
+          </p>
+        </v-row>
+        <v-row
+          v-if="
+            this.contracts.newCarUsedCarKubun === '新車' &&
+            this.contracts.paymentKubun === '所有権留保' &&
+            this.normalCarDocuments.poaOssKubun === 'OSS'
+          "
+        >
+          <p class="ml-15">
+            ・所有権留保でのお支払いの場合、<b>認印</b>と<b>住民票</b>が必要となります。<br />
+            　　ワンストップサービス（OSS）は、自動車を保有するために必要となる手続きと税金や手数料の納付を<br />
+            　　インターネット上で一括して行うことを可能とした国土交通省が提供しているサービスです。
+          </p>
+        </v-row>
+        <v-row
+          v-if="
+            this.contracts.newCarUsedCarKubun === '新車' &&
+            this.contracts.paymentKubun === '現金' &&
+            this.normalCarDocuments.poaOssKubun === '委任状'
+          "
+        >
+          <p class="ml-15">
+            ・現金でのお支払いの場合、お車の所有者はお客様になりますので<b>実印</b>と<b>印鑑証明</b>が必要となります。<br />
+            　　最近ではワンストップサービス（OSS）を使用したお車の登録が主流ですが、車の登録日を急ぎたい（納車日を急ぎたい）<br />
+            　　場合などにOSSでの登録を使用しない場合があります。
+          </p>
+        </v-row>
+        <v-row
+          v-if="
+            this.contracts.newCarUsedCarKubun === '新車' &&
+            this.contracts.paymentKubun === 'クレジット' &&
+            this.normalCarDocuments.poaOssKubun === '委任状'
+          "
+        >
+          <p class="ml-15">
+            ・クレジットでのお支払いの場合、<b>認印</b>と<b>住民票</b>が必要となります。<br />
+            　　最近ではワンストップサービス（OSS）を使用したお車の登録が主流ですが、車の登録日を急ぎたい（納車日を急ぎたい）<br />
+            　　場合などにOSSでの登録を使用しない場合があります。
+          </p>
+        </v-row>
+
+        <v-row
+          v-if="
+            this.contracts.newCarUsedCarKubun === '新車' &&
+            this.contracts.paymentKubun === '銀行ローン' &&
+            this.normalCarDocuments.poaOssKubun === '委任状'
+          "
+        >
+          <p class="ml-15">
+            ・銀行ローンでのお支払いの場合、お車の所有者<b>実印</b>と<b>印鑑証明</b>が必要となります。<br />
+            　　最近ではワンストップサービス（OSS）を使用したお車の登録が主流ですが、車の登録日を急ぎたい（納車日を急ぎたい）<br />
+            　　場合などにOSSでの登録を使用しない場合があります。
+          </p>
+        </v-row>
+        <v-row
+          v-if="
+            this.contracts.newCarUsedCarKubun === '新車' &&
+            this.contracts.paymentKubun === '所有権留保' &&
+            this.normalCarDocuments.poaOssKubun === '委任状'
+          "
+        >
+          <p class="ml-15">
+            ・所有権留保の場合、<b>認印</b>と<b>住民票</b>が必要となります。<br />
+            　　最近ではワンストップサービス（OSS）を使用したお車の登録が主流ですが、車の登録日を急ぎたい（納車日を急ぎたい）<br />
+            　　場合などにOSSでの登録を使用しない場合があります。
+          </p>
+        </v-row>
+
+        <v-row>
+          <v-col
+            cols="1"
+            class="mt-3 ml-16 d-flex align-center"
+            v-if="
+              (this.contracts.paymentKubun === '現金' ||
+                this.contracts.paymentKubun === '銀行ローン') &&
+              this.normalCarDocuments.poaOssKubun === 'OSS'
+            "
+          >
+            <v-btn
+              href=""
+              target="_blank"
+              density="compact"
+              icon="mdi-help"
+            ></v-btn>
+          </v-col>
+          <v-col
+            cols="1"
+            class="mt-3 ml-16 d-flex align-center"
+            v-if="
+              (this.contracts.paymentKubun === 'クレジット' ||
+                this.contracts.paymentKubun === '所有権留保') &&
+              this.normalCarDocuments.poaOssKubun === 'OSS'
+            "
+          >
+            <v-btn
+              href=""
+              target="_blank"
+              density="compact"
+              icon="mdi-help"
+            ></v-btn>
+          </v-col>
+          <v-col
+            cols="1"
+            class="mt-3 d-flex align-center"
+            v-if="
+              (this.contracts.paymentKubun === '現金' ||
+                this.contracts.paymentKubun === '銀行ローン') &&
+              this.normalCarDocuments.poaOssKubun === 'OSS'
+            "
+          >
+            <v-btn
+              href=""
+              target="_blank"
+              density="compact"
+              icon="mdi-printer"
+            ></v-btn>
+          </v-col>
+          <v-col
+            cols="1"
+            class="mt-3 d-flex align-center"
+            v-if="
+              (this.contracts.paymentKubun === 'クレジット' ||
+                this.contracts.paymentKubun === '所有権留保') &&
+              this.normalCarDocuments.poaOssKubun === 'OSS'
+            "
+          >
+            <v-btn
+              href=""
+              target="_blank"
+              density="compact"
+              icon="mdi-printer"
+            ></v-btn>
+          </v-col>
+          <v-col
+            cols="1"
+            class="mt-3 d-flex align-center"
+            v-if="this.normalCarDocuments.poaOssKubun === 'OSS'"
+          >
+            <v-btn
+              href="https://www.oss.mlit.go.jp/portal/beginner/osstowa/index.html"
+              target="_blank"
+              density="compact"
+              icon="mdi-search-web"
+            ></v-btn>
+          </v-col>
+        </v-row>
+
+        <v-row>
+          <v-col
+            cols="1"
+            class="mt-3 ml-16 d-flex align-center"
+            v-if="
+              (this.contracts.paymentKubun === '現金' ||
+                this.contracts.paymentKubun === '銀行ローン') &&
+              this.normalCarDocuments.poaOssKubun === '委任状'
+            "
+          >
+            <v-btn
+              href=""
+              target="_blank"
+              density="compact"
+              icon="mdi-help"
+            ></v-btn>
+          </v-col>
+          <v-col
+            cols="1"
+            class="mt-3 ml-16 d-flex align-center"
+            v-if="
+              (this.contracts.paymentKubun === 'クレジット' ||
+                this.contracts.paymentKubun === '所有権留保') &&
+              this.normalCarDocuments.poaOssKubun === '委任状'
+            "
+          >
+            <v-btn
+              href=""
+              target="_blank"
+              density="compact"
+              icon="mdi-help"
+            ></v-btn>
+          </v-col>
+          <v-col
+            cols="1"
+            class="mt-3 d-flex align-center"
+            v-if="
+              (this.contracts.paymentKubun === '現金' ||
+                this.contracts.paymentKubun === '銀行ローン') &&
+              this.normalCarDocuments.poaOssKubun === '委任状'
+            "
+          >
+            <v-btn
+              href=""
+              target="_blank"
+              density="compact"
+              icon="mdi-printer"
+            ></v-btn>
+          </v-col>
+          <v-col
+            cols="1"
+            class="mt-3 d-flex align-center"
+            v-if="
+              (this.contracts.paymentKubun === 'クレジット' ||
+                this.contracts.paymentKubun === '所有権留保') &&
+              this.normalCarDocuments.poaOssKubun === '委任状'
+            "
+          >
+            <v-btn
+              href=""
+              target="_blank"
+              density="compact"
+              icon="mdi-printer"
+            ></v-btn>
+          </v-col>
+        </v-row>
+
         <v-row>
           <v-toolbar-title
             class="ml-15 d-flex align-center lightCarDocuments"
             v-if="this.contracts.normalCarLightCarKubun === '軽自動車'"
           >
-            　➀
-            申請依頼書（ご成約頂いたお車の登録、検査手続きを代行させて頂く事に同意頂くための手続きです。）
+            　➀ 申請依頼書（お車の登録、検査手続きを代行させて頂く手続きです。）
           </v-toolbar-title>
         </v-row>
 
@@ -1105,9 +1236,10 @@ export default {
             <v-select
               @update:modelValue="lightCarDocumentsKubunChange"
               v-model="lightCarDocuments.lightCarDocumentsKubun"
-              label="申請依頼書"
-              :items="['', '申請依頼書', '代行不要']"
+              label=""
+              :items="[]"
               variant="outlined"
+              readonly
             ></v-select>
           </v-col>
 
@@ -1175,12 +1307,17 @@ export default {
           <v-btn @click="aaaaaaaa" density="compact" icon="mdi-printer"></v-btn>
         </v-col> -->
         </v-row>
-
+        <v-row v-if="this.contracts.normalCarLightCarKubun === '軽自動車'">
+          <p class="ml-15">
+            ・軽自動車の場合、<b>認印</b>と<b>住民票</b>が必要となります。
+          </p>
+        </v-row>
         <v-row>
           <v-col
             cols="1"
             class="mt-3 ml-16 d-flex align-center"
             v-if="
+              this.contracts.normalCarLightCarKubun === '軽自動車' &&
               this.lightCarDocuments.lightCarDocumentsKubun === '申請依頼書' &&
               (this.contracts.paymentKubun === '現金' ||
                 this.contracts.paymentKubun === '銀行ローン')
@@ -1197,6 +1334,7 @@ export default {
             cols="1"
             class="mt-3 ml-16 d-flex align-center"
             v-if="
+              this.contracts.normalCarLightCarKubun === '軽自動車' &&
               this.lightCarDocuments.lightCarDocumentsKubun === '申請依頼書' &&
               (this.contracts.paymentKubun === 'クレジット' ||
                 this.contracts.paymentKubun === '所有権留保')
@@ -1213,6 +1351,7 @@ export default {
             cols="1"
             class="mt-3 d-flex align-center"
             v-if="
+              this.contracts.normalCarLightCarKubun === '軽自動車' &&
               this.lightCarDocuments.lightCarDocumentsKubun === '申請依頼書' &&
               (this.contracts.paymentKubun === '現金' ||
                 this.contracts.paymentKubun === '銀行ローン')
@@ -1229,6 +1368,7 @@ export default {
             cols="1"
             class="mt-3 d-flex align-center"
             v-if="
+              this.contracts.normalCarLightCarKubun === '軽自動車' &&
               this.lightCarDocuments.lightCarDocumentsKubun === '申請依頼書' &&
               (this.contracts.paymentKubun === 'クレジット' ||
                 this.contracts.paymentKubun === '所有権留保')
@@ -1245,11 +1385,8 @@ export default {
 
         <v-row>
           <v-toolbar-title
-            class="ml-15 d-flex align-center normalCarDocumentsGarageVerification"
-            v-if="
-              this.normalCarDocuments.poaOssKubun === '委任状' ||
-              this.normalCarDocuments.poaOssKubun === '代行不要'
-            "
+            class="mt-5 ml-15 d-flex align-center normalCarDocumentsGarageVerification"
+            v-if="this.normalCarDocuments.poaOssKubun === '委任状'"
           >
             　➁
             車庫証明（ご成約頂いたお車の保管場所を警察署に届け出するための手続きです。）
@@ -1260,10 +1397,7 @@ export default {
           <v-col
             cols="2"
             class="ml-15"
-            v-if="
-              this.normalCarDocuments.poaOssKubun === '委任状' ||
-              this.normalCarDocuments.poaOssKubun === '代行不要'
-            "
+            v-if="this.normalCarDocuments.poaOssKubun === '委任状'"
           >
             <v-select
               @update:modelValue="NCgarageVerificationKubunChange"
@@ -1293,23 +1427,23 @@ export default {
           </v-col>
 
           <!-- <v-col
-          cols="2"
-          class="mx-1 normalCarDocumentsGarageVerification-completedDate"
-          v-if="
-            this.normalCarDocumentsGarageVerification
-              .NCgarageVerificationKubun === '保管場所証明申請書'
-          "
-        >
-          <v-text-field
-            :class="{
-              'completedDate-input':
-                normalCarDocumentsGarageVerification.completedDate != false,
-            }"
-            type="date"
-            v-model="normalCarDocumentsGarageVerification.completedDate"
-            label="完了日"
-          ></v-text-field>
-        </v-col> -->
+            cols="2"
+            class="mx-1 normalCarDocumentsGarageVerification-completedDate"
+            v-if="
+              this.normalCarDocumentsGarageVerification
+                .NCgarageVerificationKubun === '保管場所証明申請書'
+            "
+          >
+            <v-text-field
+              :class="{
+                'completedDate-input':
+                  normalCarDocumentsGarageVerification.completedDate != false,
+              }"
+              type="date"
+              v-model="normalCarDocumentsGarageVerification.completedDate"
+              label="完了日"
+            ></v-text-field>
+          </v-col> -->
         </v-row>
         <v-row
           v-if="
@@ -1353,25 +1487,10 @@ export default {
           </v-col>
         </v-row>
 
-        <!-- <v-row>
-        <v-col
-          cols="1"
-          class="ml-16 d-flex align-center"
-          v-if="
-            this.normalCarDocumentsGarageVerification
-              .NCgarageVerificationKubun === '保管場所証明申請書'
-          "
-        >
-          <v-btn @click="aaa" density="compact" icon="mdi-help"></v-btn>
-        </v-col>
-      </v-row> -->
         <v-row>
           <v-toolbar-title
-            class="ml-15 d-flex align-center lightCarDocumentsGarageVerification"
-            v-if="
-              this.lightCarDocuments.lightCarDocumentsKubun === '申請依頼書' ||
-              this.lightCarDocuments.lightCarDocumentsKubun === '代行不要'
-            "
+            class="mt-5 ml-15 d-flex align-center lightCarDocumentsGarageVerification"
+            v-if="this.contracts.normalCarLightCarKubun === '軽自動車'"
           >
             　➁
             車庫証明（ご成約頂いたお車の保管場所を警察署に届け出するための手続きです。）
@@ -1382,10 +1501,7 @@ export default {
           <v-col
             cols="2"
             class="ml-15"
-            v-if="
-              this.lightCarDocuments.lightCarDocumentsKubun === '申請依頼書' ||
-              this.lightCarDocuments.lightCarDocumentsKubun === '代行不要'
-            "
+            v-if="this.contracts.normalCarLightCarKubun === '軽自動車'"
           >
             <v-select
               @update:modelValue="LCgarageVerificationKubunChange"
@@ -1489,7 +1605,7 @@ export default {
       </v-row> -->
         <v-row>
           <v-toolbar-title
-            class="ml-15 d-flex align-center normalCarDocumentsGarageVerification"
+            class="mt-5 ml-15 d-flex align-center normalCarDocumentsGarageVerification"
             v-if="this.normalCarDocuments.poaOssKubun === 'OSS'"
           >
             　➁
@@ -1757,7 +1873,7 @@ export default {
       </v-row> -->
         <v-row>
           <v-toolbar-title
-            class="mt-5 ml-15 d-flex align-center other-documents"
+            class="mt-8 ml-15 d-flex align-center other-documents"
             v-if="this.contracts.normalCarLightCarKubun === '普通車'"
           >
             　➂
@@ -1767,7 +1883,7 @@ export default {
 
         <v-row>
           <v-toolbar-title
-            class="mt-5 ml-15 d-flex align-center other-documents"
+            class="mt-8 ml-15 d-flex align-center other-documents"
             v-if="this.contracts.normalCarLightCarKubun === '軽自動車'"
           >
             　➂
@@ -2020,13 +2136,32 @@ export default {
           ></v-text-field>
         </v-col> -->
         </v-row>
-        <v-row v-if="this.extendedWarranty.isExtendedWarranty === '有'">
+        <v-row
+          v-if="
+            this.contracts.newCarUsedCarKubun === '新車' &&
+            this.extendedWarranty.isExtendedWarranty === '有'
+          "
+        >
           <p class="ml-15">
             ・ご成約頂いたお車に延長保証を適用するための書類です。<br />
-            　メーカーの一般保証は、新車登録から初回車検を迎える3年目（ただし6万km）で終了してしまいます。<br />
-            　マツダ延長保証〈新車5年プラン/5年プラン〉は、保証期間を5年目（ただし10万km）まで延長。<br />
-            　万が一の故障の際も、回数・金額無制限の無料修理が受けられます。<br />
-            　※ただし機能不具合を伴わない修理は保証対象になりません。
+            　　メーカーの一般保証は、新車登録から初回車検を迎える3年目（ただし6万km）で終了してしまいます。<br />
+            　　マツダ延長保証〈新車5年プラン/5年プラン〉は、保証期間を5年目（ただし10万km）まで延長。<br />
+            　　万が一の故障の際も、回数・金額無制限の無料修理が受けられます。<br />
+            　　※ただし機能不具合を伴わない修理は保証対象になりません。
+          </p>
+        </v-row>
+        <v-row
+          v-if="
+            this.contracts.newCarUsedCarKubun === '中古車' &&
+            this.extendedWarranty.isExtendedWarranty === '有'
+          "
+        >
+          <p class="ml-15">
+            ・ご成約頂いたお車に延長保証を適用するための書類です。<br />
+            　　保証にさらなる安心をプラス。万が一の故障でも無料で修理。<br />
+            　　「さわやか保証2年」「さわやか保証」の期間を、有償で延長できる保証サービスです。<br />
+            　　マツダ認定U-carプレミアム車両を対象とした「さわやか保証2年」の期間を延長できる「さわやかプラスプレミアム」、<br />
+            　　それ以外の車両を対象とした「さわやか保証」の期間を延長できる「さわやかプラス」をご用意しています。
           </p>
         </v-row>
 
@@ -2034,7 +2169,10 @@ export default {
           <v-col
             cols="1"
             class="mt-3 ml-16 d-flex align-center"
-            v-if="this.extendedWarranty.isExtendedWarranty === '有'"
+            v-if="
+              this.contracts.newCarUsedCarKubun === '新車' &&
+              this.extendedWarranty.isExtendedWarranty === '有'
+            "
           >
             <v-btn
               href=""
@@ -2046,10 +2184,43 @@ export default {
           <v-col
             cols="1"
             class="mt-3 d-flex align-center"
-            v-if="this.extendedWarranty.isExtendedWarranty === '有'"
+            v-if="
+              this.contracts.newCarUsedCarKubun === '新車' &&
+              this.extendedWarranty.isExtendedWarranty === '有'
+            "
           >
             <v-btn
-              href="https://www.mazda.co.jp/purchase/carlife-care/encho-hosho/7years/"
+              href="https://www.mazda.co.jp/purchase/carlife-care/encho-hosho/5years/"
+              target="_blank"
+              density="compact"
+              icon="mdi-search-web"
+            ></v-btn>
+          </v-col>
+          <v-col
+            cols="1"
+            class="mt-3 ml-16 d-flex align-center"
+            v-if="
+              this.contracts.newCarUsedCarKubun === '中古車' &&
+              this.extendedWarranty.isExtendedWarranty === '有'
+            "
+          >
+            <v-btn
+              href=""
+              target="_blank"
+              density="compact"
+              icon="mdi-help"
+            ></v-btn>
+          </v-col>
+          <v-col
+            cols="1"
+            class="mt-3 d-flex align-center"
+            v-if="
+              this.contracts.newCarUsedCarKubun === '中古車' &&
+              this.extendedWarranty.isExtendedWarranty === '有'
+            "
+          >
+            <v-btn
+              href="https://www.mazda.co.jp/purchase/ucar/plus/#tab_anch"
               target="_blank"
               density="compact"
               icon="mdi-search-web"
@@ -2104,8 +2275,8 @@ export default {
         <v-row v-if="this.maintenancePack.isMaintenancePack === '有'">
           <p class="ml-15">
             ・お車のご成約時、メンテナンスパック（パックdeメンテ）にご加入頂いた際に頂く書類です。<br />
-            　ご商談の際は36Sコース（点検、5年後2回目の車検までがセットになったプラン）<br />
-            　をおすすめとしてご提案させて頂いています。
+            　　ご商談の際は36Sコース（点検、5年後2回目の車検までがセットになったプラン）<br />
+            　　をおすすめとしてご提案させて頂いています。
           </p>
         </v-row>
 
@@ -2308,14 +2479,14 @@ export default {
       </v-row> -->
         <v-row>
           <v-toolbar-title
-            class="mt-5 ml-15 d-flex align-center insurance"
+            class="mt-8 ml-15 d-flex align-center insurance"
             v-if="
               this.contracts.insuranceKubun === '当社加入' ||
               this.contracts.insuranceKubun === '他社加入'
             "
           >
             　➃
-            保険（お客様の大切なお車だけではなく、お客様自身の安心・安全をサポートさせて頂く為のご提案です。）
+            保険（お客様の大切なお車、お客様自身の安心・安全をサポートさせて頂く為のご提案です。）
           </v-toolbar-title>
         </v-row>
         <v-row class="mt-5">
@@ -2410,12 +2581,21 @@ export default {
             v-if="this.insurance.jocInsuranceCompany === '三井住友'"
           >
             <v-btn
-              href="https://www.ms-ins.com/lp/car-2406h/?utm_source=yahoo&utm_medium=cpc&utm_campaign=prm_202406_ys_src_cv00001_h-name&utm_content=p-paid&yclid=YSS.1001283068.EAIaIQobChMIsaPupKOaiQMV6A97Bx0FPQraEAAYASAAEgJEYvD_BwE"
+              href="https://www.ms-ins.com/pdf/personal/car/gk.pdf?__CAM2INFO=2.1.GEQBieghGCDA.hQBieGHGcDa-27&__CAMCID=dqjEPtxLID-211&__CAMSID=hQBieGHGcDa-27&__CAMVID=GEQBieghGCDA&_c_d=1&_ca_sid_4229=eyJzZXNzaW9uRXhwaXJhdGlvblRpbWUiOiIyMDI0LTEwLTIyVDA3OjA1OjQ5LjE4MloiLCJwcm9qZWN0SWQiOiI0MjI5IiwiZGlzdGluY3RJZCI6IjdiYmI1MzI5MzgwYjQyM2NhMTlkZDMwN2Q4OWRhNThlIiwiY2xpZW50SWQiOiJjNWMzMzU4ZjQzMzk0MGVlYTA0MWJkNDkyNDUzZWI4YSJ9&_gl=1*1g8bv3l*_gcl_au*MjAxODY1MzY5OC4xNzI5MTc1NTY5*_ga*MTI1Nzg0MjU0LjE3MjkxNzU1Njk.*_ga_7J71CWY0VE*MTcyOTU3ODY2OS4zLjEuMTcyOTU3ODk0OC40OS4wLjA."
               target="_blank"
               density="compact"
               icon="mdi-search-web"
             ></v-btn>
           </v-col>
+          <v-col
+            cols="1"
+            class="mt-3 d-flex align-center"
+            v-if="this.insurance.jocInsuranceCompany === '三井住友'"
+          >
+            <v-btn src="" target="_blank" density="compact" icon="mdi-login">
+            </v-btn>
+          </v-col>
+
           <v-col
             cols="1"
             class="mt-3 ml-16 d-flex align-center"
@@ -2426,6 +2606,7 @@ export default {
               target="_blank"
               density="compact"
               icon="mdi-login"
+              nuxt
             ></v-btn>
           </v-col>
           <v-col
@@ -2441,7 +2622,73 @@ export default {
             ></v-btn>
           </v-col>
         </v-row>
+        <v-row class="mt-5">
+          <v-col
+            cols="2"
+            v-if="
+              this.insurance.jocInsuranceCompany === '東京海上' ||
+              this.insurance.jocInsuranceCompany === '三井住友' ||
+              this.insurance.jocInsuranceCompany === '損保ジャパン'
+            "
+            class="ml-15"
+          >
+            <v-select
+              label=""
+              v-model="insurance.skyPlus"
+              :items="[]"
+              variant="outlined"
+              readonly
+            ></v-select>
+          </v-col>
+          <v-col
+            cols="2 taxDeclaration"
+            class="mx-1 d-flex align-center"
+            v-if="
+              this.insurance.jocInsuranceCompany === '東京海上' ||
+              this.insurance.jocInsuranceCompany === '三井住友' ||
+              this.insurance.jocInsuranceCompany === '損保ジャパン'
+            "
+          >
+            <v-checkbox
+              @change="insuranceCompleted"
+              label="ご説明"
+              v-model="insurance.joiningProcedure"
+            >
+            </v-checkbox>
+          </v-col>
+        </v-row>
+        <v-row
+          v-if="
+            this.insurance.jocInsuranceCompany === '東京海上' ||
+            this.insurance.jocInsuranceCompany === '三井住友' ||
+            this.insurance.jocInsuranceCompany === '損保ジャパン'
+          "
+        >
+          <p class="ml-15">
+            ・マツダ販売店で自動車保険を契約された方限定の特典です。<br />
+            　　マツダの自動車保険にご加入いただいたお客様に無償で付帯でき、<br />
+            　　気になる小傷も、自動車保険（車両保険）を使用せず、わずかなご負担でボディリペアできます。
+          </p>
+        </v-row>
 
+        <v-row>
+          <v-col
+            cols="1"
+            class="mt-3 ml-15 d-flex align-center"
+            v-if="
+              this.insurance.jocInsuranceCompany === '東京海上' ||
+              this.insurance.jocInsuranceCompany === '三井住友' ||
+              this.insurance.jocInsuranceCompany === '損保ジャパン'
+            "
+          >
+            <v-btn
+              href="https://www.mazda.co.jp/purchase/carlife-care/insurance/"
+              target="_blank"
+              density="compact"
+              icon="mdi-search-web"
+            ></v-btn>
+          </v-col>
+        </v-row>
         <!-- <v-row>
         <v-col
           cols="1"
@@ -2511,7 +2758,7 @@ export default {
         </v-row>
         <v-row>
           <v-toolbar-title
-            class="mt-5 ml-15 d-flex align-center credit"
+            class="mt-8 ml-15 d-flex align-center credit"
             v-if="
               (this.contracts.insuranceKubun === '' ||
                 this.contracts.insuranceKubun === '未加入') &&
@@ -2525,7 +2772,7 @@ export default {
 
         <v-row>
           <v-toolbar-title
-            class="mt-5 ml-15 d-flex align-center credit"
+            class="mt-8 ml-15 d-flex align-center credit"
             v-if="
               (this.contracts.insuranceKubun === '当社加入' ||
                 this.contracts.insuranceKubun === '他社加入') &&
@@ -2669,6 +2916,9 @@ export default {
 </template>
 
 <style lang="scss">
+* {
+  max-width: 100%;
+}
 .on-save {
   background: #808080;
   color: #ffffff;
