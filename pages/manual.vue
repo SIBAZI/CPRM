@@ -3,8 +3,13 @@ import dayjs from "dayjs";
 export default {
   data() {
     return {
+      dialog: false, //モーダル変数テスト
+      poaRegisteredSealModal: false, //委任状（実印）モーダル
+      poaStampingModal: false, //委任状（認印）モーダル
+      ossRegisteredSealModal: false, //OSS（実印）モーダル
+      ossStampingModal: false, //OSS(認印)モーダル
       start: {
-        startKubun: "",
+        startKubun: "", //成約時登録・買取・下取り・一般登録代行
       },
       contracts: {
         userCode: "", //ユーザーコード
@@ -311,7 +316,15 @@ export default {
         promisedDay: "",
       });
     },
-
+    poaImg() {
+      window.open("/委任状（書類代行）.pdf", "_blank");
+    },
+    ossImg() {
+      window.open("/委任状（OSS兼用）.pdf", "_blank");
+    },
+    poa2Img() {
+      window.open("/委任状（書類代行）.pdf", "_blank");
+    },
     removeMemo(index) {
       this.memos.splice(index, 1);
     },
@@ -788,8 +801,7 @@ export default {
             "
           >
             <v-btn
-              href=""
-              target="_blank"
+              @click="poaRegisteredSealModal = true"
               density="compact"
               icon="mdi-help"
             ></v-btn>
@@ -806,8 +818,7 @@ export default {
             "
           >
             <v-btn
-              href=""
-              target="_blank"
+              @click="poaStampingModal = true"
               density="compact"
               icon="mdi-help"
             ></v-btn>
@@ -823,12 +834,7 @@ export default {
               this.normalCarDocuments.poaKubun === '委任状'
             "
           >
-            <v-btn
-              href=""
-              target="_blank"
-              density="compact"
-              icon="mdi-printer"
-            ></v-btn>
+            <v-btn @click="poaImg" density="compact" icon="mdi-printer"></v-btn>
           </v-col>
           <v-col
             cols="1"
@@ -841,12 +847,7 @@ export default {
               this.normalCarDocuments.poaKubun === '委任状'
             "
           >
-            <v-btn
-              href=""
-              target="_blank"
-              density="compact"
-              icon="mdi-printer"
-            ></v-btn>
+            <v-btn @click="poaImg" density="compact" icon="mdi-printer"></v-btn>
           </v-col>
         </v-row>
 
@@ -1084,8 +1085,7 @@ export default {
             "
           >
             <v-btn
-              href=""
-              target="_blank"
+              @click="ossRegisteredSealModal = true"
               density="compact"
               icon="mdi-help"
             ></v-btn>
@@ -1100,8 +1100,7 @@ export default {
             "
           >
             <v-btn
-              href=""
-              target="_blank"
+              @click="ossStampingModal = true"
               density="compact"
               icon="mdi-help"
             ></v-btn>
@@ -1115,12 +1114,7 @@ export default {
               this.normalCarDocuments.poaOssKubun === 'OSS'
             "
           >
-            <v-btn
-              href=""
-              target="_blank"
-              density="compact"
-              icon="mdi-printer"
-            ></v-btn>
+            <v-btn @click="ossImg" density="compact" icon="mdi-printer"></v-btn>
           </v-col>
           <v-col
             cols="1"
@@ -1131,17 +1125,18 @@ export default {
               this.normalCarDocuments.poaOssKubun === 'OSS'
             "
           >
-            <v-btn
-              href=""
-              target="_blank"
-              density="compact"
-              icon="mdi-printer"
-            ></v-btn>
+            <v-btn @click="ossImg" density="compact" icon="mdi-printer"></v-btn>
           </v-col>
           <v-col
             cols="1"
             class="mt-3 d-flex align-center"
-            v-if="this.normalCarDocuments.poaOssKubun === 'OSS'"
+            v-if="
+              (this.contracts.paymentKubun === '現金' ||
+                this.contracts.paymentKubun === '銀行ローン' ||
+                this.contracts.paymentKubun === 'クレジット' ||
+                this.contracts.paymentKubun === '所有権留保') &&
+              this.normalCarDocuments.poaOssKubun === 'OSS'
+            "
           >
             <v-btn
               href="https://www.oss.mlit.go.jp/portal/beginner/osstowa/index.html"
@@ -1163,8 +1158,7 @@ export default {
             "
           >
             <v-btn
-              href=""
-              target="_blank"
+              @click="poaRegisteredSealModal = true"
               density="compact"
               icon="mdi-help"
             ></v-btn>
@@ -1179,8 +1173,7 @@ export default {
             "
           >
             <v-btn
-              href=""
-              target="_blank"
+              @click="poaStampingModal = true"
               density="compact"
               icon="mdi-help"
             ></v-btn>
@@ -1195,8 +1188,7 @@ export default {
             "
           >
             <v-btn
-              href=""
-              target="_blank"
+              @click="poa2Img"
               density="compact"
               icon="mdi-printer"
             ></v-btn>
@@ -1211,8 +1203,7 @@ export default {
             "
           >
             <v-btn
-              href=""
-              target="_blank"
+              @click="poa2Img"
               density="compact"
               icon="mdi-printer"
             ></v-btn>
@@ -2592,7 +2583,7 @@ export default {
             class="mt-3 d-flex align-center"
             v-if="this.insurance.jocInsuranceCompany === '三井住友'"
           >
-            <v-btn src="" target="_blank" density="compact" icon="mdi-login">
+            <v-btn @click="dialog = true" density="compact" icon="mdi-login">
             </v-btn>
           </v-col>
 
@@ -2910,6 +2901,37 @@ export default {
           <v-btn @click="addMemo" density="compact" icon="mdi-plus"></v-btn>
         </v-col>
       </v-row> -->
+
+      <!-- テストモーダル -->
+      <v-dialog v-model="dialog" max-width="75%">
+        <v-card>
+          <img src="/fghijk.jpg" />
+        </v-card>
+      </v-dialog>
+      <!-- 委任状（実印）modal -->
+      <v-dialog v-model="poaRegisteredSealModal" max-width="70%">
+        <v-card>
+          <img src="/委任状（実印）記入例.jpg" />
+        </v-card>
+      </v-dialog>
+      <!-- 委任状（認印）modal -->
+      <v-dialog v-model="poaStampingModal" max-width="70%">
+        <v-card>
+          <img src="/委任状（認印）記入例.jpg" />
+        </v-card>
+      </v-dialog>
+      <!-- OSS（実印）modal -->
+      <v-dialog v-model="ossRegisteredSealModal" max-width="70%">
+        <v-card>
+          <img src="/OSS（実印）記入例.jpg" />
+        </v-card>
+      </v-dialog>
+      <!-- OSS（認印）modal -->
+      <v-dialog v-model="ossStampingModal" max-width="70%">
+        <v-card>
+          <img src="/OSS（認印）記入例.jpg" />
+        </v-card>
+      </v-dialog>
     </v-app>
     <div class="whole-bottom"></div>
   </div>
