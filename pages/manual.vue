@@ -103,7 +103,8 @@ export default {
         jacInsuranceCompany: "", //他社加入保険会社
         joiningProcedure: "", //手続き
         confirmationOfMembership: "", //加入確認
-        skyPlus: "スカイプラス",
+        skyPlus: "スカイプラス", //スカイプラス
+        skyPlusExplanation: "", //スカイプラス説明
         completedDate: false, //完了日
       },
 
@@ -493,7 +494,7 @@ export default {
 </script>
 
 <template>
-  <div>
+  <div class="body">
     <v-app>
       <!-- <v-app-bar class="h-5" color="grey-lighten-2">
         <v-app-bar-title> 　　　ユーザー登録画面 </v-app-bar-title>
@@ -650,13 +651,13 @@ export default {
           "
         >
           <v-col cols="2" class="ml-15">
-            <v-select
+            <v-combobox
               v-model="normalCarDocuments.poaKubun"
               label=""
               :items="[]"
               variant="outlined"
               readonly
-            ></v-select>
+            ></v-combobox>
           </v-col>
 
           <v-col
@@ -1055,7 +1056,7 @@ export default {
           "
         >
           <p class="ml-15">
-            ・銀行ローンでのお支払いの場合、お車の所有者<b>実印</b>と<b>印鑑証明</b>が必要となります。<br />
+            ・銀行ローンでのお支払いの場合、お車の所有者はお客様になりますので<b>実印</b>と<b>印鑑証明</b>が必要となります。<br />
             　　最近ではワンストップサービス（OSS）を使用したお車の登録が主流ですが、車の登録日を急ぎたい（納車日を急ぎたい）<br />
             　　場合などにOSSでの登録を使用しない場合があります。
           </p>
@@ -1224,14 +1225,14 @@ export default {
           v-if="this.contracts.normalCarLightCarKubun === '軽自動車'"
         >
           <v-col cols="2" class="ml-15">
-            <v-select
+            <v-combobox
               @update:modelValue="lightCarDocumentsKubunChange"
               v-model="lightCarDocuments.lightCarDocumentsKubun"
               label=""
               :items="[]"
               variant="outlined"
               readonly
-            ></v-select>
+            ></v-combobox>
           </v-col>
 
           <v-col
@@ -2623,13 +2624,13 @@ export default {
             "
             class="ml-15"
           >
-            <v-select
+            <v-combobox
               label=""
               v-model="insurance.skyPlus"
               :items="[]"
               variant="outlined"
               readonly
-            ></v-select>
+            ></v-combobox>
           </v-col>
           <v-col
             cols="2 taxDeclaration"
@@ -2640,11 +2641,7 @@ export default {
               this.insurance.jocInsuranceCompany === '損保ジャパン'
             "
           >
-            <v-checkbox
-              @change="insuranceCompleted"
-              label="ご説明"
-              v-model="insurance.joiningProcedure"
-            >
+            <v-checkbox label="ご説明" v-model="insurance.skyPlusExplanation">
             </v-checkbox>
           </v-col>
         </v-row>
@@ -2938,8 +2935,8 @@ export default {
 </template>
 
 <style lang="scss">
-* {
-  max-width: 100%;
+.body {
+  overflow-x: hidden;
 }
 .on-save {
   background: #808080;
