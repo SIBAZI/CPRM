@@ -3,11 +3,23 @@ import dayjs from "dayjs";
 export default {
   data() {
     return {
-      dialog: false, //モーダル変数テスト
       poaRegisteredSealModal: false, //委任状（実印）モーダル
       poaStampingModal: false, //委任状（認印）モーダル
       ossRegisteredSealModal: false, //OSS（実印）モーダル
       ossStampingModal: false, //OSS(認印)モーダル
+      lightCarDocumentsOwnerAndUserModal: false, //申請依頼書(所有者・使用者）モーダル
+      lightCarDocumentsUserModal: false, //申請依頼書(使用者）モーダル
+      NCgarageVerificationModal: false, //保管場所証明申請書モーダル
+      selfCertification: false, //自認書モーダル
+      ConsentToUseModal: false, //使用承諾証モーダル
+      arrangementDiagramNameModal: false, //配置図モーダル
+      desiredNumberModal: false, //希望番号伺書モーダル
+      etcModal: false, //ETC申込用紙モーダル
+      etc2Modal: false, //ETC2.0申込用紙モーダル
+      newCarExtendedWarrantyModal: false, //新車延長保証モーダル
+      usedCarExtendedWarrantyModal: false, //中古車延長保証モーダル
+      maintenancePackModal: false, //メンテナンスパック申込用紙記入例
+      taxDeclarationNameModal: false, //税申告書記入例
       start: {
         startKubun: "", //成約時登録・買取・下取り・一般登録代行
       },
@@ -323,14 +335,70 @@ export default {
     ossImg() {
       window.open("/委任状（OSS兼用）.pdf", "_blank");
     },
-    poa2Img() {
-      window.open("/委任状（書類代行）.pdf", "_blank");
+    lightCarDocumentsImg() {
+      window.open("/申請依頼書（軽自動車）.pdf", "_blank");
+    },
+    arrangementDiagramNameImg() {
+      window.open("/配置図.pdf", "_blank");
+    },
+    selfCertificationImg() {
+      window.open("/自認書.pdf", "_blank");
+    },
+    consentToUseImg() {
+      window.open("/使用承諾証.pdf", "_blank");
+    },
+    desiredNumberImg() {
+      window.open("/希望番号伺書.pdf", "_blank");
     },
     removeMemo(index) {
       this.memos.splice(index, 1);
     },
     newCarUsedCarKubunChange() {
+      this.normalCarDocuments.poaOssKubun = "";
       this.normalCarDocuments.isFillIn = false;
+      this.normalCarDocuments.isRegisteredSeal = false;
+      this.normalCarDocuments.isStamping = false;
+      this.normalCarDocuments.isSealCertificate = false;
+      this.normalCarDocuments.isResidentCard = false;
+      this.normalCarDocuments.completedDate = false;
+      this.normalCarDocumentsGarageVerification.NCgarageVerificationKubun = "";
+      this.normalCarDocumentsGarageVerification.isFillIn = false;
+      this.normalCarDocumentsGarageVerification.completedDate = false;
+      this.storingMethod.selfCertificationConsentToUseKubun = "";
+      this.storingMethod.isFillIn = "";
+      this.storingMethod.completedDate = false;
+      this.arrangementDiagram.isFillIn = "";
+      this.arrangementDiagram.completedDate = false;
+      this.desiredNumber.isDesiredNumber = "";
+      this.desiredNumber.isFillIn = "";
+      this.desiredNumber.completedDate = false;
+      this.etc.etcKubun = "";
+      this.etc.isFillIn = "";
+      this.etc.completedDate = false;
+      this.extendedWarranty.isExtendedWarranty = "";
+      this.extendedWarranty.isFillIn = "";
+      this.extendedWarranty.completedDate = false;
+      this.maintenancePack.isMaintenancePack = "";
+      this.maintenancePack.isFillIn = "";
+      this.maintenancePack.completedDate = false;
+      this.jaf.isJafPaymentKubun = "";
+      this.jaf.isFillIn = "";
+      this.jaf.isBankSeal = false;
+      this.jaf.completedDate = false;
+      this.insurance.jocInsuranceCompany = "";
+      this.insurance.jacInsuranceCompany = "";
+      this.insurance.joiningProcedure = "";
+      this.insurance.confirmationOfMembership = "";
+      this.insurance.completedDate = false;
+      this.lightCarDocuments.isFillIn = "";
+      this.lightCarDocuments.isStamping = false;
+      this.lightCarDocuments.isResidentCard = false;
+      this.lightCarDocuments.completedDate = false;
+      this.lightCarDocumentsGarageVerification.LCgarageVerificationKubun = "";
+      this.lightCarDocumentsGarageVerification.isFillIn = "";
+      this.lightCarDocumentsGarageVerification.completedDate = false;
+      this.taxDeclaration.isFillIn = "";
+      this.taxDeclaration.completedDate = false;
     },
     normalCarLightCarKubunChange() {
       this.normalCarDocuments.poaOssKubun = "";
@@ -369,7 +437,6 @@ export default {
       this.insurance.joiningProcedure = "";
       this.insurance.confirmationOfMembership = "";
       this.insurance.completedDate = false;
-
       this.lightCarDocuments.isFillIn = "";
       this.lightCarDocuments.isStamping = false;
       this.lightCarDocuments.isResidentCard = false;
@@ -484,6 +551,10 @@ export default {
       this.credit.isFillIn = "";
       this.credit.isRegisteredSeal = false;
       this.credit.completedDate = false;
+    },
+    isJocInsuranceCompanyChange() {
+      this.insurance.joiningProcedure = false;
+      this.insurance.skyPlusExplanation = false;
     },
 
     // console.log(this.contracts.normalCarLightCarKubun);
@@ -1188,11 +1259,7 @@ export default {
               this.normalCarDocuments.poaOssKubun === '委任状'
             "
           >
-            <v-btn
-              @click="poa2Img"
-              density="compact"
-              icon="mdi-printer"
-            ></v-btn>
+            <v-btn @click="poaImg" density="compact" icon="mdi-printer"></v-btn>
           </v-col>
           <v-col
             cols="1"
@@ -1203,11 +1270,7 @@ export default {
               this.normalCarDocuments.poaOssKubun === '委任状'
             "
           >
-            <v-btn
-              @click="poa2Img"
-              density="compact"
-              icon="mdi-printer"
-            ></v-btn>
+            <v-btn @click="poaImg" density="compact" icon="mdi-printer"></v-btn>
           </v-col>
         </v-row>
 
@@ -1316,8 +1379,7 @@ export default {
             "
           >
             <v-btn
-              href=""
-              target="_blank"
+              @click="lightCarDocumentsOwnerAndUserModal = true"
               density="compact"
               icon="mdi-help"
             ></v-btn>
@@ -1333,8 +1395,7 @@ export default {
             "
           >
             <v-btn
-              href=""
-              target="_blank"
+              @click="lightCarDocumentsUserModal = true"
               density="compact"
               icon="mdi-help"
             ></v-btn>
@@ -1350,8 +1411,7 @@ export default {
             "
           >
             <v-btn
-              href=""
-              target="_blank"
+              @click="lightCarDocumentsImg"
               density="compact"
               icon="mdi-printer"
             ></v-btn>
@@ -1367,8 +1427,7 @@ export default {
             "
           >
             <v-btn
-              href=""
-              target="_blank"
+              @click="lightCarDocumentsImg"
               density="compact"
               icon="mdi-printer"
             ></v-btn>
@@ -1456,8 +1515,7 @@ export default {
             "
           >
             <v-btn
-              href=""
-              target="_blank"
+              @click="NCgarageVerificationModal = true"
               density="compact"
               icon="mdi-help"
             ></v-btn>
@@ -1471,10 +1529,10 @@ export default {
             "
           >
             <v-btn
-              href=""
+              href="https://www.pref.hiroshima.lg.jp/site/police/055-05505-hokan.html"
               target="_blank"
               density="compact"
-              icon="mdi-printer"
+              icon="mdi-search-web"
             ></v-btn>
           </v-col>
         </v-row>
@@ -1691,8 +1749,7 @@ export default {
             "
           >
             <v-btn
-              href=""
-              target="_blank"
+              @click="selfCertification = true"
               density="compact"
               icon="mdi-help"
             ></v-btn>
@@ -1705,8 +1762,7 @@ export default {
             "
           >
             <v-btn
-              href=""
-              target="_blank"
+              @click="selfCertificationImg"
               density="compact"
               icon="mdi-printer"
             ></v-btn>
@@ -1720,8 +1776,7 @@ export default {
             "
           >
             <v-btn
-              href=""
-              target="_blank"
+              @click="ConsentToUseModal = true"
               density="compact"
               icon="mdi-help"
             ></v-btn>
@@ -1735,8 +1790,7 @@ export default {
             "
           >
             <v-btn
-              href=""
-              target="_blank"
+              @click="consentToUseImg"
               density="compact"
               icon="mdi-printer"
             ></v-btn>
@@ -1820,8 +1874,7 @@ export default {
             "
           >
             <v-btn
-              href=""
-              target="_blank"
+              @click="arrangementDiagramNameModal = true"
               density="compact"
               icon="mdi-help"
             ></v-btn>
@@ -1838,8 +1891,7 @@ export default {
             "
           >
             <v-btn
-              href=""
-              target="_blank"
+              @click="arrangementDiagramNameImg"
               density="compact"
               icon="mdi-printer"
             ></v-btn>
@@ -1869,7 +1921,7 @@ export default {
             v-if="this.contracts.normalCarLightCarKubun === '普通車'"
           >
             　➂
-            その他（希望番号・ETC・延長保証・メンテナンスパック・JAFについてのお伺い、お手続きです。）
+            その他（希望番号・ETC・延長保証・メンテナンスパック・JAFについてのお伺い致します。）
           </v-toolbar-title>
         </v-row>
 
@@ -1879,7 +1931,7 @@ export default {
             v-if="this.contracts.normalCarLightCarKubun === '軽自動車'"
           >
             　➂
-            その他（希望番号・ETC・延長保証・メンテナンスパック・JAF・税申告書についてのお伺い、手続きです。）
+            その他（希望番号・ETC・延長保証・メンテナンスパック・JAF・税申告書についてお伺い致します。）
           </v-toolbar-title>
         </v-row>
 
@@ -1940,8 +1992,7 @@ export default {
             v-if="this.desiredNumber.isDesiredNumber === '有'"
           >
             <v-btn
-              href=""
-              target="_blank"
+              @click="desiredNumberModal = true"
               density="compact"
               icon="mdi-help"
             ></v-btn>
@@ -1952,8 +2003,7 @@ export default {
             v-if="this.desiredNumber.isDesiredNumber === '有'"
           >
             <v-btn
-              href=""
-              target="_blank"
+              @click="desiredNumberImg"
               density="compact"
               icon="mdi-printer"
             ></v-btn>
@@ -2042,8 +2092,7 @@ export default {
             v-if="this.etc.etcKubun === 'ETC'"
           >
             <v-btn
-              href=""
-              target="_blank"
+              @click="etcModal = true"
               density="compact"
               icon="mdi-help"
             ></v-btn>
@@ -2054,8 +2103,7 @@ export default {
             v-if="etc.etcKubun === 'ETC-2.0'"
           >
             <v-btn
-              href=""
-              target="_blank"
+              @click="etc2Modal = true"
               density="compact"
               icon="mdi-help"
             ></v-btn>
@@ -2167,8 +2215,7 @@ export default {
             "
           >
             <v-btn
-              href=""
-              target="_blank"
+              @click="newCarExtendedWarrantyModal = true"
               density="compact"
               icon="mdi-help"
             ></v-btn>
@@ -2197,8 +2244,7 @@ export default {
             "
           >
             <v-btn
-              href=""
-              target="_blank"
+              @click="usedCarExtendedWarrantyModal = true"
               density="compact"
               icon="mdi-help"
             ></v-btn>
@@ -2279,8 +2325,7 @@ export default {
             v-if="this.maintenancePack.isMaintenancePack === '有'"
           >
             <v-btn
-              href=""
-              target="_blank"
+              @click="maintenancePackModal = true"
               density="compact"
               icon="mdi-help"
             ></v-btn>
@@ -2383,7 +2428,7 @@ export default {
             "
           >
             <v-btn
-              href=""
+              href="https://jafenta.jp/site/login/"
               target="_blank"
               density="compact"
               icon="mdi-login"
@@ -2452,8 +2497,7 @@ export default {
             v-if="this.contracts.normalCarLightCarKubun === '軽自動車'"
           >
             <v-btn
-              href=""
-              target="_blank"
+              @click="taxDeclarationNameModal = true"
               density="compact"
               icon="mdi-help"
             ></v-btn>
@@ -2488,6 +2532,7 @@ export default {
             class="ml-15"
           >
             <v-select
+              @update:modelValue="isJocInsuranceCompanyChange"
               label="保険会社"
               v-model="insurance.jocInsuranceCompany"
               :items="['', '東京海上', '三井住友', '損保ジャパン']"
@@ -2557,6 +2602,19 @@ export default {
           </v-col>
           <v-col
             cols="1"
+            class="mt-3 d-flex align-center"
+            v-if="this.insurance.jocInsuranceCompany === '東京海上'"
+          >
+            <v-btn
+              href="https://www.tokiomarine-nichido.co.jp/service/auto/pamphlet/"
+              target="_blank"
+              density="compact"
+              icon="mdi-book-open"
+            >
+            </v-btn>
+          </v-col>
+          <v-col
+            cols="1"
             class="mt-3 ml-16 d-flex align-center"
             v-if="this.insurance.jocInsuranceCompany === '三井住友'"
           >
@@ -2573,7 +2631,7 @@ export default {
             v-if="this.insurance.jocInsuranceCompany === '三井住友'"
           >
             <v-btn
-              href="https://www.ms-ins.com/pdf/personal/car/gk.pdf?__CAM2INFO=2.1.GEQBieghGCDA.hQBieGHGcDa-27&__CAMCID=dqjEPtxLID-211&__CAMSID=hQBieGHGcDa-27&__CAMVID=GEQBieghGCDA&_c_d=1&_ca_sid_4229=eyJzZXNzaW9uRXhwaXJhdGlvblRpbWUiOiIyMDI0LTEwLTIyVDA3OjA1OjQ5LjE4MloiLCJwcm9qZWN0SWQiOiI0MjI5IiwiZGlzdGluY3RJZCI6IjdiYmI1MzI5MzgwYjQyM2NhMTlkZDMwN2Q4OWRhNThlIiwiY2xpZW50SWQiOiJjNWMzMzU4ZjQzMzk0MGVlYTA0MWJkNDkyNDUzZWI4YSJ9&_gl=1*1g8bv3l*_gcl_au*MjAxODY1MzY5OC4xNzI5MTc1NTY5*_ga*MTI1Nzg0MjU0LjE3MjkxNzU1Njk.*_ga_7J71CWY0VE*MTcyOTU3ODY2OS4zLjEuMTcyOTU3ODk0OC40OS4wLjA."
+              href="https://www.ms-ins.com/lp/car-2406h/?utm_source=yahoo&utm_medium=cpc&utm_campaign=regular&utm_content=car_tow500-h_._._brand_._.&adtgt=._cv_src&yclid=YSS.1001283068.EAIaIQobChMI8b_ajYSliQMVb9oWBR228DD3EAAYASAAEgKlmvD_BwE"
               target="_blank"
               density="compact"
               icon="mdi-search-web"
@@ -2584,7 +2642,12 @@ export default {
             class="mt-3 d-flex align-center"
             v-if="this.insurance.jocInsuranceCompany === '三井住友'"
           >
-            <v-btn @click="dialog = true" density="compact" icon="mdi-login">
+            <v-btn
+              href="https://www.ms-ins.com/pdf/personal/car/gk.pdf?__CAM2INFO=2.1.GEQBieghGCDA.hQBieGHGcDa-27&__CAMCID=dqjEPtxLID-211&__CAMSID=hQBieGHGcDa-27&__CAMVID=GEQBieghGCDA&_c_d=1&_ca_sid_4229=eyJzZXNzaW9uRXhwaXJhdGlvblRpbWUiOiIyMDI0LTEwLTIyVDA3OjA1OjQ5LjE4MloiLCJwcm9qZWN0SWQiOiI0MjI5IiwiZGlzdGluY3RJZCI6IjdiYmI1MzI5MzgwYjQyM2NhMTlkZDMwN2Q4OWRhNThlIiwiY2xpZW50SWQiOiJjNWMzMzU4ZjQzMzk0MGVlYTA0MWJkNDkyNDUzZWI4YSJ9&_gl=1*1g8bv3l*_gcl_au*MjAxODY1MzY5OC4xNzI5MTc1NTY5*_ga*MTI1Nzg0MjU0LjE3MjkxNzU1Njk.*_ga_7J71CWY0VE*MTcyOTU3ODY2OS4zLjEuMTcyOTU3ODk0OC40OS4wLjA."
+              target="_blank"
+              density="compact"
+              icon="mdi-book-open"
+            >
             </v-btn>
           </v-col>
 
@@ -2612,6 +2675,19 @@ export default {
               density="compact"
               icon="mdi-search-web"
             ></v-btn>
+          </v-col>
+          <v-col
+            cols="1"
+            class="mt-3 d-flex align-center"
+            v-if="this.insurance.jocInsuranceCompany === '損保ジャパン'"
+          >
+            <v-btn
+              href="https://www.sompo-japan.co.jp/kinsurance/contents1/"
+              target="_blank"
+              density="compact"
+              icon="mdi-book-open"
+            >
+            </v-btn>
           </v-col>
         </v-row>
         <v-row class="mt-5">
@@ -2899,34 +2975,109 @@ export default {
         </v-col>
       </v-row> -->
 
-      <!-- テストモーダル -->
-      <v-dialog v-model="dialog" max-width="75%">
-        <v-card>
-          <img src="/fghijk.jpg" />
-        </v-card>
-      </v-dialog>
       <!-- 委任状（実印）modal -->
       <v-dialog v-model="poaRegisteredSealModal" max-width="70%">
         <v-card>
-          <img src="/委任状（実印）記入例.jpg" />
+          <img class="modal-img" src="/委任状（実印）記入例.jpg" />
         </v-card>
       </v-dialog>
       <!-- 委任状（認印）modal -->
       <v-dialog v-model="poaStampingModal" max-width="70%">
         <v-card>
-          <img src="/委任状（認印）記入例.jpg" />
+          <img class="modal-img" src="/委任状（認印）記入例.jpg" />
         </v-card>
       </v-dialog>
       <!-- OSS（実印）modal -->
       <v-dialog v-model="ossRegisteredSealModal" max-width="70%">
         <v-card>
-          <img src="/OSS（実印）記入例.jpg" />
+          <img class="modal-img" src="/OSS（実印）記入例.jpg" />
         </v-card>
       </v-dialog>
       <!-- OSS（認印）modal -->
       <v-dialog v-model="ossStampingModal" max-width="70%">
         <v-card>
-          <img src="/OSS（認印）記入例.jpg" />
+          <img class="modal-img" src="/OSS（認印）記入例.jpg" />
+        </v-card>
+      </v-dialog>
+      <!-- 申請依頼書（所有者・使用者）modal -->
+      <v-dialog v-model="lightCarDocumentsOwnerAndUserModal" max-width="70%">
+        <v-card>
+          <img
+            class="modal-img"
+            src="/申請依頼書（所有者・使用者）記入例.jpg"
+          />
+        </v-card>
+      </v-dialog>
+      <!-- 申請依頼書（使用者）modal -->
+      <v-dialog v-model="lightCarDocumentsUserModal" max-width="70%">
+        <v-card>
+          <img class="modal-img" src="/申請依頼書（使用者）記入例.jpg" />
+        </v-card>
+      </v-dialog>
+      <!-- 保管場所証明申請書modal -->
+      <v-dialog v-model="NCgarageVerificationModal" max-width="70%">
+        <v-card>
+          <img class="modal-img" src="/保管場所証明申請書記入例.jpg" />
+        </v-card>
+      </v-dialog>
+      <!-- 自認書modal -->
+      <v-dialog v-model="selfCertification" max-width="70%">
+        <v-card>
+          <img class="modal-img" src="/自認書記入例.jpg" />
+        </v-card>
+      </v-dialog>
+      <!-- 使用承諾証modal -->
+      <v-dialog v-model="ConsentToUseModal" max-width="70%">
+        <v-card>
+          <img class="modal-img" src="/使用承諾証記入例.jpg" />
+        </v-card>
+      </v-dialog>
+      <!-- 配置図modal -->
+      <v-dialog v-model="arrangementDiagramNameModal" max-width="70%">
+        <v-card>
+          <img class="modal-img" src="/配置図記入例.jpg" />
+        </v-card>
+      </v-dialog>
+      <!-- 希望番号伺書modal -->
+      <v-dialog v-model="desiredNumberModal" max-width="70%">
+        <v-card>
+          <img class="modal-img" src="/希望番号伺書記入例.jpg" />
+        </v-card>
+      </v-dialog>
+      <!-- ETC申込用紙modal -->
+      <v-dialog v-model="etcModal" max-width="70%">
+        <v-card>
+          <img class="modal-img" src="/ETC申込用紙記入例.jpg" />
+        </v-card>
+      </v-dialog>
+      <!-- ETC2.0申込用紙modal -->
+      <v-dialog v-model="etc2Modal" max-width="70%">
+        <v-card>
+          <img class="modal-img" src="/ETC2.0申込用紙記入例.jpg" />
+        </v-card>
+      </v-dialog>
+      <!-- 新車延長保証modal -->
+      <v-dialog v-model="newCarExtendedWarrantyModal" max-width="70%">
+        <v-card>
+          <img class="modal-img" src="/延長保証記入例.jpg" />
+        </v-card>
+      </v-dialog>
+      <!-- 中古車延長保証modal -->
+      <v-dialog v-model="usedCarExtendedWarrantyModal" max-width="70%">
+        <v-card>
+          <img class="modal-img" src="/さわやかプラス記入例.jpg" />
+        </v-card>
+      </v-dialog>
+      <!-- メンテナンスパック申込書modal -->
+      <v-dialog v-model="maintenancePackModal" max-width="70%">
+        <v-card>
+          <img class="modal-img" src="/メンテナンスパック申込用紙記入例.jpg" />
+        </v-card>
+      </v-dialog>
+      <!-- 税申告書modal -->
+      <v-dialog v-model="taxDeclarationNameModal" max-width="70%">
+        <v-card>
+          <img class="modal-img" src="/税申告書記入例.jpg" />
         </v-card>
       </v-dialog>
     </v-app>
@@ -2937,6 +3088,9 @@ export default {
 <style lang="scss">
 .body {
   overflow-x: hidden;
+}
+.modal-img {
+  border: solid 2px #616161;
 }
 .on-save {
   background: #808080;
