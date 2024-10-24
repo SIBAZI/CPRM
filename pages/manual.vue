@@ -403,6 +403,7 @@ export default {
       this.lightCarDocumentsGarageVerification.completedDate = false;
       this.taxDeclaration.isFillIn = "";
       this.taxDeclaration.completedDate = false;
+      this.credit.creditDocuments = "";
     },
     newCarUsedCarKubunChange() {
       this.normalCarDocuments.poaOssKubun = "";
@@ -699,7 +700,7 @@ export default {
             　　自分の思い、言葉で説明できるように心がけましょう。
           </p>
         </v-row>
-        <v-row class="mt-15 ml-12">
+        <v-row class="mt-12 ml-12">
           <v-col cols="3" class="">
             <v-select
               v-model="start.startKubun"
@@ -1848,7 +1849,7 @@ export default {
           </v-col>
           <v-col
             cols="1"
-            class="ml-16 d-flex align-center"
+            class="mt-3 ml-16 d-flex align-center"
             v-if="
               this.storingMethod.selfCertificationConsentToUseKubun ===
               '使用承諾証'
@@ -1862,7 +1863,7 @@ export default {
           </v-col>
           <v-col
             cols="1"
-            class="d-flex align-center"
+            class="mt-3 d-flex align-center"
             v-if="
               this.storingMethod.selfCertificationConsentToUseKubun ===
               '使用承諾証'
@@ -3003,7 +3004,28 @@ export default {
             ></v-btn>
           </v-col>
         </v-row>
+        <v-row
+          v-if="
+            (this.contracts.newCarUsedCarKubun === '新車' ||
+              this.contracts.newCarUsedCarKubun === '中古車') &&
+            (this.contracts.normalCarLightCarKubun === '普通車' ||
+              this.contracts.normalCarLightCarKubun === '軽自動車') &&
+            (this.contracts.paymentKubun === '現金' ||
+              this.contracts.paymentKubun === 'クレジット' ||
+              this.contracts.paymentKubun === '銀行ローン' ||
+              this.contracts.paymentKubun === '所有権留保') &&
+            (this.contracts.insuranceKubun === '当社加入' ||
+              this.contracts.insuranceKubun === '他社加入' ||
+              this.contracts.insuranceKubun === '未加入')
+          "
+        >
+          <v-toolbar-title class="mt-8 ml-15 d-flex align-center goal">
+            　〇お手続きは以上になります。お時間頂きありがとうございました。
+          </v-toolbar-title>
+        </v-row>
       </div>
+      <div class="whole-bottom"></div>
+      <div class="footer"></div>
       <!-- <v-row>
         <v-toolbar-title class="ml-15 d-flex align-center memo">
           　▼メモ
@@ -3286,6 +3308,12 @@ export default {
 .completedDate-input {
   color: #000000;
 }
+.goal {
+  max-width: 87%;
+  background: #808080;
+  color: #ffffff;
+  border-radius: 5px;
+}
 .memo {
   max-width: 87%;
   background: #262626;
@@ -3293,7 +3321,7 @@ export default {
   border-radius: 5px;
 }
 .whole-bottom {
-  margin-bottom: 10%;
+  margin-bottom: 70px;
 }
 .explanation {
   background-color: #ffecb8;
@@ -3307,7 +3335,7 @@ export default {
   position: absolute;
   bottom: 0;
   width: 100%;
-  height: 7%;
+  height: 45px;
   background-color: #101010;
 }
 </style>
