@@ -353,6 +353,57 @@ export default {
     removeMemo(index) {
       this.memos.splice(index, 1);
     },
+    rattocClear() {
+      this.contracts.newCarUsedCarKubun = "";
+      this.contracts.normalCarLightCarKubun = "";
+      this.contracts.paymentKubun = "";
+      this.contracts.insuranceKubun = "";
+      this.normalCarDocuments.poaOssKubun = "";
+      this.normalCarDocuments.isFillIn = false;
+      this.normalCarDocuments.isRegisteredSeal = false;
+      this.normalCarDocuments.isStamping = false;
+      this.normalCarDocuments.isSealCertificate = false;
+      this.normalCarDocuments.isResidentCard = false;
+      this.normalCarDocuments.completedDate = false;
+      this.normalCarDocumentsGarageVerification.NCgarageVerificationKubun = "";
+      this.normalCarDocumentsGarageVerification.isFillIn = false;
+      this.normalCarDocumentsGarageVerification.completedDate = false;
+      this.storingMethod.selfCertificationConsentToUseKubun = "";
+      this.storingMethod.isFillIn = "";
+      this.storingMethod.completedDate = false;
+      this.arrangementDiagram.isFillIn = "";
+      this.arrangementDiagram.completedDate = false;
+      this.desiredNumber.isDesiredNumber = "";
+      this.desiredNumber.isFillIn = "";
+      this.desiredNumber.completedDate = false;
+      this.etc.etcKubun = "";
+      this.etc.isFillIn = "";
+      this.etc.completedDate = false;
+      this.extendedWarranty.isExtendedWarranty = "";
+      this.extendedWarranty.isFillIn = "";
+      this.extendedWarranty.completedDate = false;
+      this.maintenancePack.isMaintenancePack = "";
+      this.maintenancePack.isFillIn = "";
+      this.maintenancePack.completedDate = false;
+      this.jaf.isJafPaymentKubun = "";
+      this.jaf.isFillIn = "";
+      this.jaf.isBankSeal = false;
+      this.jaf.completedDate = false;
+      this.insurance.jocInsuranceCompany = "";
+      this.insurance.jacInsuranceCompany = "";
+      this.insurance.joiningProcedure = "";
+      this.insurance.confirmationOfMembership = "";
+      this.insurance.completedDate = false;
+      this.lightCarDocuments.isFillIn = "";
+      this.lightCarDocuments.isStamping = false;
+      this.lightCarDocuments.isResidentCard = false;
+      this.lightCarDocuments.completedDate = false;
+      this.lightCarDocumentsGarageVerification.LCgarageVerificationKubun = "";
+      this.lightCarDocumentsGarageVerification.isFillIn = "";
+      this.lightCarDocumentsGarageVerification.completedDate = false;
+      this.taxDeclaration.isFillIn = "";
+      this.taxDeclaration.completedDate = false;
+    },
     newCarUsedCarKubunChange() {
       this.normalCarDocuments.poaOssKubun = "";
       this.normalCarDocuments.isFillIn = false;
@@ -633,6 +684,21 @@ export default {
         </v-col>
       </v-row> -->
       <div>
+        <v-row class="mt-15 ml-8" v-if="this.start.startKubun === ''">
+          <v-col>
+            <img class="logo" src="/アンフィニ広島手続きマニュアルロゴ.jpg" />
+          </v-col>
+        </v-row>
+        <v-row v-if="this.start.startKubun === ''">
+          <p class="ml-16">
+            　※お客様との接客を第一に考えられるようにするためのサポートマニュアルです。<br />
+            　　マニュアルに頼りきらず自身で手続きを覚えるつもりで<br />
+            　　スキルアップの補助として活用しましょう。<br />
+            　　全体像の把握、分からないことを明確化することが大切です。<br />
+            　　接客はマニュアルでは収まりません。<br />
+            　　自分の思い、言葉で説明できるように心がけましょう。
+          </p>
+        </v-row>
         <v-row class="mt-15 ml-12">
           <v-col cols="3" class="">
             <v-select
@@ -651,7 +717,7 @@ export default {
           </v-toolbar-title>
         </v-row>
         <v-row>
-          <p class="mt-5 ml-15">　ご成約頂いたお車は、</p>
+          <p class="mt-5 ml-16">　ご成約頂いたお車は、</p>
         </v-row>
 
         <v-row class="ml-12 mt-10">
@@ -701,6 +767,9 @@ export default {
               :items="['', '当社加入', '他社加入', '未加入']"
               variant="outlined"
             ></v-select>
+          </v-col>
+          <v-col cols="2" class="mx-auto mt-5">
+            <v-btn @click="rattocClear"> clear </v-btn>
           </v-col>
         </v-row>
 
@@ -818,7 +887,7 @@ export default {
             this.normalCarDocuments.poaKubun === '委任状'
           "
         >
-          <p class="ml-15">
+          <p class="explanation ml-16">
             ・現金でのお支払いの場合、お車の所有者はお客様になりますので<b>実印</b>と<b>印鑑証明</b>が必要となります。
           </p>
         </v-row>
@@ -830,7 +899,7 @@ export default {
             this.normalCarDocuments.poaKubun === '委任状'
           "
         >
-          <p class="ml-15">
+          <p class="explanation ml-16">
             ・クレジットでのお支払いの場合、<b>認印</b>と<b>住民票</b>が必要となります。
           </p>
         </v-row>
@@ -843,7 +912,7 @@ export default {
             this.normalCarDocuments.poaKubun === '委任状'
           "
         >
-          <p class="ml-15">
+          <p class="explanation ml-16">
             ・銀行ローンでのお支払いの場合、お車の所有者はお客様になりますので<b>実印</b>と<b>印鑑証明</b>が必要となります。
           </p>
         </v-row>
@@ -855,7 +924,7 @@ export default {
             this.normalCarDocuments.poaKubun === '委任状'
           "
         >
-          <p class="ml-15">
+          <p class="explanation ml-16">
             ・所有権留保の場合、<b>認印</b>と<b>住民票</b>が必要となります。
           </p>
         </v-row>
@@ -1047,7 +1116,7 @@ export default {
             this.normalCarDocuments.poaOssKubun === 'OSS'
           "
         >
-          <p class="ml-15">
+          <p class="explanation ml-16">
             ・現金でのお支払いの場合、お車の所有者お客様になりますので<b>実印</b>と<b>印鑑証明</b>が必要となります。<br />
             　　ワンストップサービス（OSS）は、自動車を保有するために必要となる手続きと税金や手数料の納付を<br />
             　　インターネット上で一括して行うことを可能とした国土交通省が提供しているサービスです。
@@ -1060,7 +1129,7 @@ export default {
             this.normalCarDocuments.poaOssKubun === 'OSS'
           "
         >
-          <p class="ml-15">
+          <p class="explanation ml-16">
             ・クレジットでのお支払いの場合、<b>認印</b>と<b>住民票</b>が必要となります。<br />
             　　ワンストップサービス（OSS）は、自動車を保有するために必要となる手続きと税金や手数料の納付を<br />
             　　インターネット上で一括して行うことを可能とした国土交通省が提供しているサービスです。
@@ -1073,7 +1142,7 @@ export default {
             this.normalCarDocuments.poaOssKubun === 'OSS'
           "
         >
-          <p class="ml-15">
+          <p class="explanation ml-16">
             ・銀行ローンでのお支払いの場合、お車の所有者はお客様になりますので<b>実印</b>と<b>印鑑証明</b>が必要となります。<br />
             　　ワンストップサービス（OSS）は、自動車を保有するために必要となる手続きと税金や手数料の納付を<br />
             　　インターネット上で一括して行うことを可能とした国土交通省が提供しているサービスです。
@@ -1086,7 +1155,7 @@ export default {
             this.normalCarDocuments.poaOssKubun === 'OSS'
           "
         >
-          <p class="ml-15">
+          <p class="explanation ml-16">
             ・所有権留保でのお支払いの場合、<b>認印</b>と<b>住民票</b>が必要となります。<br />
             　　ワンストップサービス（OSS）は、自動車を保有するために必要となる手続きと税金や手数料の納付を<br />
             　　インターネット上で一括して行うことを可能とした国土交通省が提供しているサービスです。
@@ -1099,7 +1168,7 @@ export default {
             this.normalCarDocuments.poaOssKubun === '委任状'
           "
         >
-          <p class="ml-15">
+          <p class="explanation ml-16">
             ・現金でのお支払いの場合、お車の所有者はお客様になりますので<b>実印</b>と<b>印鑑証明</b>が必要となります。<br />
             　　最近ではワンストップサービス（OSS）を使用したお車の登録が主流ですが、車の登録日を急ぎたい（納車日を急ぎたい）<br />
             　　場合などにOSSでの登録を使用しない場合があります。
@@ -1112,7 +1181,7 @@ export default {
             this.normalCarDocuments.poaOssKubun === '委任状'
           "
         >
-          <p class="ml-15">
+          <p class="explanation ml-16">
             ・クレジットでのお支払いの場合、<b>認印</b>と<b>住民票</b>が必要となります。<br />
             　　最近ではワンストップサービス（OSS）を使用したお車の登録が主流ですが、車の登録日を急ぎたい（納車日を急ぎたい）<br />
             　　場合などにOSSでの登録を使用しない場合があります。
@@ -1126,7 +1195,7 @@ export default {
             this.normalCarDocuments.poaOssKubun === '委任状'
           "
         >
-          <p class="ml-15">
+          <p class="explanation ml-16">
             ・銀行ローンでのお支払いの場合、お車の所有者はお客様になりますので<b>実印</b>と<b>印鑑証明</b>が必要となります。<br />
             　　最近ではワンストップサービス（OSS）を使用したお車の登録が主流ですが、車の登録日を急ぎたい（納車日を急ぎたい）<br />
             　　場合などにOSSでの登録を使用しない場合があります。
@@ -1139,7 +1208,7 @@ export default {
             this.normalCarDocuments.poaOssKubun === '委任状'
           "
         >
-          <p class="ml-15">
+          <p class="explanation ml-16">
             ・所有権留保の場合、<b>認印</b>と<b>住民票</b>が必要となります。<br />
             　　最近ではワンストップサービス（OSS）を使用したお車の登録が主流ですが、車の登録日を急ぎたい（納車日を急ぎたい）<br />
             　　場合などにOSSでの登録を使用しない場合があります。
@@ -1363,7 +1432,7 @@ export default {
         </v-col> -->
         </v-row>
         <v-row v-if="this.contracts.normalCarLightCarKubun === '軽自動車'">
-          <p class="ml-15">
+          <p class="explanation ml-16">
             ・軽自動車の場合、<b>認印</b>と<b>住民票</b>が必要となります。
           </p>
         </v-row>
@@ -1502,7 +1571,9 @@ export default {
               .NCgarageVerificationKubun === '保管場所証明申請書'
           "
         >
-          <p class="ml-15">・普通車用の車庫証明、4枚綴り（つづり）です。</p>
+          <p class="explanation ml-16">
+            ・普通車用の車庫証明、4枚綴り（つづり）です。
+          </p>
         </v-row>
 
         <v-row>
@@ -1605,7 +1676,9 @@ export default {
               .LCgarageVerificationKubun === '保管場所届出書'
           "
         >
-          <p class="ml-15">・軽自動車用の車庫証明、4枚綴り（つづり）です。</p>
+          <p class="explanation ml-16">
+            ・軽自動車用の車庫証明、4枚綴り（つづり）です。
+          </p>
         </v-row>
 
         <v-row>
@@ -1725,7 +1798,7 @@ export default {
             this.storingMethod.selfCertificationConsentToUseKubun === '自認書'
           "
         >
-          <p class="ml-15">
+          <p class="explanation ml-16">
             ・ご成約頂いたお車の保管場所がお客様の所有物である事を証明するための書類です。
           </p>
         </v-row>
@@ -1735,7 +1808,7 @@ export default {
             '使用承諾証'
           "
         >
-          <p class="ml-15">
+          <p class="explanation ml-16">
             ・お客様がお車の保管場所を賃借されている場合、土地所有者から発行して頂く書類です。
           </p>
         </v-row>
@@ -1856,7 +1929,7 @@ export default {
               .LCgarageVerificationKubun === '保管場所届出書'
           "
         >
-          <p class="ml-15">
+          <p class="explanation ml-16">
             ・お客様がお車の保管場所にどのように車を保管されているか確認するための書類です。
           </p>
         </v-row>
@@ -1980,7 +2053,7 @@ export default {
         </v-col> -->
         </v-row>
         <v-row v-if="this.desiredNumber.isDesiredNumber === '有'">
-          <p class="ml-15">
+          <p class="explanation ml-16">
             ・お客様からお伺いした希望番号（4桁の数字）を届け出するための書類です。
           </p>
         </v-row>
@@ -2072,12 +2145,12 @@ export default {
         </v-col> -->
         </v-row>
         <v-row v-if="this.etc.etcKubun === 'ETC'">
-          <p class="ml-15">
+          <p class="explanation ml-16">
             ・ご成約頂いたお車のETCを使用できるようにするための書類です。
           </p>
         </v-row>
         <v-row v-if="this.etc.etcKubun === 'ETC-2.0'">
-          <p class="ml-15">
+          <p class="explanation ml-16">
             ・ご成約頂いたお車のETCを使用できるようにするための書類です。<br />
             　　ETC2.0は、高速道路の通行料金の支払いに便利なETCが進化したもので、2016年春からスタートしたサービスです。<br />
             　　リアルタイムの渋滞情報を解析して最適なルートを示したり、災害発生時に通行可能な道路へ誘導することで、<br />
@@ -2182,7 +2255,7 @@ export default {
             this.extendedWarranty.isExtendedWarranty === '有'
           "
         >
-          <p class="ml-15">
+          <p class="explanation ml-16">
             ・ご成約頂いたお車に延長保証を適用するための書類です。<br />
             　　メーカーの一般保証は、新車登録から初回車検を迎える3年目（ただし6万km）で終了してしまいます。<br />
             　　マツダ延長保証〈新車5年プラン/5年プラン〉は、保証期間を5年目（ただし10万km）まで延長。<br />
@@ -2196,7 +2269,7 @@ export default {
             this.extendedWarranty.isExtendedWarranty === '有'
           "
         >
-          <p class="ml-15">
+          <p class="explanation ml-16">
             ・ご成約頂いたお車に延長保証を適用するための書類です。<br />
             　　保証にさらなる安心をプラス。万が一の故障でも無料で修理。<br />
             　　「さわやか保証2年」「さわやか保証」の期間を、有償で延長できる保証サービスです。<br />
@@ -2311,7 +2384,7 @@ export default {
         </v-col> -->
         </v-row>
         <v-row v-if="this.maintenancePack.isMaintenancePack === '有'">
-          <p class="ml-15">
+          <p class="explanation ml-16">
             ・お車のご成約時、メンテナンスパック（パックdeメンテ）にご加入頂いた際に頂く書類です。<br />
             　　ご商談の際は36Sコース（点検、5年後2回目の車検までがセットになったプラン）<br />
             　　をおすすめとしてご提案させて頂いています。
@@ -2413,7 +2486,7 @@ export default {
             this.jaf.isJafPaymentKubun === '有（クレジット）'
           "
         >
-          <p class="ml-15">
+          <p class="explanation ml-16">
             ・ご成約頂いたお車がJAFに加入される際の手続きです。
           </p>
         </v-row>
@@ -2485,7 +2558,7 @@ export default {
         </v-col> -->
         </v-row>
         <v-row v-if="this.contracts.normalCarLightCarKubun === '軽自動車'">
-          <p class="ml-15">
+          <p class="explanation ml-16">
             ・ご成約頂いたお車が軽自動車の際に、自動車税の支払い開始を申告するための書類です。
           </p>
         </v-row>
@@ -2728,7 +2801,7 @@ export default {
             this.insurance.jocInsuranceCompany === '損保ジャパン'
           "
         >
-          <p class="ml-15">
+          <p class="explanation ml-16">
             ・マツダ販売店で自動車保険を契約された方限定の特典です。<br />
             　　マツダの自動車保険にご加入いただいたお客様に無償で付帯でき、<br />
             　　気になる小傷も、自動車保険（車両保険）を使用せず、わずかなご負担でボディリペアできます。
@@ -3039,7 +3112,7 @@ export default {
         </v-card>
       </v-dialog>
       <!-- 希望番号伺書modal -->
-      <v-dialog v-model="desiredNumberModal" max-width="70%">
+      <v-dialog v-model="desiredNumberModal" max-width="40%">
         <v-card>
           <img class="modal-img" src="/希望番号伺書記入例.jpg" />
         </v-card>
@@ -3063,7 +3136,7 @@ export default {
         </v-card>
       </v-dialog>
       <!-- 中古車延長保証modal -->
-      <v-dialog v-model="usedCarExtendedWarrantyModal" max-width="70%">
+      <v-dialog v-model="usedCarExtendedWarrantyModal" max-width="40%">
         <v-card>
           <img class="modal-img" src="/さわやかプラス記入例.jpg" />
         </v-card>
@@ -3080,8 +3153,9 @@ export default {
           <img class="modal-img" src="/税申告書記入例.jpg" />
         </v-card>
       </v-dialog>
+      <div class="whole-bottom"></div>
+      <div class="footer"></div>
     </v-app>
-    <div class="whole-bottom"></div>
   </div>
 </template>
 
@@ -3117,11 +3191,13 @@ export default {
   max-width: 87%;
   background: #808080;
   color: #ffffff;
+  border-radius: 5px;
 }
 .normalCarDocuments {
   max-width: 87%;
   background: #4db56a;
   color: #ffffff;
+  border-radius: 5px;
 }
 .normalCarDocuments-completedDate {
   color: #ff0000;
@@ -3130,6 +3206,7 @@ export default {
   max-width: 87%;
   background: #4db56a;
   color: #ffffff;
+  border-radius: 5px;
 }
 .lightCarDocuments-completedDate {
   color: #ff0000;
@@ -3138,6 +3215,7 @@ export default {
   max-width: 87%;
   background: #6e6eff;
   color: #ffffff;
+  border-radius: 5px;
 }
 .normalCarDocumentsGarageVerification-completedDate {
   color: #ff0000;
@@ -3146,6 +3224,7 @@ export default {
   max-width: 87%;
   background: #6e6eff;
   color: #ffffff;
+  border-radius: 5px;
 }
 .lightCarDocumentsGarageVerification-completedDate {
   color: #ff0000;
@@ -3154,6 +3233,7 @@ export default {
   max-width: 87%;
   background: #fc9325;
   color: #ffffff;
+  border-radius: 5px;
 }
 
 .storingMethod-completedDate {
@@ -3187,6 +3267,7 @@ export default {
   max-width: 87%;
   background: #33ccff;
   color: #ffffff;
+  border-radius: 5px;
 }
 .insurance-completedDate {
   color: #ff0000;
@@ -3203,8 +3284,24 @@ export default {
   max-width: 87%;
   background: #262626;
   color: #ffffff;
+  border-radius: 5px;
 }
 .whole-bottom {
   margin-bottom: 10%;
+}
+.explanation {
+  background-color: #ffecb8;
+  border-radius: 3px;
+}
+.logo {
+  width: 30%;
+  height: 100%;
+}
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 7%;
+  background-color: #101010;
 }
 </style>
