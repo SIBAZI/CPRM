@@ -166,6 +166,94 @@ export default {
     //     this.credit.completedDate = "";
     //   }
     // },
+    poaKubunCompleted() {
+      if (
+        (this.normalCarDocuments.isFillIn &&
+          this.normalCarDocuments.isRegisteredSeal &&
+          this.normalCarDocuments.isSealCertificate) ||
+        (this.normalCarDocuments.isFillIn &&
+          this.normalCarDocuments.isStamping &&
+          this.normalCarDocuments.isResidentCard)
+      ) {
+        document.querySelector(".complete").style.backgroundColor = "#ED1C24";
+      } else {
+        document.querySelector(".complete").style.backgroundColor = "#cccccc";
+      }
+    },
+
+    poaOssKubunCompleted() {
+      if (
+        (this.normalCarDocuments.isFillIn &&
+          this.normalCarDocuments.isRegisteredSeal &&
+          this.normalCarDocuments.isSealCertificate) ||
+        (this.normalCarDocuments.isFillIn &&
+          this.normalCarDocuments.isStamping &&
+          this.normalCarDocuments.isResidentCard)
+      ) {
+        document.querySelector(".complete").style.backgroundColor = "#ED1C24";
+      } else {
+        document.querySelector(".complete").style.backgroundColor = "#cccccc";
+      }
+    },
+
+    lightCarDocumentsKubunCompleted() {
+      if (
+        this.lightCarDocuments.isFillIn &&
+        this.lightCarDocuments.isStamping &&
+        this.lightCarDocuments.isResidentCard
+      ) {
+        document.querySelector(".complete").style.backgroundColor = "#ED1C24";
+      } else {
+        document.querySelector(".complete").style.backgroundColor = "#cccccc";
+      }
+    },
+
+    NCgarageVerificationKubunCompleted() {
+      if (this.normalCarDocumentsGarageVerification.isFillIn) {
+        document.querySelector(
+          ".ncgarage-verification-kubun-completed"
+        ).style.backgroundColor = "#ED1C24";
+      } else {
+        document.querySelector(
+          ".ncgarage-verification-kubun-completed"
+        ).style.backgroundColor = "#cccccc";
+      }
+    },
+
+    LCgarageVerificationKubunCompleted() {
+      if (this.lightCarDocumentsGarageVerification.isFillIn) {
+        document.querySelector(
+          ".lcgarage-verification-kubun-completed"
+        ).style.backgroundColor = "#ED1C24";
+      } else {
+        document.querySelector(
+          ".lcgarage-verification-kubun-completed"
+        ).style.backgroundColor = "#cccccc";
+      }
+    },
+
+    selfCertificationConsentToUseKubunCompleted() {
+      if (this.storingMethod.isFillIn) {
+        document.querySelector(
+          ".self-certification-consent-to-use-kubun-completed"
+        ).style.backgroundColor = "#ED1C24";
+      } else {
+        document.querySelector(
+          ".self-certification-consent-to-use-kubun-completed"
+        ).style.backgroundColor = "#cccccc";
+      }
+    },
+    arrangementDiagramCompleted() {
+      if (this.arrangementDiagram.isFillIn) {
+        document.querySelector(
+          ".arrangement-diagram-completed"
+        ).style.backgroundColor = "#ED1C24";
+      } else {
+        document.querySelector(
+          ".arrangement-diagram-completed"
+        ).style.backgroundColor = "#cccccc";
+      }
+    },
 
     // poaOssKubunCompleted() {
     //   if (
@@ -775,7 +863,7 @@ export default {
               variant="outlined"
             ></v-select>
           </v-col>
-          <v-col cols="2" class="mx-auto mt-5">
+          <v-col cols="2" class="mt-2 ml-16">
             <v-btn @click="rattocClear"> clear </v-btn>
           </v-col>
         </v-row>
@@ -813,7 +901,7 @@ export default {
             v-if="this.normalCarDocuments.poaKubun === '委任状'"
           >
             <v-checkbox
-              @change="poaOssKubunCompleted"
+              @change="poaKubunCompleted"
               v-model="normalCarDocuments.isFillIn"
               label="ご記入"
             >
@@ -821,7 +909,7 @@ export default {
           </v-col>
           <v-col cols="2" class="mx-1 d-flex align-center">
             <v-checkbox
-              @change="poaOssKubunCompleted"
+              @change="poaKubunCompleted"
               v-if="
                 (this.contracts.paymentKubun === '現金' ||
                   this.contracts.paymentKubun === '銀行ローン') &&
@@ -833,7 +921,7 @@ export default {
             </v-checkbox>
 
             <v-checkbox
-              @change="poaOssKubunCompleted"
+              @change="poaKubunCompleted"
               v-if="
                 (this.contracts.paymentKubun === 'クレジット' ||
                   this.contracts.paymentKubun === '所有権留保') &&
@@ -847,7 +935,7 @@ export default {
 
           <v-col cols="2" class="mx-1 d-flex align-center">
             <v-checkbox
-              @change="poaOssKubunCompleted"
+              @change="poaKubunCompleted"
               v-if="
                 (this.contracts.paymentKubun === '現金' ||
                   this.contracts.paymentKubun === '銀行ローン') &&
@@ -859,7 +947,7 @@ export default {
             </v-checkbox>
 
             <v-checkbox
-              @change="poaOssKubunCompleted"
+              @change="poaKubunCompleted"
               v-if="
                 (this.contracts.paymentKubun === 'クレジット' ||
                   this.contracts.paymentKubun === '所有権留保') &&
@@ -869,6 +957,20 @@ export default {
               label="住民票"
             >
             </v-checkbox>
+          </v-col>
+
+          <v-col
+            v-if="
+              (this.contracts.paymentKubun === '現金' ||
+                this.contracts.paymentKubun === '銀行ローン' ||
+                this.contracts.paymentKubun === 'クレジット' ||
+                this.contracts.paymentKubun === '所有権留保') &&
+              this.normalCarDocuments.poaKubun === '委任状'
+            "
+            cols="2"
+            class="mb-6 d-flex align-center"
+          >
+            <div class="complete">完了</div>
           </v-col>
 
           <!-- <v-col
@@ -1097,7 +1199,20 @@ export default {
             >
             </v-checkbox>
           </v-col>
-
+          <v-col
+            v-if="
+              (this.contracts.paymentKubun === '現金' ||
+                this.contracts.paymentKubun === '銀行ローン' ||
+                this.contracts.paymentKubun === 'クレジット' ||
+                this.contracts.paymentKubun === '所有権留保') &&
+              (this.normalCarDocuments.poaOssKubun === '委任状' ||
+                this.normalCarDocuments.poaOssKubun === 'OSS')
+            "
+            cols="2"
+            class="mb-6 d-flex align-center"
+          >
+            <div class="complete">完了</div>
+          </v-col>
           <!-- <v-col
           cols="2"
           class="mx-1 normalCarDocuments-completedDate"
@@ -1416,6 +1531,19 @@ export default {
             >
             </v-checkbox>
           </v-col>
+          <v-col
+            v-if="
+              (this.contracts.paymentKubun === '現金' ||
+                this.contracts.paymentKubun === '銀行ローン' ||
+                this.contracts.paymentKubun === 'クレジット' ||
+                this.contracts.paymentKubun === '所有権留保') &&
+              this.lightCarDocuments.lightCarDocumentsKubun === '申請依頼書'
+            "
+            cols="2"
+            class="mb-6 d-flex align-center"
+          >
+            <div class="complete">完了</div>
+          </v-col>
           <!-- <v-col
           cols="2"
           class="mx-1 lightCarDocuments-completedDate"
@@ -1512,7 +1640,7 @@ export default {
 
         <v-row>
           <v-toolbar-title
-            class="mt-5 ml-15 d-flex align-center normalCarDocumentsGarageVerification"
+            class="mt-5 ml-15 mb-5 d-flex align-center normalCarDocumentsGarageVerification"
             v-if="this.normalCarDocuments.poaOssKubun === '委任状'"
           >
             　➁
@@ -1551,6 +1679,19 @@ export default {
               label="ご記入"
             >
             </v-checkbox>
+          </v-col>
+          <v-col cols="2" class="mx-1"> </v-col>
+          <v-col cols="2" class="mx-1"> </v-col>
+
+          <v-col
+            v-if="
+              this.normalCarDocumentsGarageVerification
+                .NCgarageVerificationKubun === '保管場所証明申請書'
+            "
+            cols="2"
+            class="mb-6 d-flex align-center"
+          >
+            <div class="ncgarage-verification-kubun-completed">完了</div>
           </v-col>
 
           <!-- <v-col
@@ -1617,7 +1758,7 @@ export default {
 
         <v-row>
           <v-toolbar-title
-            class="mt-5 ml-15 d-flex align-center lightCarDocumentsGarageVerification"
+            class="ml-15 mb-5 d-flex align-center lightCarDocumentsGarageVerification"
             v-if="this.contracts.normalCarLightCarKubun === '軽自動車'"
           >
             　➁
@@ -1656,6 +1797,18 @@ export default {
               label="ご記入"
             >
             </v-checkbox>
+          </v-col>
+          <v-col cols="2" class="mx-1"> </v-col>
+          <v-col cols="2" class="mx-1"> </v-col>
+          <v-col
+            v-if="
+              this.lightCarDocumentsGarageVerification
+                .LCgarageVerificationKubun === '保管場所届出書'
+            "
+            cols="2"
+            class="mb-6 d-flex align-center"
+          >
+            <div class="lcgarage-verification-kubun-completed">完了</div>
           </v-col>
 
           <!-- <v-col
@@ -1735,7 +1888,7 @@ export default {
       </v-row> -->
         <v-row>
           <v-toolbar-title
-            class="mt-5 ml-15 d-flex align-center normalCarDocumentsGarageVerification"
+            class="ml-15 mb-5 d-flex align-center normalCarDocumentsGarageVerification"
             v-if="this.normalCarDocuments.poaOssKubun === 'OSS'"
           >
             　➁
@@ -1778,6 +1931,22 @@ export default {
               v-model="storingMethod.isFillIn"
             >
             </v-checkbox>
+          </v-col>
+          <v-col cols="2" class="mx-1"> </v-col>
+          <v-col cols="2" class="mx-1"> </v-col>
+          <v-col
+            v-if="
+              this.storingMethod.selfCertificationConsentToUseKubun ===
+                '自認書' ||
+              this.storingMethod.selfCertificationConsentToUseKubun ===
+                '使用承諾証'
+            "
+            cols="2"
+            class="mb-6 d-flex align-center"
+          >
+            <div class="self-certification-consent-to-use-kubun-completed">
+              完了
+            </div>
           </v-col>
 
           <!-- <v-col
@@ -1916,6 +2085,11 @@ export default {
             >
             </v-checkbox>
           </v-col>
+          <v-col cols="2" class="mx-1"> </v-col>
+          <v-col cols="2" class="mx-1"> </v-col>
+          <v-col cols="2" class="mb-6 d-flex align-center">
+            <div class="arrangement-diagram-completed">完了</div>
+          </v-col>
           <!-- <v-col cols="2" class="mx-1 arrangement-completedDate">
           <v-text-field
             :class="{
@@ -1997,7 +2171,7 @@ export default {
       </v-row> -->
         <v-row>
           <v-toolbar-title
-            class="mt-8 ml-15 d-flex align-center other-documents"
+            class="mt-8 ml-15 mb-5 d-flex align-center other-documents"
             v-if="this.contracts.normalCarLightCarKubun === '普通車'"
           >
             　➂
@@ -2007,7 +2181,7 @@ export default {
 
         <v-row>
           <v-toolbar-title
-            class="mt-8 ml-15 d-flex align-center other-documents"
+            class="mt-8 ml-15 mb-5 d-flex align-center other-documents"
             v-if="this.contracts.normalCarLightCarKubun === '軽自動車'"
           >
             　➂
@@ -2595,7 +2769,7 @@ export default {
       </v-row> -->
         <v-row>
           <v-toolbar-title
-            class="mt-8 ml-15 d-flex align-center insurance"
+            class="mt-8 ml-15 mb-5 d-flex align-center insurance"
             v-if="
               this.contracts.insuranceKubun === '当社加入' ||
               this.contracts.insuranceKubun === '他社加入'
@@ -2902,7 +3076,7 @@ export default {
         </v-row>
         <v-row>
           <v-toolbar-title
-            class="mt-8 ml-15 d-flex align-center credit"
+            class="mt-8 ml-15 mb-5 d-flex align-center credit"
             v-if="
               (this.contracts.insuranceKubun === '' ||
                 this.contracts.insuranceKubun === '未加入') &&
@@ -2916,7 +3090,7 @@ export default {
 
         <v-row>
           <v-toolbar-title
-            class="mt-8 ml-15 d-flex align-center credit"
+            class="mt-8 ml-15 mb-5 d-flex align-center credit"
             v-if="
               (this.contracts.insuranceKubun === '当社加入' ||
                 this.contracts.insuranceKubun === '他社加入') &&
@@ -3211,6 +3385,7 @@ export default {
   max-width: 87%;
   background: #e6b422;
   color: #ffffff;
+  border-radius: 5px;
 }
 .credit-completedDate {
   color: #ff0000;
@@ -3321,7 +3496,7 @@ export default {
   border-radius: 5px;
 }
 .whole-bottom {
-  margin-bottom: 70px;
+  margin-bottom: 150px;
 }
 .explanation {
   background-color: #ffecb8;
@@ -3337,5 +3512,50 @@ export default {
   width: 100%;
   height: 45px;
   background-color: #101010;
+}
+.complete {
+  width: 100px;
+  height: 45px;
+  line-height: 45px;
+  border-radius: 5px;
+  background-color: #cccccc;
+  color: #ffffff;
+  text-align: center;
+}
+.ncgarage-verification-kubun-completed {
+  width: 100px;
+  height: 45px;
+  line-height: 45px;
+  border-radius: 5px;
+  background-color: #cccccc;
+  color: #ffffff;
+  text-align: center;
+}
+.lcgarage-verification-kubun-completed {
+  width: 100px;
+  height: 45px;
+  line-height: 45px;
+  border-radius: 5px;
+  background-color: #cccccc;
+  color: #ffffff;
+  text-align: center;
+}
+.self-certification-consent-to-use-kubun-completed {
+  width: 100px;
+  height: 45px;
+  line-height: 45px;
+  border-radius: 5px;
+  background-color: #cccccc;
+  color: #ffffff;
+  text-align: center;
+}
+.arrangement-diagram-completed {
+  width: 100px;
+  height: 45px;
+  line-height: 45px;
+  border-radius: 5px;
+  background-color: #cccccc;
+  color: #ffffff;
+  text-align: center;
 }
 </style>
