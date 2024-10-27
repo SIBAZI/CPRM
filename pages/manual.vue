@@ -120,6 +120,10 @@ export default {
         completedDate: false, //完了日
       },
 
+      delivery: {
+        deliveryDate: "", //納車予定日
+      },
+
       tradeInCarContent: {
         carModel: "", //下取車種
         normalCarLightCarKubun: "", //普通車・軽自動車区分
@@ -166,94 +170,6 @@ export default {
     //     this.credit.completedDate = "";
     //   }
     // },
-    poaKubunCompleted() {
-      if (
-        (this.normalCarDocuments.isFillIn &&
-          this.normalCarDocuments.isRegisteredSeal &&
-          this.normalCarDocuments.isSealCertificate) ||
-        (this.normalCarDocuments.isFillIn &&
-          this.normalCarDocuments.isStamping &&
-          this.normalCarDocuments.isResidentCard)
-      ) {
-        document.querySelector(".complete").style.backgroundColor = "#ED1C24";
-      } else {
-        document.querySelector(".complete").style.backgroundColor = "#cccccc";
-      }
-    },
-
-    poaOssKubunCompleted() {
-      if (
-        (this.normalCarDocuments.isFillIn &&
-          this.normalCarDocuments.isRegisteredSeal &&
-          this.normalCarDocuments.isSealCertificate) ||
-        (this.normalCarDocuments.isFillIn &&
-          this.normalCarDocuments.isStamping &&
-          this.normalCarDocuments.isResidentCard)
-      ) {
-        document.querySelector(".complete").style.backgroundColor = "#ED1C24";
-      } else {
-        document.querySelector(".complete").style.backgroundColor = "#cccccc";
-      }
-    },
-
-    lightCarDocumentsKubunCompleted() {
-      if (
-        this.lightCarDocuments.isFillIn &&
-        this.lightCarDocuments.isStamping &&
-        this.lightCarDocuments.isResidentCard
-      ) {
-        document.querySelector(".complete").style.backgroundColor = "#ED1C24";
-      } else {
-        document.querySelector(".complete").style.backgroundColor = "#cccccc";
-      }
-    },
-
-    NCgarageVerificationKubunCompleted() {
-      if (this.normalCarDocumentsGarageVerification.isFillIn) {
-        document.querySelector(
-          ".ncgarage-verification-kubun-completed"
-        ).style.backgroundColor = "#ED1C24";
-      } else {
-        document.querySelector(
-          ".ncgarage-verification-kubun-completed"
-        ).style.backgroundColor = "#cccccc";
-      }
-    },
-
-    LCgarageVerificationKubunCompleted() {
-      if (this.lightCarDocumentsGarageVerification.isFillIn) {
-        document.querySelector(
-          ".lcgarage-verification-kubun-completed"
-        ).style.backgroundColor = "#ED1C24";
-      } else {
-        document.querySelector(
-          ".lcgarage-verification-kubun-completed"
-        ).style.backgroundColor = "#cccccc";
-      }
-    },
-
-    selfCertificationConsentToUseKubunCompleted() {
-      if (this.storingMethod.isFillIn) {
-        document.querySelector(
-          ".self-certification-consent-to-use-kubun-completed"
-        ).style.backgroundColor = "#ED1C24";
-      } else {
-        document.querySelector(
-          ".self-certification-consent-to-use-kubun-completed"
-        ).style.backgroundColor = "#cccccc";
-      }
-    },
-    arrangementDiagramCompleted() {
-      if (this.arrangementDiagram.isFillIn) {
-        document.querySelector(
-          ".arrangement-diagram-completed"
-        ).style.backgroundColor = "#ED1C24";
-      } else {
-        document.querySelector(
-          ".arrangement-diagram-completed"
-        ).style.backgroundColor = "#cccccc";
-      }
-    },
 
     // poaOssKubunCompleted() {
     //   if (
@@ -402,21 +318,21 @@ export default {
     //   console.log(result);
     // },
 
-    memoField(memo) {
-      if (memo.memoField) {
-        memo.recordDate = dayjs().format("YYYY-MM-DD");
-      } else {
-        memo.recordDate = "";
-      }
-    },
+    // memoField(memo) {
+    //   if (memo.memoField) {
+    //     memo.recordDate = dayjs().format("YYYY-MM-DD");
+    //   } else {
+    //     memo.recordDate = "";
+    //   }
+    // },
 
-    addMemo() {
-      this.memos.push({
-        recordDate: "",
-        memoField: "",
-        promisedDay: "",
-      });
-    },
+    // addMemo() {
+    //   this.memos.push({
+    //     recordDate: "",
+    //     memoField: "",
+    //     promisedDay: "",
+    //   });
+    // },
     poaImg() {
       window.open("/委任状（書類代行）.pdf", "_blank");
     },
@@ -875,7 +791,7 @@ export default {
           "
         >
           <v-toolbar-title class="ml-15 d-flex align-center normalCarDocuments">
-            　➀委任状（お車の登録、検査手続きを代行させて頂く手続きです。）
+            　➀委任状（ご成約頂いたお車の登録、検査手続きを代行させて頂く手続きです。）
           </v-toolbar-title>
         </v-row>
         <v-row
@@ -900,16 +816,11 @@ export default {
             class="mx-1 d-flex align-center"
             v-if="this.normalCarDocuments.poaKubun === '委任状'"
           >
-            <v-checkbox
-              @change="poaKubunCompleted"
-              v-model="normalCarDocuments.isFillIn"
-              label="ご記入"
-            >
+            <v-checkbox v-model="normalCarDocuments.isFillIn" label="ご記入">
             </v-checkbox>
           </v-col>
           <v-col cols="2" class="mx-1 d-flex align-center">
             <v-checkbox
-              @change="poaKubunCompleted"
               v-if="
                 (this.contracts.paymentKubun === '現金' ||
                   this.contracts.paymentKubun === '銀行ローン') &&
@@ -921,7 +832,6 @@ export default {
             </v-checkbox>
 
             <v-checkbox
-              @change="poaKubunCompleted"
               v-if="
                 (this.contracts.paymentKubun === 'クレジット' ||
                   this.contracts.paymentKubun === '所有権留保') &&
@@ -935,7 +845,6 @@ export default {
 
           <v-col cols="2" class="mx-1 d-flex align-center">
             <v-checkbox
-              @change="poaKubunCompleted"
               v-if="
                 (this.contracts.paymentKubun === '現金' ||
                   this.contracts.paymentKubun === '銀行ローン') &&
@@ -947,7 +856,6 @@ export default {
             </v-checkbox>
 
             <v-checkbox
-              @change="poaKubunCompleted"
               v-if="
                 (this.contracts.paymentKubun === 'クレジット' ||
                   this.contracts.paymentKubun === '所有権留保') &&
@@ -970,7 +878,20 @@ export default {
             cols="2"
             class="mb-6 d-flex align-center"
           >
-            <div class="complete">完了</div>
+            <div
+              class="complete"
+              :class="{
+                'is-fill-in-completed':
+                  (this.normalCarDocuments.isFillIn &&
+                    this.normalCarDocuments.isRegisteredSeal &&
+                    this.normalCarDocuments.isSealCertificate) ||
+                  (this.normalCarDocuments.isFillIn &&
+                    this.normalCarDocuments.isStamping &&
+                    this.normalCarDocuments.isResidentCard),
+              }"
+            >
+              完了
+            </div>
           </v-col>
 
           <!-- <v-col
@@ -1109,7 +1030,7 @@ export default {
         >
           <v-toolbar-title class="ml-15 d-flex align-center normalCarDocuments">
             　➀
-            委任状・OSS（お車の登録、検査手続きを代行させて頂く手続きです。）
+            委任状・OSS（ご成約頂いたお車の登録、検査手続きを代行させて頂く手続きです。）
           </v-toolbar-title>
         </v-row>
         <v-row
@@ -1211,7 +1132,20 @@ export default {
             cols="2"
             class="mb-6 d-flex align-center"
           >
-            <div class="complete">完了</div>
+            <div
+              class="complete"
+              :class="{
+                'is-fill-in-completed':
+                  (this.normalCarDocuments.isFillIn &&
+                    this.normalCarDocuments.isRegisteredSeal &&
+                    this.normalCarDocuments.isSealCertificate) ||
+                  (this.normalCarDocuments.isFillIn &&
+                    this.normalCarDocuments.isStamping &&
+                    this.normalCarDocuments.isResidentCard),
+              }"
+            >
+              完了
+            </div>
           </v-col>
           <!-- <v-col
           cols="2"
@@ -1542,7 +1476,17 @@ export default {
             cols="2"
             class="mb-6 d-flex align-center"
           >
-            <div class="complete">完了</div>
+            <div
+              class="complete"
+              :class="{
+                'is-fill-in-completed':
+                  this.lightCarDocuments.isFillIn &&
+                  this.lightCarDocuments.isStamping &&
+                  this.lightCarDocuments.isResidentCard,
+              }"
+            >
+              完了
+            </div>
           </v-col>
           <!-- <v-col
           cols="2"
@@ -1691,7 +1635,15 @@ export default {
             cols="2"
             class="mb-6 d-flex align-center"
           >
-            <div class="ncgarage-verification-kubun-completed">完了</div>
+            <div
+              class="ncgarage-verification-kubun-completed"
+              :class="{
+                'is-fill-in-completed':
+                  this.normalCarDocumentsGarageVerification.isFillIn,
+              }"
+            >
+              完了
+            </div>
           </v-col>
 
           <!-- <v-col
@@ -1808,7 +1760,15 @@ export default {
             cols="2"
             class="mb-6 d-flex align-center"
           >
-            <div class="lcgarage-verification-kubun-completed">完了</div>
+            <div
+              class="lcgarage-verification-kubun-completed"
+              :class="{
+                'is-fill-in-completed':
+                  this.lightCarDocumentsGarageVerification.isFillIn,
+              }"
+            >
+              完了
+            </div>
           </v-col>
 
           <!-- <v-col
@@ -1925,11 +1885,7 @@ export default {
                 '使用承諾証'
             "
           >
-            <v-checkbox
-              @change="selfCertificationConsentToUseKubunCompleted"
-              label="ご記入"
-              v-model="storingMethod.isFillIn"
-            >
+            <v-checkbox label="ご記入" v-model="storingMethod.isFillIn">
             </v-checkbox>
           </v-col>
           <v-col cols="2" class="mx-1"> </v-col>
@@ -1944,7 +1900,12 @@ export default {
             cols="2"
             class="mb-6 d-flex align-center"
           >
-            <div class="self-certification-consent-to-use-kubun-completed">
+            <div
+              class="self-certification-consent-to-use-kubun-completed"
+              :class="{
+                'is-fill-in-completed': storingMethod.isFillIn,
+              }"
+            >
               完了
             </div>
           </v-col>
@@ -2061,8 +2022,9 @@ export default {
           class="mt-5"
           v-if="
             this.normalCarDocuments.poaOssKubun === 'OSS' ||
-            this.normalCarDocumentsGarageVerification
-              .NCgarageVerificationKubun === '保管場所証明申請書' ||
+            (this.normalCarDocuments.poaOssKubun === '委任状' &&
+              this.normalCarDocumentsGarageVerification
+                .NCgarageVerificationKubun === '保管場所証明申請書') ||
             this.lightCarDocumentsGarageVerification
               .LCgarageVerificationKubun === '保管場所届出書'
           "
@@ -2088,7 +2050,14 @@ export default {
           <v-col cols="2" class="mx-1"> </v-col>
           <v-col cols="2" class="mx-1"> </v-col>
           <v-col cols="2" class="mb-6 d-flex align-center">
-            <div class="arrangement-diagram-completed">完了</div>
+            <div
+              class="arrangement-diagram-completed"
+              :class="{
+                'is-fill-in-completed': arrangementDiagram.isFillIn,
+              }"
+            >
+              完了
+            </div>
           </v-col>
           <!-- <v-col cols="2" class="mx-1 arrangement-completedDate">
           <v-text-field
@@ -2218,6 +2187,32 @@ export default {
             >
             </v-checkbox>
           </v-col>
+          <v-col
+            cols="2"
+            class="mx-1"
+            v-if="this.desiredNumber.isDesiredNumber === '有'"
+          >
+          </v-col>
+          <v-col
+            cols="2"
+            class="mx-1"
+            v-if="this.desiredNumber.isDesiredNumber === '有'"
+          >
+          </v-col>
+          <v-col
+            cols="2"
+            class="mb-6 d-flex align-center"
+            v-if="this.desiredNumber.isDesiredNumber === '有'"
+          >
+            <div
+              class="desired-number-completed"
+              :class="{
+                'is-fill-in-completed': desiredNumber.isFillIn,
+              }"
+            >
+              完了
+            </div>
+          </v-col>
           <!-- <v-col
           cols="2"
           class="mx-1 desiredNumber-completedDate"
@@ -2301,6 +2296,32 @@ export default {
               v-model="etc.isFillIn"
             >
             </v-checkbox>
+          </v-col>
+          <v-col
+            cols="2"
+            class="mx-1"
+            v-if="this.etc.etcKubun === 'ETC' || etc.etcKubun === 'ETC-2.0'"
+          >
+          </v-col>
+          <v-col
+            cols="2"
+            class="mx-1"
+            v-if="this.etc.etcKubun === 'ETC' || etc.etcKubun === 'ETC-2.0'"
+          >
+          </v-col>
+          <v-col
+            cols="2"
+            class="mb-6 d-flex align-center"
+            v-if="this.etc.etcKubun === 'ETC' || etc.etcKubun === 'ETC-2.0'"
+          >
+            <div
+              class="etc-kubun-completed"
+              :class="{
+                'is-fill-in-completed': etc.isFillIn,
+              }"
+            >
+              完了
+            </div>
           </v-col>
 
           <!-- <v-col
@@ -2414,6 +2435,32 @@ export default {
               v-model="extendedWarranty.isFillIn"
             >
             </v-checkbox>
+          </v-col>
+          <v-col
+            cols="2"
+            class="mx-1"
+            v-if="this.extendedWarranty.isExtendedWarranty === '有'"
+          >
+          </v-col>
+          <v-col
+            cols="2"
+            class="mx-1"
+            v-if="this.extendedWarranty.isExtendedWarranty === '有'"
+          >
+          </v-col>
+          <v-col
+            cols="2"
+            class="mb-6 d-flex align-center"
+            v-if="this.extendedWarranty.isExtendedWarranty === '有'"
+          >
+            <div
+              class="extended-warranty-completed"
+              :class="{
+                'is-fill-in-completed': extendedWarranty.isFillIn,
+              }"
+            >
+              完了
+            </div>
           </v-col>
           <!-- <v-col
           cols="2"
@@ -2549,6 +2596,33 @@ export default {
             >
             </v-checkbox>
           </v-col>
+          <v-col
+            cols="2"
+            class="mx-1"
+            v-if="this.maintenancePack.isMaintenancePack === '有'"
+          >
+          </v-col>
+          <v-col
+            cols="2"
+            class="mx-1"
+            v-if="this.maintenancePack.isMaintenancePack === '有'"
+          >
+          </v-col>
+          <v-col
+            cols="2"
+            class="mb-6 d-flex align-center"
+            v-if="this.maintenancePack.isMaintenancePack === '有'"
+          >
+            <div
+              class="maintenance-pack-completed"
+              :class="{
+                'is-fill-in-completed': maintenancePack.isFillIn,
+              }"
+            >
+              完了
+            </div>
+          </v-col>
+
           <!-- <v-col
           cols="2"
           class="mx-1 maintenancePack-completedDate"
@@ -2629,6 +2703,41 @@ export default {
               v-model="jaf.isFillIn"
             >
             </v-checkbox>
+          </v-col>
+          <v-col
+            cols="2"
+            class="mx-1"
+            v-if="
+              this.jaf.isJafPaymentKubun === '有（口座振替）' ||
+              this.jaf.isJafPaymentKubun === '有（クレジット）'
+            "
+          >
+          </v-col>
+          <v-col
+            cols="2"
+            class="mx-1"
+            v-if="
+              this.jaf.isJafPaymentKubun === '有（口座振替）' ||
+              this.jaf.isJafPaymentKubun === '有（クレジット）'
+            "
+          >
+          </v-col>
+          <v-col
+            cols="2"
+            class="mb-6 d-flex align-center"
+            v-if="
+              this.jaf.isJafPaymentKubun === '有（口座振替）' ||
+              this.jaf.isJafPaymentKubun === '有（クレジット）'
+            "
+          >
+            <div
+              class="jaf-payment-kubun-completed"
+              :class="{
+                'is-fill-in-completed': jaf.isFillIn,
+              }"
+            >
+              完了
+            </div>
           </v-col>
 
           <!-- <v-col
@@ -2727,6 +2836,33 @@ export default {
             >
             </v-checkbox>
           </v-col>
+          <v-col
+            cols="2"
+            class="mx-1"
+            v-if="this.contracts.normalCarLightCarKubun === '軽自動車'"
+          >
+          </v-col>
+          <v-col
+            cols="2"
+            class="mx-1"
+            v-if="this.contracts.normalCarLightCarKubun === '軽自動車'"
+          >
+          </v-col>
+          <v-col
+            cols="2"
+            class="mb-6 d-flex align-center"
+            v-if="this.contracts.normalCarLightCarKubun === '軽自動車'"
+          >
+            <div
+              class="tax-declaration-completed"
+              :class="{
+                'is-fill-in-completed': taxDeclaration.isFillIn,
+              }"
+            >
+              完了
+            </div>
+          </v-col>
+
           <!-- <v-col cols="2 taxDeclaration-completedDate" class="mx-1">
           <v-text-field
             :class="{
@@ -2809,6 +2945,45 @@ export default {
             >
             </v-checkbox>
           </v-col>
+          <v-col
+            cols="2"
+            class="mx-1"
+            v-if="
+              this.insurance.jocInsuranceCompany === '東京海上' ||
+              this.insurance.jocInsuranceCompany === '三井住友' ||
+              this.insurance.jocInsuranceCompany === '損保ジャパン'
+            "
+          >
+          </v-col>
+          <v-col
+            cols="2"
+            class="mx-1"
+            v-if="
+              this.insurance.jocInsuranceCompany === '東京海上' ||
+              this.insurance.jocInsuranceCompany === '三井住友' ||
+              this.insurance.jocInsuranceCompany === '損保ジャパン'
+            "
+          >
+          </v-col>
+          <v-col
+            cols="2"
+            class="mb-6 d-flex align-center"
+            v-if="
+              this.insurance.jocInsuranceCompany === '東京海上' ||
+              this.insurance.jocInsuranceCompany === '三井住友' ||
+              this.insurance.jocInsuranceCompany === '損保ジャパン'
+            "
+          >
+            <div
+              class="insurance-completed"
+              :class="{
+                'is-fill-in-completed': insurance.joiningProcedure,
+              }"
+            >
+              完了
+            </div>
+          </v-col>
+
           <!-- <v-col
           cols="2"
           v-if="
@@ -2897,7 +3072,7 @@ export default {
             v-if="this.insurance.jocInsuranceCompany === '三井住友'"
           >
             <v-btn
-              href="https://www.ms-ins.com/pdf/personal/car/gk.pdf?__CAM2INFO=2.1.GEQBieghGCDA.hQBieGHGcDa-27&__CAMCID=dqjEPtxLID-211&__CAMSID=hQBieGHGcDa-27&__CAMVID=GEQBieghGCDA&_c_d=1&_ca_sid_4229=eyJzZXNzaW9uRXhwaXJhdGlvblRpbWUiOiIyMDI0LTEwLTIyVDA3OjA1OjQ5LjE4MloiLCJwcm9qZWN0SWQiOiI0MjI5IiwiZGlzdGluY3RJZCI6IjdiYmI1MzI5MzgwYjQyM2NhMTlkZDMwN2Q4OWRhNThlIiwiY2xpZW50SWQiOiJjNWMzMzU4ZjQzMzk0MGVlYTA0MWJkNDkyNDUzZWI4YSJ9&_gl=1*1g8bv3l*_gcl_au*MjAxODY1MzY5OC4xNzI5MTc1NTY5*_ga*MTI1Nzg0MjU0LjE3MjkxNzU1Njk.*_ga_7J71CWY0VE*MTcyOTU3ODY2OS4zLjEuMTcyOTU3ODk0OC40OS4wLjA."
+              href="https://www.ms-ins.com/personal/pdf/"
               target="_blank"
               density="compact"
               icon="mdi-book-open"
@@ -2971,8 +3146,50 @@ export default {
               this.insurance.jocInsuranceCompany === '損保ジャパン'
             "
           >
-            <v-checkbox label="ご説明" v-model="insurance.skyPlusExplanation">
+            <v-checkbox
+              @change="skyPlusCompleted"
+              label="ご説明"
+              v-model="insurance.skyPlusExplanation"
+            >
             </v-checkbox>
+          </v-col>
+          <v-col
+            cols="2"
+            class="mx-1"
+            v-if="
+              this.insurance.jocInsuranceCompany === '東京海上' ||
+              this.insurance.jocInsuranceCompany === '三井住友' ||
+              this.insurance.jocInsuranceCompany === '損保ジャパン'
+            "
+          >
+          </v-col>
+          <v-col
+            cols="2"
+            class="mx-1"
+            v-if="
+              this.insurance.jocInsuranceCompany === '東京海上' ||
+              this.insurance.jocInsuranceCompany === '三井住友' ||
+              this.insurance.jocInsuranceCompany === '損保ジャパン'
+            "
+          >
+          </v-col>
+          <v-col
+            cols="2"
+            class="mb-6 d-flex align-center"
+            v-if="
+              this.insurance.jocInsuranceCompany === '東京海上' ||
+              this.insurance.jocInsuranceCompany === '三井住友' ||
+              this.insurance.jocInsuranceCompany === '損保ジャパン'
+            "
+          >
+            <div
+              class="sky-plus-completed"
+              :class="{
+                'is-fill-in-completed': insurance.skyPlusExplanation,
+              }"
+            >
+              完了
+            </div>
           </v-col>
         </v-row>
         <v-row
@@ -3059,6 +3276,33 @@ export default {
             >
             </v-checkbox>
           </v-col>
+          <v-col
+            cols="2"
+            class="mx-1"
+            v-if="this.contracts.insuranceKubun === '他社加入'"
+          >
+          </v-col>
+          <v-col
+            cols="2"
+            class="mx-1"
+            v-if="this.contracts.insuranceKubun === '他社加入'"
+          >
+          </v-col>
+          <v-col
+            cols="2"
+            class="mb-6 d-flex align-center"
+            v-if="this.contracts.insuranceKubun === '他社加入'"
+          >
+            <div
+              class="insurance-completed2"
+              :class="{
+                'is-fill-in-completed': insurance.confirmationOfMembership,
+              }"
+            >
+              完了
+            </div>
+          </v-col>
+
           <!-- <v-col
           cols="2"
           v-if="this.contracts.insuranceKubun === '他社加入'"
@@ -3151,6 +3395,41 @@ export default {
             >
             </v-checkbox>
           </v-col>
+          <v-col
+            cols="2"
+            class="mx-1"
+            v-if="
+              this.credit.creditDocuments === '電子' ||
+              this.credit.creditDocuments === '書面'
+            "
+          >
+          </v-col>
+          <v-col
+            cols="2"
+            class="mx-1"
+            v-if="this.credit.creditDocuments === '電子'"
+          >
+          </v-col>
+          <v-col
+            cols="2"
+            class="mb-6 d-flex align-center"
+            v-if="
+              this.credit.creditDocuments === '電子' ||
+              this.credit.creditDocuments === '書面'
+            "
+          >
+            <div
+              class="credit-documents-completed"
+              :class="{
+                'is-fill-in-completed':
+                  this.credit.isFillIn ||
+                  (this.credit.isFillIn && this.credit.isRegisteredSeal),
+              }"
+            >
+              完了
+            </div>
+          </v-col>
+
           <!-- <v-col cols="2" class="mx-1 credit-completedDate">
           <v-text-field
             :class="{ 'completedDate-input': credit.completedDate != false }"
@@ -3176,6 +3455,38 @@ export default {
               density="compact"
               icon="mdi-search-web"
             ></v-btn>
+          </v-col>
+        </v-row>
+        <v-row>
+          <v-toolbar-title
+            class="mt-8 ml-15 mb-5 d-flex deliveryDate"
+            v-if="
+              this.contracts.newCarUsedCarKubun === '新車' ||
+              this.contracts.newCarUsedCarKubun === '中古車'
+            "
+          >
+            　➅
+            納車日（ご成約頂いたお車が登録されて２週間後がご納車日の目安となります。）
+          </v-toolbar-title>
+        </v-row>
+        <v-row class="mt-5">
+          <v-col
+            cols="2"
+            v-if="
+              this.contracts.newCarUsedCarKubun === '新車' ||
+              this.contracts.newCarUsedCarKubun === '中古車'
+            "
+            class="ml-15"
+          >
+            <v-text-field
+              class="test"
+              :class="{
+                'completedDate-input': !delivery.deliveryDate,
+              }"
+              type="date"
+              v-model="delivery.deliveryDate"
+              label="納車希望日"
+            ></v-text-field>
           </v-col>
         </v-row>
         <v-row
@@ -3439,6 +3750,13 @@ export default {
   border-radius: 5px;
 }
 
+.deliveryDate {
+  max-width: 87%;
+  background: #ff3f3f;
+  color: #ffffff;
+  border-radius: 5px;
+}
+
 .storingMethod-completedDate {
   color: #ff0000;
 }
@@ -3480,8 +3798,8 @@ export default {
   color: #ff0000;
 }
 
-.completedDate-input {
-  color: #000000;
+.delivery-deliveryDate {
+  color: #ff0000;
 }
 .goal {
   max-width: 87%;
@@ -3522,6 +3840,7 @@ export default {
   color: #ffffff;
   text-align: center;
 }
+
 .ncgarage-verification-kubun-completed {
   width: 100px;
   height: 45px;
@@ -3557,5 +3876,101 @@ export default {
   background-color: #cccccc;
   color: #ffffff;
   text-align: center;
+}
+.desired-number-completed {
+  width: 100px;
+  height: 45px;
+  line-height: 45px;
+  border-radius: 5px;
+  background-color: #cccccc;
+  color: #ffffff;
+  text-align: center;
+}
+.etc-kubun-completed {
+  width: 100px;
+  height: 45px;
+  line-height: 45px;
+  border-radius: 5px;
+  background-color: #cccccc;
+  color: #ffffff;
+  text-align: center;
+}
+.extended-warranty-completed {
+  width: 100px;
+  height: 45px;
+  line-height: 45px;
+  border-radius: 5px;
+  background-color: #cccccc;
+  color: #ffffff;
+  text-align: center;
+}
+.maintenance-pack-completed {
+  width: 100px;
+  height: 45px;
+  line-height: 45px;
+  border-radius: 5px;
+  background-color: #cccccc;
+  color: #ffffff;
+  text-align: center;
+}
+.jaf-payment-kubun-completed {
+  width: 100px;
+  height: 45px;
+  line-height: 45px;
+  border-radius: 5px;
+  background-color: #cccccc;
+  color: #ffffff;
+  text-align: center;
+}
+.tax-declaration-completed {
+  width: 100px;
+  height: 45px;
+  line-height: 45px;
+  border-radius: 5px;
+  background-color: #cccccc;
+  color: #ffffff;
+  text-align: center;
+}
+.insurance-completed {
+  width: 100px;
+  height: 45px;
+  line-height: 45px;
+  border-radius: 5px;
+  background-color: #cccccc;
+  color: #ffffff;
+  text-align: center;
+}
+.sky-plus-completed {
+  width: 100px;
+  height: 45px;
+  line-height: 45px;
+  border-radius: 5px;
+  background-color: #cccccc;
+  color: #ffffff;
+  text-align: center;
+}
+.insurance-completed2 {
+  width: 100px;
+  height: 45px;
+  line-height: 45px;
+  border-radius: 5px;
+  background-color: #cccccc;
+  color: #ffffff;
+  text-align: center;
+}
+.credit-documents-completed {
+  width: 100px;
+  height: 45px;
+  line-height: 45px;
+  border-radius: 5px;
+  background-color: #cccccc;
+  color: #ffffff;
+  text-align: center;
+}
+.completedDate-input {
+  color: #ff0000;
+}
+.is-fill-in-completed {
+  background-color: #ff0000;
 }
 </style>
