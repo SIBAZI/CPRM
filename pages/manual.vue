@@ -3487,8 +3487,17 @@ export default {
           <v-col
             cols="2"
             v-if="
-              this.contracts.newCarUsedCarKubun === '新車' ||
-              this.contracts.newCarUsedCarKubun === '中古車'
+              (this.contracts.newCarUsedCarKubun === '新車' ||
+                this.contracts.newCarUsedCarKubun === '中古車') &&
+              (this.contracts.normalCarLightCarKubun === '普通車' ||
+                this.contracts.normalCarLightCarKubun === '軽自動車') &&
+              (this.contracts.paymentKubun === '現金' ||
+                this.contracts.paymentKubun === 'クレジット' ||
+                this.contracts.paymentKubun === '銀行ローン' ||
+                this.contracts.paymentKubun === '所有権留保') &&
+              (this.contracts.insuranceKubun === '当社加入' ||
+                this.contracts.insuranceKubun === '他社加入' ||
+                this.contracts.insuranceKubun === '未加入')
             "
             class="ml-15"
           >
