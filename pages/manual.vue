@@ -701,7 +701,8 @@ export default {
             　　スキルアップの補助として活用しましょう。<br />
             　　全体像の把握、分からないことを明確化することが大切です。<br />
             　　接客はマニュアルでは収まりません。<br />
-            　　自分の思い、言葉で説明できるように心がけましょう。
+            　　自分の思い、言葉で説明できるように心がけましょう。<br />
+            　　最後に、お客様だけではなく周りの人（仲間）も大切に。
           </p>
         </v-row>
         <v-row class="mt-12 ml-12">
@@ -709,12 +710,25 @@ export default {
             <v-select
               v-model="start.startKubun"
               label="手続き内容"
-              :items="['', '成約時登録', '買取・下取り', '一般登録代行']"
+              :items="[
+                '',
+                '成約時登録',
+                '買取・下取り',
+                '納車準備',
+                '納車',
+                '一般登録代行',
+              ]"
               variant="outlined"
             ></v-select>
           </v-col>
         </v-row>
         <v-row v-if="this.start.startKubun === '買取・下取り'">
+          <p class="ml-16">　※現在作成中</p>
+        </v-row>
+        <v-row v-if="this.start.startKubun === '納車準備'">
+          <p class="ml-16">　※現在作成中</p>
+        </v-row>
+        <v-row v-if="this.start.startKubun === '納車'">
           <p class="ml-16">　※現在作成中</p>
         </v-row>
         <v-row v-if="this.start.startKubun === '一般登録代行'">
