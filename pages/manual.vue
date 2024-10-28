@@ -20,6 +20,7 @@ export default {
       usedCarExtendedWarrantyModal: false, //中古車延長保証モーダル
       maintenancePackModal: false, //メンテナンスパック申込用紙記入例
       taxDeclarationNameModal: false, //税申告書記入例
+
       start: {
         startKubun: "", //成約時登録・買取・下取り・一般登録代行
       },
@@ -3475,8 +3476,17 @@ export default {
           <v-toolbar-title
             class="mt-8 ml-15 mb-5 d-flex deliveryDate"
             v-if="
-              this.contracts.newCarUsedCarKubun === '新車' ||
-              this.contracts.newCarUsedCarKubun === '中古車'
+              (this.contracts.newCarUsedCarKubun === '新車' ||
+                this.contracts.newCarUsedCarKubun === '中古車') &&
+              (this.contracts.normalCarLightCarKubun === '普通車' ||
+                this.contracts.normalCarLightCarKubun === '軽自動車') &&
+              (this.contracts.paymentKubun === '現金' ||
+                this.contracts.paymentKubun === 'クレジット' ||
+                this.contracts.paymentKubun === '銀行ローン' ||
+                this.contracts.paymentKubun === '所有権留保') &&
+              (this.contracts.insuranceKubun === '当社加入' ||
+                this.contracts.insuranceKubun === '他社加入' ||
+                this.contracts.insuranceKubun === '未加入')
             "
           >
             　➅
@@ -3510,6 +3520,87 @@ export default {
               v-model="delivery.deliveryDate"
               label="納車希望日"
             ></v-text-field>
+          </v-col>
+          <v-col
+            cols="2"
+            class="mx-1"
+            v-if="
+              (this.contracts.newCarUsedCarKubun === '新車' ||
+                this.contracts.newCarUsedCarKubun === '中古車') &&
+              (this.contracts.normalCarLightCarKubun === '普通車' ||
+                this.contracts.normalCarLightCarKubun === '軽自動車') &&
+              (this.contracts.paymentKubun === '現金' ||
+                this.contracts.paymentKubun === 'クレジット' ||
+                this.contracts.paymentKubun === '銀行ローン' ||
+                this.contracts.paymentKubun === '所有権留保') &&
+              (this.contracts.insuranceKubun === '当社加入' ||
+                this.contracts.insuranceKubun === '他社加入' ||
+                this.contracts.insuranceKubun === '未加入')
+            "
+          >
+          </v-col>
+          <v-col
+            cols="2"
+            class="mx-1"
+            v-if="
+              (this.contracts.newCarUsedCarKubun === '新車' ||
+                this.contracts.newCarUsedCarKubun === '中古車') &&
+              (this.contracts.normalCarLightCarKubun === '普通車' ||
+                this.contracts.normalCarLightCarKubun === '軽自動車') &&
+              (this.contracts.paymentKubun === '現金' ||
+                this.contracts.paymentKubun === 'クレジット' ||
+                this.contracts.paymentKubun === '銀行ローン' ||
+                this.contracts.paymentKubun === '所有権留保') &&
+              (this.contracts.insuranceKubun === '当社加入' ||
+                this.contracts.insuranceKubun === '他社加入' ||
+                this.contracts.insuranceKubun === '未加入')
+            "
+          >
+          </v-col>
+          <v-col
+            cols="2"
+            class="mx-1"
+            v-if="
+              (this.contracts.newCarUsedCarKubun === '新車' ||
+                this.contracts.newCarUsedCarKubun === '中古車') &&
+              (this.contracts.normalCarLightCarKubun === '普通車' ||
+                this.contracts.normalCarLightCarKubun === '軽自動車') &&
+              (this.contracts.paymentKubun === '現金' ||
+                this.contracts.paymentKubun === 'クレジット' ||
+                this.contracts.paymentKubun === '銀行ローン' ||
+                this.contracts.paymentKubun === '所有権留保') &&
+              (this.contracts.insuranceKubun === '当社加入' ||
+                this.contracts.insuranceKubun === '他社加入' ||
+                this.contracts.insuranceKubun === '未加入')
+            "
+          >
+          </v-col>
+
+          <v-col
+            cols="2"
+            class="mb-6 d-flex align-center"
+            v-if="
+              (this.contracts.newCarUsedCarKubun === '新車' ||
+                this.contracts.newCarUsedCarKubun === '中古車') &&
+              (this.contracts.normalCarLightCarKubun === '普通車' ||
+                this.contracts.normalCarLightCarKubun === '軽自動車') &&
+              (this.contracts.paymentKubun === '現金' ||
+                this.contracts.paymentKubun === 'クレジット' ||
+                this.contracts.paymentKubun === '銀行ローン' ||
+                this.contracts.paymentKubun === '所有権留保') &&
+              (this.contracts.insuranceKubun === '当社加入' ||
+                this.contracts.insuranceKubun === '他社加入' ||
+                this.contracts.insuranceKubun === '未加入')
+            "
+          >
+            <div
+              class="delivery-date-completed"
+              :class="{
+                'is-fill-in-completed': delivery.deliveryDate,
+              }"
+            >
+              完了
+            </div>
           </v-col>
         </v-row>
         <v-row
@@ -3982,6 +4073,15 @@ export default {
   text-align: center;
 }
 .credit-documents-completed {
+  width: 100px;
+  height: 45px;
+  line-height: 45px;
+  border-radius: 5px;
+  background-color: #cccccc;
+  color: #ffffff;
+  text-align: center;
+}
+.delivery-date-completed {
   width: 100px;
   height: 45px;
   line-height: 45px;
