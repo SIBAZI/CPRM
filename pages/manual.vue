@@ -6,7 +6,7 @@ export default {
       poaRegisteredSealModal: false, //委任状（実印）モーダル
       poaStampingModal: false, //委任状（認印）モーダル
       ossRegisteredSealModal: false, //OSS（実印）モーダル
-      ossStampingModal: false, //OSS(認印)モーダル
+      ossStampingModal: false, //OSS委任状(認印)モーダル
       lightCarDocumentsOwnerAndUserModal: false, //申請依頼書(所有者・使用者）モーダル
       lightCarDocumentsUserModal: false, //申請依頼書(使用者）モーダル
       NCgarageVerificationModal: false, //保管場所証明申請書モーダル
@@ -1059,8 +1059,8 @@ export default {
             <v-select
               @update:modelValue="poaOssKubunChange"
               v-model="normalCarDocuments.poaOssKubun"
-              label="委任状 or OSS"
-              :items="['', '委任状', 'OSS']"
+              label="委任状 or OSS委任状"
+              :items="['', '委任状', 'OSS委任状']"
               variant="outlined"
             ></v-select>
           </v-col>
@@ -1070,7 +1070,7 @@ export default {
             class="mx-1 d-flex align-center"
             v-if="
               this.normalCarDocuments.poaOssKubun === '委任状' ||
-              this.normalCarDocuments.poaOssKubun === 'OSS'
+              this.normalCarDocuments.poaOssKubun === 'OSS委任状'
             "
           >
             <v-checkbox
@@ -1087,7 +1087,7 @@ export default {
                 (this.contracts.paymentKubun === '現金' ||
                   this.contracts.paymentKubun === '銀行ローン') &&
                 (this.normalCarDocuments.poaOssKubun === '委任状' ||
-                  this.normalCarDocuments.poaOssKubun === 'OSS')
+                  this.normalCarDocuments.poaOssKubun === 'OSS委任状')
               "
               v-model="normalCarDocuments.isRegisteredSeal"
               label="実印"
@@ -1100,7 +1100,7 @@ export default {
                 (this.contracts.paymentKubun === 'クレジット' ||
                   this.contracts.paymentKubun === '所有権留保') &&
                 (this.normalCarDocuments.poaOssKubun === '委任状' ||
-                  this.normalCarDocuments.poaOssKubun === 'OSS')
+                  this.normalCarDocuments.poaOssKubun === 'OSS委任状')
               "
               v-model="normalCarDocuments.isStamping"
               label="認印"
@@ -1115,7 +1115,7 @@ export default {
                 (this.contracts.paymentKubun === '現金' ||
                   this.contracts.paymentKubun === '銀行ローン') &&
                 (this.normalCarDocuments.poaOssKubun === '委任状' ||
-                  this.normalCarDocuments.poaOssKubun === 'OSS')
+                  this.normalCarDocuments.poaOssKubun === 'OSS委任状')
               "
               v-model="normalCarDocuments.isSealCertificate"
               label="印鑑証明"
@@ -1128,7 +1128,7 @@ export default {
                 (this.contracts.paymentKubun === 'クレジット' ||
                   this.contracts.paymentKubun === '所有権留保') &&
                 (this.normalCarDocuments.poaOssKubun === '委任状' ||
-                  this.normalCarDocuments.poaOssKubun === 'OSS')
+                  this.normalCarDocuments.poaOssKubun === 'OSS委任状')
               "
               v-model="normalCarDocuments.isResidentCard"
               label="住民票"
@@ -1142,7 +1142,7 @@ export default {
                 this.contracts.paymentKubun === 'クレジット' ||
                 this.contracts.paymentKubun === '所有権留保') &&
               (this.normalCarDocuments.poaOssKubun === '委任状' ||
-                this.normalCarDocuments.poaOssKubun === 'OSS')
+                this.normalCarDocuments.poaOssKubun === 'OSS委任状')
             "
             cols="2"
             class="mb-6 d-flex align-center"
@@ -1167,7 +1167,7 @@ export default {
           class="mx-1 normalCarDocuments-completedDate"
           v-if="
             this.normalCarDocuments.poaOssKubun === '委任状' ||
-            this.normalCarDocuments.poaOssKubun === 'OSS'
+            this.normalCarDocuments.poaOssKubun === 'OSS委任状'
           "
         >
           <v-text-field
@@ -1184,7 +1184,7 @@ export default {
           v-if="
             this.contracts.newCarUsedCarKubun === '新車' &&
             this.contracts.paymentKubun === '現金' &&
-            this.normalCarDocuments.poaOssKubun === 'OSS'
+            this.normalCarDocuments.poaOssKubun === 'OSS委任状'
           "
         >
           <p class="explanation ml-16">
@@ -1197,7 +1197,7 @@ export default {
           v-if="
             this.contracts.newCarUsedCarKubun === '新車' &&
             this.contracts.paymentKubun === 'クレジット' &&
-            this.normalCarDocuments.poaOssKubun === 'OSS'
+            this.normalCarDocuments.poaOssKubun === 'OSS委任状'
           "
         >
           <p class="explanation ml-16">
@@ -1210,7 +1210,7 @@ export default {
           v-if="
             this.contracts.newCarUsedCarKubun === '新車' &&
             this.contracts.paymentKubun === '銀行ローン' &&
-            this.normalCarDocuments.poaOssKubun === 'OSS'
+            this.normalCarDocuments.poaOssKubun === 'OSS委任状'
           "
         >
           <p class="explanation ml-16">
@@ -1223,7 +1223,7 @@ export default {
           v-if="
             this.contracts.newCarUsedCarKubun === '新車' &&
             this.contracts.paymentKubun === '所有権留保' &&
-            this.normalCarDocuments.poaOssKubun === 'OSS'
+            this.normalCarDocuments.poaOssKubun === 'OSS委任状'
           "
         >
           <p class="explanation ml-16">
@@ -1293,7 +1293,7 @@ export default {
             v-if="
               (this.contracts.paymentKubun === '現金' ||
                 this.contracts.paymentKubun === '銀行ローン') &&
-              this.normalCarDocuments.poaOssKubun === 'OSS'
+              this.normalCarDocuments.poaOssKubun === 'OSS委任状'
             "
           >
             <v-btn
@@ -1308,7 +1308,7 @@ export default {
             v-if="
               (this.contracts.paymentKubun === 'クレジット' ||
                 this.contracts.paymentKubun === '所有権留保') &&
-              this.normalCarDocuments.poaOssKubun === 'OSS'
+              this.normalCarDocuments.poaOssKubun === 'OSS委任状'
             "
           >
             <v-btn
@@ -1323,7 +1323,7 @@ export default {
             v-if="
               (this.contracts.paymentKubun === '現金' ||
                 this.contracts.paymentKubun === '銀行ローン') &&
-              this.normalCarDocuments.poaOssKubun === 'OSS'
+              this.normalCarDocuments.poaOssKubun === 'OSS委任状'
             "
           >
             <v-btn @click="ossImg" density="compact" icon="mdi-printer"></v-btn>
@@ -1334,7 +1334,7 @@ export default {
             v-if="
               (this.contracts.paymentKubun === 'クレジット' ||
                 this.contracts.paymentKubun === '所有権留保') &&
-              this.normalCarDocuments.poaOssKubun === 'OSS'
+              this.normalCarDocuments.poaOssKubun === 'OSS委任状'
             "
           >
             <v-btn @click="ossImg" density="compact" icon="mdi-printer"></v-btn>
@@ -1347,11 +1347,11 @@ export default {
                 this.contracts.paymentKubun === '銀行ローン' ||
                 this.contracts.paymentKubun === 'クレジット' ||
                 this.contracts.paymentKubun === '所有権留保') &&
-              this.normalCarDocuments.poaOssKubun === 'OSS'
+              this.normalCarDocuments.poaOssKubun === 'OSS委任状'
             "
           >
             <v-btn
-              href="https://www.oss.mlit.go.jp/portal/beginner/osstowa/index.html"
+              href="https://www.OSS委任状.mlit.go.jp/portal/beginner/osstowa/index.html"
               target="_blank"
               density="compact"
               icon="mdi-search-web"
@@ -1864,7 +1864,7 @@ export default {
         <v-row>
           <v-toolbar-title
             class="ml-15 mb-5 d-flex align-center normalCarDocumentsGarageVerification"
-            v-if="this.normalCarDocuments.poaOssKubun === 'OSS'"
+            v-if="this.normalCarDocuments.poaOssKubun === 'OSS委任状'"
           >
             　➁
             車庫証明（ご成約頂いたお車の保管場所を警察署に届け出するための手続きです。）
@@ -1873,7 +1873,7 @@ export default {
         <v-row
           class="mt-5"
           v-if="
-            this.normalCarDocuments.poaOssKubun === 'OSS' ||
+            this.normalCarDocuments.poaOssKubun === 'OSS委任状' ||
             this.normalCarDocumentsGarageVerification
               .NCgarageVerificationKubun === '保管場所証明申請書' ||
             this.lightCarDocumentsGarageVerification
@@ -2036,7 +2036,7 @@ export default {
         <v-row
           class="mt-5"
           v-if="
-            this.normalCarDocuments.poaOssKubun === 'OSS' ||
+            this.normalCarDocuments.poaOssKubun === 'OSS委任状' ||
             (this.normalCarDocuments.poaOssKubun === '委任状' &&
               this.normalCarDocumentsGarageVerification
                 .NCgarageVerificationKubun === '保管場所証明申請書') ||
@@ -2087,7 +2087,7 @@ export default {
         </v-row>
         <v-row
           v-if="
-            this.normalCarDocuments.poaOssKubun === 'OSS' ||
+            this.normalCarDocuments.poaOssKubun === 'OSS委任状' ||
             this.normalCarDocumentsGarageVerification
               .NCgarageVerificationKubun === '保管場所証明申請書' ||
             this.lightCarDocumentsGarageVerification
@@ -2104,7 +2104,7 @@ export default {
             cols="1"
             class="mt-3 ml-16 d-flex align-center"
             v-if="
-              this.normalCarDocuments.poaOssKubun === 'OSS' ||
+              this.normalCarDocuments.poaOssKubun === 'OSS委任状' ||
               this.normalCarDocumentsGarageVerification
                 .NCgarageVerificationKubun === '保管場所証明申請書' ||
               this.lightCarDocumentsGarageVerification
@@ -2121,7 +2121,7 @@ export default {
             cols="1"
             class="mt-3 d-flex align-center"
             v-if="
-              this.normalCarDocuments.poaOssKubun === 'OSS' ||
+              this.normalCarDocuments.poaOssKubun === 'OSS委任状' ||
               this.normalCarDocumentsGarageVerification
                 .NCgarageVerificationKubun === '保管場所証明申請書' ||
               this.lightCarDocumentsGarageVerification
@@ -2141,7 +2141,7 @@ export default {
           cols="1"
           class="ml-16 d-flex align-center"
           v-if="
-            this.normalCarDocuments.poaOssKubun === 'OSS' ||
+            this.normalCarDocuments.poaOssKubun === 'OSS委任状' ||
             this.normalCarDocumentsGarageVerification
               .NCgarageVerificationKubun === '保管場所証明申請書' ||
             this.lightCarDocumentsGarageVerification
