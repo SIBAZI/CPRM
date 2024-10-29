@@ -503,6 +503,7 @@ export default {
       this.lightCarDocumentsGarageVerification.completedDate = false;
       this.taxDeclaration.isFillIn = "";
       this.taxDeclaration.completedDate = false;
+      this.normalCarDocuments.isRegisteredSeal = false;
     },
 
     paymentKubunChange() {
@@ -513,6 +514,18 @@ export default {
       this.credit.isFillIn = "";
       this.credit.isRegisteredSeal = false;
       this.credit.completedDate = false;
+      this.normalCarDocuments.isRegisteredSeal = false;
+      this.normalCarDocuments.isStamping = false;
+      this.normalCarDocuments.isSealCertificate = false;
+      this.normalCarDocuments.isResidentCard = false;
+      this.normalCarDocuments.isFillIn = false;
+      this.normalCarDocuments.isRegisteredSeal = false;
+      this.normalCarDocuments.isStamping = false;
+      this.normalCarDocuments.isSealCertificate = false;
+      this.normalCarDocuments.isResidentCard = false;
+      this.lightCarDocuments.isFillIn = false;
+      this.lightCarDocuments.isStamping = false;
+      this.lightCarDocuments.isResidentCard = false;
     },
     insuranceKubunChange() {
       this.insurance.jocInsuranceCompany = "";
