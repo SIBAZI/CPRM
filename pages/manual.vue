@@ -1613,7 +1613,11 @@ export default {
         <v-row>
           <v-toolbar-title
             class="mt-5 ml-15 mb-5 d-flex align-center normalCarDocumentsGarageVerification"
-            v-if="this.normalCarDocuments.poaOssKubun === '委任状'"
+            v-if="
+              this.normalCarDocuments.poaOssKubun === '委任状' ||
+              (this.contracts.newCarUsedCarKubun === '中古車' &&
+                this.contracts.normalCarLightCarKubun === '普通車')
+            "
           >
             　➁
             車庫証明（ご成約頂いたお車の保管場所を警察署に届け出するための手続きです。）
@@ -1624,7 +1628,11 @@ export default {
           <v-col
             cols="2"
             class="ml-15"
-            v-if="this.normalCarDocuments.poaOssKubun === '委任状'"
+            v-if="
+              this.normalCarDocuments.poaOssKubun === '委任状' ||
+              (this.contracts.newCarUsedCarKubun === '中古車' &&
+                this.contracts.normalCarLightCarKubun === '普通車')
+            "
           >
             <v-select
               @update:modelValue="NCgarageVerificationKubunChange"
@@ -2050,7 +2058,8 @@ export default {
           class="mt-5"
           v-if="
             this.normalCarDocuments.poaOssKubun === 'OSS委任状' ||
-            (this.normalCarDocuments.poaOssKubun === '委任状' &&
+            this.normalCarDocuments.poaOssKubun === '委任状' ||
+            (this.normalCarDocuments.poaKubun &&
               this.normalCarDocumentsGarageVerification
                 .NCgarageVerificationKubun === '保管場所証明申請書') ||
             this.lightCarDocumentsGarageVerification
