@@ -2058,10 +2058,8 @@ export default {
           class="mt-5"
           v-if="
             this.normalCarDocuments.poaOssKubun === 'OSS委任状' ||
-            this.normalCarDocuments.poaOssKubun === '委任状' ||
-            (this.normalCarDocuments.poaKubun &&
-              this.normalCarDocumentsGarageVerification
-                .NCgarageVerificationKubun === '保管場所証明申請書') ||
+            this.normalCarDocumentsGarageVerification
+              .NCgarageVerificationKubun === '保管場所証明申請書' ||
             this.lightCarDocumentsGarageVerification
               .LCgarageVerificationKubun === '保管場所届出書'
           "
