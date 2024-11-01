@@ -705,7 +705,11 @@ export default {
       <div>
         <v-row class="mt-15 ml-8" v-if="this.start.startKubun === ''">
           <v-col>
-            <img class="logo" src="/アンフィニ広島手続きマニュアルロゴ.jpg" />
+            <img
+              class="logo"
+              src="/アンフィニ広島手続きマニュアルロゴ.jpg"
+              loading="eager"
+            />
           </v-col>
         </v-row>
         <v-row v-if="this.start.startKubun === ''">
