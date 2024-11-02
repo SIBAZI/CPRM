@@ -3,6 +3,7 @@ import dayjs from "dayjs";
 export default {
   data() {
     return {
+      //成約時登録
       poaRegisteredSealModal: false, //委任状（実印）モーダル
       poaStampingModal: false, //委任状（認印）モーダル
       ossRegisteredSealModal: false, //OSS（実印）モーダル
@@ -125,28 +126,28 @@ export default {
         deliveryDate: "", //納車予定日
       },
 
-      tradeInCarContent: {
-        carModel: "", //下取車種
+      //下取・買取
+      tradeInPurchase: {
+        tradeInPurchaseKubun: "", //下取・買取
         normalCarLightCarKubun: "", //普通車・軽自動車区分
         nameChangeDeletionKubun: "", //名変・抹消区分
         ownershipKubun: "", //所有権区分
-        vehicleNumber: "", //車体番号
       },
 
       tradeInCarAndOtherConfirma: {
-        isDeathOfPerson: "", //本人死亡ステータス
-        isAddressNotConnected: "", //住所繋がらないステータス
-        isOwnerMinor: "", //所有者未成年ステータス
-        isRecycling10000yenOfMore: "", //リサイクル預託金1万円以上ステータス
+        deathOfPersonKubun: "", //本人死亡区分
+        addressNotConnectedKubun: "", //住所繋がらない区分
+        ownerMinorKubun: "", //所有者未成年区分
+        recycling10000yenOfMoreKubun: "", //リサイクル預託金1万円以上区分
       },
 
-      memos: [
-        {
-          recordDate: "", //記念日
-          memoField: "", //メモ
-          promisedDay: "", //約束日
-        },
-      ],
+      // memos: [
+      //   {
+      //     recordDate: "", //記念日
+      //     memoField: "", //メモ
+      //     promisedDay: "", //約束日
+      //   },
+      // ],
     };
   },
   methods: {
@@ -1368,7 +1369,7 @@ export default {
             "
           >
             <v-btn
-              href="https://www.OSS委任状.mlit.go.jp/portal/beginner/osstowa/index.html"
+              href="https://www.oss.mlit.go.jp/portal/beginner/osstowa/index.html"
               target="_blank"
               density="compact"
               icon="mdi-search-web"
