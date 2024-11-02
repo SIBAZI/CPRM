@@ -3643,6 +3643,27 @@ export default {
               this.contracts.insuranceKubun === '未加入')
           "
         >
+          <p class="explanation ml-16">
+            ・マツダの純正オプション以外の部品などを取り付ける場合は登録から納車までに２週間以上<br />
+            　かかる場合があります。
+          </p>
+        </v-row>
+
+        <v-row
+          v-if="
+            (this.contracts.newCarUsedCarKubun === '新車' ||
+              this.contracts.newCarUsedCarKubun === '中古車') &&
+            (this.contracts.normalCarLightCarKubun === '普通車' ||
+              this.contracts.normalCarLightCarKubun === '軽自動車') &&
+            (this.contracts.paymentKubun === '現金' ||
+              this.contracts.paymentKubun === 'クレジット' ||
+              this.contracts.paymentKubun === '銀行ローン' ||
+              this.contracts.paymentKubun === '所有権留保') &&
+            (this.contracts.insuranceKubun === '当社加入' ||
+              this.contracts.insuranceKubun === '他社加入' ||
+              this.contracts.insuranceKubun === '未加入')
+          "
+        >
           <v-toolbar-title class="mt-8 ml-15 d-flex align-center goal">
             　〇お手続きは以上になります。お時間頂きありがとうございました。
           </v-toolbar-title>
