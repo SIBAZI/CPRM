@@ -135,11 +135,53 @@ export default {
       },
 
       tradeInCarAndOtherConfirma: {
-        deathOfPersonKubun: "", //本人死亡区分
-        addressNotConnectedKubun: "", //住所繋がらない区分
-        ownerMinorKubun: "", //所有者未成年区分
-        recycling10000yenOfMoreKubun: "", //リサイクル預託金1万円以上区分
+        isDeathOfPerson: false, //本人逝去
+        isPurchasePriceOver100000yen: false, //買取10万円以上
+        isAddressNotConnected: false, //住所繋がらない
+        isOwnerMinor: false, //所有者未成年
+        isRecycling10000yenOfMore: false, //リサイクル預託金1万円以上
       },
+
+      purchaseDocuments: {
+        purchaseDetails: "買取明細書",
+        copyOfIdentityDocument: "本人確認書類コピー",
+        confirmationOfTransferDestination: "振込先確認書",
+      },
+
+      requiredDocumentsForRegularCars: {
+        ownershipReleaseRequest: "所有権解除依頼",
+        purchaseInvoiceShippingDestinationContactSlip: "仕入明細書発送先連絡票",
+        recyclingTicket: "リサイクル券",
+        vehicleInspectionCertificate: "車検証",
+        compulsoryAutomobileLiabilityInsuranceCertificate: "自賠責保険証",
+        automobileLiabilityInsuranceApprovalClaimForm: "自賠責承認請求書",
+        sealCertificate: "印鑑証明",
+        inheritanceDivisionAgreement: "遺産分割協議書",
+        familyRegister: "戸籍謄本",
+        revisedOriginalFamilyRegister: "改正原戸籍謄本",
+        residentCard: "住民票",
+        powerOfAttorney: "委任状",
+        transferCertificate: "譲渡証明書",
+        taxPaymentCertificate: "納税証明書",
+        motorVehicleTaxPaymentSlip: "自動車税支払伺書",
+        noticeOfAssignmentOfClaim: "債権譲渡通知書",
+        purchaseTradeInAgreement: "買取・下取同意書",
+        carCheckSheet: "カーチェックシート",
+      },
+      requiredDocumentsForLightVehicles: {
+        ownershipReleaseRequest: "所有権解除依頼",
+        purchaseInvoiceShippingDestinationContactSlip: "仕入明細書発送先連絡票",
+        recyclingTicket: "リサイクル券",
+        vehicleInspectionCertificate: "車検証",
+        compulsoryAutomobileLiabilityInsuranceCertificate: "自賠責保険証",
+        automobileLiabilityInsuranceApprovalClaimForm: "自賠責承認請求書",
+        applicationRequestForm: "申請依頼書",
+        taxAbolition: "税廃",
+        letterOfConsent: "承諾書",
+        purchaseTradeInAgreement: "買取・下取同意書",
+        carCheckSheet: "カーチェックシート",
+      },
+      purchase: {},
 
       // memos: [
       //   {
@@ -1987,7 +2029,7 @@ export default {
           "
         >
           <p class="explanation ml-16">
-            ・お客様がお車の保管場所を賃借されている場合、土地所有者から発行して頂く書類です。
+            ・駐車場がお客様自身の管理ではない場合、駐車場の管理者様に使用の許可を得るための書類です。
           </p>
         </v-row>
 
