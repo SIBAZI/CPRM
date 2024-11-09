@@ -11,6 +11,7 @@ export default {
       lightCarDocumentsOwnerAndUserModal: false, //申請依頼書(所有者・使用者）モーダル
       lightCarDocumentsUserModal: false, //申請依頼書(使用者）モーダル
       NCgarageVerificationModal: false, //保管場所証明申請書モーダル
+      LCgarageVerificationKubun: false, //保管場所届出書モーダル
       selfCertification: false, //自認書モーダル
       ConsentToUseModal: false, //使用承諾証モーダル
       arrangementDiagramNameModal: false, //配置図モーダル
@@ -135,13 +136,17 @@ export default {
       },
 
       tradeInCarAndOtherConfirma: {
+        isCorporateVehicles: false, //法人車
         isDeathOfPerson: false, //本人逝去
-        isPurchasePriceOver100000yen: false, //買取10万円以上
-        isAddressNotConnected: false, //住所繋がらない
-        isOwnerMinor: false, //所有者未成年
-        isRecycling10000yenOfMore: false, //リサイクル預託金1万円以上
       },
-
+      tradeInPurchaseCommonRequiredDocuments: {
+        ownershipReleaseRequest: "所有権解除依頼",
+        purchaseInvoiceShippingDestinationContactSlip: "仕入明細書発送先連絡票",
+        recyclingTicket: "リサイクル券",
+        vehicleInspectionCertificate: "車検証",
+        compulsoryAutomobileLiabilityInsuranceCertificate: "自賠責保険証",
+        automobileLiabilityInsuranceApprovalClaimForm: "自賠責承認請求書",
+      },
       purchaseDocuments: {
         purchaseDetails: "買取明細書",
         copyOfIdentityDocument: "本人確認書類コピー",
@@ -149,17 +154,15 @@ export default {
       },
 
       requiredDocumentsForRegularCars: {
-        ownershipReleaseRequest: "所有権解除依頼",
-        purchaseInvoiceShippingDestinationContactSlip: "仕入明細書発送先連絡票",
-        recyclingTicket: "リサイクル券",
-        vehicleInspectionCertificate: "車検証",
-        compulsoryAutomobileLiabilityInsuranceCertificate: "自賠責保険証",
-        automobileLiabilityInsuranceApprovalClaimForm: "自賠責承認請求書",
-        sealCertificate: "印鑑証明",
+        isFillIn: "", //ご記入
+        isOfficialSeal: false, //実印（銀行印）
+        isSealCertificate: false, //印鑑証明
+        isStamping: false, //認印
+        residentCard: false, //住民票
+
         inheritanceDivisionAgreement: "遺産分割協議書",
         familyRegister: "戸籍謄本",
         revisedOriginalFamilyRegister: "改正原戸籍謄本",
-        residentCard: "住民票",
         powerOfAttorney: "委任状",
         transferCertificate: "譲渡証明書",
         taxPaymentCertificate: "納税証明書",
@@ -169,11 +172,9 @@ export default {
         carCheckSheet: "カーチェックシート",
       },
       requiredDocumentsForLightVehicles: {
-        ownershipReleaseRequest: "所有権解除依頼",
-        purchaseInvoiceShippingDestinationContactSlip: "仕入明細書発送先連絡票",
-        recyclingTicket: "リサイクル券",
-        vehicleInspectionCertificate: "車検証",
-        compulsoryAutomobileLiabilityInsuranceCertificate: "自賠責保険証",
+        isFillIn: false, //ご記入
+        isStamping: false, //認印
+        residentCard: false, //住民票
         automobileLiabilityInsuranceApprovalClaimForm: "自賠責承認請求書",
         applicationRequestForm: "申請依頼書",
         taxAbolition: "税廃",
@@ -774,7 +775,7 @@ export default {
               :items="[
                 '',
                 '成約時登録',
-                '買取・下取り',
+                '下取・買取',
                 '納車準備',
                 '納車',
                 '一般登録代行',
@@ -783,9 +784,11 @@ export default {
             ></v-select>
           </v-col>
         </v-row>
-        <v-row v-if="this.start.startKubun === '買取・下取り'">
+
+        <v-row v-if="this.start.startKubun === '下取・買取'">
           <p class="ml-16">　※現在作成中</p>
         </v-row>
+
         <v-row v-if="this.start.startKubun === '納車準備'">
           <p class="ml-16">　※現在作成中</p>
         </v-row>
@@ -1894,8 +1897,7 @@ export default {
             "
           >
             <v-btn
-              href=""
-              target="_blank"
+              @click="LCgarageVerificationKubun = true"
               density="compact"
               icon="mdi-help"
             ></v-btn>
@@ -1909,10 +1911,10 @@ export default {
             "
           >
             <v-btn
-              href=""
+              href="https://www.pref.hiroshima.lg.jp/site/police/055-05505-kei-hokan.html"
               target="_blank"
               density="compact"
-              icon="mdi-printer"
+              icon="mdi-search-web"
             ></v-btn>
           </v-col>
         </v-row>
@@ -3548,9 +3550,25 @@ export default {
               (this.contracts.normalCarLightCarKubun === '普通車' ||
                 this.contracts.normalCarLightCarKubun === '軽自動車') &&
               (this.contracts.paymentKubun === '現金' ||
-                this.contracts.paymentKubun === 'クレジット' ||
                 this.contracts.paymentKubun === '銀行ローン' ||
                 this.contracts.paymentKubun === '所有権留保') &&
+              (this.contracts.insuranceKubun === '当社加入' ||
+                this.contracts.insuranceKubun === '他社加入' ||
+                this.contracts.insuranceKubun === '未加入')
+            "
+          >
+            　⑤納車日（ご成約頂いたお車が登録されて２週間後がご納車日の目安となります。）
+          </v-toolbar-title>
+        </v-row>
+        <v-row>
+          <v-toolbar-title
+            class="mt-8 ml-15 mb-5 d-flex deliveryDate"
+            v-if="
+              (this.contracts.newCarUsedCarKubun === '新車' ||
+                this.contracts.newCarUsedCarKubun === '中古車') &&
+              (this.contracts.normalCarLightCarKubun === '普通車' ||
+                this.contracts.normalCarLightCarKubun === '軽自動車') &&
+              this.contracts.paymentKubun === 'クレジット' &&
               (this.contracts.insuranceKubun === '当社加入' ||
                 this.contracts.insuranceKubun === '他社加入' ||
                 this.contracts.insuranceKubun === '未加入')
@@ -3711,6 +3729,214 @@ export default {
           </v-toolbar-title>
         </v-row>
       </div>
+      <!-- 下取・買取 -->
+      <div v-if="this.start.startKubun === '下取・買取'">
+        <v-row>
+          <v-toolbar-title class="mt-5 ml-15 d-flex align-center start">
+            　〇ここからは下取・買取のお手続きになります。
+          </v-toolbar-title>
+        </v-row>
+        <v-row>
+          <p class="mt-5 ml-16">　お預かりするお車は、</p>
+        </v-row>
+
+        <v-row class="ml-12 mt-10">
+          <v-col cols="2" class="">
+            <v-select
+              v-model="tradeInPurchase.tradeInPurchaseKubun"
+              label="下取or買取"
+              :items="['', '下取', '買取']"
+              variant="outlined"
+            ></v-select>
+          </v-col>
+
+          <v-col cols="2" class="">
+            <v-select
+              v-model="tradeInPurchase.normalCarLightCarKubun"
+              label="普通車or軽自動車"
+              :items="['', '普通車', '軽自動車']"
+              variant="outlined"
+            ></v-select>
+          </v-col>
+          <v-col cols="2" class="">
+            <v-select
+              v-model="tradeInPurchase.nameChangeDeletionKubun"
+              label="名変or抹消"
+              :items="['', '名変', '抹消']"
+              variant="outlined"
+            ></v-select>
+          </v-col>
+
+          <v-col cols="2" class="">
+            <v-select
+              v-model="tradeInPurchase.ownershipKubun"
+              label="所有権"
+              :items="[
+                '',
+                '本人所有',
+                'アンフィニ所有',
+                '交換コーナー利用',
+                'その他所有',
+              ]"
+              variant="outlined"
+            ></v-select>
+          </v-col>
+          <v-col cols="2" class="mt-2 ml-16">
+            <v-btn @click="tipRattocClear"> clear </v-btn>
+          </v-col>
+        </v-row>
+        <v-row
+          v-if="
+            this.tradeInPurchase.tradeInPurchaseKubun === '下取' ||
+            this.tradeInPurchase.tradeInPurchaseKubun === '買取'
+          "
+        >
+          <v-toolbar-title class="mt-5 ml-15 d-flex align-center start">
+            　その他・確認事項（該当する内容にチェックしてください。）
+          </v-toolbar-title>
+        </v-row>
+        <v-row>
+          <v-col cols="2" class="ml-16 mt-5 mx-1 d-flex align-center">
+            <v-checkbox
+              v-if="
+                this.tradeInPurchase.tradeInPurchaseKubun === '下取' ||
+                this.tradeInPurchase.tradeInPurchaseKubun === '買取'
+              "
+              v-model="tradeInCarAndOtherConfirma.isCorporateVehicles"
+              label="法人車"
+            >
+            </v-checkbox>
+          </v-col>
+          <v-col cols="2" class="mt-5 mx-1 d-flex align-center">
+            <v-checkbox
+              v-if="
+                (this.tradeInPurchase.tradeInPurchaseKubun === '下取' ||
+                  this.tradeInPurchase.tradeInPurchaseKubun === '買取') &&
+                this.tradeInPurchase.normalCarLightCarKubun === '普通車'
+              "
+              v-model="tradeInCarAndOtherConfirma.isDeathOfPerson"
+              label="本人逝去"
+            >
+            </v-checkbox>
+          </v-col>
+        </v-row>
+        <v-row
+          v-if="
+            this.tradeInPurchase.tradeInPurchaseKubun === '下取' ||
+            this.tradeInPurchase.tradeInPurchaseKubun === '買取'
+          "
+        >
+          <v-toolbar-title class="mt-5 ml-15 d-flex align-center start">
+            　必要書類
+          </v-toolbar-title>
+        </v-row>
+        <v-row
+          class="mt-5"
+          v-if="tradeInPurchase.ownershipKubun === '交換コーナー利用'"
+        >
+          <v-col cols="2" class="ml-15 mt-5">
+            <v-combobox
+              v-model="
+                tradeInPurchaseCommonRequiredDocuments.ownershipReleaseRequest
+              "
+              label=""
+              :items="[]"
+              variant="outlined"
+              readonly
+            ></v-combobox>
+          </v-col>
+        </v-row>
+        <v-row
+          class="mt-5"
+          v-if="tradeInCarAndOtherConfirma.isCorporateVehicles === true"
+        >
+          <v-col cols="2" class="ml-15 mt-5">
+            <v-combobox
+              v-model="
+                tradeInPurchaseCommonRequiredDocuments.purchaseInvoiceShippingDestinationContactSlip
+              "
+              label=""
+              :items="[]"
+              variant="outlined"
+              readonly
+            ></v-combobox>
+          </v-col>
+        </v-row>
+        <v-row
+          class="mt-5"
+          v-if="
+            tradeInPurchase.normalCarLightCarKubun === '普通車' ||
+            tradeInPurchase.normalCarLightCarKubun === '軽自動車'
+          "
+        >
+          <v-col cols="2" class="ml-15 mt-5">
+            <v-combobox
+              v-model="tradeInPurchaseCommonRequiredDocuments.recyclingTicket"
+              label=""
+              :items="[]"
+              variant="outlined"
+              readonly
+            ></v-combobox>
+          </v-col>
+        </v-row>
+        <v-row
+          class="mt-5"
+          v-if="
+            tradeInPurchase.normalCarLightCarKubun === '普通車' ||
+            tradeInPurchase.normalCarLightCarKubun === '軽自動車'
+          "
+        >
+          <v-col cols="2" class="ml-15 mt-5">
+            <v-combobox
+              v-model="
+                tradeInPurchaseCommonRequiredDocuments.vehicleInspectionCertificate
+              "
+              label=""
+              :items="[]"
+              variant="outlined"
+              readonly
+            ></v-combobox>
+          </v-col>
+        </v-row>
+        <v-row
+          class="mt-5"
+          v-if="
+            tradeInPurchase.normalCarLightCarKubun === '普通車' ||
+            tradeInPurchase.normalCarLightCarKubun === '軽自動車'
+          "
+        >
+          <v-col cols="2" class="ml-15 mt-5">
+            <v-combobox
+              v-model="
+                tradeInPurchaseCommonRequiredDocuments.compulsoryAutomobileLiabilityInsuranceCertificate
+              "
+              label=""
+              :items="[]"
+              variant="outlined"
+              readonly
+            ></v-combobox>
+          </v-col>
+        </v-row>
+        <v-row
+          class="mt-5"
+          v-if="
+            tradeInPurchase.normalCarLightCarKubun === '普通車' ||
+            tradeInPurchase.normalCarLightCarKubun === '軽自動車'
+          "
+        >
+          <v-col cols="2" class="ml-15 mt-5">
+            <v-combobox
+              v-model="
+                tradeInPurchaseCommonRequiredDocuments.automobileLiabilityInsuranceApprovalClaimForm
+              "
+              label=""
+              :items="[]"
+              variant="outlined"
+              readonly
+            ></v-combobox>
+          </v-col>
+        </v-row>
+      </div>
       <div class="whole-bottom"></div>
       <div class="footer"></div>
       <!-- <v-row>
@@ -3808,6 +4034,13 @@ export default {
           <img class="modal-img" src="/保管場所証明申請書記入例.jpg" />
         </v-card>
       </v-dialog>
+      <!-- 保管場所届出書modal -->
+      <v-dialog v-model="LCgarageVerificationKubun" max-width="70%">
+        <v-card>
+          <img class="modal-img" src="/保管場所届出書記入例.jpg" />
+        </v-card>
+      </v-dialog>
+
       <!-- 自認書modal -->
       <v-dialog v-model="selfCertification" max-width="70%">
         <v-card>
