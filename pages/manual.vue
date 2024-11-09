@@ -1793,7 +1793,14 @@ export default {
             ></v-btn>
           </v-col>
         </v-row>
-
+        <v-row
+          v-if="
+            this.normalCarDocumentsGarageVerification
+              .NCgarageVerificationKubun === '保管場所証明申請書'
+          "
+        >
+          <v-divider class="ml-15 mt-5 separator"></v-divider>
+        </v-row>
         <v-row>
           <v-toolbar-title
             class="ml-15 mb-5 d-flex align-center lightCarDocumentsGarageVerification"
@@ -4416,5 +4423,8 @@ export default {
 }
 .is-fill-in-completed {
   background-color: #ff0000;
+}
+.separator {
+  max-width: 87%;
 }
 </style>
