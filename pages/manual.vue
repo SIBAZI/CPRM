@@ -679,9 +679,10 @@ export default {
 </script>
 
 <template>
-  <div class="body">
+  <div>
     <v-app>
-      <!-- <v-app-bar class="h-5" color="grey-lighten-2">
+      <div class="body">
+        <!-- <v-app-bar class="h-5" color="grey-lighten-2">
         <v-app-bar-title> 　　　ユーザー登録画面 </v-app-bar-title>
         <v-col cols="1" class="mx-10">
           <v-btn
@@ -694,7 +695,7 @@ export default {
           </v-btn>
         </v-col>
       </v-app-bar> -->
-      <!-- <v-row class="input-list">
+        <!-- <v-row class="input-list">
         <v-col cols="2" class="ml-15 orderDate">
           <v-text-field
             :class="{
@@ -746,100 +747,101 @@ export default {
           ></v-combobox>
         </v-col>
       </v-row> -->
-      <div>
-        <v-row class="mt-15 ml-8" v-if="this.start.startKubun === ''">
-          <v-col>
-            <img
-              class="logo"
-              src="/アンフィニ広島手続きマニュアルロゴ.jpg"
-              loading="eager"
-            />
-          </v-col>
-        </v-row>
-        <v-row v-if="this.start.startKubun === ''">
-          <p class="ml-16">
-            　※お客様との接客を第一に考えられるようにするためのサポートマニュアルです。<br />
-            　　マニュアルに頼りきらず自身で手続きを覚えるつもりで<br />
-            　　スキルアップの補助として活用しましょう。<br />
-            　　全体像の把握、分からないことを明確化することが大切です。<br />
-            　　接客はマニュアルでは収まりません。<br />
-            　　自分の思い、言葉で説明できるように心がけましょう。<br />
-            　　最後に、お客様だけではなく周りの人も大切に。
-          </p>
-        </v-row>
-        <v-row class="mt-12 ml-12">
-          <v-col cols="3" class="">
-            <v-select
-              v-model="start.startKubun"
-              label="手続き内容"
-              :items="[
-                '',
-                '成約時登録',
-                '下取・買取',
-                '納車準備',
-                '納車',
-                '一般登録代行',
-              ]"
-              variant="outlined"
-            ></v-select>
-          </v-col>
-        </v-row>
 
-        <v-row v-if="this.start.startKubun === '下取・買取'">
-          <p class="ml-16">　※現在作成中</p>
-        </v-row>
+        <div>
+          <v-row class="mt-15 ml-8" v-if="this.start.startKubun === ''">
+            <v-col>
+              <img
+                class="logo"
+                src="/アンフィニ広島手続きマニュアルロゴ.jpg"
+                loading="eager"
+              />
+            </v-col>
+          </v-row>
+          <v-row v-if="this.start.startKubun === ''">
+            <p class="ml-16">
+              　※お客様との接客を第一に考えるためのサポートマニュアルです。<br />
+              　　マニュアルに頼りきらず自身で手続きを覚えるつもりで<br />
+              　　スキルアップの補助として活用しましょう。<br />
+              　　全体像の把握、分からないことを明確化することが大切です。<br />
+              　　接客はマニュアルでは収まりません。<br />
+              　　自分の思い、言葉で説明できるように心がけましょう。<br />
+              　　最後に、お客様だけではなく周りの人も大切に。
+            </p>
+          </v-row>
+          <v-row class="mt-12 ml-12">
+            <v-col cols="3" class="">
+              <v-select
+                v-model="start.startKubun"
+                label="手続き内容"
+                :items="[
+                  '',
+                  '成約時登録',
+                  '下取・買取',
+                  '納車準備',
+                  '納車',
+                  '一般登録代行',
+                ]"
+                variant="outlined"
+              ></v-select>
+            </v-col>
+          </v-row>
 
-        <v-row v-if="this.start.startKubun === '納車準備'">
-          <p class="ml-16">　※現在作成中</p>
-        </v-row>
-        <v-row v-if="this.start.startKubun === '納車'">
-          <p class="ml-16">　※現在作成中</p>
-        </v-row>
-        <v-row v-if="this.start.startKubun === '一般登録代行'">
-          <p class="ml-16">　※現在作成中</p>
-        </v-row>
-      </div>
-      <div v-if="this.start.startKubun === '成約時登録'">
-        <v-row>
-          <v-toolbar-title class="mt-5 ml-15 d-flex align-center start">
-            　〇この度はご成約頂きありがとうございます。ここからはご成約頂いたお車の登録手続きになります。
-          </v-toolbar-title>
-        </v-row>
-        <v-row>
-          <p class="mt-5 ml-16">　ご成約頂いたお車は、</p>
-        </v-row>
+          <v-row v-if="this.start.startKubun === '下取・買取'">
+            <p class="ml-16">　※現在作成中</p>
+          </v-row>
 
-        <v-row class="ml-12 mt-10">
-          <v-col cols="2" class="">
-            <v-select
-              @update:modelValue="newCarUsedCarKubunChange"
-              v-model="contracts.newCarUsedCarKubun"
-              label="新車or中古車"
-              :items="['', '新車', '中古車']"
-              variant="outlined"
-            ></v-select>
-          </v-col>
+          <v-row v-if="this.start.startKubun === '納車準備'">
+            <p class="ml-16">　※現在作成中</p>
+          </v-row>
+          <v-row v-if="this.start.startKubun === '納車'">
+            <p class="ml-16">　※現在作成中</p>
+          </v-row>
+          <v-row v-if="this.start.startKubun === '一般登録代行'">
+            <p class="ml-16">　※現在作成中</p>
+          </v-row>
+        </div>
+        <div v-if="this.start.startKubun === '成約時登録'">
+          <v-row>
+            <v-toolbar-title class="mt-5 ml-15 d-flex align-center start">
+              　〇この度はご成約頂きありがとうございます。ここからはご成約頂いたお車の登録手続きになります。
+            </v-toolbar-title>
+          </v-row>
+          <v-row>
+            <p class="mt-5 ml-16">　ご成約頂いたお車は、</p>
+          </v-row>
 
-          <v-col cols="2" class="">
-            <v-select
-              @update:modelValue="normalCarLightCarKubunChange"
-              v-model="contracts.normalCarLightCarKubun"
-              label="普通車or軽自動車"
-              :items="['', '普通車', '軽自動車']"
-              variant="outlined"
-            ></v-select>
-          </v-col>
-          <v-col cols="2" class="">
-            <v-select
-              @update:modelValue="paymentKubunChange"
-              v-model="contracts.paymentKubun"
-              label="支払方法"
-              :items="['', '現金', 'クレジット', '銀行ローン', '所有権留保']"
-              variant="outlined"
-            ></v-select>
-          </v-col>
+          <v-row class="ml-12 mt-10">
+            <v-col cols="2" class="">
+              <v-select
+                @update:modelValue="newCarUsedCarKubunChange"
+                v-model="contracts.newCarUsedCarKubun"
+                label="新車or中古車"
+                :items="['', '新車', '中古車']"
+                variant="outlined"
+              ></v-select>
+            </v-col>
 
-          <!-- <v-col cols="2" class="mx-1">
+            <v-col cols="2" class="">
+              <v-select
+                @update:modelValue="normalCarLightCarKubunChange"
+                v-model="contracts.normalCarLightCarKubun"
+                label="普通車or軽自動車"
+                :items="['', '普通車', '軽自動車']"
+                variant="outlined"
+              ></v-select>
+            </v-col>
+            <v-col cols="2" class="">
+              <v-select
+                @update:modelValue="paymentKubunChange"
+                v-model="contracts.paymentKubun"
+                label="支払方法"
+                :items="['', '現金', 'クレジット', '銀行ローン', '所有権留保']"
+                variant="outlined"
+              ></v-select>
+            </v-col>
+
+            <!-- <v-col cols="2" class="mx-1">
           <v-select
             v-model="contracts.tradeInCarKubun"
             label="下取車・買取車"
@@ -848,131 +850,133 @@ export default {
           ></v-select>
         </v-col> -->
 
-          <v-col cols="2" class="">
-            <v-select
-              @update:modelValue="insuranceKubunChange"
-              v-model="contracts.insuranceKubun"
-              label="保険加入希望先"
-              :items="['', '当社加入', '他社加入', '未加入']"
-              variant="outlined"
-            ></v-select>
-          </v-col>
-          <v-col cols="2" class="mt-2 ml-16">
-            <v-btn @click="rattocClear"> clear </v-btn>
-          </v-col>
-        </v-row>
+            <v-col cols="2" class="">
+              <v-select
+                @update:modelValue="insuranceKubunChange"
+                v-model="contracts.insuranceKubun"
+                label="保険加入希望先"
+                :items="['', '当社加入', '他社加入', '未加入']"
+                variant="outlined"
+              ></v-select>
+            </v-col>
+            <v-col cols="2" class="mt-2 ml-16">
+              <v-btn @click="rattocClear"> clear </v-btn>
+            </v-col>
+          </v-row>
 
-        <v-row
-          v-if="
-            this.contracts.newCarUsedCarKubun === '中古車' &&
-            this.contracts.normalCarLightCarKubun === '普通車'
-          "
-        >
-          <v-toolbar-title class="ml-15 d-flex align-center normalCarDocuments">
-            　➀委任状（ご成約頂いたお車の登録、検査手続きを代行させて頂く手続きです。）
-          </v-toolbar-title>
-        </v-row>
-        <v-row
-          class="mt-10"
-          v-if="
-            this.contracts.newCarUsedCarKubun === '中古車' &&
-            this.contracts.normalCarLightCarKubun === '普通車'
-          "
-        >
-          <v-col cols="2" class="ml-15">
-            <v-combobox
-              v-model="normalCarDocuments.poaKubun"
-              label=""
-              :items="[]"
-              variant="outlined"
-              readonly
-            ></v-combobox>
-          </v-col>
-
-          <v-col
-            cols="2"
-            class="mx-1 d-flex align-center"
-            v-if="this.normalCarDocuments.poaKubun === '委任状'"
-          >
-            <v-checkbox v-model="normalCarDocuments.isFillIn" label="ご記入">
-            </v-checkbox>
-          </v-col>
-          <v-col cols="2" class="mx-1 d-flex align-center">
-            <v-checkbox
-              v-if="
-                (this.contracts.paymentKubun === '現金' ||
-                  this.contracts.paymentKubun === '銀行ローン') &&
-                this.normalCarDocuments.poaKubun === '委任状'
-              "
-              v-model="normalCarDocuments.isRegisteredSeal"
-              label="実印"
-            >
-            </v-checkbox>
-
-            <v-checkbox
-              v-if="
-                (this.contracts.paymentKubun === 'クレジット' ||
-                  this.contracts.paymentKubun === '所有権留保') &&
-                this.normalCarDocuments.poaKubun === '委任状'
-              "
-              v-model="normalCarDocuments.isStamping"
-              label="認印"
-            >
-            </v-checkbox>
-          </v-col>
-
-          <v-col cols="2" class="mx-1 d-flex align-center">
-            <v-checkbox
-              v-if="
-                (this.contracts.paymentKubun === '現金' ||
-                  this.contracts.paymentKubun === '銀行ローン') &&
-                this.normalCarDocuments.poaKubun === '委任状'
-              "
-              v-model="normalCarDocuments.isSealCertificate"
-              label="印鑑証明"
-            >
-            </v-checkbox>
-
-            <v-checkbox
-              v-if="
-                (this.contracts.paymentKubun === 'クレジット' ||
-                  this.contracts.paymentKubun === '所有権留保') &&
-                this.normalCarDocuments.poaKubun === '委任状'
-              "
-              v-model="normalCarDocuments.isResidentCard"
-              label="住民票"
-            >
-            </v-checkbox>
-          </v-col>
-
-          <v-col
+          <v-row
             v-if="
-              (this.contracts.paymentKubun === '現金' ||
-                this.contracts.paymentKubun === '銀行ローン' ||
-                this.contracts.paymentKubun === 'クレジット' ||
-                this.contracts.paymentKubun === '所有権留保') &&
-              this.normalCarDocuments.poaKubun === '委任状'
+              this.contracts.newCarUsedCarKubun === '中古車' &&
+              this.contracts.normalCarLightCarKubun === '普通車'
             "
-            cols="2"
-            class="mb-6 d-flex align-center"
           >
-            <div
-              class="complete"
-              :class="{
-                'is-fill-in-completed':
-                  (this.normalCarDocuments.isFillIn &&
-                    this.normalCarDocuments.isRegisteredSeal &&
-                    this.normalCarDocuments.isSealCertificate) ||
-                  (this.normalCarDocuments.isFillIn &&
-                    this.normalCarDocuments.isStamping &&
-                    this.normalCarDocuments.isResidentCard),
-              }"
+            <v-toolbar-title
+              class="ml-15 d-flex align-center normalCarDocuments"
             >
-              完了
-            </div>
-          </v-col>
+              　➀委任状（ご成約頂いたお車の登録、検査手続きを代行させて頂く手続きです。）
+            </v-toolbar-title>
+          </v-row>
+          <v-row
+            class="mt-10"
+            v-if="
+              this.contracts.newCarUsedCarKubun === '中古車' &&
+              this.contracts.normalCarLightCarKubun === '普通車'
+            "
+          >
+            <v-col cols="2" class="ml-15">
+              <v-combobox
+                v-model="normalCarDocuments.poaKubun"
+                label=""
+                :items="[]"
+                variant="outlined"
+                readonly
+              ></v-combobox>
+            </v-col>
 
-          <!-- <v-col
+            <v-col
+              cols="2"
+              class="mx-1 d-flex align-center"
+              v-if="this.normalCarDocuments.poaKubun === '委任状'"
+            >
+              <v-checkbox v-model="normalCarDocuments.isFillIn" label="ご記入">
+              </v-checkbox>
+            </v-col>
+            <v-col cols="2" class="mx-1 d-flex align-center">
+              <v-checkbox
+                v-if="
+                  (this.contracts.paymentKubun === '現金' ||
+                    this.contracts.paymentKubun === '銀行ローン') &&
+                  this.normalCarDocuments.poaKubun === '委任状'
+                "
+                v-model="normalCarDocuments.isRegisteredSeal"
+                label="実印"
+              >
+              </v-checkbox>
+
+              <v-checkbox
+                v-if="
+                  (this.contracts.paymentKubun === 'クレジット' ||
+                    this.contracts.paymentKubun === '所有権留保') &&
+                  this.normalCarDocuments.poaKubun === '委任状'
+                "
+                v-model="normalCarDocuments.isStamping"
+                label="認印"
+              >
+              </v-checkbox>
+            </v-col>
+
+            <v-col cols="2" class="mx-1 d-flex align-center">
+              <v-checkbox
+                v-if="
+                  (this.contracts.paymentKubun === '現金' ||
+                    this.contracts.paymentKubun === '銀行ローン') &&
+                  this.normalCarDocuments.poaKubun === '委任状'
+                "
+                v-model="normalCarDocuments.isSealCertificate"
+                label="印鑑証明"
+              >
+              </v-checkbox>
+
+              <v-checkbox
+                v-if="
+                  (this.contracts.paymentKubun === 'クレジット' ||
+                    this.contracts.paymentKubun === '所有権留保') &&
+                  this.normalCarDocuments.poaKubun === '委任状'
+                "
+                v-model="normalCarDocuments.isResidentCard"
+                label="住民票"
+              >
+              </v-checkbox>
+            </v-col>
+
+            <v-col
+              v-if="
+                (this.contracts.paymentKubun === '現金' ||
+                  this.contracts.paymentKubun === '銀行ローン' ||
+                  this.contracts.paymentKubun === 'クレジット' ||
+                  this.contracts.paymentKubun === '所有権留保') &&
+                this.normalCarDocuments.poaKubun === '委任状'
+              "
+              cols="2"
+              class="mb-6 d-flex align-center"
+            >
+              <div
+                class="complete"
+                :class="{
+                  'is-fill-in-completed':
+                    (this.normalCarDocuments.isFillIn &&
+                      this.normalCarDocuments.isRegisteredSeal &&
+                      this.normalCarDocuments.isSealCertificate) ||
+                    (this.normalCarDocuments.isFillIn &&
+                      this.normalCarDocuments.isStamping &&
+                      this.normalCarDocuments.isResidentCard),
+                }"
+              >
+                完了
+              </div>
+            </v-col>
+
+            <!-- <v-col
           cols="2"
           class="mx-1 normalCarDocuments-completedDate"
           v-if="this.normalCarDocuments.poaOssKubun === '委任状'"
@@ -986,246 +990,256 @@ export default {
             label="完了日"
           ></v-text-field>
         </v-col> -->
-        </v-row>
-        <v-row
-          v-if="
-            this.contracts.newCarUsedCarKubun === '中古車' &&
-            this.contracts.normalCarLightCarKubun === '普通車' &&
-            this.contracts.paymentKubun === '現金' &&
-            this.normalCarDocuments.poaKubun === '委任状'
-          "
-        >
-          <p class="explanation ml-16">
-            ・現金でのお支払いの場合、お車の所有者はお客様になりますので<b>実印</b>と<b>印鑑証明</b>が必要となります。
-          </p>
-        </v-row>
-        <v-row
-          v-if="
-            this.contracts.newCarUsedCarKubun === '中古車' &&
-            this.contracts.normalCarLightCarKubun === '普通車' &&
-            this.contracts.paymentKubun === 'クレジット' &&
-            this.normalCarDocuments.poaKubun === '委任状'
-          "
-        >
-          <p class="explanation ml-16">
-            ・クレジットでのお支払いの場合、<b>認印</b>と<b>住民票</b>が必要となります。
-          </p>
-        </v-row>
-
-        <v-row
-          v-if="
-            this.contracts.newCarUsedCarKubun === '中古車' &&
-            this.contracts.normalCarLightCarKubun === '普通車' &&
-            this.contracts.paymentKubun === '銀行ローン' &&
-            this.normalCarDocuments.poaKubun === '委任状'
-          "
-        >
-          <p class="explanation ml-16">
-            ・銀行ローンでのお支払いの場合、お車の所有者はお客様になりますので<b>実印</b>と<b>印鑑証明</b>が必要となります。
-          </p>
-        </v-row>
-        <v-row
-          v-if="
-            this.contracts.newCarUsedCarKubun === '中古車' &&
-            this.contracts.normalCarLightCarKubun === '普通車' &&
-            this.contracts.paymentKubun === '所有権留保' &&
-            this.normalCarDocuments.poaKubun === '委任状'
-          "
-        >
-          <p class="explanation ml-16">
-            ・所有権留保の場合、<b>認印</b>と<b>住民票</b>が必要となります。
-          </p>
-        </v-row>
-
-        <v-row>
-          <v-col
-            cols="1"
-            class="mt-3 ml-16 d-flex align-center"
+          </v-row>
+          <v-row
             v-if="
               this.contracts.newCarUsedCarKubun === '中古車' &&
               this.contracts.normalCarLightCarKubun === '普通車' &&
-              (this.contracts.paymentKubun === '現金' ||
-                this.contracts.paymentKubun === '銀行ローン') &&
+              this.contracts.paymentKubun === '現金' &&
               this.normalCarDocuments.poaKubun === '委任状'
             "
           >
-            <v-btn
-              @click="poaRegisteredSealModal = true"
-              density="compact"
-              icon="mdi-help"
-            ></v-btn>
-          </v-col>
-          <v-col
-            cols="1"
-            class="ml-16 d-flex align-center"
+            <p class="explanation ml-16">
+              ・現金でのお支払いの場合、お車の所有者はお客様になりますので<b>実印</b>と<b>印鑑証明</b>が必要となります。
+            </p>
+          </v-row>
+          <v-row
             v-if="
               this.contracts.newCarUsedCarKubun === '中古車' &&
               this.contracts.normalCarLightCarKubun === '普通車' &&
-              (this.contracts.paymentKubun === 'クレジット' ||
-                this.contracts.paymentKubun === '所有権留保') &&
+              this.contracts.paymentKubun === 'クレジット' &&
               this.normalCarDocuments.poaKubun === '委任状'
             "
           >
-            <v-btn
-              @click="poaStampingModal = true"
-              density="compact"
-              icon="mdi-help"
-            ></v-btn>
-          </v-col>
-          <v-col
-            cols="1"
-            class="mt-3 d-flex align-center"
-            v-if="
-              this.contracts.newCarUsedCarKubun === '中古車' &&
-              this.contracts.normalCarLightCarKubun === '普通車' &&
-              (this.contracts.paymentKubun === '現金' ||
-                this.contracts.paymentKubun === '銀行ローン') &&
-              this.normalCarDocuments.poaKubun === '委任状'
-            "
-          >
-            <v-btn @click="poaImg" density="compact" icon="mdi-printer"></v-btn>
-          </v-col>
-          <v-col
-            cols="1"
-            class="d-flex align-center"
-            v-if="
-              this.contracts.newCarUsedCarKubun === '中古車' &&
-              this.contracts.normalCarLightCarKubun === '普通車' &&
-              (this.contracts.paymentKubun === 'クレジット' ||
-                this.contracts.paymentKubun === '所有権留保') &&
-              this.normalCarDocuments.poaKubun === '委任状'
-            "
-          >
-            <v-btn @click="poaImg" density="compact" icon="mdi-printer"></v-btn>
-          </v-col>
-        </v-row>
+            <p class="explanation ml-16">
+              ・クレジットでのお支払いの場合、<b>認印</b>と<b>住民票</b>が必要となります。
+            </p>
+          </v-row>
 
-        <v-row
-          v-if="
-            this.contracts.newCarUsedCarKubun === '新車' &&
-            this.contracts.normalCarLightCarKubun === '普通車'
-          "
-        >
-          <v-toolbar-title class="ml-15 d-flex align-center normalCarDocuments">
-            　➀
-            委任状・OSS（ご成約頂いたお車の登録、検査手続きを代行させて頂く手続きです。）
-          </v-toolbar-title>
-        </v-row>
-        <v-row
-          class="mt-10"
-          v-if="
-            this.contracts.newCarUsedCarKubun === '新車' &&
-            this.contracts.normalCarLightCarKubun === '普通車'
-          "
-        >
-          <v-col cols="2" class="ml-15">
-            <v-select
-              @update:modelValue="poaOssKubunChange"
-              v-model="normalCarDocuments.poaOssKubun"
-              label="委任状 or OSS委任状"
-              :items="['', '委任状', 'OSS委任状']"
-              variant="outlined"
-            ></v-select>
-          </v-col>
-
-          <v-col
-            cols="2"
-            class="mx-1 d-flex align-center"
+          <v-row
             v-if="
-              this.normalCarDocuments.poaOssKubun === '委任状' ||
-              this.normalCarDocuments.poaOssKubun === 'OSS委任状'
+              this.contracts.newCarUsedCarKubun === '中古車' &&
+              this.contracts.normalCarLightCarKubun === '普通車' &&
+              this.contracts.paymentKubun === '銀行ローン' &&
+              this.normalCarDocuments.poaKubun === '委任状'
             "
           >
-            <v-checkbox
-              @change="poaOssKubunCompleted"
-              v-model="normalCarDocuments.isFillIn"
-              label="ご記入"
-            >
-            </v-checkbox>
-          </v-col>
-          <v-col cols="2" class="mx-1 d-flex align-center">
-            <v-checkbox
-              @change="poaOssKubunCompleted"
+            <p class="explanation ml-16">
+              ・銀行ローンでのお支払いの場合、お車の所有者はお客様になりますので<b>実印</b>と<b>印鑑証明</b>が必要となります。
+            </p>
+          </v-row>
+          <v-row
+            v-if="
+              this.contracts.newCarUsedCarKubun === '中古車' &&
+              this.contracts.normalCarLightCarKubun === '普通車' &&
+              this.contracts.paymentKubun === '所有権留保' &&
+              this.normalCarDocuments.poaKubun === '委任状'
+            "
+          >
+            <p class="explanation ml-16">
+              ・所有権留保の場合、<b>認印</b>と<b>住民票</b>が必要となります。
+            </p>
+          </v-row>
+
+          <v-row>
+            <v-col
+              cols="1"
+              class="mt-3 ml-16 d-flex align-center"
               v-if="
+                this.contracts.newCarUsedCarKubun === '中古車' &&
+                this.contracts.normalCarLightCarKubun === '普通車' &&
                 (this.contracts.paymentKubun === '現金' ||
                   this.contracts.paymentKubun === '銀行ローン') &&
-                (this.normalCarDocuments.poaOssKubun === '委任状' ||
-                  this.normalCarDocuments.poaOssKubun === 'OSS委任状')
+                this.normalCarDocuments.poaKubun === '委任状'
               "
-              v-model="normalCarDocuments.isRegisteredSeal"
-              label="実印"
             >
-            </v-checkbox>
-
-            <v-checkbox
-              @change="poaOssKubunCompleted"
+              <v-btn
+                @click="poaRegisteredSealModal = true"
+                density="compact"
+                icon="mdi-help"
+              ></v-btn>
+            </v-col>
+            <v-col
+              cols="1"
+              class="ml-16 d-flex align-center"
               v-if="
+                this.contracts.newCarUsedCarKubun === '中古車' &&
+                this.contracts.normalCarLightCarKubun === '普通車' &&
                 (this.contracts.paymentKubun === 'クレジット' ||
+                  this.contracts.paymentKubun === '所有権留保') &&
+                this.normalCarDocuments.poaKubun === '委任状'
+              "
+            >
+              <v-btn
+                @click="poaStampingModal = true"
+                density="compact"
+                icon="mdi-help"
+              ></v-btn>
+            </v-col>
+            <v-col
+              cols="1"
+              class="mt-3 d-flex align-center"
+              v-if="
+                this.contracts.newCarUsedCarKubun === '中古車' &&
+                this.contracts.normalCarLightCarKubun === '普通車' &&
+                (this.contracts.paymentKubun === '現金' ||
+                  this.contracts.paymentKubun === '銀行ローン') &&
+                this.normalCarDocuments.poaKubun === '委任状'
+              "
+            >
+              <v-btn
+                @click="poaImg"
+                density="compact"
+                icon="mdi-printer"
+              ></v-btn>
+            </v-col>
+            <v-col
+              cols="1"
+              class="d-flex align-center"
+              v-if="
+                this.contracts.newCarUsedCarKubun === '中古車' &&
+                this.contracts.normalCarLightCarKubun === '普通車' &&
+                (this.contracts.paymentKubun === 'クレジット' ||
+                  this.contracts.paymentKubun === '所有権留保') &&
+                this.normalCarDocuments.poaKubun === '委任状'
+              "
+            >
+              <v-btn
+                @click="poaImg"
+                density="compact"
+                icon="mdi-printer"
+              ></v-btn>
+            </v-col>
+          </v-row>
+
+          <v-row
+            v-if="
+              this.contracts.newCarUsedCarKubun === '新車' &&
+              this.contracts.normalCarLightCarKubun === '普通車'
+            "
+          >
+            <v-toolbar-title
+              class="ml-15 d-flex align-center normalCarDocuments"
+            >
+              　➀
+              委任状・OSS（ご成約頂いたお車の登録、検査手続きを代行させて頂く手続きです。）
+            </v-toolbar-title>
+          </v-row>
+          <v-row
+            class="mt-10"
+            v-if="
+              this.contracts.newCarUsedCarKubun === '新車' &&
+              this.contracts.normalCarLightCarKubun === '普通車'
+            "
+          >
+            <v-col cols="2" class="ml-15">
+              <v-select
+                @update:modelValue="poaOssKubunChange"
+                v-model="normalCarDocuments.poaOssKubun"
+                label="委任状 or OSS委任状"
+                :items="['', '委任状', 'OSS委任状']"
+                variant="outlined"
+              ></v-select>
+            </v-col>
+
+            <v-col
+              cols="2"
+              class="mx-1 d-flex align-center"
+              v-if="
+                this.normalCarDocuments.poaOssKubun === '委任状' ||
+                this.normalCarDocuments.poaOssKubun === 'OSS委任状'
+              "
+            >
+              <v-checkbox
+                @change="poaOssKubunCompleted"
+                v-model="normalCarDocuments.isFillIn"
+                label="ご記入"
+              >
+              </v-checkbox>
+            </v-col>
+            <v-col cols="2" class="mx-1 d-flex align-center">
+              <v-checkbox
+                @change="poaOssKubunCompleted"
+                v-if="
+                  (this.contracts.paymentKubun === '現金' ||
+                    this.contracts.paymentKubun === '銀行ローン') &&
+                  (this.normalCarDocuments.poaOssKubun === '委任状' ||
+                    this.normalCarDocuments.poaOssKubun === 'OSS委任状')
+                "
+                v-model="normalCarDocuments.isRegisteredSeal"
+                label="実印"
+              >
+              </v-checkbox>
+
+              <v-checkbox
+                @change="poaOssKubunCompleted"
+                v-if="
+                  (this.contracts.paymentKubun === 'クレジット' ||
+                    this.contracts.paymentKubun === '所有権留保') &&
+                  (this.normalCarDocuments.poaOssKubun === '委任状' ||
+                    this.normalCarDocuments.poaOssKubun === 'OSS委任状')
+                "
+                v-model="normalCarDocuments.isStamping"
+                label="認印"
+              >
+              </v-checkbox>
+            </v-col>
+
+            <v-col cols="2" class="mx-1 d-flex align-center">
+              <v-checkbox
+                @change="poaOssKubunCompleted"
+                v-if="
+                  (this.contracts.paymentKubun === '現金' ||
+                    this.contracts.paymentKubun === '銀行ローン') &&
+                  (this.normalCarDocuments.poaOssKubun === '委任状' ||
+                    this.normalCarDocuments.poaOssKubun === 'OSS委任状')
+                "
+                v-model="normalCarDocuments.isSealCertificate"
+                label="印鑑証明"
+              >
+              </v-checkbox>
+
+              <v-checkbox
+                @change="poaOssKubunCompleted"
+                v-if="
+                  (this.contracts.paymentKubun === 'クレジット' ||
+                    this.contracts.paymentKubun === '所有権留保') &&
+                  (this.normalCarDocuments.poaOssKubun === '委任状' ||
+                    this.normalCarDocuments.poaOssKubun === 'OSS委任状')
+                "
+                v-model="normalCarDocuments.isResidentCard"
+                label="住民票"
+              >
+              </v-checkbox>
+            </v-col>
+            <v-col
+              v-if="
+                (this.contracts.paymentKubun === '現金' ||
+                  this.contracts.paymentKubun === '銀行ローン' ||
+                  this.contracts.paymentKubun === 'クレジット' ||
                   this.contracts.paymentKubun === '所有権留保') &&
                 (this.normalCarDocuments.poaOssKubun === '委任状' ||
                   this.normalCarDocuments.poaOssKubun === 'OSS委任状')
               "
-              v-model="normalCarDocuments.isStamping"
-              label="認印"
+              cols="2"
+              class="mb-6 d-flex align-center"
             >
-            </v-checkbox>
-          </v-col>
-
-          <v-col cols="2" class="mx-1 d-flex align-center">
-            <v-checkbox
-              @change="poaOssKubunCompleted"
-              v-if="
-                (this.contracts.paymentKubun === '現金' ||
-                  this.contracts.paymentKubun === '銀行ローン') &&
-                (this.normalCarDocuments.poaOssKubun === '委任状' ||
-                  this.normalCarDocuments.poaOssKubun === 'OSS委任状')
-              "
-              v-model="normalCarDocuments.isSealCertificate"
-              label="印鑑証明"
-            >
-            </v-checkbox>
-
-            <v-checkbox
-              @change="poaOssKubunCompleted"
-              v-if="
-                (this.contracts.paymentKubun === 'クレジット' ||
-                  this.contracts.paymentKubun === '所有権留保') &&
-                (this.normalCarDocuments.poaOssKubun === '委任状' ||
-                  this.normalCarDocuments.poaOssKubun === 'OSS委任状')
-              "
-              v-model="normalCarDocuments.isResidentCard"
-              label="住民票"
-            >
-            </v-checkbox>
-          </v-col>
-          <v-col
-            v-if="
-              (this.contracts.paymentKubun === '現金' ||
-                this.contracts.paymentKubun === '銀行ローン' ||
-                this.contracts.paymentKubun === 'クレジット' ||
-                this.contracts.paymentKubun === '所有権留保') &&
-              (this.normalCarDocuments.poaOssKubun === '委任状' ||
-                this.normalCarDocuments.poaOssKubun === 'OSS委任状')
-            "
-            cols="2"
-            class="mb-6 d-flex align-center"
-          >
-            <div
-              class="complete"
-              :class="{
-                'is-fill-in-completed':
-                  (this.normalCarDocuments.isFillIn &&
-                    this.normalCarDocuments.isRegisteredSeal &&
-                    this.normalCarDocuments.isSealCertificate) ||
-                  (this.normalCarDocuments.isFillIn &&
-                    this.normalCarDocuments.isStamping &&
-                    this.normalCarDocuments.isResidentCard),
-              }"
-            >
-              完了
-            </div>
-          </v-col>
-          <!-- <v-col
+              <div
+                class="complete"
+                :class="{
+                  'is-fill-in-completed':
+                    (this.normalCarDocuments.isFillIn &&
+                      this.normalCarDocuments.isRegisteredSeal &&
+                      this.normalCarDocuments.isSealCertificate) ||
+                    (this.normalCarDocuments.isFillIn &&
+                      this.normalCarDocuments.isStamping &&
+                      this.normalCarDocuments.isResidentCard),
+                }"
+              >
+                完了
+              </div>
+            </v-col>
+            <!-- <v-col
           cols="2"
           class="mx-1 normalCarDocuments-completedDate"
           v-if="
@@ -1242,331 +1256,348 @@ export default {
             label="完了日"
           ></v-text-field>
         </v-col> -->
-        </v-row>
-        <v-row
-          v-if="
-            this.contracts.newCarUsedCarKubun === '新車' &&
-            this.contracts.paymentKubun === '現金' &&
-            this.normalCarDocuments.poaOssKubun === 'OSS委任状'
-          "
-        >
-          <p class="explanation ml-16">
-            ・現金でのお支払いの場合、お車の所有者お客様になりますので<b>実印</b>と<b>印鑑証明</b>が必要となります。<br />
-            　　ワンストップサービス（OSS）は、自動車を保有するために必要となる手続きと税金や手数料の納付を<br />
-            　　インターネット上で一括して行うことを可能とした国土交通省が提供しているサービスです。
-          </p>
-        </v-row>
-        <v-row
-          v-if="
-            this.contracts.newCarUsedCarKubun === '新車' &&
-            this.contracts.paymentKubun === 'クレジット' &&
-            this.normalCarDocuments.poaOssKubun === 'OSS委任状'
-          "
-        >
-          <p class="explanation ml-16">
-            ・クレジットでのお支払いの場合、<b>認印</b>と<b>住民票</b>が必要となります。<br />
-            　　ワンストップサービス（OSS）は、自動車を保有するために必要となる手続きと税金や手数料の納付を<br />
-            　　インターネット上で一括して行うことを可能とした国土交通省が提供しているサービスです。
-          </p>
-        </v-row>
-        <v-row
-          v-if="
-            this.contracts.newCarUsedCarKubun === '新車' &&
-            this.contracts.paymentKubun === '銀行ローン' &&
-            this.normalCarDocuments.poaOssKubun === 'OSS委任状'
-          "
-        >
-          <p class="explanation ml-16">
-            ・銀行ローンでのお支払いの場合、お車の所有者はお客様になりますので<b>実印</b>と<b>印鑑証明</b>が必要となります。<br />
-            　　ワンストップサービス（OSS）は、自動車を保有するために必要となる手続きと税金や手数料の納付を<br />
-            　　インターネット上で一括して行うことを可能とした国土交通省が提供しているサービスです。
-          </p>
-        </v-row>
-        <v-row
-          v-if="
-            this.contracts.newCarUsedCarKubun === '新車' &&
-            this.contracts.paymentKubun === '所有権留保' &&
-            this.normalCarDocuments.poaOssKubun === 'OSS委任状'
-          "
-        >
-          <p class="explanation ml-16">
-            ・所有権留保の場合、<b>認印</b>と<b>住民票</b>が必要となります。<br />
-            　　ワンストップサービス（OSS）は、自動車を保有するために必要となる手続きと税金や手数料の納付を<br />
-            　　インターネット上で一括して行うことを可能とした国土交通省が提供しているサービスです。
-          </p>
-        </v-row>
-        <v-row
-          v-if="
-            this.contracts.newCarUsedCarKubun === '新車' &&
-            this.contracts.paymentKubun === '現金' &&
-            this.normalCarDocuments.poaOssKubun === '委任状'
-          "
-        >
-          <p class="explanation ml-16">
-            ・現金でのお支払いの場合、お車の所有者はお客様になりますので<b>実印</b>と<b>印鑑証明</b>が必要となります。<br />
-            　　最近ではワンストップサービス（OSS）を使用したお車の登録が主流ですが、車の登録日を急ぎたい（納車日を急ぎたい）<br />
-            　　場合などにOSSでの登録を使用しない場合があります。
-          </p>
-        </v-row>
-        <v-row
-          v-if="
-            this.contracts.newCarUsedCarKubun === '新車' &&
-            this.contracts.paymentKubun === 'クレジット' &&
-            this.normalCarDocuments.poaOssKubun === '委任状'
-          "
-        >
-          <p class="explanation ml-16">
-            ・クレジットでのお支払いの場合、<b>認印</b>と<b>住民票</b>が必要となります。<br />
-            　　最近ではワンストップサービス（OSS）を使用したお車の登録が主流ですが、車の登録日を急ぎたい（納車日を急ぎたい）<br />
-            　　場合などにOSSでの登録を使用しない場合があります。
-          </p>
-        </v-row>
-
-        <v-row
-          v-if="
-            this.contracts.newCarUsedCarKubun === '新車' &&
-            this.contracts.paymentKubun === '銀行ローン' &&
-            this.normalCarDocuments.poaOssKubun === '委任状'
-          "
-        >
-          <p class="explanation ml-16">
-            ・銀行ローンでのお支払いの場合、お車の所有者はお客様になりますので<b>実印</b>と<b>印鑑証明</b>が必要となります。<br />
-            　　最近ではワンストップサービス（OSS）を使用したお車の登録が主流ですが、車の登録日を急ぎたい（納車日を急ぎたい）<br />
-            　　場合などにOSSでの登録を使用しない場合があります。
-          </p>
-        </v-row>
-        <v-row
-          v-if="
-            this.contracts.newCarUsedCarKubun === '新車' &&
-            this.contracts.paymentKubun === '所有権留保' &&
-            this.normalCarDocuments.poaOssKubun === '委任状'
-          "
-        >
-          <p class="explanation ml-16">
-            ・所有権留保の場合、<b>認印</b>と<b>住民票</b>が必要となります。<br />
-            　　最近ではワンストップサービス（OSS）を使用したお車の登録が主流ですが、車の登録日を急ぎたい（納車日を急ぎたい）<br />
-            　　場合などにOSSでの登録を使用しない場合があります。
-          </p>
-        </v-row>
-
-        <v-row>
-          <v-col
-            cols="1"
-            class="mt-3 ml-16 d-flex align-center"
+          </v-row>
+          <v-row
             v-if="
-              (this.contracts.paymentKubun === '現金' ||
-                this.contracts.paymentKubun === '銀行ローン') &&
+              this.contracts.newCarUsedCarKubun === '新車' &&
+              this.contracts.paymentKubun === '現金' &&
               this.normalCarDocuments.poaOssKubun === 'OSS委任状'
             "
           >
-            <v-btn
-              @click="ossRegisteredSealModal = true"
-              density="compact"
-              icon="mdi-help"
-            ></v-btn>
-          </v-col>
-          <v-col
-            cols="1"
-            class="mt-3 ml-16 d-flex align-center"
+            <p class="explanation ml-16">
+              ・現金でのお支払いの場合、お車の所有者お客様になりますので<b>実印</b>と<b>印鑑証明</b>が必要となります。<br />
+              　　ワンストップサービス（OSS）は、自動車を保有するために必要となる手続きと税金や手数料の納付を<br />
+              　　インターネット上で一括して行うことを可能とした国土交通省が提供しているサービスです。
+            </p>
+          </v-row>
+          <v-row
             v-if="
-              (this.contracts.paymentKubun === 'クレジット' ||
-                this.contracts.paymentKubun === '所有権留保') &&
+              this.contracts.newCarUsedCarKubun === '新車' &&
+              this.contracts.paymentKubun === 'クレジット' &&
               this.normalCarDocuments.poaOssKubun === 'OSS委任状'
             "
           >
-            <v-btn
-              @click="ossStampingModal = true"
-              density="compact"
-              icon="mdi-help"
-            ></v-btn>
-          </v-col>
-          <v-col
-            cols="1"
-            class="mt-3 d-flex align-center"
+            <p class="explanation ml-16">
+              ・クレジットでのお支払いの場合、<b>認印</b>と<b>住民票</b>が必要となります。<br />
+              　　ワンストップサービス（OSS）は、自動車を保有するために必要となる手続きと税金や手数料の納付を<br />
+              　　インターネット上で一括して行うことを可能とした国土交通省が提供しているサービスです。
+            </p>
+          </v-row>
+          <v-row
             v-if="
-              (this.contracts.paymentKubun === '現金' ||
-                this.contracts.paymentKubun === '銀行ローン') &&
+              this.contracts.newCarUsedCarKubun === '新車' &&
+              this.contracts.paymentKubun === '銀行ローン' &&
               this.normalCarDocuments.poaOssKubun === 'OSS委任状'
             "
           >
-            <v-btn @click="ossImg" density="compact" icon="mdi-printer"></v-btn>
-          </v-col>
-          <v-col
-            cols="1"
-            class="mt-3 d-flex align-center"
+            <p class="explanation ml-16">
+              ・銀行ローンでのお支払いの場合、お車の所有者はお客様になりますので<b>実印</b>と<b>印鑑証明</b>が必要となります。<br />
+              　　ワンストップサービス（OSS）は、自動車を保有するために必要となる手続きと税金や手数料の納付を<br />
+              　　インターネット上で一括して行うことを可能とした国土交通省が提供しているサービスです。
+            </p>
+          </v-row>
+          <v-row
             v-if="
-              (this.contracts.paymentKubun === 'クレジット' ||
-                this.contracts.paymentKubun === '所有権留保') &&
+              this.contracts.newCarUsedCarKubun === '新車' &&
+              this.contracts.paymentKubun === '所有権留保' &&
               this.normalCarDocuments.poaOssKubun === 'OSS委任状'
             "
           >
-            <v-btn @click="ossImg" density="compact" icon="mdi-printer"></v-btn>
-          </v-col>
-          <v-col
-            cols="1"
-            class="mt-3 d-flex align-center"
+            <p class="explanation ml-16">
+              ・所有権留保の場合、<b>認印</b>と<b>住民票</b>が必要となります。<br />
+              　　ワンストップサービス（OSS）は、自動車を保有するために必要となる手続きと税金や手数料の納付を<br />
+              　　インターネット上で一括して行うことを可能とした国土交通省が提供しているサービスです。
+            </p>
+          </v-row>
+          <v-row
             v-if="
-              (this.contracts.paymentKubun === '現金' ||
-                this.contracts.paymentKubun === '銀行ローン' ||
-                this.contracts.paymentKubun === 'クレジット' ||
-                this.contracts.paymentKubun === '所有権留保') &&
-              this.normalCarDocuments.poaOssKubun === 'OSS委任状'
-            "
-          >
-            <v-btn
-              href="https://www.oss.mlit.go.jp/portal/beginner/osstowa/index.html"
-              target="_blank"
-              density="compact"
-              icon="mdi-search-web"
-            ></v-btn>
-          </v-col>
-        </v-row>
-
-        <v-row>
-          <v-col
-            cols="1"
-            class="mt-3 ml-16 d-flex align-center"
-            v-if="
-              (this.contracts.paymentKubun === '現金' ||
-                this.contracts.paymentKubun === '銀行ローン') &&
+              this.contracts.newCarUsedCarKubun === '新車' &&
+              this.contracts.paymentKubun === '現金' &&
               this.normalCarDocuments.poaOssKubun === '委任状'
             "
           >
-            <v-btn
-              @click="poaRegisteredSealModal = true"
-              density="compact"
-              icon="mdi-help"
-            ></v-btn>
-          </v-col>
-          <v-col
-            cols="1"
-            class="mt-3 ml-16 d-flex align-center"
+            <p class="explanation ml-16">
+              ・現金でのお支払いの場合、お車の所有者はお客様になりますので<b>実印</b>と<b>印鑑証明</b>が必要となります。<br />
+              　　最近ではワンストップサービス（OSS）を使用したお車の登録が主流ですが、車の登録日を急ぎたい（納車日を急ぎたい）<br />
+              　　場合などにOSSでの登録を使用しない場合があります。
+            </p>
+          </v-row>
+          <v-row
             v-if="
-              (this.contracts.paymentKubun === 'クレジット' ||
-                this.contracts.paymentKubun === '所有権留保') &&
+              this.contracts.newCarUsedCarKubun === '新車' &&
+              this.contracts.paymentKubun === 'クレジット' &&
               this.normalCarDocuments.poaOssKubun === '委任状'
             "
           >
-            <v-btn
-              @click="poaStampingModal = true"
-              density="compact"
-              icon="mdi-help"
-            ></v-btn>
-          </v-col>
-          <v-col
-            cols="1"
-            class="mt-3 d-flex align-center"
-            v-if="
-              (this.contracts.paymentKubun === '現金' ||
-                this.contracts.paymentKubun === '銀行ローン') &&
-              this.normalCarDocuments.poaOssKubun === '委任状'
-            "
-          >
-            <v-btn @click="poaImg" density="compact" icon="mdi-printer"></v-btn>
-          </v-col>
-          <v-col
-            cols="1"
-            class="mt-3 d-flex align-center"
-            v-if="
-              (this.contracts.paymentKubun === 'クレジット' ||
-                this.contracts.paymentKubun === '所有権留保') &&
-              this.normalCarDocuments.poaOssKubun === '委任状'
-            "
-          >
-            <v-btn @click="poaImg" density="compact" icon="mdi-printer"></v-btn>
-          </v-col>
-        </v-row>
+            <p class="explanation ml-16">
+              ・クレジットでのお支払いの場合、<b>認印</b>と<b>住民票</b>が必要となります。<br />
+              　　最近ではワンストップサービス（OSS）を使用したお車の登録が主流ですが、車の登録日を急ぎたい（納車日を急ぎたい）<br />
+              　　場合などにOSSでの登録を使用しない場合があります。
+            </p>
+          </v-row>
 
-        <v-row>
-          <v-toolbar-title
-            class="ml-15 d-flex align-center lightCarDocuments"
+          <v-row
+            v-if="
+              this.contracts.newCarUsedCarKubun === '新車' &&
+              this.contracts.paymentKubun === '銀行ローン' &&
+              this.normalCarDocuments.poaOssKubun === '委任状'
+            "
+          >
+            <p class="explanation ml-16">
+              ・銀行ローンでのお支払いの場合、お車の所有者はお客様になりますので<b>実印</b>と<b>印鑑証明</b>が必要となります。<br />
+              　　最近ではワンストップサービス（OSS）を使用したお車の登録が主流ですが、車の登録日を急ぎたい（納車日を急ぎたい）<br />
+              　　場合などにOSSでの登録を使用しない場合があります。
+            </p>
+          </v-row>
+          <v-row
+            v-if="
+              this.contracts.newCarUsedCarKubun === '新車' &&
+              this.contracts.paymentKubun === '所有権留保' &&
+              this.normalCarDocuments.poaOssKubun === '委任状'
+            "
+          >
+            <p class="explanation ml-16">
+              ・所有権留保の場合、<b>認印</b>と<b>住民票</b>が必要となります。<br />
+              　　最近ではワンストップサービス（OSS）を使用したお車の登録が主流ですが、車の登録日を急ぎたい（納車日を急ぎたい）<br />
+              　　場合などにOSSでの登録を使用しない場合があります。
+            </p>
+          </v-row>
+
+          <v-row>
+            <v-col
+              cols="1"
+              class="mt-3 ml-16 d-flex align-center"
+              v-if="
+                (this.contracts.paymentKubun === '現金' ||
+                  this.contracts.paymentKubun === '銀行ローン') &&
+                this.normalCarDocuments.poaOssKubun === 'OSS委任状'
+              "
+            >
+              <v-btn
+                @click="ossRegisteredSealModal = true"
+                density="compact"
+                icon="mdi-help"
+              ></v-btn>
+            </v-col>
+            <v-col
+              cols="1"
+              class="mt-3 ml-16 d-flex align-center"
+              v-if="
+                (this.contracts.paymentKubun === 'クレジット' ||
+                  this.contracts.paymentKubun === '所有権留保') &&
+                this.normalCarDocuments.poaOssKubun === 'OSS委任状'
+              "
+            >
+              <v-btn
+                @click="ossStampingModal = true"
+                density="compact"
+                icon="mdi-help"
+              ></v-btn>
+            </v-col>
+            <v-col
+              cols="1"
+              class="mt-3 d-flex align-center"
+              v-if="
+                (this.contracts.paymentKubun === '現金' ||
+                  this.contracts.paymentKubun === '銀行ローン') &&
+                this.normalCarDocuments.poaOssKubun === 'OSS委任状'
+              "
+            >
+              <v-btn
+                @click="ossImg"
+                density="compact"
+                icon="mdi-printer"
+              ></v-btn>
+            </v-col>
+            <v-col
+              cols="1"
+              class="mt-3 d-flex align-center"
+              v-if="
+                (this.contracts.paymentKubun === 'クレジット' ||
+                  this.contracts.paymentKubun === '所有権留保') &&
+                this.normalCarDocuments.poaOssKubun === 'OSS委任状'
+              "
+            >
+              <v-btn
+                @click="ossImg"
+                density="compact"
+                icon="mdi-printer"
+              ></v-btn>
+            </v-col>
+            <v-col
+              cols="1"
+              class="mt-3 d-flex align-center"
+              v-if="
+                (this.contracts.paymentKubun === '現金' ||
+                  this.contracts.paymentKubun === '銀行ローン' ||
+                  this.contracts.paymentKubun === 'クレジット' ||
+                  this.contracts.paymentKubun === '所有権留保') &&
+                this.normalCarDocuments.poaOssKubun === 'OSS委任状'
+              "
+            >
+              <v-btn
+                href="https://www.oss.mlit.go.jp/portal/beginner/osstowa/index.html"
+                target="_blank"
+                density="compact"
+                icon="mdi-search-web"
+              ></v-btn>
+            </v-col>
+          </v-row>
+
+          <v-row>
+            <v-col
+              cols="1"
+              class="mt-3 ml-16 d-flex align-center"
+              v-if="
+                (this.contracts.paymentKubun === '現金' ||
+                  this.contracts.paymentKubun === '銀行ローン') &&
+                this.normalCarDocuments.poaOssKubun === '委任状'
+              "
+            >
+              <v-btn
+                @click="poaRegisteredSealModal = true"
+                density="compact"
+                icon="mdi-help"
+              ></v-btn>
+            </v-col>
+            <v-col
+              cols="1"
+              class="mt-3 ml-16 d-flex align-center"
+              v-if="
+                (this.contracts.paymentKubun === 'クレジット' ||
+                  this.contracts.paymentKubun === '所有権留保') &&
+                this.normalCarDocuments.poaOssKubun === '委任状'
+              "
+            >
+              <v-btn
+                @click="poaStampingModal = true"
+                density="compact"
+                icon="mdi-help"
+              ></v-btn>
+            </v-col>
+            <v-col
+              cols="1"
+              class="mt-3 d-flex align-center"
+              v-if="
+                (this.contracts.paymentKubun === '現金' ||
+                  this.contracts.paymentKubun === '銀行ローン') &&
+                this.normalCarDocuments.poaOssKubun === '委任状'
+              "
+            >
+              <v-btn
+                @click="poaImg"
+                density="compact"
+                icon="mdi-printer"
+              ></v-btn>
+            </v-col>
+            <v-col
+              cols="1"
+              class="mt-3 d-flex align-center"
+              v-if="
+                (this.contracts.paymentKubun === 'クレジット' ||
+                  this.contracts.paymentKubun === '所有権留保') &&
+                this.normalCarDocuments.poaOssKubun === '委任状'
+              "
+            >
+              <v-btn
+                @click="poaImg"
+                density="compact"
+                icon="mdi-printer"
+              ></v-btn>
+            </v-col>
+          </v-row>
+
+          <v-row>
+            <v-toolbar-title
+              class="ml-15 d-flex align-center lightCarDocuments"
+              v-if="this.contracts.normalCarLightCarKubun === '軽自動車'"
+            >
+              　➀
+              申請依頼書（お車の登録、検査手続きを代行させて頂く手続きです。）
+            </v-toolbar-title>
+          </v-row>
+
+          <v-row
+            class="mt-10"
             v-if="this.contracts.normalCarLightCarKubun === '軽自動車'"
           >
-            　➀ 申請依頼書（お車の登録、検査手続きを代行させて頂く手続きです。）
-          </v-toolbar-title>
-        </v-row>
+            <v-col cols="2" class="ml-15">
+              <v-combobox
+                @update:modelValue="lightCarDocumentsKubunChange"
+                v-model="lightCarDocuments.lightCarDocumentsKubun"
+                label=""
+                :items="[]"
+                variant="outlined"
+                readonly
+              ></v-combobox>
+            </v-col>
 
-        <v-row
-          class="mt-10"
-          v-if="this.contracts.normalCarLightCarKubun === '軽自動車'"
-        >
-          <v-col cols="2" class="ml-15">
-            <v-combobox
-              @update:modelValue="lightCarDocumentsKubunChange"
-              v-model="lightCarDocuments.lightCarDocumentsKubun"
-              label=""
-              :items="[]"
-              variant="outlined"
-              readonly
-            ></v-combobox>
-          </v-col>
-
-          <v-col
-            cols="2"
-            class="mx-1 d-flex align-center"
-            v-if="
-              this.lightCarDocuments.lightCarDocumentsKubun === '申請依頼書'
-            "
-          >
-            <v-checkbox
-              @change="lightCarDocumentsKubunCompleted"
-              v-model="lightCarDocuments.isFillIn"
-              label="ご記入"
+            <v-col
+              cols="2"
+              class="mx-1 d-flex align-center"
+              v-if="
+                this.lightCarDocuments.lightCarDocumentsKubun === '申請依頼書'
+              "
             >
-            </v-checkbox>
-          </v-col>
-          <v-col
-            cols="2"
-            class="mx-1 d-flex align-center"
-            v-if="
-              this.lightCarDocuments.lightCarDocumentsKubun === '申請依頼書'
-            "
-          >
-            <v-checkbox
-              @change="lightCarDocumentsKubunCompleted"
-              v-model="lightCarDocuments.isStamping"
-              label="認印"
+              <v-checkbox
+                @change="lightCarDocumentsKubunCompleted"
+                v-model="lightCarDocuments.isFillIn"
+                label="ご記入"
+              >
+              </v-checkbox>
+            </v-col>
+            <v-col
+              cols="2"
+              class="mx-1 d-flex align-center"
+              v-if="
+                this.lightCarDocuments.lightCarDocumentsKubun === '申請依頼書'
+              "
             >
-            </v-checkbox>
-          </v-col>
-          <v-col
-            cols="2"
-            class="mx-1 d-flex align-center"
-            v-if="
-              this.lightCarDocuments.lightCarDocumentsKubun === '申請依頼書'
-            "
-          >
-            <v-checkbox
-              @change="lightCarDocumentsKubunCompleted"
-              v-model="lightCarDocuments.isResidentCard"
-              label="住民票"
+              <v-checkbox
+                @change="lightCarDocumentsKubunCompleted"
+                v-model="lightCarDocuments.isStamping"
+                label="認印"
+              >
+              </v-checkbox>
+            </v-col>
+            <v-col
+              cols="2"
+              class="mx-1 d-flex align-center"
+              v-if="
+                this.lightCarDocuments.lightCarDocumentsKubun === '申請依頼書'
+              "
             >
-            </v-checkbox>
-          </v-col>
-          <v-col
-            v-if="
-              (this.contracts.paymentKubun === '現金' ||
-                this.contracts.paymentKubun === '銀行ローン' ||
-                this.contracts.paymentKubun === 'クレジット' ||
-                this.contracts.paymentKubun === '所有権留保') &&
-              this.lightCarDocuments.lightCarDocumentsKubun === '申請依頼書'
-            "
-            cols="2"
-            class="mb-6 d-flex align-center"
-          >
-            <div
-              class="complete"
-              :class="{
-                'is-fill-in-completed':
-                  this.lightCarDocuments.isFillIn &&
-                  this.lightCarDocuments.isStamping &&
-                  this.lightCarDocuments.isResidentCard,
-              }"
+              <v-checkbox
+                @change="lightCarDocumentsKubunCompleted"
+                v-model="lightCarDocuments.isResidentCard"
+                label="住民票"
+              >
+              </v-checkbox>
+            </v-col>
+            <v-col
+              v-if="
+                (this.contracts.paymentKubun === '現金' ||
+                  this.contracts.paymentKubun === '銀行ローン' ||
+                  this.contracts.paymentKubun === 'クレジット' ||
+                  this.contracts.paymentKubun === '所有権留保') &&
+                this.lightCarDocuments.lightCarDocumentsKubun === '申請依頼書'
+              "
+              cols="2"
+              class="mb-6 d-flex align-center"
             >
-              完了
-            </div>
-          </v-col>
-          <!-- <v-col
+              <div
+                class="complete"
+                :class="{
+                  'is-fill-in-completed':
+                    this.lightCarDocuments.isFillIn &&
+                    this.lightCarDocuments.isStamping &&
+                    this.lightCarDocuments.isResidentCard,
+                }"
+              >
+                完了
+              </div>
+            </v-col>
+            <!-- <v-col
           cols="2"
           class="mx-1 lightCarDocuments-completedDate"
           v-if="this.lightCarDocuments.lightCarDocumentsKubun === '申請依頼書'"
@@ -1580,159 +1611,163 @@ export default {
             label="完了日"
           ></v-text-field>
         </v-col> -->
-          <!-- <v-col
+            <!-- <v-col
           cols="2"
           class="ml-16 lightCarDocuments-completedDate"
           v-if="this.lightCarDocuments.lightCarDocumentsKubun === '申請依頼書'"
         >
           <v-btn @click="aaaaaaaa" density="compact" icon="mdi-printer"></v-btn>
         </v-col> -->
-        </v-row>
-        <v-row v-if="this.contracts.normalCarLightCarKubun === '軽自動車'">
-          <p class="explanation ml-16">
-            ・軽自動車の場合、<b>認印</b>と<b>住民票</b>が必要となります。
-          </p>
-        </v-row>
-        <v-row>
-          <v-col
-            cols="1"
-            class="mt-3 ml-16 d-flex align-center"
-            v-if="
-              this.contracts.normalCarLightCarKubun === '軽自動車' &&
-              this.lightCarDocuments.lightCarDocumentsKubun === '申請依頼書' &&
-              (this.contracts.paymentKubun === '現金' ||
-                this.contracts.paymentKubun === '銀行ローン')
-            "
-          >
-            <v-btn
-              @click="lightCarDocumentsOwnerAndUserModal = true"
-              density="compact"
-              icon="mdi-help"
-            ></v-btn>
-          </v-col>
-          <v-col
-            cols="1"
-            class="mt-3 ml-16 d-flex align-center"
-            v-if="
-              this.contracts.normalCarLightCarKubun === '軽自動車' &&
-              this.lightCarDocuments.lightCarDocumentsKubun === '申請依頼書' &&
-              (this.contracts.paymentKubun === 'クレジット' ||
-                this.contracts.paymentKubun === '所有権留保')
-            "
-          >
-            <v-btn
-              @click="lightCarDocumentsUserModal = true"
-              density="compact"
-              icon="mdi-help"
-            ></v-btn>
-          </v-col>
-          <v-col
-            cols="1"
-            class="mt-3 d-flex align-center"
-            v-if="
-              this.contracts.normalCarLightCarKubun === '軽自動車' &&
-              this.lightCarDocuments.lightCarDocumentsKubun === '申請依頼書' &&
-              (this.contracts.paymentKubun === '現金' ||
-                this.contracts.paymentKubun === '銀行ローン')
-            "
-          >
-            <v-btn
-              @click="lightCarDocumentsImg"
-              density="compact"
-              icon="mdi-printer"
-            ></v-btn>
-          </v-col>
-          <v-col
-            cols="1"
-            class="mt-3 d-flex align-center"
-            v-if="
-              this.contracts.normalCarLightCarKubun === '軽自動車' &&
-              this.lightCarDocuments.lightCarDocumentsKubun === '申請依頼書' &&
-              (this.contracts.paymentKubun === 'クレジット' ||
-                this.contracts.paymentKubun === '所有権留保')
-            "
-          >
-            <v-btn
-              @click="lightCarDocumentsImg"
-              density="compact"
-              icon="mdi-printer"
-            ></v-btn>
-          </v-col>
-        </v-row>
-
-        <v-row>
-          <v-toolbar-title
-            class="mt-5 ml-15 mb-5 d-flex align-center normalCarDocumentsGarageVerification"
-            v-if="
-              this.normalCarDocuments.poaOssKubun === '委任状' ||
-              (this.contracts.newCarUsedCarKubun === '中古車' &&
-                this.contracts.normalCarLightCarKubun === '普通車')
-            "
-          >
-            　➁
-            車庫証明（ご成約頂いたお車の保管場所を警察署に届け出するための手続きです。）
-          </v-toolbar-title>
-        </v-row>
-
-        <v-row class="mt-5">
-          <v-col
-            cols="2"
-            class="ml-15"
-            v-if="
-              this.normalCarDocuments.poaOssKubun === '委任状' ||
-              (this.contracts.newCarUsedCarKubun === '中古車' &&
-                this.contracts.normalCarLightCarKubun === '普通車')
-            "
-          >
-            <v-select
-              @update:modelValue="NCgarageVerificationKubunChange"
-              label="車庫証明"
-              v-model="
-                normalCarDocumentsGarageVerification.NCgarageVerificationKubun
+          </v-row>
+          <v-row v-if="this.contracts.normalCarLightCarKubun === '軽自動車'">
+            <p class="explanation ml-16">
+              ・軽自動車の場合、<b>認印</b>と<b>住民票</b>が必要となります。
+            </p>
+          </v-row>
+          <v-row>
+            <v-col
+              cols="1"
+              class="mt-3 ml-16 d-flex align-center"
+              v-if="
+                this.contracts.normalCarLightCarKubun === '軽自動車' &&
+                this.lightCarDocuments.lightCarDocumentsKubun ===
+                  '申請依頼書' &&
+                (this.contracts.paymentKubun === '現金' ||
+                  this.contracts.paymentKubun === '銀行ローン')
               "
-              :items="['', '保管場所証明申請書', '代行不要']"
-              variant="outlined"
-            ></v-select>
-          </v-col>
-
-          <v-col
-            cols="2"
-            class="mx-1 d-flex align-center"
-            v-if="
-              this.normalCarDocumentsGarageVerification
-                .NCgarageVerificationKubun === '保管場所証明申請書'
-            "
-          >
-            <v-checkbox
-              @change="NCgarageVerificationKubunCompleted"
-              v-model="normalCarDocumentsGarageVerification.isFillIn"
-              label="ご記入"
             >
-            </v-checkbox>
-          </v-col>
-          <v-col cols="2" class="mx-1"> </v-col>
-          <v-col cols="2" class="mx-1"> </v-col>
-
-          <v-col
-            v-if="
-              this.normalCarDocumentsGarageVerification
-                .NCgarageVerificationKubun === '保管場所証明申請書'
-            "
-            cols="2"
-            class="mb-6 d-flex align-center"
-          >
-            <div
-              class="ncgarage-verification-kubun-completed"
-              :class="{
-                'is-fill-in-completed':
-                  this.normalCarDocumentsGarageVerification.isFillIn,
-              }"
+              <v-btn
+                @click="lightCarDocumentsOwnerAndUserModal = true"
+                density="compact"
+                icon="mdi-help"
+              ></v-btn>
+            </v-col>
+            <v-col
+              cols="1"
+              class="mt-3 ml-16 d-flex align-center"
+              v-if="
+                this.contracts.normalCarLightCarKubun === '軽自動車' &&
+                this.lightCarDocuments.lightCarDocumentsKubun ===
+                  '申請依頼書' &&
+                (this.contracts.paymentKubun === 'クレジット' ||
+                  this.contracts.paymentKubun === '所有権留保')
+              "
             >
-              完了
-            </div>
-          </v-col>
+              <v-btn
+                @click="lightCarDocumentsUserModal = true"
+                density="compact"
+                icon="mdi-help"
+              ></v-btn>
+            </v-col>
+            <v-col
+              cols="1"
+              class="mt-3 d-flex align-center"
+              v-if="
+                this.contracts.normalCarLightCarKubun === '軽自動車' &&
+                this.lightCarDocuments.lightCarDocumentsKubun ===
+                  '申請依頼書' &&
+                (this.contracts.paymentKubun === '現金' ||
+                  this.contracts.paymentKubun === '銀行ローン')
+              "
+            >
+              <v-btn
+                @click="lightCarDocumentsImg"
+                density="compact"
+                icon="mdi-printer"
+              ></v-btn>
+            </v-col>
+            <v-col
+              cols="1"
+              class="mt-3 d-flex align-center"
+              v-if="
+                this.contracts.normalCarLightCarKubun === '軽自動車' &&
+                this.lightCarDocuments.lightCarDocumentsKubun ===
+                  '申請依頼書' &&
+                (this.contracts.paymentKubun === 'クレジット' ||
+                  this.contracts.paymentKubun === '所有権留保')
+              "
+            >
+              <v-btn
+                @click="lightCarDocumentsImg"
+                density="compact"
+                icon="mdi-printer"
+              ></v-btn>
+            </v-col>
+          </v-row>
 
-          <!-- <v-col
+          <v-row>
+            <v-toolbar-title
+              class="mt-5 ml-15 mb-5 d-flex align-center normalCarDocumentsGarageVerification"
+              v-if="
+                this.normalCarDocuments.poaOssKubun === '委任状' ||
+                (this.contracts.newCarUsedCarKubun === '中古車' &&
+                  this.contracts.normalCarLightCarKubun === '普通車')
+              "
+            >
+              　➁
+              車庫証明（ご成約頂いたお車の保管場所を警察署に届け出するための手続きです。）
+            </v-toolbar-title>
+          </v-row>
+
+          <v-row class="mt-5">
+            <v-col
+              cols="2"
+              class="ml-15"
+              v-if="
+                this.normalCarDocuments.poaOssKubun === '委任状' ||
+                (this.contracts.newCarUsedCarKubun === '中古車' &&
+                  this.contracts.normalCarLightCarKubun === '普通車')
+              "
+            >
+              <v-select
+                @update:modelValue="NCgarageVerificationKubunChange"
+                label="車庫証明"
+                v-model="
+                  normalCarDocumentsGarageVerification.NCgarageVerificationKubun
+                "
+                :items="['', '保管場所証明申請書', '代行不要']"
+                variant="outlined"
+              ></v-select>
+            </v-col>
+
+            <v-col
+              cols="2"
+              class="mx-1 d-flex align-center"
+              v-if="
+                this.normalCarDocumentsGarageVerification
+                  .NCgarageVerificationKubun === '保管場所証明申請書'
+              "
+            >
+              <v-checkbox
+                @change="NCgarageVerificationKubunCompleted"
+                v-model="normalCarDocumentsGarageVerification.isFillIn"
+                label="ご記入"
+              >
+              </v-checkbox>
+            </v-col>
+            <v-col cols="2" class="mx-1"> </v-col>
+            <v-col cols="2" class="mx-1"> </v-col>
+
+            <v-col
+              v-if="
+                this.normalCarDocumentsGarageVerification
+                  .NCgarageVerificationKubun === '保管場所証明申請書'
+              "
+              cols="2"
+              class="mb-6 d-flex align-center"
+            >
+              <div
+                class="ncgarage-verification-kubun-completed"
+                :class="{
+                  'is-fill-in-completed':
+                    this.normalCarDocumentsGarageVerification.isFillIn,
+                }"
+              >
+                完了
+              </div>
+            </v-col>
+
+            <!-- <v-col
             cols="2"
             class="mx-1 normalCarDocumentsGarageVerification-completedDate"
             v-if="
@@ -1750,121 +1785,121 @@ export default {
               label="完了日"
             ></v-text-field>
           </v-col> -->
-        </v-row>
-        <v-row
-          v-if="
-            this.normalCarDocumentsGarageVerification
-              .NCgarageVerificationKubun === '保管場所証明申請書'
-          "
-        >
-          <p class="explanation ml-16">
-            ・普通車用の車庫証明、4枚綴り（つづり）です。
-          </p>
-        </v-row>
-
-        <v-row>
-          <v-col
-            cols="1"
-            class="mt-3 ml-16 d-flex align-center"
+          </v-row>
+          <v-row
             v-if="
               this.normalCarDocumentsGarageVerification
                 .NCgarageVerificationKubun === '保管場所証明申請書'
             "
           >
-            <v-btn
-              @click="NCgarageVerificationModal = true"
-              density="compact"
-              icon="mdi-help"
-            ></v-btn>
-          </v-col>
-          <v-col
-            cols="1"
-            class="mt-3 d-flex align-center"
-            v-if="
-              this.normalCarDocumentsGarageVerification
-                .NCgarageVerificationKubun === '保管場所証明申請書'
-            "
-          >
-            <v-btn
-              href="https://www.pref.hiroshima.lg.jp/site/police/055-05505-hokan.html"
-              target="_blank"
-              density="compact"
-              icon="mdi-search-web"
-            ></v-btn>
-          </v-col>
-        </v-row>
-        <v-row
-          v-if="
-            this.normalCarDocumentsGarageVerification
-              .NCgarageVerificationKubun === '保管場所証明申請書'
-          "
-        >
-          <v-divider class="ml-15 mt-5 separator"></v-divider>
-        </v-row>
-        <v-row>
-          <v-toolbar-title
-            class="ml-15 mb-5 d-flex align-center lightCarDocumentsGarageVerification"
-            v-if="this.contracts.normalCarLightCarKubun === '軽自動車'"
-          >
-            　➁
-            車庫証明（ご成約頂いたお車の保管場所を警察署に届け出するための手続きです。）
-          </v-toolbar-title>
-        </v-row>
+            <p class="explanation ml-16">
+              ・普通車用の車庫証明、4枚綴り（つづり）です。
+            </p>
+          </v-row>
 
-        <v-row class="mt-5">
-          <v-col
-            cols="2"
-            class="ml-15"
-            v-if="this.contracts.normalCarLightCarKubun === '軽自動車'"
-          >
-            <v-select
-              @update:modelValue="LCgarageVerificationKubunChange"
-              label="車庫証明"
-              v-model="
-                lightCarDocumentsGarageVerification.LCgarageVerificationKubun
+          <v-row>
+            <v-col
+              cols="1"
+              class="mt-3 ml-16 d-flex align-center"
+              v-if="
+                this.normalCarDocumentsGarageVerification
+                  .NCgarageVerificationKubun === '保管場所証明申請書'
               "
-              :items="['', '保管場所届出書', '代行不要']"
-              variant="outlined"
-            ></v-select>
-          </v-col>
-
-          <v-col
-            cols="2"
-            class="mx-1 d-flex align-center"
+            >
+              <v-btn
+                @click="NCgarageVerificationModal = true"
+                density="compact"
+                icon="mdi-help"
+              ></v-btn>
+            </v-col>
+            <v-col
+              cols="1"
+              class="mt-3 d-flex align-center"
+              v-if="
+                this.normalCarDocumentsGarageVerification
+                  .NCgarageVerificationKubun === '保管場所証明申請書'
+              "
+            >
+              <v-btn
+                href="https://www.pref.hiroshima.lg.jp/site/police/055-05505-hokan.html"
+                target="_blank"
+                density="compact"
+                icon="mdi-search-web"
+              ></v-btn>
+            </v-col>
+          </v-row>
+          <v-row
             v-if="
-              this.lightCarDocumentsGarageVerification
-                .LCgarageVerificationKubun === '保管場所届出書'
+              this.normalCarDocumentsGarageVerification
+                .NCgarageVerificationKubun === '保管場所証明申請書'
             "
           >
-            <v-checkbox
-              @change="LCgarageVerificationKubunCompleted"
-              v-model="lightCarDocumentsGarageVerification.isFillIn"
-              label="ご記入"
+            <v-divider class="ml-15 mt-5 separator"></v-divider>
+          </v-row>
+          <v-row>
+            <v-toolbar-title
+              class="ml-15 mb-5 d-flex align-center lightCarDocumentsGarageVerification"
+              v-if="this.contracts.normalCarLightCarKubun === '軽自動車'"
             >
-            </v-checkbox>
-          </v-col>
-          <v-col cols="2" class="mx-1"> </v-col>
-          <v-col cols="2" class="mx-1"> </v-col>
-          <v-col
-            v-if="
-              this.lightCarDocumentsGarageVerification
-                .LCgarageVerificationKubun === '保管場所届出書'
-            "
-            cols="2"
-            class="mb-6 d-flex align-center"
-          >
-            <div
-              class="lcgarage-verification-kubun-completed"
-              :class="{
-                'is-fill-in-completed':
-                  this.lightCarDocumentsGarageVerification.isFillIn,
-              }"
-            >
-              完了
-            </div>
-          </v-col>
+              　➁
+              車庫証明（ご成約頂いたお車の保管場所を警察署に届け出するための手続きです。）
+            </v-toolbar-title>
+          </v-row>
 
-          <!-- <v-col
+          <v-row class="mt-5">
+            <v-col
+              cols="2"
+              class="ml-15"
+              v-if="this.contracts.normalCarLightCarKubun === '軽自動車'"
+            >
+              <v-select
+                @update:modelValue="LCgarageVerificationKubunChange"
+                label="車庫証明"
+                v-model="
+                  lightCarDocumentsGarageVerification.LCgarageVerificationKubun
+                "
+                :items="['', '保管場所届出書', '代行不要']"
+                variant="outlined"
+              ></v-select>
+            </v-col>
+
+            <v-col
+              cols="2"
+              class="mx-1 d-flex align-center"
+              v-if="
+                this.lightCarDocumentsGarageVerification
+                  .LCgarageVerificationKubun === '保管場所届出書'
+              "
+            >
+              <v-checkbox
+                @change="LCgarageVerificationKubunCompleted"
+                v-model="lightCarDocumentsGarageVerification.isFillIn"
+                label="ご記入"
+              >
+              </v-checkbox>
+            </v-col>
+            <v-col cols="2" class="mx-1"> </v-col>
+            <v-col cols="2" class="mx-1"> </v-col>
+            <v-col
+              v-if="
+                this.lightCarDocumentsGarageVerification
+                  .LCgarageVerificationKubun === '保管場所届出書'
+              "
+              cols="2"
+              class="mb-6 d-flex align-center"
+            >
+              <div
+                class="lcgarage-verification-kubun-completed"
+                :class="{
+                  'is-fill-in-completed':
+                    this.lightCarDocumentsGarageVerification.isFillIn,
+                }"
+              >
+                完了
+              </div>
+            </v-col>
+
+            <!-- <v-col
           cols="2"
           class="mx-1 lightCarDocumentsGarageVerification-completedDate"
           v-if="
@@ -1882,51 +1917,58 @@ export default {
             label="完了日"
           ></v-text-field>
         </v-col> -->
-        </v-row>
-        <v-row
-          v-if="
-            this.lightCarDocumentsGarageVerification
-              .LCgarageVerificationKubun === '保管場所届出書'
-          "
-        >
-          <p class="explanation ml-16">
-            ・軽自動車用の車庫証明、4枚綴り（つづり）です。
-          </p>
-        </v-row>
-
-        <v-row>
-          <v-col
-            cols="1"
-            class="mt-3 ml-16 d-flex align-center"
+          </v-row>
+          <v-row
             v-if="
               this.lightCarDocumentsGarageVerification
                 .LCgarageVerificationKubun === '保管場所届出書'
             "
           >
-            <v-btn
-              @click="LCgarageVerificationKubun = true"
-              density="compact"
-              icon="mdi-help"
-            ></v-btn>
-          </v-col>
-          <v-col
-            cols="1"
-            class="mt-3 d-flex align-center"
+            <p class="explanation ml-16">
+              ・軽自動車用の車庫証明、4枚綴り（つづり）です。
+            </p>
+          </v-row>
+
+          <v-row>
+            <v-col
+              cols="1"
+              class="mt-3 ml-16 d-flex align-center"
+              v-if="
+                this.lightCarDocumentsGarageVerification
+                  .LCgarageVerificationKubun === '保管場所届出書'
+              "
+            >
+              <v-btn
+                @click="LCgarageVerificationKubun = true"
+                density="compact"
+                icon="mdi-help"
+              ></v-btn>
+            </v-col>
+            <v-col
+              cols="1"
+              class="mt-3 d-flex align-center"
+              v-if="
+                this.lightCarDocumentsGarageVerification
+                  .LCgarageVerificationKubun === '保管場所届出書'
+              "
+            >
+              <v-btn
+                href="https://www.pref.hiroshima.lg.jp/site/police/055-05505-kei-hokan.html"
+                target="_blank"
+                density="compact"
+                icon="mdi-search-web"
+              ></v-btn>
+            </v-col>
+          </v-row>
+          <v-row
             v-if="
               this.lightCarDocumentsGarageVerification
                 .LCgarageVerificationKubun === '保管場所届出書'
             "
           >
-            <v-btn
-              href="https://www.pref.hiroshima.lg.jp/site/police/055-05505-kei-hokan.html"
-              target="_blank"
-              density="compact"
-              icon="mdi-search-web"
-            ></v-btn>
-          </v-col>
-        </v-row>
-
-        <!-- <v-row>
+            <v-divider class="ml-15 mt-5 separator"></v-divider>
+          </v-row>
+          <!-- <v-row>
         <v-col
           cols="1"
           class="ml-16 d-flex align-center"
@@ -1938,71 +1980,71 @@ export default {
           <v-btn @click="aaa" density="compact" icon="mdi-help"></v-btn>
         </v-col>
       </v-row> -->
-        <v-row>
-          <v-toolbar-title
-            class="ml-15 mb-5 d-flex align-center normalCarDocumentsGarageVerification"
-            v-if="this.normalCarDocuments.poaOssKubun === 'OSS委任状'"
-          >
-            　➁
-            車庫証明（ご成約頂いたお車の保管場所を警察署に届け出するための手続きです。）
-          </v-toolbar-title>
-        </v-row>
-        <v-row
-          class="mt-5"
-          v-if="
-            this.normalCarDocuments.poaOssKubun === 'OSS委任状' ||
-            this.normalCarDocumentsGarageVerification
-              .NCgarageVerificationKubun === '保管場所証明申請書' ||
-            this.lightCarDocumentsGarageVerification
-              .LCgarageVerificationKubun === '保管場所届出書'
-          "
-        >
-          <v-col cols="2" class="ml-15">
-            <v-select
-              @update:modelValue="selfCertificationConsentToUseKubunChange"
-              label="自認書or使用承諾書"
-              v-model="storingMethod.selfCertificationConsentToUseKubun"
-              :items="['', '自認書', '使用承諾証']"
-              variant="outlined"
-            ></v-select>
-          </v-col>
-
-          <v-col
-            cols="2"
-            class="mx-1 d-flex align-center"
-            v-if="
-              this.storingMethod.selfCertificationConsentToUseKubun ===
-                '自認書' ||
-              this.storingMethod.selfCertificationConsentToUseKubun ===
-                '使用承諾証'
-            "
-          >
-            <v-checkbox label="ご記入" v-model="storingMethod.isFillIn">
-            </v-checkbox>
-          </v-col>
-          <v-col cols="2" class="mx-1"> </v-col>
-          <v-col cols="2" class="mx-1"> </v-col>
-          <v-col
-            v-if="
-              this.storingMethod.selfCertificationConsentToUseKubun ===
-                '自認書' ||
-              this.storingMethod.selfCertificationConsentToUseKubun ===
-                '使用承諾証'
-            "
-            cols="2"
-            class="mb-6 d-flex align-center"
-          >
-            <div
-              class="self-certification-consent-to-use-kubun-completed"
-              :class="{
-                'is-fill-in-completed': storingMethod.isFillIn,
-              }"
+          <v-row>
+            <v-toolbar-title
+              class="ml-15 mb-5 d-flex align-center normalCarDocumentsGarageVerification"
+              v-if="this.normalCarDocuments.poaOssKubun === 'OSS委任状'"
             >
-              完了
-            </div>
-          </v-col>
+              　➁
+              車庫証明（ご成約頂いたお車の保管場所を警察署に届け出するための手続きです。）
+            </v-toolbar-title>
+          </v-row>
+          <v-row
+            class="mt-10"
+            v-if="
+              this.normalCarDocuments.poaOssKubun === 'OSS委任状' ||
+              this.normalCarDocumentsGarageVerification
+                .NCgarageVerificationKubun === '保管場所証明申請書' ||
+              this.lightCarDocumentsGarageVerification
+                .LCgarageVerificationKubun === '保管場所届出書'
+            "
+          >
+            <v-col cols="2" class="ml-15">
+              <v-select
+                @update:modelValue="selfCertificationConsentToUseKubunChange"
+                label="自認書or使用承諾書"
+                v-model="storingMethod.selfCertificationConsentToUseKubun"
+                :items="['', '自認書', '使用承諾証']"
+                variant="outlined"
+              ></v-select>
+            </v-col>
 
-          <!-- <v-col
+            <v-col
+              cols="2"
+              class="mx-1 d-flex align-center"
+              v-if="
+                this.storingMethod.selfCertificationConsentToUseKubun ===
+                  '自認書' ||
+                this.storingMethod.selfCertificationConsentToUseKubun ===
+                  '使用承諾証'
+              "
+            >
+              <v-checkbox label="ご記入" v-model="storingMethod.isFillIn">
+              </v-checkbox>
+            </v-col>
+            <v-col cols="2" class="mx-1"> </v-col>
+            <v-col cols="2" class="mx-1"> </v-col>
+            <v-col
+              v-if="
+                this.storingMethod.selfCertificationConsentToUseKubun ===
+                  '自認書' ||
+                this.storingMethod.selfCertificationConsentToUseKubun ===
+                  '使用承諾証'
+              "
+              cols="2"
+              class="mb-6 d-flex align-center"
+            >
+              <div
+                class="self-certification-consent-to-use-kubun-completed"
+                :class="{
+                  'is-fill-in-completed': storingMethod.isFillIn,
+                }"
+              >
+                完了
+              </div>
+            </v-col>
+
+            <!-- <v-col
           cols="2"
           class="mx-1 storingMethod-completedDate"
           v-if="
@@ -2021,85 +2063,97 @@ export default {
             label="完了日"
           ></v-text-field>
         </v-col> -->
-        </v-row>
-        <v-row
-          v-if="
-            this.storingMethod.selfCertificationConsentToUseKubun === '自認書'
-          "
-        >
-          <p class="explanation ml-16">
-            ・ご成約頂いたお車の保管場所がお客様の所有物である事を証明するための書類です。
-          </p>
-        </v-row>
-        <v-row
-          v-if="
-            this.storingMethod.selfCertificationConsentToUseKubun ===
-            '使用承諾証'
-          "
-        >
-          <p class="explanation ml-16">
-            ・駐車場がお客様自身の管理ではない場合、駐車場の管理者様に使用の許可を得るための書類です。
-          </p>
-        </v-row>
+          </v-row>
 
-        <v-row>
-          <v-col
-            cols="1"
-            class="mt-3 ml-16 d-flex align-center"
+          <v-row
             v-if="
               this.storingMethod.selfCertificationConsentToUseKubun === '自認書'
             "
           >
-            <v-btn
-              @click="selfCertification = true"
-              density="compact"
-              icon="mdi-help"
-            ></v-btn>
-          </v-col>
-          <v-col
-            cols="1"
-            class="mt-3 d-flex align-center"
-            v-if="
-              this.storingMethod.selfCertificationConsentToUseKubun === '自認書'
-            "
-          >
-            <v-btn
-              @click="selfCertificationImg"
-              density="compact"
-              icon="mdi-printer"
-            ></v-btn>
-          </v-col>
-          <v-col
-            cols="1"
-            class="mt-3 ml-16 d-flex align-center"
+            <p class="explanation ml-16">
+              ・ご成約頂いたお車の保管場所がお客様の所有物である事を証明するための書類です。
+            </p>
+          </v-row>
+          <v-row
             v-if="
               this.storingMethod.selfCertificationConsentToUseKubun ===
               '使用承諾証'
             "
           >
-            <v-btn
-              @click="ConsentToUseModal = true"
-              density="compact"
-              icon="mdi-help"
-            ></v-btn>
-          </v-col>
-          <v-col
-            cols="1"
-            class="mt-3 d-flex align-center"
+            <p class="explanation ml-16">
+              ・駐車場がお客様自身の管理ではない場合、駐車場の管理者様に使用の許可を得るための書類です。
+            </p>
+          </v-row>
+
+          <v-row>
+            <v-col
+              cols="1"
+              class="mt-3 ml-16 d-flex align-center"
+              v-if="
+                this.storingMethod.selfCertificationConsentToUseKubun ===
+                '自認書'
+              "
+            >
+              <v-btn
+                @click="selfCertification = true"
+                density="compact"
+                icon="mdi-help"
+              ></v-btn>
+            </v-col>
+            <v-col
+              cols="1"
+              class="mt-3 d-flex align-center"
+              v-if="
+                this.storingMethod.selfCertificationConsentToUseKubun ===
+                '自認書'
+              "
+            >
+              <v-btn
+                @click="selfCertificationImg"
+                density="compact"
+                icon="mdi-printer"
+              ></v-btn>
+            </v-col>
+            <v-col
+              cols="1"
+              class="mt-3 ml-16 d-flex align-center"
+              v-if="
+                this.storingMethod.selfCertificationConsentToUseKubun ===
+                '使用承諾証'
+              "
+            >
+              <v-btn
+                @click="ConsentToUseModal = true"
+                density="compact"
+                icon="mdi-help"
+              ></v-btn>
+            </v-col>
+            <v-col
+              cols="1"
+              class="mt-3 d-flex align-center"
+              v-if="
+                this.storingMethod.selfCertificationConsentToUseKubun ===
+                '使用承諾証'
+              "
+            >
+              <v-btn
+                @click="consentToUseImg"
+                density="compact"
+                icon="mdi-printer"
+              ></v-btn>
+            </v-col>
+          </v-row>
+          <v-row
             v-if="
-              this.storingMethod.selfCertificationConsentToUseKubun ===
-              '使用承諾証'
+              this.normalCarDocumentsGarageVerification
+                .NCgarageVerificationKubun === '保管場所証明申請書' ||
+              this.lightCarDocumentsGarageVerification
+                .LCgarageVerificationKubun === '保管場所届出書'
             "
           >
-            <v-btn
-              @click="consentToUseImg"
-              density="compact"
-              icon="mdi-printer"
-            ></v-btn>
-          </v-col>
-        </v-row>
-
-        <!-- <v-row>
+            <v-divider class="ml-15 mt-5 separator"></v-divider>
+          </v-row>
+          <!-- <v-row>
         <v-col
           cols="1"
           class="ml-16 d-flex align-center"
@@ -2110,47 +2164,47 @@ export default {
           <v-btn @click="aaa" density="compact" icon="mdi-printer"></v-btn>
         </v-col>
       </v-row> -->
-        <v-row
-          class="mt-5"
-          v-if="
-            this.normalCarDocuments.poaOssKubun === 'OSS委任状' ||
-            this.normalCarDocumentsGarageVerification
-              .NCgarageVerificationKubun === '保管場所証明申請書' ||
-            this.lightCarDocumentsGarageVerification
-              .LCgarageVerificationKubun === '保管場所届出書'
-          "
-        >
-          <v-col cols="2" class="ml-15">
-            <v-combobox
-              v-model="arrangementDiagram.arrangementDiagramName"
-              label=""
-              :items="[]"
-              variant="outlined"
-              readonly
-            ></v-combobox>
-          </v-col>
+          <v-row
+            class="mt-10"
+            v-if="
+              this.normalCarDocuments.poaOssKubun === 'OSS委任状' ||
+              this.normalCarDocumentsGarageVerification
+                .NCgarageVerificationKubun === '保管場所証明申請書' ||
+              this.lightCarDocumentsGarageVerification
+                .LCgarageVerificationKubun === '保管場所届出書'
+            "
+          >
+            <v-col cols="2" class="ml-15">
+              <v-combobox
+                v-model="arrangementDiagram.arrangementDiagramName"
+                label=""
+                :items="[]"
+                variant="outlined"
+                readonly
+              ></v-combobox>
+            </v-col>
 
-          <v-col cols="2" class="mx-1 d-flex align-center">
-            <v-checkbox
-              @change="arrangementDiagramCompleted"
-              label="ご記入"
-              v-model="arrangementDiagram.isFillIn"
-            >
-            </v-checkbox>
-          </v-col>
-          <v-col cols="2" class="mx-1"> </v-col>
-          <v-col cols="2" class="mx-1"> </v-col>
-          <v-col cols="2" class="mb-6 d-flex align-center">
-            <div
-              class="arrangement-diagram-completed"
-              :class="{
-                'is-fill-in-completed': arrangementDiagram.isFillIn,
-              }"
-            >
-              完了
-            </div>
-          </v-col>
-          <!-- <v-col cols="2" class="mx-1 arrangement-completedDate">
+            <v-col cols="2" class="mx-1 d-flex align-center">
+              <v-checkbox
+                @change="arrangementDiagramCompleted"
+                label="ご記入"
+                v-model="arrangementDiagram.isFillIn"
+              >
+              </v-checkbox>
+            </v-col>
+            <v-col cols="2" class="mx-1"> </v-col>
+            <v-col cols="2" class="mx-1"> </v-col>
+            <v-col cols="2" class="mb-6 d-flex align-center">
+              <div
+                class="arrangement-diagram-completed"
+                :class="{
+                  'is-fill-in-completed': arrangementDiagram.isFillIn,
+                }"
+              >
+                完了
+              </div>
+            </v-col>
+            <!-- <v-col cols="2" class="mx-1 arrangement-completedDate">
           <v-text-field
             :class="{
               'completedDate-input': arrangementDiagram.completedDate != false,
@@ -2160,25 +2214,8 @@ export default {
             label="完了日"
           ></v-text-field>
         </v-col> -->
-        </v-row>
-        <v-row
-          v-if="
-            this.normalCarDocuments.poaOssKubun === 'OSS委任状' ||
-            this.normalCarDocumentsGarageVerification
-              .NCgarageVerificationKubun === '保管場所証明申請書' ||
-            this.lightCarDocumentsGarageVerification
-              .LCgarageVerificationKubun === '保管場所届出書'
-          "
-        >
-          <p class="explanation ml-16">
-            ・お客様がお車の保管場所にどのように車を保管されているか確認するための書類です。
-          </p>
-        </v-row>
-
-        <v-row>
-          <v-col
-            cols="1"
-            class="mt-3 ml-16 d-flex align-center"
+          </v-row>
+          <v-row
             v-if="
               this.normalCarDocuments.poaOssKubun === 'OSS委任状' ||
               this.normalCarDocumentsGarageVerification
@@ -2187,32 +2224,49 @@ export default {
                 .LCgarageVerificationKubun === '保管場所届出書'
             "
           >
-            <v-btn
-              @click="arrangementDiagramNameModal = true"
-              density="compact"
-              icon="mdi-help"
-            ></v-btn>
-          </v-col>
-          <v-col
-            cols="1"
-            class="mt-3 d-flex align-center"
-            v-if="
-              this.normalCarDocuments.poaOssKubun === 'OSS委任状' ||
-              this.normalCarDocumentsGarageVerification
-                .NCgarageVerificationKubun === '保管場所証明申請書' ||
-              this.lightCarDocumentsGarageVerification
-                .LCgarageVerificationKubun === '保管場所届出書'
-            "
-          >
-            <v-btn
-              @click="arrangementDiagramNameImg"
-              density="compact"
-              icon="mdi-printer"
-            ></v-btn>
-          </v-col>
-        </v-row>
+            <p class="explanation ml-16">
+              ・お客様がお車の保管場所にどのように車を保管されているか確認するための書類です。
+            </p>
+          </v-row>
 
-        <!-- <v-row>
+          <v-row>
+            <v-col
+              cols="1"
+              class="mt-3 ml-16 d-flex align-center"
+              v-if="
+                this.normalCarDocuments.poaOssKubun === 'OSS委任状' ||
+                this.normalCarDocumentsGarageVerification
+                  .NCgarageVerificationKubun === '保管場所証明申請書' ||
+                this.lightCarDocumentsGarageVerification
+                  .LCgarageVerificationKubun === '保管場所届出書'
+              "
+            >
+              <v-btn
+                @click="arrangementDiagramNameModal = true"
+                density="compact"
+                icon="mdi-help"
+              ></v-btn>
+            </v-col>
+            <v-col
+              cols="1"
+              class="mt-3 d-flex align-center"
+              v-if="
+                this.normalCarDocuments.poaOssKubun === 'OSS委任状' ||
+                this.normalCarDocumentsGarageVerification
+                  .NCgarageVerificationKubun === '保管場所証明申請書' ||
+                this.lightCarDocumentsGarageVerification
+                  .LCgarageVerificationKubun === '保管場所届出書'
+              "
+            >
+              <v-btn
+                @click="arrangementDiagramNameImg"
+                density="compact"
+                icon="mdi-printer"
+              ></v-btn>
+            </v-col>
+          </v-row>
+
+          <!-- <v-row>
         <v-col
           cols="1"
           class="ml-16 d-flex align-center"
@@ -2229,82 +2283,82 @@ export default {
           <v-btn @click="aaa" density="compact" icon="mdi-printer"></v-btn>
         </v-col>
       </v-row> -->
-        <v-row>
-          <v-toolbar-title
-            class="mt-8 ml-15 mb-5 d-flex align-center other-documents"
-            v-if="this.contracts.normalCarLightCarKubun === '普通車'"
-          >
-            　➂
-            その他（希望番号・ETC・延長保証・メンテナンスパック・JAFについてのお伺い致します。）
-          </v-toolbar-title>
-        </v-row>
-
-        <v-row>
-          <v-toolbar-title
-            class="mt-8 ml-15 mb-5 d-flex align-center other-documents"
-            v-if="this.contracts.normalCarLightCarKubun === '軽自動車'"
-          >
-            　➂
-            その他（希望番号・ETC・延長保証・メンテナンスパック・JAF・税申告書についてお伺い致します。）
-          </v-toolbar-title>
-        </v-row>
-
-        <v-row class="mt-5">
-          <v-col
-            cols="2"
-            class="ml-15"
-            v-if="
-              this.contracts.normalCarLightCarKubun === '普通車' ||
-              this.contracts.normalCarLightCarKubun === '軽自動車'
-            "
-          >
-            <v-select
-              @update:modelValue="isDesiredNumberChange"
-              label="希望番号"
-              v-model="desiredNumber.isDesiredNumber"
-              :items="['', '有', '無']"
-              variant="outlined"
-            ></v-select>
-          </v-col>
-          <v-col
-            cols="2"
-            class="mx-1 d-flex align-center"
-            v-if="this.desiredNumber.isDesiredNumber === '有'"
-          >
-            <v-checkbox
-              @change="isDesiredNumberCompleted"
-              label="ご記入"
-              v-model="desiredNumber.isFillIn"
+          <v-row>
+            <v-toolbar-title
+              class="mt-8 ml-15 mb-5 d-flex align-center other-documents"
+              v-if="this.contracts.normalCarLightCarKubun === '普通車'"
             >
-            </v-checkbox>
-          </v-col>
-          <v-col
-            cols="2"
-            class="mx-1"
-            v-if="this.desiredNumber.isDesiredNumber === '有'"
-          >
-          </v-col>
-          <v-col
-            cols="2"
-            class="mx-1"
-            v-if="this.desiredNumber.isDesiredNumber === '有'"
-          >
-          </v-col>
-          <v-col
-            cols="2"
-            class="mb-6 d-flex align-center"
-            v-if="this.desiredNumber.isDesiredNumber === '有'"
-          >
-            <div
-              class="desired-number-completed"
-              :class="{
-                'is-fill-in-completed': desiredNumber.isFillIn,
-              }"
+              　➂
+              その他（希望番号・ETC・延長保証・メンテナンスパック・JAFについてのお伺い致します。）
+            </v-toolbar-title>
+          </v-row>
+
+          <v-row>
+            <v-toolbar-title
+              class="mt-8 ml-15 mb-5 d-flex align-center other-documents"
+              v-if="this.contracts.normalCarLightCarKubun === '軽自動車'"
             >
-              完了
-            </div>
-          </v-col>
-          <!-- <v-col
+              　➂
+              その他（希望番号・ETC・延長保証・メンテナンスパック・JAF・税申告書についてお伺い致します。）
+            </v-toolbar-title>
+          </v-row>
+
+          <v-row class="mt-5">
+            <v-col
+              cols="2"
+              class="ml-15"
+              v-if="
+                this.contracts.normalCarLightCarKubun === '普通車' ||
+                this.contracts.normalCarLightCarKubun === '軽自動車'
+              "
+            >
+              <v-select
+                @update:modelValue="isDesiredNumberChange"
+                label="希望番号"
+                v-model="desiredNumber.isDesiredNumber"
+                :items="['', '有', '無']"
+                variant="outlined"
+              ></v-select>
+            </v-col>
+            <v-col
+              cols="2"
+              class="mx-1 d-flex align-center"
+              v-if="this.desiredNumber.isDesiredNumber === '有'"
+            >
+              <v-checkbox
+                @change="isDesiredNumberCompleted"
+                label="ご記入"
+                v-model="desiredNumber.isFillIn"
+              >
+              </v-checkbox>
+            </v-col>
+            <v-col
+              cols="2"
+              class="mx-1"
+              v-if="this.desiredNumber.isDesiredNumber === '有'"
+            >
+            </v-col>
+            <v-col
+              cols="2"
+              class="mx-1"
+              v-if="this.desiredNumber.isDesiredNumber === '有'"
+            >
+            </v-col>
+            <v-col
+              cols="2"
+              class="mb-6 d-flex align-center"
+              v-if="this.desiredNumber.isDesiredNumber === '有'"
+            >
+              <div
+                class="desired-number-completed"
+                :class="{
+                  'is-fill-in-completed': desiredNumber.isFillIn,
+                }"
+              >
+                完了
+              </div>
+            </v-col>
+            <!-- <v-col
           cols="2"
           class="mx-1 desiredNumber-completedDate"
           v-if="this.desiredNumber.isDesiredNumber === '有'"
@@ -2318,39 +2372,46 @@ export default {
             label="完了日"
           ></v-text-field>
         </v-col> -->
-        </v-row>
-        <v-row v-if="this.desiredNumber.isDesiredNumber === '有'">
-          <p class="explanation ml-16">
-            ・お客様からお伺いした希望番号（4桁の数字）を届け出するための書類です。
-          </p>
-        </v-row>
+          </v-row>
+          <v-row v-if="this.desiredNumber.isDesiredNumber === '有'">
+            <p class="explanation ml-16">
+              ・お客様からお伺いした希望番号（4桁の数字）を届け出するための書類です。
+            </p>
+          </v-row>
 
-        <v-row>
-          <v-col
-            cols="1"
-            class="mt-3 ml-16 d-flex align-center"
-            v-if="this.desiredNumber.isDesiredNumber === '有'"
+          <v-row>
+            <v-col
+              cols="1"
+              class="mt-3 ml-16 d-flex align-center"
+              v-if="this.desiredNumber.isDesiredNumber === '有'"
+            >
+              <v-btn
+                @click="desiredNumberModal = true"
+                density="compact"
+                icon="mdi-help"
+              ></v-btn>
+            </v-col>
+            <v-col
+              cols="1"
+              class="mt-3 d-flex align-center"
+              v-if="this.desiredNumber.isDesiredNumber === '有'"
+            >
+              <v-btn
+                @click="desiredNumberImg"
+                density="compact"
+                icon="mdi-printer"
+              ></v-btn>
+            </v-col>
+          </v-row>
+          <v-row
+            v-if="
+              this.contracts.normalCarLightCarKubun === '普通車' ||
+              this.contracts.normalCarLightCarKubun === '軽自動車'
+            "
           >
-            <v-btn
-              @click="desiredNumberModal = true"
-              density="compact"
-              icon="mdi-help"
-            ></v-btn>
-          </v-col>
-          <v-col
-            cols="1"
-            class="mt-3 d-flex align-center"
-            v-if="this.desiredNumber.isDesiredNumber === '有'"
-          >
-            <v-btn
-              @click="desiredNumberImg"
-              density="compact"
-              icon="mdi-printer"
-            ></v-btn>
-          </v-col>
-        </v-row>
-
-        <!-- <v-row>
+            <v-divider class="ml-15 mt-5 separator"></v-divider>
+          </v-row>
+          <!-- <v-row>
         <v-col
           cols="1"
           class="ml-16 d-flex align-center"
@@ -2359,63 +2420,63 @@ export default {
           <v-btn @click="aaa" density="compact" icon="mdi-printer"></v-btn>
         </v-col>
       </v-row> -->
-        <v-row class="mt-5">
-          <v-col
-            cols="2"
-            class="ml-15"
-            v-if="
-              this.contracts.normalCarLightCarKubun === '普通車' ||
-              this.contracts.normalCarLightCarKubun === '軽自動車'
-            "
-          >
-            <v-select
-              @update:modelValue="etcKubunChange"
-              label="ETC"
-              v-model="etc.etcKubun"
-              :items="['', 'ETC', 'ETC-2.0', '無']"
-              variant="outlined"
-            ></v-select>
-          </v-col>
-          <v-col
-            cols="2"
-            class="mx-1 d-flex align-center"
-            v-if="this.etc.etcKubun === 'ETC' || etc.etcKubun === 'ETC-2.0'"
-          >
-            <v-checkbox
-              @change="etcKubunCompleted"
-              label="ご記入"
-              v-model="etc.isFillIn"
+          <v-row class="mt-10">
+            <v-col
+              cols="2"
+              class="ml-15"
+              v-if="
+                this.contracts.normalCarLightCarKubun === '普通車' ||
+                this.contracts.normalCarLightCarKubun === '軽自動車'
+              "
             >
-            </v-checkbox>
-          </v-col>
-          <v-col
-            cols="2"
-            class="mx-1"
-            v-if="this.etc.etcKubun === 'ETC' || etc.etcKubun === 'ETC-2.0'"
-          >
-          </v-col>
-          <v-col
-            cols="2"
-            class="mx-1"
-            v-if="this.etc.etcKubun === 'ETC' || etc.etcKubun === 'ETC-2.0'"
-          >
-          </v-col>
-          <v-col
-            cols="2"
-            class="mb-6 d-flex align-center"
-            v-if="this.etc.etcKubun === 'ETC' || etc.etcKubun === 'ETC-2.0'"
-          >
-            <div
-              class="etc-kubun-completed"
-              :class="{
-                'is-fill-in-completed': etc.isFillIn,
-              }"
+              <v-select
+                @update:modelValue="etcKubunChange"
+                label="ETC"
+                v-model="etc.etcKubun"
+                :items="['', 'ETC', 'ETC-2.0', '無']"
+                variant="outlined"
+              ></v-select>
+            </v-col>
+            <v-col
+              cols="2"
+              class="mx-1 d-flex align-center"
+              v-if="this.etc.etcKubun === 'ETC' || etc.etcKubun === 'ETC-2.0'"
             >
-              完了
-            </div>
-          </v-col>
+              <v-checkbox
+                @change="etcKubunCompleted"
+                label="ご記入"
+                v-model="etc.isFillIn"
+              >
+              </v-checkbox>
+            </v-col>
+            <v-col
+              cols="2"
+              class="mx-1"
+              v-if="this.etc.etcKubun === 'ETC' || etc.etcKubun === 'ETC-2.0'"
+            >
+            </v-col>
+            <v-col
+              cols="2"
+              class="mx-1"
+              v-if="this.etc.etcKubun === 'ETC' || etc.etcKubun === 'ETC-2.0'"
+            >
+            </v-col>
+            <v-col
+              cols="2"
+              class="mb-6 d-flex align-center"
+              v-if="this.etc.etcKubun === 'ETC' || etc.etcKubun === 'ETC-2.0'"
+            >
+              <div
+                class="etc-kubun-completed"
+                :class="{
+                  'is-fill-in-completed': etc.isFillIn,
+                }"
+              >
+                完了
+              </div>
+            </v-col>
 
-          <!-- <v-col
+            <!-- <v-col
           cols="2"
           class="mx-1 d-flex align-center"
           v-if="this.etc.etcKubun === 'ETC' || etc.etcKubun === 'ETC-2.0'"
@@ -2436,60 +2497,67 @@ export default {
             label="完了日"
           ></v-text-field>
         </v-col> -->
-        </v-row>
-        <v-row v-if="this.etc.etcKubun === 'ETC'">
-          <p class="explanation ml-16">
-            ・ご成約頂いたお車のETCを使用できるようにするための書類です。
-          </p>
-        </v-row>
-        <v-row v-if="this.etc.etcKubun === 'ETC-2.0'">
-          <p class="explanation ml-16">
-            ・ご成約頂いたお車のETCを使用できるようにするための書類です。<br />
-            　　ETC2.0は、高速道路の通行料金の支払いに便利なETCが進化したもので、2016年春からスタートしたサービスです。<br />
-            　　リアルタイムの渋滞情報を解析して最適なルートを示したり、災害発生時に通行可能な道路へ誘導することで、<br />
-            　　より安全・安心な走行をサポートします。
-          </p>
-        </v-row>
+          </v-row>
+          <v-row v-if="this.etc.etcKubun === 'ETC'">
+            <p class="explanation ml-16">
+              ・ご成約頂いたお車のETCを使用できるようにするための書類です。
+            </p>
+          </v-row>
+          <v-row v-if="this.etc.etcKubun === 'ETC-2.0'">
+            <p class="explanation ml-16">
+              ・ご成約頂いたお車のETCを使用できるようにするための書類です。<br />
+              　　ETC2.0は、高速道路の通行料金の支払いに便利なETCが進化したもので、2016年春からスタートしたサービスです。<br />
+              　　リアルタイムの渋滞情報を解析して最適なルートを示したり、災害発生時に通行可能な道路へ誘導することで、<br />
+              　　より安全・安心な走行をサポートします。
+            </p>
+          </v-row>
 
-        <v-row>
-          <v-col
-            cols="1"
-            class="mt-3 ml-16 d-flex align-center"
-            v-if="this.etc.etcKubun === 'ETC'"
-          >
-            <v-btn
-              @click="etcModal = true"
-              density="compact"
-              icon="mdi-help"
-            ></v-btn>
-          </v-col>
-          <v-col
-            cols="1"
-            class="mt-3 ml-16 d-flex align-center"
-            v-if="etc.etcKubun === 'ETC-2.0'"
-          >
-            <v-btn
-              @click="etc2Modal = true"
-              density="compact"
-              icon="mdi-help"
-            ></v-btn>
-          </v-col>
+          <v-row>
+            <v-col
+              cols="1"
+              class="mt-3 ml-16 d-flex align-center"
+              v-if="this.etc.etcKubun === 'ETC'"
+            >
+              <v-btn
+                @click="etcModal = true"
+                density="compact"
+                icon="mdi-help"
+              ></v-btn>
+            </v-col>
+            <v-col
+              cols="1"
+              class="mt-3 ml-16 d-flex align-center"
+              v-if="etc.etcKubun === 'ETC-2.0'"
+            >
+              <v-btn
+                @click="etc2Modal = true"
+                density="compact"
+                icon="mdi-help"
+              ></v-btn>
+            </v-col>
 
-          <v-col
-            cols="1"
-            class="mt-3 d-flex align-center"
-            v-if="this.etc.etcKubun === 'ETC' || etc.etcKubun === 'ETC-2.0'"
+            <v-col
+              cols="1"
+              class="mt-3 d-flex align-center"
+              v-if="this.etc.etcKubun === 'ETC' || etc.etcKubun === 'ETC-2.0'"
+            >
+              <v-btn
+                href="https://www.go-etc.jp/"
+                target="_blank"
+                density="compact"
+                icon="mdi-search-web"
+              ></v-btn>
+            </v-col>
+          </v-row>
+          <v-row
+            v-if="
+              this.contracts.normalCarLightCarKubun === '普通車' ||
+              this.contracts.normalCarLightCarKubun === '軽自動車'
+            "
           >
-            <v-btn
-              href="https://www.go-etc.jp/"
-              target="_blank"
-              density="compact"
-              icon="mdi-search-web"
-            ></v-btn>
-          </v-col>
-        </v-row>
-
-        <!-- <v-row>
+            <v-divider class="ml-15 mt-5 separator"></v-divider>
+          </v-row>
+          <!-- <v-row>
         <v-col
           cols="1"
           class="ml-16 d-flex align-center"
@@ -2498,62 +2566,62 @@ export default {
           <v-btn @click="aaa" density="compact" icon="mdi-help"></v-btn>
         </v-col>
       </v-row> -->
-        <v-row class="mt-5">
-          <v-col
-            cols="2"
-            class="ml-15"
-            v-if="
-              this.contracts.normalCarLightCarKubun === '普通車' ||
-              this.contracts.normalCarLightCarKubun === '軽自動車'
-            "
-          >
-            <v-select
-              @update:modelValue="isExtendedWarrantyChange"
-              label="延長保証"
-              v-model="extendedWarranty.isExtendedWarranty"
-              :items="['', '有', '無']"
-              variant="outlined"
-            ></v-select>
-          </v-col>
-          <v-col
-            cols="2"
-            class="mx-1 d-flex align-center"
-            v-if="this.extendedWarranty.isExtendedWarranty === '有'"
-          >
-            <v-checkbox
-              @change="isExtendedWarrantyCompleted"
-              label="ご記入"
-              v-model="extendedWarranty.isFillIn"
+          <v-row class="mt-10">
+            <v-col
+              cols="2"
+              class="ml-15"
+              v-if="
+                this.contracts.normalCarLightCarKubun === '普通車' ||
+                this.contracts.normalCarLightCarKubun === '軽自動車'
+              "
             >
-            </v-checkbox>
-          </v-col>
-          <v-col
-            cols="2"
-            class="mx-1"
-            v-if="this.extendedWarranty.isExtendedWarranty === '有'"
-          >
-          </v-col>
-          <v-col
-            cols="2"
-            class="mx-1"
-            v-if="this.extendedWarranty.isExtendedWarranty === '有'"
-          >
-          </v-col>
-          <v-col
-            cols="2"
-            class="mb-6 d-flex align-center"
-            v-if="this.extendedWarranty.isExtendedWarranty === '有'"
-          >
-            <div
-              class="extended-warranty-completed"
-              :class="{
-                'is-fill-in-completed': extendedWarranty.isFillIn,
-              }"
+              <v-select
+                @update:modelValue="isExtendedWarrantyChange"
+                label="延長保証"
+                v-model="extendedWarranty.isExtendedWarranty"
+                :items="['', '有', '無']"
+                variant="outlined"
+              ></v-select>
+            </v-col>
+            <v-col
+              cols="2"
+              class="mx-1 d-flex align-center"
+              v-if="this.extendedWarranty.isExtendedWarranty === '有'"
             >
-              完了
-            </div>
-          </v-col>
-          <!-- <v-col
+              <v-checkbox
+                @change="isExtendedWarrantyCompleted"
+                label="ご記入"
+                v-model="extendedWarranty.isFillIn"
+              >
+              </v-checkbox>
+            </v-col>
+            <v-col
+              cols="2"
+              class="mx-1"
+              v-if="this.extendedWarranty.isExtendedWarranty === '有'"
+            >
+            </v-col>
+            <v-col
+              cols="2"
+              class="mx-1"
+              v-if="this.extendedWarranty.isExtendedWarranty === '有'"
+            >
+            </v-col>
+            <v-col
+              cols="2"
+              class="mb-6 d-flex align-center"
+              v-if="this.extendedWarranty.isExtendedWarranty === '有'"
+            >
+              <div
+                class="extended-warranty-completed"
+                :class="{
+                  'is-fill-in-completed': extendedWarranty.isFillIn,
+                }"
+              >
+                完了
+              </div>
+            </v-col>
+            <!-- <v-col
           cols="2"
           class="mx-1 extendedWarranty-completedDate"
           v-if="this.extendedWarranty.isExtendedWarranty === '有'"
@@ -2567,154 +2635,161 @@ export default {
             label="完了日"
           ></v-text-field>
         </v-col> -->
-        </v-row>
-        <v-row
-          v-if="
-            this.contracts.newCarUsedCarKubun === '新車' &&
-            this.extendedWarranty.isExtendedWarranty === '有'
-          "
-        >
-          <p class="explanation ml-16">
-            ・ご成約頂いたお車に延長保証を適用するための書類です。<br />
-            　　メーカーの一般保証は、新車登録から初回車検を迎える3年目（ただし6万km）で終了してしまいます。<br />
-            　　マツダ延長保証〈新車5年プラン/5年プラン〉は、保証期間を5年目（ただし10万km）まで延長。<br />
-            　　万が一の故障の際も、回数・金額無制限の無料修理が受けられます。<br />
-            　　※ただし機能不具合を伴わない修理は保証対象になりません。
-          </p>
-        </v-row>
-        <v-row
-          v-if="
-            this.contracts.newCarUsedCarKubun === '中古車' &&
-            this.extendedWarranty.isExtendedWarranty === '有'
-          "
-        >
-          <p class="explanation ml-16">
-            ・ご成約頂いたお車に延長保証を適用するための書類です。<br />
-            　　保証にさらなる安心をプラス。万が一の故障でも無料で修理。<br />
-            　　「さわやか保証2年」「さわやか保証」の期間を、有償で延長できる保証サービスです。<br />
-            　　マツダ認定U-carプレミアム車両を対象とした「さわやか保証2年」の期間を延長できる「さわやかプラスプレミアム」、<br />
-            　　それ以外の車両を対象とした「さわやか保証」の期間を延長できる「さわやかプラス」をご用意しています。
-          </p>
-        </v-row>
-
-        <v-row>
-          <v-col
-            cols="1"
-            class="mt-3 ml-16 d-flex align-center"
+          </v-row>
+          <v-row
             v-if="
               this.contracts.newCarUsedCarKubun === '新車' &&
               this.extendedWarranty.isExtendedWarranty === '有'
             "
           >
-            <v-btn
-              @click="newCarExtendedWarrantyModal = true"
-              density="compact"
-              icon="mdi-help"
-            ></v-btn>
-          </v-col>
-          <v-col
-            cols="1"
-            class="mt-3 d-flex align-center"
-            v-if="
-              this.contracts.newCarUsedCarKubun === '新車' &&
-              this.extendedWarranty.isExtendedWarranty === '有'
-            "
-          >
-            <v-btn
-              href="https://www.mazda.co.jp/purchase/carlife-care/encho-hosho/5years/"
-              target="_blank"
-              density="compact"
-              icon="mdi-search-web"
-            ></v-btn>
-          </v-col>
-          <v-col
-            cols="1"
-            class="mt-3 ml-16 d-flex align-center"
+            <p class="explanation ml-16">
+              ・ご成約頂いたお車に延長保証を適用するための書類です。<br />
+              　　メーカーの一般保証は、新車登録から初回車検を迎える3年目（ただし6万km）で終了してしまいます。<br />
+              　　マツダ延長保証〈新車5年プラン/5年プラン〉は、保証期間を5年目（ただし10万km）まで延長。<br />
+              　　万が一の故障の際も、回数・金額無制限の無料修理が受けられます。<br />
+              　　※ただし機能不具合を伴わない修理は保証対象になりません。
+            </p>
+          </v-row>
+          <v-row
             v-if="
               this.contracts.newCarUsedCarKubun === '中古車' &&
               this.extendedWarranty.isExtendedWarranty === '有'
             "
           >
-            <v-btn
-              @click="usedCarExtendedWarrantyModal = true"
-              density="compact"
-              icon="mdi-help"
-            ></v-btn>
-          </v-col>
-          <v-col
-            cols="1"
-            class="mt-3 d-flex align-center"
-            v-if="
-              this.contracts.newCarUsedCarKubun === '中古車' &&
-              this.extendedWarranty.isExtendedWarranty === '有'
-            "
-          >
-            <v-btn
-              href="https://www.mazda.co.jp/purchase/ucar/plus/#tab_anch"
-              target="_blank"
-              density="compact"
-              icon="mdi-search-web"
-            ></v-btn>
-          </v-col>
-        </v-row>
+            <p class="explanation ml-16">
+              ・ご成約頂いたお車に延長保証を適用するための書類です。<br />
+              　　保証にさらなる安心をプラス。万が一の故障でも無料で修理。<br />
+              　　「さわやか保証2年」「さわやか保証」の期間を、有償で延長できる保証サービスです。<br />
+              　　マツダ認定U-carプレミアム車両を対象とした「さわやか保証2年」の期間を延長できる「さわやかプラスプレミアム」、<br />
+              　　それ以外の車両を対象とした「さわやか保証」の期間を延長できる「さわやかプラス」をご用意しています。
+            </p>
+          </v-row>
 
-        <v-row class="mt-5">
-          <v-col
-            cols="2"
-            class="ml-15"
+          <v-row>
+            <v-col
+              cols="1"
+              class="mt-3 ml-16 d-flex align-center"
+              v-if="
+                this.contracts.newCarUsedCarKubun === '新車' &&
+                this.extendedWarranty.isExtendedWarranty === '有'
+              "
+            >
+              <v-btn
+                @click="newCarExtendedWarrantyModal = true"
+                density="compact"
+                icon="mdi-help"
+              ></v-btn>
+            </v-col>
+            <v-col
+              cols="1"
+              class="mt-3 d-flex align-center"
+              v-if="
+                this.contracts.newCarUsedCarKubun === '新車' &&
+                this.extendedWarranty.isExtendedWarranty === '有'
+              "
+            >
+              <v-btn
+                href="https://www.mazda.co.jp/purchase/carlife-care/encho-hosho/5years/"
+                target="_blank"
+                density="compact"
+                icon="mdi-search-web"
+              ></v-btn>
+            </v-col>
+            <v-col
+              cols="1"
+              class="mt-3 ml-16 d-flex align-center"
+              v-if="
+                this.contracts.newCarUsedCarKubun === '中古車' &&
+                this.extendedWarranty.isExtendedWarranty === '有'
+              "
+            >
+              <v-btn
+                @click="usedCarExtendedWarrantyModal = true"
+                density="compact"
+                icon="mdi-help"
+              ></v-btn>
+            </v-col>
+            <v-col
+              cols="1"
+              class="mt-3 d-flex align-center"
+              v-if="
+                this.contracts.newCarUsedCarKubun === '中古車' &&
+                this.extendedWarranty.isExtendedWarranty === '有'
+              "
+            >
+              <v-btn
+                href="https://www.mazda.co.jp/purchase/ucar/plus/#tab_anch"
+                target="_blank"
+                density="compact"
+                icon="mdi-search-web"
+              ></v-btn>
+            </v-col>
+          </v-row>
+          <v-row
             v-if="
               this.contracts.normalCarLightCarKubun === '普通車' ||
               this.contracts.normalCarLightCarKubun === '軽自動車'
             "
           >
-            <v-select
-              @update:modelValue="isMaintenancePackChange"
-              label="メンテナンスパック"
-              v-model="maintenancePack.isMaintenancePack"
-              :items="['', '有', '無']"
-              variant="outlined"
-            ></v-select>
-          </v-col>
-          <v-col
-            cols="2"
-            class="mx-1 d-flex align-center"
-            v-if="this.maintenancePack.isMaintenancePack === '有'"
-          >
-            <v-checkbox
-              @change="isMaintenancePackCompleted"
-              label="ご記入"
-              v-model="maintenancePack.isFillIn"
+            <v-divider class="ml-15 mt-5 separator"></v-divider>
+          </v-row>
+          <v-row class="mt-10">
+            <v-col
+              cols="2"
+              class="ml-15"
+              v-if="
+                this.contracts.normalCarLightCarKubun === '普通車' ||
+                this.contracts.normalCarLightCarKubun === '軽自動車'
+              "
             >
-            </v-checkbox>
-          </v-col>
-          <v-col
-            cols="2"
-            class="mx-1"
-            v-if="this.maintenancePack.isMaintenancePack === '有'"
-          >
-          </v-col>
-          <v-col
-            cols="2"
-            class="mx-1"
-            v-if="this.maintenancePack.isMaintenancePack === '有'"
-          >
-          </v-col>
-          <v-col
-            cols="2"
-            class="mb-6 d-flex align-center"
-            v-if="this.maintenancePack.isMaintenancePack === '有'"
-          >
-            <div
-              class="maintenance-pack-completed"
-              :class="{
-                'is-fill-in-completed': maintenancePack.isFillIn,
-              }"
+              <v-select
+                @update:modelValue="isMaintenancePackChange"
+                label="メンテナンスパック"
+                v-model="maintenancePack.isMaintenancePack"
+                :items="['', '有', '無']"
+                variant="outlined"
+              ></v-select>
+            </v-col>
+            <v-col
+              cols="2"
+              class="mx-1 d-flex align-center"
+              v-if="this.maintenancePack.isMaintenancePack === '有'"
             >
-              完了
-            </div>
-          </v-col>
+              <v-checkbox
+                @change="isMaintenancePackCompleted"
+                label="ご記入"
+                v-model="maintenancePack.isFillIn"
+              >
+              </v-checkbox>
+            </v-col>
+            <v-col
+              cols="2"
+              class="mx-1"
+              v-if="this.maintenancePack.isMaintenancePack === '有'"
+            >
+            </v-col>
+            <v-col
+              cols="2"
+              class="mx-1"
+              v-if="this.maintenancePack.isMaintenancePack === '有'"
+            >
+            </v-col>
+            <v-col
+              cols="2"
+              class="mb-6 d-flex align-center"
+              v-if="this.maintenancePack.isMaintenancePack === '有'"
+            >
+              <div
+                class="maintenance-pack-completed"
+                :class="{
+                  'is-fill-in-completed': maintenancePack.isFillIn,
+                }"
+              >
+                完了
+              </div>
+            </v-col>
 
-          <!-- <v-col
+            <!-- <v-col
           cols="2"
           class="mx-1 maintenancePack-completedDate"
           v-if="this.maintenancePack.isMaintenancePack === '有'"
@@ -2728,110 +2803,117 @@ export default {
             label="完了日"
           ></v-text-field>
         </v-col> -->
-        </v-row>
-        <v-row v-if="this.maintenancePack.isMaintenancePack === '有'">
-          <p class="explanation ml-16">
-            ・お車のご成約時、メンテナンスパック（パックdeメンテ）にご加入頂いた際に頂く書類です。<br />
-            　　ご商談の際は36Sコース（点検、5年後2回目の車検までがセットになったプラン）<br />
-            　　をおすすめとしてご提案させて頂いています。
-          </p>
-        </v-row>
+          </v-row>
+          <v-row v-if="this.maintenancePack.isMaintenancePack === '有'">
+            <p class="explanation ml-16">
+              ・お車のご成約時、メンテナンスパック（パックdeメンテ）にご加入頂いた際に頂く書類です。<br />
+              　　ご商談の際は36Sコース（点検、5年後2回目の車検までがセットになったプラン）<br />
+              　　をおすすめとしてご提案させて頂いています。
+            </p>
+          </v-row>
 
-        <v-row>
-          <v-col
-            cols="1"
-            class="mt-3 ml-16 d-flex align-center"
-            v-if="this.maintenancePack.isMaintenancePack === '有'"
-          >
-            <v-btn
-              @click="maintenancePackModal = true"
-              density="compact"
-              icon="mdi-help"
-            ></v-btn>
-          </v-col>
-          <v-col
-            cols="1"
-            class="mt-3 d-flex align-center"
-            v-if="this.maintenancePack.isMaintenancePack === '有'"
-          >
-            <v-btn
-              href="https://www.efh.co.jp/after-service/maintenance/#pack"
-              target="_blank"
-              density="compact"
-              icon="mdi-search-web"
-            ></v-btn>
-          </v-col>
-        </v-row>
-
-        <v-row class="mt-5">
-          <v-col
-            cols="2"
-            class="ml-15"
+          <v-row>
+            <v-col
+              cols="1"
+              class="mt-3 ml-16 d-flex align-center"
+              v-if="this.maintenancePack.isMaintenancePack === '有'"
+            >
+              <v-btn
+                @click="maintenancePackModal = true"
+                density="compact"
+                icon="mdi-help"
+              ></v-btn>
+            </v-col>
+            <v-col
+              cols="1"
+              class="mt-3 d-flex align-center"
+              v-if="this.maintenancePack.isMaintenancePack === '有'"
+            >
+              <v-btn
+                href="https://www.efh.co.jp/after-service/maintenance/#pack"
+                target="_blank"
+                density="compact"
+                icon="mdi-search-web"
+              ></v-btn>
+            </v-col>
+          </v-row>
+          <v-row
             v-if="
               this.contracts.normalCarLightCarKubun === '普通車' ||
               this.contracts.normalCarLightCarKubun === '軽自動車'
             "
           >
-            <v-select
-              @update:modelValue="isJafPaymentKubunChange"
-              label="JAF"
-              v-model="jaf.isJafPaymentKubun"
-              :items="['', '有（口座振替）', '有（クレジット）', '無']"
-              variant="outlined"
-            ></v-select>
-          </v-col>
-          <v-col
-            cols="2"
-            class="mx-1 d-flex align-center"
-            v-if="
-              this.jaf.isJafPaymentKubun === '有（口座振替）' ||
-              this.jaf.isJafPaymentKubun === '有（クレジット）'
-            "
-          >
-            <v-checkbox
-              @change="isJafPaymentKubunCompleted"
-              label="電子手続き"
-              v-model="jaf.isFillIn"
+            <v-divider class="ml-15 mt-5 separator"></v-divider>
+          </v-row>
+          <v-row class="mt-10">
+            <v-col
+              cols="2"
+              class="ml-15"
+              v-if="
+                this.contracts.normalCarLightCarKubun === '普通車' ||
+                this.contracts.normalCarLightCarKubun === '軽自動車'
+              "
             >
-            </v-checkbox>
-          </v-col>
-          <v-col
-            cols="2"
-            class="mx-1"
-            v-if="
-              this.jaf.isJafPaymentKubun === '有（口座振替）' ||
-              this.jaf.isJafPaymentKubun === '有（クレジット）'
-            "
-          >
-          </v-col>
-          <v-col
-            cols="2"
-            class="mx-1"
-            v-if="
-              this.jaf.isJafPaymentKubun === '有（口座振替）' ||
-              this.jaf.isJafPaymentKubun === '有（クレジット）'
-            "
-          >
-          </v-col>
-          <v-col
-            cols="2"
-            class="mb-6 d-flex align-center"
-            v-if="
-              this.jaf.isJafPaymentKubun === '有（口座振替）' ||
-              this.jaf.isJafPaymentKubun === '有（クレジット）'
-            "
-          >
-            <div
-              class="jaf-payment-kubun-completed"
-              :class="{
-                'is-fill-in-completed': jaf.isFillIn,
-              }"
+              <v-select
+                @update:modelValue="isJafPaymentKubunChange"
+                label="JAF"
+                v-model="jaf.isJafPaymentKubun"
+                :items="['', '有（口座振替）', '有（クレジット）', '無']"
+                variant="outlined"
+              ></v-select>
+            </v-col>
+            <v-col
+              cols="2"
+              class="mx-1 d-flex align-center"
+              v-if="
+                this.jaf.isJafPaymentKubun === '有（口座振替）' ||
+                this.jaf.isJafPaymentKubun === '有（クレジット）'
+              "
             >
-              完了
-            </div>
-          </v-col>
+              <v-checkbox
+                @change="isJafPaymentKubunCompleted"
+                label="電子手続き"
+                v-model="jaf.isFillIn"
+              >
+              </v-checkbox>
+            </v-col>
+            <v-col
+              cols="2"
+              class="mx-1"
+              v-if="
+                this.jaf.isJafPaymentKubun === '有（口座振替）' ||
+                this.jaf.isJafPaymentKubun === '有（クレジット）'
+              "
+            >
+            </v-col>
+            <v-col
+              cols="2"
+              class="mx-1"
+              v-if="
+                this.jaf.isJafPaymentKubun === '有（口座振替）' ||
+                this.jaf.isJafPaymentKubun === '有（クレジット）'
+              "
+            >
+            </v-col>
+            <v-col
+              cols="2"
+              class="mb-6 d-flex align-center"
+              v-if="
+                this.jaf.isJafPaymentKubun === '有（口座振替）' ||
+                this.jaf.isJafPaymentKubun === '有（クレジット）'
+              "
+            >
+              <div
+                class="jaf-payment-kubun-completed"
+                :class="{
+                  'is-fill-in-completed': jaf.isFillIn,
+                }"
+              >
+                完了
+              </div>
+            </v-col>
 
-          <!-- <v-col
+            <!-- <v-col
           cols="2"
           class="mx-1 d-flex align-center"
           v-if="this.jaf.isJafPaymentKubun === '有（口座振替）'"
@@ -2860,101 +2942,103 @@ export default {
             label="完了日"
           ></v-text-field>
         </v-col> -->
-        </v-row>
-        <v-row
-          v-if="
-            this.jaf.isJafPaymentKubun === '有（口座振替）' ||
-            this.jaf.isJafPaymentKubun === '有（クレジット）'
-          "
-        >
-          <p class="explanation ml-16">
-            ・ご成約頂いたお車がJAFに加入される際の手続きです。
-          </p>
-        </v-row>
-
-        <v-row>
-          <v-col
-            cols="1"
-            class="mt-3 ml-16 d-flex align-center"
+          </v-row>
+          <v-row
             v-if="
               this.jaf.isJafPaymentKubun === '有（口座振替）' ||
               this.jaf.isJafPaymentKubun === '有（クレジット）'
             "
           >
-            <v-btn
-              href="https://jafenta.jp/site/login/"
-              target="_blank"
-              density="compact"
-              icon="mdi-login"
-            ></v-btn>
-          </v-col>
-          <v-col
-            cols="1"
-            class="mt-3 d-flex align-center"
-            v-if="
-              this.jaf.isJafPaymentKubun === '有（口座振替）' ||
-              this.jaf.isJafPaymentKubun === '有（クレジット）'
-            "
-          >
-            <v-btn
-              href="https://jaf.or.jp/individual"
-              target="_blank"
-              density="compact"
-              icon="mdi-search-web"
-            ></v-btn>
-          </v-col>
-        </v-row>
+            <p class="explanation ml-16">
+              ・ご成約頂いたお車がJAFに加入される際の手続きです。
+            </p>
+          </v-row>
 
-        <v-row
-          class="mt-5"
-          v-if="this.contracts.normalCarLightCarKubun === '軽自動車'"
-        >
-          <v-col cols="2" class="ml-16">
-            <v-combobox
-              class="v-select-list"
-              v-model="taxDeclaration.taxDeclarationName"
-              label=""
-              :items="[]"
-              variant="outlined"
-              readonly
-            ></v-combobox>
-          </v-col>
-          <v-col cols="2 taxDeclaration" class="mx-1 d-flex align-center">
-            <v-checkbox
-              @change="taxDeclarationCompleted"
-              label="ご記入"
-              v-model="taxDeclaration.isFillIn"
+          <v-row>
+            <v-col
+              cols="1"
+              class="mt-3 ml-16 d-flex align-center"
+              v-if="
+                this.jaf.isJafPaymentKubun === '有（口座振替）' ||
+                this.jaf.isJafPaymentKubun === '有（クレジット）'
+              "
             >
-            </v-checkbox>
-          </v-col>
-          <v-col
-            cols="2"
-            class="mx-1"
-            v-if="this.contracts.normalCarLightCarKubun === '軽自動車'"
-          >
-          </v-col>
-          <v-col
-            cols="2"
-            class="mx-1"
-            v-if="this.contracts.normalCarLightCarKubun === '軽自動車'"
-          >
-          </v-col>
-          <v-col
-            cols="2"
-            class="mb-6 d-flex align-center"
-            v-if="this.contracts.normalCarLightCarKubun === '軽自動車'"
-          >
-            <div
-              class="tax-declaration-completed"
-              :class="{
-                'is-fill-in-completed': taxDeclaration.isFillIn,
-              }"
+              <v-btn
+                href="https://jafenta.jp/site/login/"
+                target="_blank"
+                density="compact"
+                icon="mdi-login"
+              ></v-btn>
+            </v-col>
+            <v-col
+              cols="1"
+              class="mt-3 d-flex align-center"
+              v-if="
+                this.jaf.isJafPaymentKubun === '有（口座振替）' ||
+                this.jaf.isJafPaymentKubun === '有（クレジット）'
+              "
             >
-              完了
-            </div>
-          </v-col>
+              <v-btn
+                href="https://jaf.or.jp/individual"
+                target="_blank"
+                density="compact"
+                icon="mdi-search-web"
+              ></v-btn>
+            </v-col>
+          </v-row>
+          <v-row v-if="this.contracts.normalCarLightCarKubun === '軽自動車'">
+            <v-divider class="ml-15 mt-5 separator"></v-divider>
+          </v-row>
+          <v-row
+            class="mt-10"
+            v-if="this.contracts.normalCarLightCarKubun === '軽自動車'"
+          >
+            <v-col cols="2" class="ml-16">
+              <v-combobox
+                class="v-select-list"
+                v-model="taxDeclaration.taxDeclarationName"
+                label=""
+                :items="[]"
+                variant="outlined"
+                readonly
+              ></v-combobox>
+            </v-col>
+            <v-col cols="2 taxDeclaration" class="mx-1 d-flex align-center">
+              <v-checkbox
+                @change="taxDeclarationCompleted"
+                label="ご記入"
+                v-model="taxDeclaration.isFillIn"
+              >
+              </v-checkbox>
+            </v-col>
+            <v-col
+              cols="2"
+              class="mx-1"
+              v-if="this.contracts.normalCarLightCarKubun === '軽自動車'"
+            >
+            </v-col>
+            <v-col
+              cols="2"
+              class="mx-1"
+              v-if="this.contracts.normalCarLightCarKubun === '軽自動車'"
+            >
+            </v-col>
+            <v-col
+              cols="2"
+              class="mb-6 d-flex align-center"
+              v-if="this.contracts.normalCarLightCarKubun === '軽自動車'"
+            >
+              <div
+                class="tax-declaration-completed"
+                :class="{
+                  'is-fill-in-completed': taxDeclaration.isFillIn,
+                }"
+              >
+                完了
+              </div>
+            </v-col>
 
-          <!-- <v-col cols="2 taxDeclaration-completedDate" class="mx-1">
+            <!-- <v-col cols="2 taxDeclaration-completedDate" class="mx-1">
           <v-text-field
             :class="{
               'completedDate-input': taxDeclaration.completedDate != false,
@@ -2964,28 +3048,28 @@ export default {
             label="完了日"
           ></v-text-field>
         </v-col> -->
-        </v-row>
-        <v-row v-if="this.contracts.normalCarLightCarKubun === '軽自動車'">
-          <p class="explanation ml-16">
-            ・ご成約頂いたお車が軽自動車の際に、自動車税の支払い開始を申告するための書類です。
-          </p>
-        </v-row>
+          </v-row>
+          <v-row v-if="this.contracts.normalCarLightCarKubun === '軽自動車'">
+            <p class="explanation ml-16">
+              ・ご成約頂いたお車が軽自動車の際に、自動車税の支払い開始を申告するための書類です。
+            </p>
+          </v-row>
 
-        <v-row>
-          <v-col
-            cols="1"
-            class="mt-3 ml-16 d-flex align-center"
-            v-if="this.contracts.normalCarLightCarKubun === '軽自動車'"
-          >
-            <v-btn
-              @click="taxDeclarationNameModal = true"
-              density="compact"
-              icon="mdi-help"
-            ></v-btn>
-          </v-col>
-        </v-row>
+          <v-row>
+            <v-col
+              cols="1"
+              class="mt-3 ml-16 d-flex align-center"
+              v-if="this.contracts.normalCarLightCarKubun === '軽自動車'"
+            >
+              <v-btn
+                @click="taxDeclarationNameModal = true"
+                density="compact"
+                icon="mdi-help"
+              ></v-btn>
+            </v-col>
+          </v-row>
 
-        <!-- <v-row>
+          <!-- <v-row>
         <v-col
           cols="1"
           class="ml-16 d-flex align-center"
@@ -2994,88 +3078,108 @@ export default {
           <v-btn @click="aaa" density="compact" icon="mdi-printer"></v-btn>
         </v-col>
       </v-row> -->
-        <v-row>
-          <v-toolbar-title
-            class="mt-8 ml-15 mb-5 d-flex align-center insurance"
-            v-if="
-              this.contracts.insuranceKubun === '当社加入' ||
-              this.contracts.insuranceKubun === '他社加入'
-            "
-          >
-            　➃
-            保険（お客様の大切なお車、お客様自身の安心・安全をサポートさせて頂く為のご提案です。）
-          </v-toolbar-title>
-        </v-row>
-        <v-row class="mt-5">
-          <v-col
-            cols="2"
-            v-if="this.contracts.insuranceKubun === '当社加入'"
-            class="ml-15"
-          >
-            <v-select
-              @update:modelValue="isJocInsuranceCompanyChange"
-              label="保険会社"
-              v-model="insurance.jocInsuranceCompany"
-              :items="['', '東京海上', '三井住友', '損保ジャパン']"
-              variant="outlined"
-            ></v-select>
-          </v-col>
-          <v-col
-            cols="2 taxDeclaration"
-            class="mx-1 d-flex align-center"
-            v-if="
-              this.insurance.jocInsuranceCompany === '東京海上' ||
-              this.insurance.jocInsuranceCompany === '三井住友' ||
-              this.insurance.jocInsuranceCompany === '損保ジャパン'
-            "
-          >
-            <v-checkbox
-              @change="insuranceCompleted"
-              label="電子手続き"
-              v-model="insurance.joiningProcedure"
+          <v-row>
+            <v-toolbar-title
+              class="mt-8 ml-15 mb-5 d-flex align-center insurance"
+              v-if="
+                this.contracts.insuranceKubun === '当社加入' ||
+                this.contracts.insuranceKubun === '他社加入'
+              "
             >
-            </v-checkbox>
-          </v-col>
-          <v-col
-            cols="2"
-            class="mx-1"
-            v-if="
-              this.insurance.jocInsuranceCompany === '東京海上' ||
-              this.insurance.jocInsuranceCompany === '三井住友' ||
-              this.insurance.jocInsuranceCompany === '損保ジャパン'
-            "
-          >
-          </v-col>
-          <v-col
-            cols="2"
-            class="mx-1"
-            v-if="
-              this.insurance.jocInsuranceCompany === '東京海上' ||
-              this.insurance.jocInsuranceCompany === '三井住友' ||
-              this.insurance.jocInsuranceCompany === '損保ジャパン'
-            "
-          >
-          </v-col>
-          <v-col
-            cols="2"
-            class="mb-6 d-flex align-center"
-            v-if="
-              this.insurance.jocInsuranceCompany === '東京海上' ||
-              this.insurance.jocInsuranceCompany === '三井住友' ||
-              this.insurance.jocInsuranceCompany === '損保ジャパン'
-            "
-          >
-            <div
-              class="insurance-completed"
-              :class="{
-                'is-fill-in-completed': insurance.joiningProcedure,
-              }"
+              　➃
+              保険（お客様の大切なお車、お客様自身の安心・安全をサポートさせて頂く為のご提案です。）
+            </v-toolbar-title>
+          </v-row>
+          <v-row class="mt-5">
+            <v-col
+              cols="2"
+              v-if="this.contracts.insuranceKubun === '当社加入'"
+              class="ml-15"
             >
-              完了
-            </div>
-          </v-col>
-
-          <!-- <v-col
+              <v-select
+                @update:modelValue="isJocInsuranceCompanyChange"
+                label="保険会社"
+                v-model="insurance.jocInsuranceCompany"
+                :items="['', '東京海上', '三井住友', '損保ジャパン']"
+                variant="outlined"
+              ></v-select>
+            </v-col>
+            <v-col
+              cols="2 taxDeclaration"
+              class="mx-1 d-flex align-center"
+              v-if="
+                this.insurance.jocInsuranceCompany === '東京海上' ||
+                this.insurance.jocInsuranceCompany === '三井住友' ||
+                this.insurance.jocInsuranceCompany === '損保ジャパン'
+              "
+            >
+              <v-checkbox
+                @change="insuranceCompleted"
+                label="電子手続き"
+                v-model="insurance.joiningProcedure"
+              >
+              </v-checkbox>
+            </v-col>
+            <v-col
+              cols="2"
+              class="mx-1"
+              v-if="
+                this.insurance.jocInsuranceCompany === '東京海上' ||
+                this.insurance.jocInsuranceCompany === '三井住友' ||
+                this.insurance.jocInsuranceCompany === '損保ジャパン'
+              "
+            >
+            </v-col>
+            <v-col
+              cols="2"
+              class="mx-1"
+              v-if="
+                this.insurance.jocInsuranceCompany === '東京海上' ||
+                this.insurance.jocInsuranceCompany === '三井住友' ||
+                this.insurance.jocInsuranceCompany === '損保ジャパン'
+              "
+            >
+            </v-col>
+            <v-col
+              cols="2"
+              class="mb-6 d-flex align-center"
+              v-if="
+                this.insurance.jocInsuranceCompany === '東京海上' ||
+                this.insurance.jocInsuranceCompany === '三井住友' ||
+                this.insurance.jocInsuranceCompany === '損保ジャパン'
+              "
+            >
+              <div
+                class="insurance-completed"
+                :class="{
+                  'is-fill-in-completed': insurance.joiningProcedure,
+                }"
+              >
+                完了
+              </div>
+            </v-col>
+            <v-row
+              v-if="
+                this.insurance.jocInsuranceCompany === '東京海上' ||
+                this.insurance.jocInsuranceCompany === '三井住友' ||
+                this.insurance.jocInsuranceCompany === '損保ジャパン'
+              "
+            >
+              <p class="explanation ml-16">
+                ・ネット保険との違い<br />
+                （１）ネット保険はお客様自身で保険の内容を理解して選ぶ必要がありますが、対面型の保険はお客様に合った的確な保険内容<br />
+                　　　をご提示することができます。<br />
+                　　　また保険の見直しや内容の変更等は担当者にお電話頂くだけでお客様の状況にあった保険内容に変更することもできます。<br />
+                （２）事故をしてしまった場合、気が動転してどのように対応すればいいかわからなくなってしまった場合でも<br />
+                　　　担当者にお電話を頂くだけで、状況に応じてどのような対応をすればいいか手順を踏みながら丁寧に<br />
+                　　　ご説明することができます。<br />
+                （３）お車をご案内させて頂く時からの担当者とのつながりがあるからこその<br />
+                　　　話しやすさや相談のしやすさもネット保険では付帯することができない見えない保険内容の１つです。
+                （４）ネット保険と比べて金額は高くなりますが、金額差以上の「お客様の安心・安全をサポートする気持ち」<br />
+                　　　をご案内する中でお伝えすることができるようご説明しましょう。
+              </p>
+            </v-row>
+            <!-- <v-col
           cols="2"
           v-if="
             this.insurance.jocInsuranceCompany === 'A社' ||
@@ -3084,7 +3188,7 @@ export default {
           "
           class="mx-1 insurance-completedDate"
         > -->
-          <!-- <v-text-field
+            <!-- <v-text-field
             :class="{
               'completedDate-input': insurance.completedDate != false,
             }"
@@ -3092,230 +3196,240 @@ export default {
             v-model="insurance.completedDate"
             label="完了日"
           ></v-text-field> -->
-          <!-- </v-col> -->
-        </v-row>
+            <!-- </v-col> -->
+          </v-row>
 
-        <v-row>
-          <v-col
-            cols="1"
-            class="mt-3 ml-16 d-flex align-center"
-            v-if="this.insurance.jocInsuranceCompany === '東京海上'"
-          >
-            <v-btn
-              href=""
-              target="_blank"
-              density="compact"
-              icon="mdi-login"
-            ></v-btn>
-          </v-col>
-          <v-col
-            cols="1"
-            class="mt-3 d-flex align-center"
-            v-if="this.insurance.jocInsuranceCompany === '東京海上'"
-          >
-            <v-btn
-              href="https://www.tokiomarine-nichido.co.jp/"
-              target="_blank"
-              density="compact"
-              icon="mdi-search-web"
-            ></v-btn>
-          </v-col>
-          <v-col
-            cols="1"
-            class="mt-3 d-flex align-center"
-            v-if="this.insurance.jocInsuranceCompany === '東京海上'"
-          >
-            <v-btn
-              href="https://www.tokiomarine-nichido.co.jp/service/auto/pamphlet/"
-              target="_blank"
-              density="compact"
-              icon="mdi-book-open"
+          <v-row>
+            <v-col
+              cols="1"
+              class="mt-3 ml-16 d-flex align-center"
+              v-if="this.insurance.jocInsuranceCompany === '東京海上'"
             >
-            </v-btn>
-          </v-col>
-          <v-col
-            cols="1"
-            class="mt-3 ml-16 d-flex align-center"
-            v-if="this.insurance.jocInsuranceCompany === '三井住友'"
-          >
-            <v-btn
-              href=""
-              target="_blank"
-              density="compact"
-              icon="mdi-login"
-            ></v-btn>
-          </v-col>
-          <v-col
-            cols="1"
-            class="mt-3 d-flex align-center"
-            v-if="this.insurance.jocInsuranceCompany === '三井住友'"
-          >
-            <v-btn
-              href="https://www.ms-ins.com/lp/car-2406h/?utm_source=yahoo&utm_medium=cpc&utm_campaign=regular&utm_content=car_tow500-h_._._brand_._.&adtgt=._cv_src&yclid=YSS.1001283068.EAIaIQobChMI8b_ajYSliQMVb9oWBR228DD3EAAYASAAEgKlmvD_BwE"
-              target="_blank"
-              density="compact"
-              icon="mdi-search-web"
-            ></v-btn>
-          </v-col>
-          <v-col
-            cols="1"
-            class="mt-3 d-flex align-center"
-            v-if="this.insurance.jocInsuranceCompany === '三井住友'"
-          >
-            <v-btn
-              href="https://www.ms-ins.com/personal/pdf/"
-              target="_blank"
-              density="compact"
-              icon="mdi-book-open"
+              <v-btn
+                href=""
+                target="_blank"
+                density="compact"
+                icon="mdi-login"
+              ></v-btn>
+            </v-col>
+            <v-col
+              cols="1"
+              class="mt-3 d-flex align-center"
+              v-if="this.insurance.jocInsuranceCompany === '東京海上'"
             >
-            </v-btn>
-          </v-col>
+              <v-btn
+                href="https://www.tokiomarine-nichido.co.jp/"
+                target="_blank"
+                density="compact"
+                icon="mdi-search-web"
+              ></v-btn>
+            </v-col>
+            <v-col
+              cols="1"
+              class="mt-3 d-flex align-center"
+              v-if="this.insurance.jocInsuranceCompany === '東京海上'"
+            >
+              <v-btn
+                href="https://www.tokiomarine-nichido.co.jp/service/auto/pamphlet/"
+                target="_blank"
+                density="compact"
+                icon="mdi-book-open"
+              >
+              </v-btn>
+            </v-col>
+            <v-col
+              cols="1"
+              class="mt-3 ml-16 d-flex align-center"
+              v-if="this.insurance.jocInsuranceCompany === '三井住友'"
+            >
+              <v-btn
+                href=""
+                target="_blank"
+                density="compact"
+                icon="mdi-login"
+              ></v-btn>
+            </v-col>
+            <v-col
+              cols="1"
+              class="mt-3 d-flex align-center"
+              v-if="this.insurance.jocInsuranceCompany === '三井住友'"
+            >
+              <v-btn
+                href="https://www.ms-ins.com/lp/car-2406h/?utm_source=yahoo&utm_medium=cpc&utm_campaign=regular&utm_content=car_tow500-h_._._brand_._.&adtgt=._cv_src&yclid=YSS.1001283068.EAIaIQobChMI8b_ajYSliQMVb9oWBR228DD3EAAYASAAEgKlmvD_BwE"
+                target="_blank"
+                density="compact"
+                icon="mdi-search-web"
+              ></v-btn>
+            </v-col>
+            <v-col
+              cols="1"
+              class="mt-3 d-flex align-center"
+              v-if="this.insurance.jocInsuranceCompany === '三井住友'"
+            >
+              <v-btn
+                href="https://www.ms-ins.com/personal/pdf/"
+                target="_blank"
+                density="compact"
+                icon="mdi-book-open"
+              >
+              </v-btn>
+            </v-col>
 
-          <v-col
-            cols="1"
-            class="mt-3 ml-16 d-flex align-center"
-            v-if="this.insurance.jocInsuranceCompany === '損保ジャパン'"
-          >
-            <v-btn
-              href=""
-              target="_blank"
-              density="compact"
-              icon="mdi-login"
-              nuxt
-            ></v-btn>
-          </v-col>
-          <v-col
-            cols="1"
-            class="mt-3 d-flex align-center"
-            v-if="this.insurance.jocInsuranceCompany === '損保ジャパン'"
-          >
-            <v-btn
-              href="https://www.sompo-japan.co.jp/"
-              target="_blank"
-              density="compact"
-              icon="mdi-search-web"
-            ></v-btn>
-          </v-col>
-          <v-col
-            cols="1"
-            class="mt-3 d-flex align-center"
-            v-if="this.insurance.jocInsuranceCompany === '損保ジャパン'"
-          >
-            <v-btn
-              href="https://www.sompo-japan.co.jp/kinsurance/contents1/"
-              target="_blank"
-              density="compact"
-              icon="mdi-book-open"
+            <v-col
+              cols="1"
+              class="mt-3 ml-16 d-flex align-center"
+              v-if="this.insurance.jocInsuranceCompany === '損保ジャパン'"
             >
-            </v-btn>
-          </v-col>
-        </v-row>
-        <v-row class="mt-5">
-          <v-col
-            cols="2"
-            v-if="
-              this.insurance.jocInsuranceCompany === '東京海上' ||
-              this.insurance.jocInsuranceCompany === '三井住友' ||
-              this.insurance.jocInsuranceCompany === '損保ジャパン'
-            "
-            class="ml-15"
-          >
-            <v-combobox
-              label=""
-              v-model="insurance.skyPlus"
-              :items="[]"
-              variant="outlined"
-              readonly
-            ></v-combobox>
-          </v-col>
-          <v-col
-            cols="2 taxDeclaration"
-            class="mx-1 d-flex align-center"
-            v-if="
-              this.insurance.jocInsuranceCompany === '東京海上' ||
-              this.insurance.jocInsuranceCompany === '三井住友' ||
-              this.insurance.jocInsuranceCompany === '損保ジャパン'
-            "
-          >
-            <v-checkbox
-              @change="skyPlusCompleted"
-              label="ご説明"
-              v-model="insurance.skyPlusExplanation"
+              <v-btn
+                href=""
+                target="_blank"
+                density="compact"
+                icon="mdi-login"
+                nuxt
+              ></v-btn>
+            </v-col>
+            <v-col
+              cols="1"
+              class="mt-3 d-flex align-center"
+              v-if="this.insurance.jocInsuranceCompany === '損保ジャパン'"
             >
-            </v-checkbox>
-          </v-col>
-          <v-col
-            cols="2"
-            class="mx-1"
-            v-if="
-              this.insurance.jocInsuranceCompany === '東京海上' ||
-              this.insurance.jocInsuranceCompany === '三井住友' ||
-              this.insurance.jocInsuranceCompany === '損保ジャパン'
-            "
-          >
-          </v-col>
-          <v-col
-            cols="2"
-            class="mx-1"
-            v-if="
-              this.insurance.jocInsuranceCompany === '東京海上' ||
-              this.insurance.jocInsuranceCompany === '三井住友' ||
-              this.insurance.jocInsuranceCompany === '損保ジャパン'
-            "
-          >
-          </v-col>
-          <v-col
-            cols="2"
-            class="mb-6 d-flex align-center"
-            v-if="
-              this.insurance.jocInsuranceCompany === '東京海上' ||
-              this.insurance.jocInsuranceCompany === '三井住友' ||
-              this.insurance.jocInsuranceCompany === '損保ジャパン'
-            "
-          >
-            <div
-              class="sky-plus-completed"
-              :class="{
-                'is-fill-in-completed': insurance.skyPlusExplanation,
-              }"
+              <v-btn
+                href="https://www.sompo-japan.co.jp/"
+                target="_blank"
+                density="compact"
+                icon="mdi-search-web"
+              ></v-btn>
+            </v-col>
+            <v-col
+              cols="1"
+              class="mt-3 d-flex align-center"
+              v-if="this.insurance.jocInsuranceCompany === '損保ジャパン'"
             >
-              完了
-            </div>
-          </v-col>
-        </v-row>
-        <v-row
-          v-if="
-            this.insurance.jocInsuranceCompany === '東京海上' ||
-            this.insurance.jocInsuranceCompany === '三井住友' ||
-            this.insurance.jocInsuranceCompany === '損保ジャパン'
-          "
-        >
-          <p class="explanation ml-16">
-            ・マツダ販売店で自動車保険を契約された方限定の特典です。<br />
-            　　マツダの自動車保険にご加入いただいたお客様に無償で付帯でき、<br />
-            　　気になる小傷も、自動車保険（車両保険）を使用せず、わずかなご負担でボディリペアできます。
-          </p>
-        </v-row>
+              <v-btn
+                href="https://www.sompo-japan.co.jp/kinsurance/contents1/"
+                target="_blank"
+                density="compact"
+                icon="mdi-book-open"
+              >
+              </v-btn>
+            </v-col>
+          </v-row>
+          <v-row
+            v-if="
+              this.insurance.jocInsuranceCompany === '東京海上' ||
+              this.insurance.jocInsuranceCompany === '三井住友' ||
+              this.insurance.jocInsuranceCompany === '損保ジャパン'
+            "
+          >
+            <v-divider class="ml-15 mt-5 separator"></v-divider>
+          </v-row>
+          <v-row class="mt-10">
+            <v-col
+              cols="2"
+              v-if="
+                this.insurance.jocInsuranceCompany === '東京海上' ||
+                this.insurance.jocInsuranceCompany === '三井住友' ||
+                this.insurance.jocInsuranceCompany === '損保ジャパン'
+              "
+              class="ml-15"
+            >
+              <v-combobox
+                label=""
+                v-model="insurance.skyPlus"
+                :items="[]"
+                variant="outlined"
+                readonly
+              ></v-combobox>
+            </v-col>
+            <v-col
+              cols="2 taxDeclaration"
+              class="mx-1 d-flex align-center"
+              v-if="
+                this.insurance.jocInsuranceCompany === '東京海上' ||
+                this.insurance.jocInsuranceCompany === '三井住友' ||
+                this.insurance.jocInsuranceCompany === '損保ジャパン'
+              "
+            >
+              <v-checkbox
+                @change="skyPlusCompleted"
+                label="ご説明"
+                v-model="insurance.skyPlusExplanation"
+              >
+              </v-checkbox>
+            </v-col>
+            <v-col
+              cols="2"
+              class="mx-1"
+              v-if="
+                this.insurance.jocInsuranceCompany === '東京海上' ||
+                this.insurance.jocInsuranceCompany === '三井住友' ||
+                this.insurance.jocInsuranceCompany === '損保ジャパン'
+              "
+            >
+            </v-col>
+            <v-col
+              cols="2"
+              class="mx-1"
+              v-if="
+                this.insurance.jocInsuranceCompany === '東京海上' ||
+                this.insurance.jocInsuranceCompany === '三井住友' ||
+                this.insurance.jocInsuranceCompany === '損保ジャパン'
+              "
+            >
+            </v-col>
+            <v-col
+              cols="2"
+              class="mb-6 d-flex align-center"
+              v-if="
+                this.insurance.jocInsuranceCompany === '東京海上' ||
+                this.insurance.jocInsuranceCompany === '三井住友' ||
+                this.insurance.jocInsuranceCompany === '損保ジャパン'
+              "
+            >
+              <div
+                class="sky-plus-completed"
+                :class="{
+                  'is-fill-in-completed': insurance.skyPlusExplanation,
+                }"
+              >
+                完了
+              </div>
+            </v-col>
+          </v-row>
 
-        <v-row>
-          <v-col
-            cols="1"
-            class="mt-3 ml-15 d-flex align-center"
+          <v-row
             v-if="
               this.insurance.jocInsuranceCompany === '東京海上' ||
               this.insurance.jocInsuranceCompany === '三井住友' ||
               this.insurance.jocInsuranceCompany === '損保ジャパン'
             "
           >
-            <v-btn
-              href="https://www.mazda.co.jp/purchase/carlife-care/insurance/"
-              target="_blank"
-              density="compact"
-              icon="mdi-search-web"
-            ></v-btn>
-          </v-col>
-        </v-row>
-        <!-- <v-row>
+            <p class="explanation ml-16">
+              ・マツダ販売店で自動車保険を契約された方限定の特典です。<br />
+              　　マツダの自動車保険にご加入いただいたお客様に無償で付帯でき、<br />
+              　　気になる小傷も、自動車保険（車両保険）を使用せず、わずかなご負担でボディリペアできます。
+            </p>
+          </v-row>
+
+          <v-row>
+            <v-col
+              cols="1"
+              class="mt-3 ml-15 d-flex align-center"
+              v-if="
+                this.insurance.jocInsuranceCompany === '東京海上' ||
+                this.insurance.jocInsuranceCompany === '三井住友' ||
+                this.insurance.jocInsuranceCompany === '損保ジャパン'
+              "
+            >
+              <v-btn
+                href="https://www.mazda.co.jp/purchase/carlife-care/insurance/"
+                target="_blank"
+                density="compact"
+                icon="mdi-search-web"
+              ></v-btn>
+            </v-col>
+          </v-row>
+          <!-- <v-row>
         <v-col
           cols="1"
           class="ml-16 d-flex align-center"
@@ -3342,59 +3456,59 @@ export default {
           <v-btn @click="aaa" density="compact" icon="mdi-help"></v-btn>
         </v-col>
       </v-row> -->
-        <v-row class="mt-5">
-          <v-col
-            cols="2"
-            v-if="this.contracts.insuranceKubun === '他社加入'"
-            class="ml-15"
-          >
-            <v-combobox
-              v-model="insurance.jacInsuranceCompany"
-              label="保険会社"
-              :items="[]"
-              variant="outlined"
-            ></v-combobox>
-          </v-col>
-          <v-col
-            cols="2"
-            v-if="this.contracts.insuranceKubun === '他社加入'"
-            class="mx-1 d-flex align-center"
-          >
-            <v-checkbox
-              @change="insuranceCompleted2"
-              label="加入確認"
-              v-model="insurance.confirmationOfMembership"
+          <v-row class="mt-5">
+            <v-col
+              cols="2"
+              v-if="this.contracts.insuranceKubun === '他社加入'"
+              class="ml-15"
             >
-            </v-checkbox>
-          </v-col>
-          <v-col
-            cols="2"
-            class="mx-1"
-            v-if="this.contracts.insuranceKubun === '他社加入'"
-          >
-          </v-col>
-          <v-col
-            cols="2"
-            class="mx-1"
-            v-if="this.contracts.insuranceKubun === '他社加入'"
-          >
-          </v-col>
-          <v-col
-            cols="2"
-            class="mb-6 d-flex align-center"
-            v-if="this.contracts.insuranceKubun === '他社加入'"
-          >
-            <div
-              class="insurance-completed2"
-              :class="{
-                'is-fill-in-completed': insurance.confirmationOfMembership,
-              }"
+              <v-combobox
+                v-model="insurance.jacInsuranceCompany"
+                label="保険会社"
+                :items="[]"
+                variant="outlined"
+              ></v-combobox>
+            </v-col>
+            <v-col
+              cols="2"
+              v-if="this.contracts.insuranceKubun === '他社加入'"
+              class="mx-1 d-flex align-center"
             >
-              完了
-            </div>
-          </v-col>
+              <v-checkbox
+                @change="insuranceCompleted2"
+                label="加入確認"
+                v-model="insurance.confirmationOfMembership"
+              >
+              </v-checkbox>
+            </v-col>
+            <v-col
+              cols="2"
+              class="mx-1"
+              v-if="this.contracts.insuranceKubun === '他社加入'"
+            >
+            </v-col>
+            <v-col
+              cols="2"
+              class="mx-1"
+              v-if="this.contracts.insuranceKubun === '他社加入'"
+            >
+            </v-col>
+            <v-col
+              cols="2"
+              class="mb-6 d-flex align-center"
+              v-if="this.contracts.insuranceKubun === '他社加入'"
+            >
+              <div
+                class="insurance-completed2"
+                :class="{
+                  'is-fill-in-completed': insurance.confirmationOfMembership,
+                }"
+              >
+                完了
+              </div>
+            </v-col>
 
-          <!-- <v-col
+            <!-- <v-col
           cols="2"
           v-if="this.contracts.insuranceKubun === '他社加入'"
           class="mx-1 insurance-completedDate"
@@ -3408,120 +3522,120 @@ export default {
             label="完了日"
           ></v-text-field>
         </v-col> -->
-        </v-row>
-        <v-row>
-          <v-toolbar-title
-            class="mt-8 ml-15 mb-5 d-flex align-center credit"
-            v-if="
-              (this.contracts.insuranceKubun === '' ||
-                this.contracts.insuranceKubun === '未加入') &&
-              this.contracts.paymentKubun === 'クレジット'
-            "
-          >
-            　➃
-            クレジット（お客様にクレジット（スカイプランなど）でご成約頂いた際の手続きです。）
-          </v-toolbar-title>
-        </v-row>
-
-        <v-row>
-          <v-toolbar-title
-            class="mt-8 ml-15 mb-5 d-flex align-center credit"
-            v-if="
-              (this.contracts.insuranceKubun === '当社加入' ||
-                this.contracts.insuranceKubun === '他社加入') &&
-              this.contracts.paymentKubun === 'クレジット'
-            "
-          >
-            　➄
-            クレジット（お客様にクレジット（スカイプランなど）でご成約頂いた際の手続きです。）
-          </v-toolbar-title>
-        </v-row>
-
-        <v-row class="mt-5">
-          <v-col cols="2" class="ml-15">
-            <v-select
-              @update:modelValue="isCreditChange"
-              v-if="this.contracts.paymentKubun === 'クレジット'"
-              v-model="credit.creditDocuments"
-              label="電子or書面"
-              :items="['', '電子', '書面']"
-              variant="outlined"
-            ></v-select>
-          </v-col>
-          <v-col
-            cols="2"
-            class="mx-1 d-flex align-center"
-            v-if="this.credit.creditDocuments === '電子'"
-          >
-            <v-checkbox
-              @change="CreditDocumentsCompleted"
-              v-model="credit.isFillIn"
-              label="電子手続き(meats)"
+          </v-row>
+          <v-row>
+            <v-toolbar-title
+              class="mt-8 ml-15 mb-5 d-flex align-center credit"
+              v-if="
+                (this.contracts.insuranceKubun === '' ||
+                  this.contracts.insuranceKubun === '未加入') &&
+                this.contracts.paymentKubun === 'クレジット'
+              "
             >
-            </v-checkbox>
-          </v-col>
+              　➃
+              クレジット（お客様にクレジット（スカイプランなど）でご成約頂いた際の手続きです。）
+            </v-toolbar-title>
+          </v-row>
 
-          <v-col
-            cols="2"
-            class="mx-1 d-flex align-center"
-            v-if="this.credit.creditDocuments === '書面'"
-          >
-            <v-checkbox
-              @change="CreditDocumentsCompleted"
-              v-model="credit.isFillIn"
-              label="ご記入"
+          <v-row>
+            <v-toolbar-title
+              class="mt-8 ml-15 mb-5 d-flex align-center credit"
+              v-if="
+                (this.contracts.insuranceKubun === '当社加入' ||
+                  this.contracts.insuranceKubun === '他社加入') &&
+                this.contracts.paymentKubun === 'クレジット'
+              "
             >
-            </v-checkbox>
-          </v-col>
+              　➄
+              クレジット（お客様にクレジット（スカイプランなど）でご成約頂いた際の手続きです。）
+            </v-toolbar-title>
+          </v-row>
 
-          <v-col
-            cols="2"
-            class="mx-1 d-flex align-center"
-            v-if="this.credit.creditDocuments === '書面'"
-          >
-            <v-checkbox
-              @change="CreditDocumentsCompleted"
-              v-model="credit.isRegisteredSeal"
-              label="銀行印"
+          <v-row class="mt-5">
+            <v-col cols="2" class="ml-15">
+              <v-select
+                @update:modelValue="isCreditChange"
+                v-if="this.contracts.paymentKubun === 'クレジット'"
+                v-model="credit.creditDocuments"
+                label="電子or書面"
+                :items="['', '電子', '書面']"
+                variant="outlined"
+              ></v-select>
+            </v-col>
+            <v-col
+              cols="2"
+              class="mx-1 d-flex align-center"
+              v-if="this.credit.creditDocuments === '電子'"
             >
-            </v-checkbox>
-          </v-col>
-          <v-col
-            cols="2"
-            class="mx-1"
-            v-if="
-              this.credit.creditDocuments === '電子' ||
-              this.credit.creditDocuments === '書面'
-            "
-          >
-          </v-col>
-          <v-col
-            cols="2"
-            class="mx-1"
-            v-if="this.credit.creditDocuments === '電子'"
-          >
-          </v-col>
-          <v-col
-            cols="2"
-            class="mb-6 d-flex align-center"
-            v-if="
-              this.credit.creditDocuments === '電子' ||
-              this.credit.creditDocuments === '書面'
-            "
-          >
-            <div
-              class="credit-documents-completed"
-              :class="{
-                'is-fill-in-completed':
-                  this.credit.isFillIn ||
-                  (this.credit.isFillIn && this.credit.isRegisteredSeal),
-              }"
-            >
-              完了
-            </div>
-          </v-col>
+              <v-checkbox
+                @change="CreditDocumentsCompleted"
+                v-model="credit.isFillIn"
+                label="電子手続き(meats)"
+              >
+              </v-checkbox>
+            </v-col>
 
-          <!-- <v-col cols="2" class="mx-1 credit-completedDate">
+            <v-col
+              cols="2"
+              class="mx-1 d-flex align-center"
+              v-if="this.credit.creditDocuments === '書面'"
+            >
+              <v-checkbox
+                @change="CreditDocumentsCompleted"
+                v-model="credit.isFillIn"
+                label="ご記入"
+              >
+              </v-checkbox>
+            </v-col>
+
+            <v-col
+              cols="2"
+              class="mx-1 d-flex align-center"
+              v-if="this.credit.creditDocuments === '書面'"
+            >
+              <v-checkbox
+                @change="CreditDocumentsCompleted"
+                v-model="credit.isRegisteredSeal"
+                label="銀行印"
+              >
+              </v-checkbox>
+            </v-col>
+            <v-col
+              cols="2"
+              class="mx-1"
+              v-if="
+                this.credit.creditDocuments === '電子' ||
+                this.credit.creditDocuments === '書面'
+              "
+            >
+            </v-col>
+            <v-col
+              cols="2"
+              class="mx-1"
+              v-if="this.credit.creditDocuments === '電子'"
+            >
+            </v-col>
+            <v-col
+              cols="2"
+              class="mb-6 d-flex align-center"
+              v-if="
+                this.credit.creditDocuments === '電子' ||
+                this.credit.creditDocuments === '書面'
+              "
+            >
+              <div
+                class="credit-documents-completed"
+                :class="{
+                  'is-fill-in-completed':
+                    this.credit.isFillIn ||
+                    (this.credit.isFillIn && this.credit.isRegisteredSeal),
+                }"
+              >
+                完了
+              </div>
+            </v-col>
+
+            <!-- <v-col cols="2" class="mx-1 credit-completedDate">
           <v-text-field
             :class="{ 'completedDate-input': credit.completedDate != false }"
             type="date"
@@ -3529,420 +3643,421 @@ export default {
             label="完了日"
           ></v-text-field>
         </v-col> -->
-        </v-row>
+          </v-row>
 
-        <v-row>
-          <v-col
-            cols="1"
-            class="mt-3 ml-16 d-flex align-center"
-            v-if="
-              this.credit.creditDocuments === '電子' ||
-              this.credit.creditDocuments === '書面'
-            "
-          >
-            <v-btn
-              href="https://www.mazdacr.co.jp/lineup/lineup.html?mode=sky"
-              target="_blank"
-              density="compact"
-              icon="mdi-search-web"
-            ></v-btn>
-          </v-col>
-        </v-row>
-        <v-row>
-          <v-toolbar-title
-            class="mt-8 ml-15 mb-5 d-flex deliveryDate"
-            v-if="
-              (this.contracts.newCarUsedCarKubun === '新車' ||
-                this.contracts.newCarUsedCarKubun === '中古車') &&
-              (this.contracts.normalCarLightCarKubun === '普通車' ||
-                this.contracts.normalCarLightCarKubun === '軽自動車') &&
-              (this.contracts.paymentKubun === '現金' ||
-                this.contracts.paymentKubun === '銀行ローン' ||
-                this.contracts.paymentKubun === '所有権留保') &&
-              (this.contracts.insuranceKubun === '当社加入' ||
-                this.contracts.insuranceKubun === '他社加入' ||
-                this.contracts.insuranceKubun === '未加入')
-            "
-          >
-            　⑤納車日（ご成約頂いたお車が登録されて２週間後がご納車日の目安となります。）
-          </v-toolbar-title>
-        </v-row>
-        <v-row>
-          <v-toolbar-title
-            class="mt-8 ml-15 mb-5 d-flex deliveryDate"
-            v-if="
-              (this.contracts.newCarUsedCarKubun === '新車' ||
-                this.contracts.newCarUsedCarKubun === '中古車') &&
-              (this.contracts.normalCarLightCarKubun === '普通車' ||
-                this.contracts.normalCarLightCarKubun === '軽自動車') &&
-              this.contracts.paymentKubun === 'クレジット' &&
-              (this.contracts.insuranceKubun === '当社加入' ||
-                this.contracts.insuranceKubun === '他社加入' ||
-                this.contracts.insuranceKubun === '未加入')
-            "
-          >
-            　➅
-            納車日（ご成約頂いたお車が登録されて２週間後がご納車日の目安となります。）
-          </v-toolbar-title>
-        </v-row>
-        <v-row class="mt-5">
-          <v-col
-            cols="2"
-            v-if="
-              (this.contracts.newCarUsedCarKubun === '新車' ||
-                this.contracts.newCarUsedCarKubun === '中古車') &&
-              (this.contracts.normalCarLightCarKubun === '普通車' ||
-                this.contracts.normalCarLightCarKubun === '軽自動車') &&
-              (this.contracts.paymentKubun === '現金' ||
-                this.contracts.paymentKubun === 'クレジット' ||
-                this.contracts.paymentKubun === '銀行ローン' ||
-                this.contracts.paymentKubun === '所有権留保') &&
-              (this.contracts.insuranceKubun === '当社加入' ||
-                this.contracts.insuranceKubun === '他社加入' ||
-                this.contracts.insuranceKubun === '未加入')
-            "
-            class="ml-15"
-          >
-            <v-text-field
-              class="test"
-              :class="{
-                'completedDate-input': !delivery.deliveryDate,
-              }"
-              type="date"
-              v-model="delivery.deliveryDate"
-              label="納車希望日"
-            ></v-text-field>
-          </v-col>
-          <v-col
-            cols="2"
-            class="mx-1"
-            v-if="
-              (this.contracts.newCarUsedCarKubun === '新車' ||
-                this.contracts.newCarUsedCarKubun === '中古車') &&
-              (this.contracts.normalCarLightCarKubun === '普通車' ||
-                this.contracts.normalCarLightCarKubun === '軽自動車') &&
-              (this.contracts.paymentKubun === '現金' ||
-                this.contracts.paymentKubun === 'クレジット' ||
-                this.contracts.paymentKubun === '銀行ローン' ||
-                this.contracts.paymentKubun === '所有権留保') &&
-              (this.contracts.insuranceKubun === '当社加入' ||
-                this.contracts.insuranceKubun === '他社加入' ||
-                this.contracts.insuranceKubun === '未加入')
-            "
-          >
-          </v-col>
-          <v-col
-            cols="2"
-            class="mx-1"
-            v-if="
-              (this.contracts.newCarUsedCarKubun === '新車' ||
-                this.contracts.newCarUsedCarKubun === '中古車') &&
-              (this.contracts.normalCarLightCarKubun === '普通車' ||
-                this.contracts.normalCarLightCarKubun === '軽自動車') &&
-              (this.contracts.paymentKubun === '現金' ||
-                this.contracts.paymentKubun === 'クレジット' ||
-                this.contracts.paymentKubun === '銀行ローン' ||
-                this.contracts.paymentKubun === '所有権留保') &&
-              (this.contracts.insuranceKubun === '当社加入' ||
-                this.contracts.insuranceKubun === '他社加入' ||
-                this.contracts.insuranceKubun === '未加入')
-            "
-          >
-          </v-col>
-          <v-col
-            cols="2"
-            class="mx-1"
-            v-if="
-              (this.contracts.newCarUsedCarKubun === '新車' ||
-                this.contracts.newCarUsedCarKubun === '中古車') &&
-              (this.contracts.normalCarLightCarKubun === '普通車' ||
-                this.contracts.normalCarLightCarKubun === '軽自動車') &&
-              (this.contracts.paymentKubun === '現金' ||
-                this.contracts.paymentKubun === 'クレジット' ||
-                this.contracts.paymentKubun === '銀行ローン' ||
-                this.contracts.paymentKubun === '所有権留保') &&
-              (this.contracts.insuranceKubun === '当社加入' ||
-                this.contracts.insuranceKubun === '他社加入' ||
-                this.contracts.insuranceKubun === '未加入')
-            "
-          >
-          </v-col>
-
-          <v-col
-            cols="2"
-            class="mb-6 d-flex align-center"
-            v-if="
-              (this.contracts.newCarUsedCarKubun === '新車' ||
-                this.contracts.newCarUsedCarKubun === '中古車') &&
-              (this.contracts.normalCarLightCarKubun === '普通車' ||
-                this.contracts.normalCarLightCarKubun === '軽自動車') &&
-              (this.contracts.paymentKubun === '現金' ||
-                this.contracts.paymentKubun === 'クレジット' ||
-                this.contracts.paymentKubun === '銀行ローン' ||
-                this.contracts.paymentKubun === '所有権留保') &&
-              (this.contracts.insuranceKubun === '当社加入' ||
-                this.contracts.insuranceKubun === '他社加入' ||
-                this.contracts.insuranceKubun === '未加入')
-            "
-          >
-            <div
-              class="delivery-date-completed"
-              :class="{
-                'is-fill-in-completed': delivery.deliveryDate,
-              }"
-            >
-              完了
-            </div>
-          </v-col>
-        </v-row>
-        <v-row
-          v-if="
-            (this.contracts.newCarUsedCarKubun === '新車' ||
-              this.contracts.newCarUsedCarKubun === '中古車') &&
-            (this.contracts.normalCarLightCarKubun === '普通車' ||
-              this.contracts.normalCarLightCarKubun === '軽自動車') &&
-            (this.contracts.paymentKubun === '現金' ||
-              this.contracts.paymentKubun === 'クレジット' ||
-              this.contracts.paymentKubun === '銀行ローン' ||
-              this.contracts.paymentKubun === '所有権留保') &&
-            (this.contracts.insuranceKubun === '当社加入' ||
-              this.contracts.insuranceKubun === '他社加入' ||
-              this.contracts.insuranceKubun === '未加入')
-          "
-        >
-          <p class="explanation ml-16">
-            ・マツダの純正オプション以外の部品などを取り付ける場合は登録から納車までに２週間以上<br />
-            　かかる場合があります。
-          </p>
-        </v-row>
-
-        <v-row
-          v-if="
-            (this.contracts.newCarUsedCarKubun === '新車' ||
-              this.contracts.newCarUsedCarKubun === '中古車') &&
-            (this.contracts.normalCarLightCarKubun === '普通車' ||
-              this.contracts.normalCarLightCarKubun === '軽自動車') &&
-            (this.contracts.paymentKubun === '現金' ||
-              this.contracts.paymentKubun === 'クレジット' ||
-              this.contracts.paymentKubun === '銀行ローン' ||
-              this.contracts.paymentKubun === '所有権留保') &&
-            (this.contracts.insuranceKubun === '当社加入' ||
-              this.contracts.insuranceKubun === '他社加入' ||
-              this.contracts.insuranceKubun === '未加入')
-          "
-        >
-          <v-toolbar-title class="mt-8 ml-15 d-flex align-center goal">
-            　〇お手続きは以上になります。お時間頂きありがとうございました。
-          </v-toolbar-title>
-        </v-row>
-      </div>
-      <!-- 下取・買取 -->
-      <div v-if="this.start.startKubun === '下取・買取'">
-        <v-row>
-          <v-toolbar-title class="mt-5 ml-15 d-flex align-center start">
-            　〇ここからは下取・買取のお手続きになります。
-          </v-toolbar-title>
-        </v-row>
-        <v-row>
-          <p class="mt-5 ml-16">　お預かりするお車は、</p>
-        </v-row>
-
-        <v-row class="ml-12 mt-10">
-          <v-col cols="2" class="">
-            <v-select
-              v-model="tradeInPurchase.tradeInPurchaseKubun"
-              label="下取or買取"
-              :items="['', '下取', '買取']"
-              variant="outlined"
-            ></v-select>
-          </v-col>
-
-          <v-col cols="2" class="">
-            <v-select
-              v-model="tradeInPurchase.normalCarLightCarKubun"
-              label="普通車or軽自動車"
-              :items="['', '普通車', '軽自動車']"
-              variant="outlined"
-            ></v-select>
-          </v-col>
-          <v-col cols="2" class="">
-            <v-select
-              v-model="tradeInPurchase.nameChangeDeletionKubun"
-              label="名変or抹消"
-              :items="['', '名変', '抹消']"
-              variant="outlined"
-            ></v-select>
-          </v-col>
-
-          <v-col cols="2" class="">
-            <v-select
-              v-model="tradeInPurchase.ownershipKubun"
-              label="所有権"
-              :items="[
-                '',
-                '本人所有',
-                'アンフィニ所有',
-                '交換コーナー利用',
-                'その他所有',
-              ]"
-              variant="outlined"
-            ></v-select>
-          </v-col>
-          <v-col cols="2" class="mt-2 ml-16">
-            <v-btn @click="tipRattocClear"> clear </v-btn>
-          </v-col>
-        </v-row>
-        <v-row
-          v-if="
-            this.tradeInPurchase.tradeInPurchaseKubun === '下取' ||
-            this.tradeInPurchase.tradeInPurchaseKubun === '買取'
-          "
-        >
-          <v-toolbar-title class="mt-5 ml-15 d-flex align-center start">
-            　その他・確認事項（該当する内容にチェックしてください。）
-          </v-toolbar-title>
-        </v-row>
-        <v-row>
-          <v-col cols="2" class="ml-16 mt-5 mx-1 d-flex align-center">
-            <v-checkbox
+          <v-row>
+            <v-col
+              cols="1"
+              class="mt-3 ml-16 d-flex align-center"
               v-if="
-                this.tradeInPurchase.tradeInPurchaseKubun === '下取' ||
-                this.tradeInPurchase.tradeInPurchaseKubun === '買取'
+                this.credit.creditDocuments === '電子' ||
+                this.credit.creditDocuments === '書面'
               "
-              v-model="tradeInCarAndOtherConfirma.isCorporateVehicles"
-              label="法人車"
             >
-            </v-checkbox>
-          </v-col>
-          <v-col cols="2" class="mt-5 mx-1 d-flex align-center">
-            <v-checkbox
+              <v-btn
+                href="https://www.mazdacr.co.jp/lineup/lineup.html?mode=sky"
+                target="_blank"
+                density="compact"
+                icon="mdi-search-web"
+              ></v-btn>
+            </v-col>
+          </v-row>
+          <v-row>
+            <v-toolbar-title
+              class="mt-8 ml-15 mb-5 d-flex deliveryDate"
               v-if="
-                (this.tradeInPurchase.tradeInPurchaseKubun === '下取' ||
-                  this.tradeInPurchase.tradeInPurchaseKubun === '買取') &&
-                this.tradeInPurchase.normalCarLightCarKubun === '普通車'
+                (this.contracts.newCarUsedCarKubun === '新車' ||
+                  this.contracts.newCarUsedCarKubun === '中古車') &&
+                (this.contracts.normalCarLightCarKubun === '普通車' ||
+                  this.contracts.normalCarLightCarKubun === '軽自動車') &&
+                (this.contracts.paymentKubun === '現金' ||
+                  this.contracts.paymentKubun === '銀行ローン' ||
+                  this.contracts.paymentKubun === '所有権留保') &&
+                (this.contracts.insuranceKubun === '当社加入' ||
+                  this.contracts.insuranceKubun === '他社加入' ||
+                  this.contracts.insuranceKubun === '未加入')
               "
-              v-model="tradeInCarAndOtherConfirma.isDeathOfPerson"
-              label="本人逝去"
             >
-            </v-checkbox>
-          </v-col>
-        </v-row>
-        <v-row
-          v-if="
-            this.tradeInPurchase.tradeInPurchaseKubun === '下取' ||
-            this.tradeInPurchase.tradeInPurchaseKubun === '買取'
-          "
-        >
-          <v-toolbar-title class="mt-5 ml-15 d-flex align-center start">
-            　必要書類
-          </v-toolbar-title>
-        </v-row>
-        <v-row
-          class="mt-5"
-          v-if="tradeInPurchase.ownershipKubun === '交換コーナー利用'"
-        >
-          <v-col cols="2" class="ml-15 mt-5">
-            <v-combobox
-              v-model="
-                tradeInPurchaseCommonRequiredDocuments.ownershipReleaseRequest
+              　⑤納車日（ご成約頂いたお車が登録されて２週間後がご納車日の目安となります。）
+            </v-toolbar-title>
+          </v-row>
+          <v-row>
+            <v-toolbar-title
+              class="mt-8 ml-15 mb-5 d-flex deliveryDate"
+              v-if="
+                (this.contracts.newCarUsedCarKubun === '新車' ||
+                  this.contracts.newCarUsedCarKubun === '中古車') &&
+                (this.contracts.normalCarLightCarKubun === '普通車' ||
+                  this.contracts.normalCarLightCarKubun === '軽自動車') &&
+                this.contracts.paymentKubun === 'クレジット' &&
+                (this.contracts.insuranceKubun === '当社加入' ||
+                  this.contracts.insuranceKubun === '他社加入' ||
+                  this.contracts.insuranceKubun === '未加入')
               "
-              label=""
-              :items="[]"
-              variant="outlined"
-              readonly
-            ></v-combobox>
-          </v-col>
-        </v-row>
-        <v-row
-          class="mt-5"
-          v-if="tradeInCarAndOtherConfirma.isCorporateVehicles === true"
-        >
-          <v-col cols="2" class="ml-15 mt-5">
-            <v-combobox
-              v-model="
-                tradeInPurchaseCommonRequiredDocuments.purchaseInvoiceShippingDestinationContactSlip
+            >
+              　➅
+              納車日（ご成約頂いたお車が登録されて２週間後がご納車日の目安となります。）
+            </v-toolbar-title>
+          </v-row>
+          <v-row class="mt-5">
+            <v-col
+              cols="2"
+              v-if="
+                (this.contracts.newCarUsedCarKubun === '新車' ||
+                  this.contracts.newCarUsedCarKubun === '中古車') &&
+                (this.contracts.normalCarLightCarKubun === '普通車' ||
+                  this.contracts.normalCarLightCarKubun === '軽自動車') &&
+                (this.contracts.paymentKubun === '現金' ||
+                  this.contracts.paymentKubun === 'クレジット' ||
+                  this.contracts.paymentKubun === '銀行ローン' ||
+                  this.contracts.paymentKubun === '所有権留保') &&
+                (this.contracts.insuranceKubun === '当社加入' ||
+                  this.contracts.insuranceKubun === '他社加入' ||
+                  this.contracts.insuranceKubun === '未加入')
               "
-              label=""
-              :items="[]"
-              variant="outlined"
-              readonly
-            ></v-combobox>
-          </v-col>
-        </v-row>
-        <v-row
-          class="mt-5"
-          v-if="
-            tradeInPurchase.normalCarLightCarKubun === '普通車' ||
-            tradeInPurchase.normalCarLightCarKubun === '軽自動車'
-          "
-        >
-          <v-col cols="2" class="ml-15 mt-5">
-            <v-combobox
-              v-model="tradeInPurchaseCommonRequiredDocuments.recyclingTicket"
-              label=""
-              :items="[]"
-              variant="outlined"
-              readonly
-            ></v-combobox>
-          </v-col>
-        </v-row>
-        <v-row
-          class="mt-5"
-          v-if="
-            tradeInPurchase.normalCarLightCarKubun === '普通車' ||
-            tradeInPurchase.normalCarLightCarKubun === '軽自動車'
-          "
-        >
-          <v-col cols="2" class="ml-15 mt-5">
-            <v-combobox
-              v-model="
-                tradeInPurchaseCommonRequiredDocuments.vehicleInspectionCertificate
+              class="ml-15"
+            >
+              <v-text-field
+                class="test"
+                :class="{
+                  'completedDate-input': !delivery.deliveryDate,
+                }"
+                type="date"
+                v-model="delivery.deliveryDate"
+                label="納車希望日"
+              ></v-text-field>
+            </v-col>
+            <v-col
+              cols="2"
+              class="mx-1"
+              v-if="
+                (this.contracts.newCarUsedCarKubun === '新車' ||
+                  this.contracts.newCarUsedCarKubun === '中古車') &&
+                (this.contracts.normalCarLightCarKubun === '普通車' ||
+                  this.contracts.normalCarLightCarKubun === '軽自動車') &&
+                (this.contracts.paymentKubun === '現金' ||
+                  this.contracts.paymentKubun === 'クレジット' ||
+                  this.contracts.paymentKubun === '銀行ローン' ||
+                  this.contracts.paymentKubun === '所有権留保') &&
+                (this.contracts.insuranceKubun === '当社加入' ||
+                  this.contracts.insuranceKubun === '他社加入' ||
+                  this.contracts.insuranceKubun === '未加入')
               "
-              label=""
-              :items="[]"
-              variant="outlined"
-              readonly
-            ></v-combobox>
-          </v-col>
-        </v-row>
-        <v-row
-          class="mt-5"
-          v-if="
-            tradeInPurchase.normalCarLightCarKubun === '普通車' ||
-            tradeInPurchase.normalCarLightCarKubun === '軽自動車'
-          "
-        >
-          <v-col cols="2" class="ml-15 mt-5">
-            <v-combobox
-              v-model="
-                tradeInPurchaseCommonRequiredDocuments.compulsoryAutomobileLiabilityInsuranceCertificate
+            >
+            </v-col>
+            <v-col
+              cols="2"
+              class="mx-1"
+              v-if="
+                (this.contracts.newCarUsedCarKubun === '新車' ||
+                  this.contracts.newCarUsedCarKubun === '中古車') &&
+                (this.contracts.normalCarLightCarKubun === '普通車' ||
+                  this.contracts.normalCarLightCarKubun === '軽自動車') &&
+                (this.contracts.paymentKubun === '現金' ||
+                  this.contracts.paymentKubun === 'クレジット' ||
+                  this.contracts.paymentKubun === '銀行ローン' ||
+                  this.contracts.paymentKubun === '所有権留保') &&
+                (this.contracts.insuranceKubun === '当社加入' ||
+                  this.contracts.insuranceKubun === '他社加入' ||
+                  this.contracts.insuranceKubun === '未加入')
               "
-              label=""
-              :items="[]"
-              variant="outlined"
-              readonly
-            ></v-combobox>
-          </v-col>
-        </v-row>
-        <v-row
-          class="mt-5"
-          v-if="
-            tradeInPurchase.normalCarLightCarKubun === '普通車' ||
-            tradeInPurchase.normalCarLightCarKubun === '軽自動車'
-          "
-        >
-          <v-col cols="2" class="ml-15 mt-5">
-            <v-combobox
-              v-model="
-                tradeInPurchaseCommonRequiredDocuments.automobileLiabilityInsuranceApprovalClaimForm
+            >
+            </v-col>
+            <v-col
+              cols="2"
+              class="mx-1"
+              v-if="
+                (this.contracts.newCarUsedCarKubun === '新車' ||
+                  this.contracts.newCarUsedCarKubun === '中古車') &&
+                (this.contracts.normalCarLightCarKubun === '普通車' ||
+                  this.contracts.normalCarLightCarKubun === '軽自動車') &&
+                (this.contracts.paymentKubun === '現金' ||
+                  this.contracts.paymentKubun === 'クレジット' ||
+                  this.contracts.paymentKubun === '銀行ローン' ||
+                  this.contracts.paymentKubun === '所有権留保') &&
+                (this.contracts.insuranceKubun === '当社加入' ||
+                  this.contracts.insuranceKubun === '他社加入' ||
+                  this.contracts.insuranceKubun === '未加入')
               "
-              label=""
-              :items="[]"
-              variant="outlined"
-              readonly
-            ></v-combobox>
-          </v-col>
-        </v-row>
+            >
+            </v-col>
+
+            <v-col
+              cols="2"
+              class="mb-6 d-flex align-center"
+              v-if="
+                (this.contracts.newCarUsedCarKubun === '新車' ||
+                  this.contracts.newCarUsedCarKubun === '中古車') &&
+                (this.contracts.normalCarLightCarKubun === '普通車' ||
+                  this.contracts.normalCarLightCarKubun === '軽自動車') &&
+                (this.contracts.paymentKubun === '現金' ||
+                  this.contracts.paymentKubun === 'クレジット' ||
+                  this.contracts.paymentKubun === '銀行ローン' ||
+                  this.contracts.paymentKubun === '所有権留保') &&
+                (this.contracts.insuranceKubun === '当社加入' ||
+                  this.contracts.insuranceKubun === '他社加入' ||
+                  this.contracts.insuranceKubun === '未加入')
+              "
+            >
+              <div
+                class="delivery-date-completed"
+                :class="{
+                  'is-fill-in-completed': delivery.deliveryDate,
+                }"
+              >
+                完了
+              </div>
+            </v-col>
+          </v-row>
+          <v-row
+            v-if="
+              (this.contracts.newCarUsedCarKubun === '新車' ||
+                this.contracts.newCarUsedCarKubun === '中古車') &&
+              (this.contracts.normalCarLightCarKubun === '普通車' ||
+                this.contracts.normalCarLightCarKubun === '軽自動車') &&
+              (this.contracts.paymentKubun === '現金' ||
+                this.contracts.paymentKubun === 'クレジット' ||
+                this.contracts.paymentKubun === '銀行ローン' ||
+                this.contracts.paymentKubun === '所有権留保') &&
+              (this.contracts.insuranceKubun === '当社加入' ||
+                this.contracts.insuranceKubun === '他社加入' ||
+                this.contracts.insuranceKubun === '未加入')
+            "
+          >
+            <p class="explanation ml-16">
+              ・マツダの純正オプション以外の部品などを取り付ける場合は登録から納車までに２週間以上<br />
+              　かかる場合があります。
+            </p>
+          </v-row>
+
+          <v-row
+            v-if="
+              (this.contracts.newCarUsedCarKubun === '新車' ||
+                this.contracts.newCarUsedCarKubun === '中古車') &&
+              (this.contracts.normalCarLightCarKubun === '普通車' ||
+                this.contracts.normalCarLightCarKubun === '軽自動車') &&
+              (this.contracts.paymentKubun === '現金' ||
+                this.contracts.paymentKubun === 'クレジット' ||
+                this.contracts.paymentKubun === '銀行ローン' ||
+                this.contracts.paymentKubun === '所有権留保') &&
+              (this.contracts.insuranceKubun === '当社加入' ||
+                this.contracts.insuranceKubun === '他社加入' ||
+                this.contracts.insuranceKubun === '未加入')
+            "
+          >
+            <v-toolbar-title class="mt-8 ml-15 d-flex align-center goal">
+              　〇お手続きは以上になります。お時間頂きありがとうございました。
+            </v-toolbar-title>
+          </v-row>
+        </div>
+        <!-- 下取・買取 -->
+        <div v-if="this.start.startKubun === '下取・買取'">
+          <v-row>
+            <v-toolbar-title class="mt-5 ml-15 d-flex align-center start">
+              　〇ここからは下取・買取のお手続きになります。
+            </v-toolbar-title>
+          </v-row>
+          <v-row>
+            <p class="mt-5 ml-16">　お預かりするお車は、</p>
+          </v-row>
+
+          <v-row class="ml-12 mt-10">
+            <v-col cols="2" class="">
+              <v-select
+                v-model="tradeInPurchase.tradeInPurchaseKubun"
+                label="下取or買取"
+                :items="['', '下取', '買取']"
+                variant="outlined"
+              ></v-select>
+            </v-col>
+
+            <v-col cols="2" class="">
+              <v-select
+                v-model="tradeInPurchase.normalCarLightCarKubun"
+                label="普通車or軽自動車"
+                :items="['', '普通車', '軽自動車']"
+                variant="outlined"
+              ></v-select>
+            </v-col>
+            <v-col cols="2" class="">
+              <v-select
+                v-model="tradeInPurchase.nameChangeDeletionKubun"
+                label="名変or抹消"
+                :items="['', '名変', '抹消']"
+                variant="outlined"
+              ></v-select>
+            </v-col>
+
+            <v-col cols="2" class="">
+              <v-select
+                v-model="tradeInPurchase.ownershipKubun"
+                label="所有権"
+                :items="[
+                  '',
+                  '本人所有',
+                  'アンフィニ所有',
+                  '交換コーナー利用',
+                  'その他所有',
+                ]"
+                variant="outlined"
+              ></v-select>
+            </v-col>
+            <v-col cols="2" class="mt-2 ml-16">
+              <v-btn @click="tipRattocClear"> clear </v-btn>
+            </v-col>
+          </v-row>
+          <v-row
+            v-if="
+              this.tradeInPurchase.tradeInPurchaseKubun === '下取' ||
+              this.tradeInPurchase.tradeInPurchaseKubun === '買取'
+            "
+          >
+            <v-toolbar-title class="mt-5 ml-15 d-flex align-center start">
+              　その他・確認事項（該当する内容にチェックしてください。）
+            </v-toolbar-title>
+          </v-row>
+          <v-row>
+            <v-col cols="2" class="ml-16 mt-5 mx-1 d-flex align-center">
+              <v-checkbox
+                v-if="
+                  this.tradeInPurchase.tradeInPurchaseKubun === '下取' ||
+                  this.tradeInPurchase.tradeInPurchaseKubun === '買取'
+                "
+                v-model="tradeInCarAndOtherConfirma.isCorporateVehicles"
+                label="法人車"
+              >
+              </v-checkbox>
+            </v-col>
+            <v-col cols="2" class="mt-5 mx-1 d-flex align-center">
+              <v-checkbox
+                v-if="
+                  (this.tradeInPurchase.tradeInPurchaseKubun === '下取' ||
+                    this.tradeInPurchase.tradeInPurchaseKubun === '買取') &&
+                  this.tradeInPurchase.normalCarLightCarKubun === '普通車'
+                "
+                v-model="tradeInCarAndOtherConfirma.isDeathOfPerson"
+                label="本人逝去"
+              >
+              </v-checkbox>
+            </v-col>
+          </v-row>
+          <v-row
+            v-if="
+              this.tradeInPurchase.tradeInPurchaseKubun === '下取' ||
+              this.tradeInPurchase.tradeInPurchaseKubun === '買取'
+            "
+          >
+            <v-toolbar-title class="mt-5 ml-15 d-flex align-center start">
+              　必要書類
+            </v-toolbar-title>
+          </v-row>
+          <v-row
+            class="mt-5"
+            v-if="tradeInPurchase.ownershipKubun === '交換コーナー利用'"
+          >
+            <v-col cols="2" class="ml-15 mt-5">
+              <v-combobox
+                v-model="
+                  tradeInPurchaseCommonRequiredDocuments.ownershipReleaseRequest
+                "
+                label=""
+                :items="[]"
+                variant="outlined"
+                readonly
+              ></v-combobox>
+            </v-col>
+          </v-row>
+          <v-row
+            class="mt-5"
+            v-if="tradeInCarAndOtherConfirma.isCorporateVehicles === true"
+          >
+            <v-col cols="2" class="ml-15 mt-5">
+              <v-combobox
+                v-model="
+                  tradeInPurchaseCommonRequiredDocuments.purchaseInvoiceShippingDestinationContactSlip
+                "
+                label=""
+                :items="[]"
+                variant="outlined"
+                readonly
+              ></v-combobox>
+            </v-col>
+          </v-row>
+          <v-row
+            class="mt-5"
+            v-if="
+              tradeInPurchase.normalCarLightCarKubun === '普通車' ||
+              tradeInPurchase.normalCarLightCarKubun === '軽自動車'
+            "
+          >
+            <v-col cols="2" class="ml-15 mt-5">
+              <v-combobox
+                v-model="tradeInPurchaseCommonRequiredDocuments.recyclingTicket"
+                label=""
+                :items="[]"
+                variant="outlined"
+                readonly
+              ></v-combobox>
+            </v-col>
+          </v-row>
+          <v-row
+            class="mt-5"
+            v-if="
+              tradeInPurchase.normalCarLightCarKubun === '普通車' ||
+              tradeInPurchase.normalCarLightCarKubun === '軽自動車'
+            "
+          >
+            <v-col cols="2" class="ml-15 mt-5">
+              <v-combobox
+                v-model="
+                  tradeInPurchaseCommonRequiredDocuments.vehicleInspectionCertificate
+                "
+                label=""
+                :items="[]"
+                variant="outlined"
+                readonly
+              ></v-combobox>
+            </v-col>
+          </v-row>
+          <v-row
+            class="mt-5"
+            v-if="
+              tradeInPurchase.normalCarLightCarKubun === '普通車' ||
+              tradeInPurchase.normalCarLightCarKubun === '軽自動車'
+            "
+          >
+            <v-col cols="2" class="ml-15 mt-5">
+              <v-combobox
+                v-model="
+                  tradeInPurchaseCommonRequiredDocuments.compulsoryAutomobileLiabilityInsuranceCertificate
+                "
+                label=""
+                :items="[]"
+                variant="outlined"
+                readonly
+              ></v-combobox>
+            </v-col>
+          </v-row>
+          <v-row
+            class="mt-5"
+            v-if="
+              tradeInPurchase.normalCarLightCarKubun === '普通車' ||
+              tradeInPurchase.normalCarLightCarKubun === '軽自動車'
+            "
+          >
+            <v-col cols="2" class="ml-15 mt-5">
+              <v-combobox
+                v-model="
+                  tradeInPurchaseCommonRequiredDocuments.automobileLiabilityInsuranceApprovalClaimForm
+                "
+                label=""
+                :items="[]"
+                variant="outlined"
+                readonly
+              ></v-combobox>
+            </v-col>
+          </v-row>
+        </div>
       </div>
       <div class="whole-bottom"></div>
       <div class="footer"></div>
@@ -4115,9 +4230,6 @@ export default {
 </template>
 
 <style lang="scss">
-.body {
-  overflow-x: hidden;
-}
 .modal-img {
   border: solid 2px #616161;
 }
@@ -4135,7 +4247,7 @@ export default {
   color: #ff0000;
 }
 .credit {
-  max-width: 87%;
+  max-width: 90%;
   background: #e6b422;
   color: #ffffff;
   border-radius: 5px;
@@ -4144,13 +4256,13 @@ export default {
   color: #ff0000;
 }
 .start {
-  max-width: 87%;
+  max-width: 90%;
   background: #808080;
   color: #ffffff;
   border-radius: 5px;
 }
 .normalCarDocuments {
-  max-width: 87%;
+  max-width: 90%;
   background: #4db56a;
   color: #ffffff;
   border-radius: 5px;
@@ -4159,7 +4271,7 @@ export default {
   color: #ff0000;
 }
 .lightCarDocuments {
-  max-width: 87%;
+  max-width: 90%;
   background: #4db56a;
   color: #ffffff;
   border-radius: 5px;
@@ -4168,7 +4280,7 @@ export default {
   color: #ff0000;
 }
 .normalCarDocumentsGarageVerification {
-  max-width: 87%;
+  max-width: 90%;
   background: #6e6eff;
   color: #ffffff;
   border-radius: 5px;
@@ -4177,7 +4289,7 @@ export default {
   color: #ff0000;
 }
 .lightCarDocumentsGarageVerification {
-  max-width: 87%;
+  max-width: 90%;
   background: #6e6eff;
   color: #ffffff;
   border-radius: 5px;
@@ -4186,14 +4298,14 @@ export default {
   color: #ff0000;
 }
 .other-documents {
-  max-width: 87%;
+  max-width: 90%;
   background: #fc9325;
   color: #ffffff;
   border-radius: 5px;
 }
 
 .deliveryDate {
-  max-width: 87%;
+  max-width: 90%;
   background: #ff3f3f;
   color: #ffffff;
   border-radius: 5px;
@@ -4227,7 +4339,7 @@ export default {
   color: #ff0000;
 }
 .insurance {
-  max-width: 87%;
+  max-width: 90%;
   background: #33ccff;
   color: #ffffff;
   border-radius: 5px;
@@ -4244,13 +4356,13 @@ export default {
   color: #ff0000;
 }
 .goal {
-  max-width: 87%;
+  max-width: 90%;
   background: #808080;
   color: #ffffff;
   border-radius: 5px;
 }
 .memo {
-  max-width: 87%;
+  max-width: 90%;
   background: #262626;
   color: #ffffff;
   border-radius: 5px;
@@ -4425,6 +4537,10 @@ export default {
   background-color: #ff0000;
 }
 .separator {
-  max-width: 87%;
+  max-width: 90%;
+}
+.body {
+  width: 97%;
+  margin: auto;
 }
 </style>
