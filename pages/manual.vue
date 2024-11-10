@@ -2264,6 +2264,24 @@ export default {
                 icon="mdi-printer"
               ></v-btn>
             </v-col>
+            <v-col
+              cols="1"
+              class="mt-3 d-flex align-center"
+              v-if="
+                this.normalCarDocuments.poaOssKubun === 'OSS委任状' ||
+                this.normalCarDocumentsGarageVerification
+                  .NCgarageVerificationKubun === '保管場所証明申請書' ||
+                this.lightCarDocumentsGarageVerification
+                  .LCgarageVerificationKubun === '保管場所届出書'
+              "
+            >
+              <v-btn
+                href="https://www.google.com/maps/@34.3902772,132.5019091,15z?entry=ttu&g_ep=EgoyMDI0MTEwNi4wIKXMDSoASAFQAw%3D%3D"
+                target="_blank"
+                density="compact"
+                icon="mdi-map-marker-outline"
+              ></v-btn>
+            </v-col>
           </v-row>
 
           <!-- <v-row>
