@@ -138,6 +138,7 @@ export default {
       tradeInCarAndOtherConfirma: {
         isCorporateVehicles: false, //法人車
         isDeathOfPerson: false, //本人逝去
+        purchasePriceKubun: "", //買取価格
       },
       tradeInPurchaseCommonRequiredDocuments: {
         ownershipReleaseRequest: "所有権解除依頼",
@@ -4017,14 +4018,58 @@ export default {
             <v-col cols="2" class="mt-5 mx-1 d-flex align-center">
               <v-checkbox
                 v-if="
-                  (this.tradeInPurchase.tradeInPurchaseKubun === '下取' ||
-                    this.tradeInPurchase.tradeInPurchaseKubun === '買取') &&
+                  this.tradeInPurchase.tradeInPurchaseKubun === '買取' &&
                   this.tradeInPurchase.normalCarLightCarKubun === '普通車'
                 "
                 v-model="tradeInCarAndOtherConfirma.isDeathOfPerson"
                 label="本人逝去"
               >
               </v-checkbox>
+            </v-col>
+          </v-row>
+
+          <v-row
+            v-if="this.tradeInCarAndOtherConfirma.isCorporateVehicles === true"
+          >
+            <v-toolbar-title class="mt-5 ml-15 d-flex align-center start">
+              　法人車・追加必要書類
+            </v-toolbar-title>
+          </v-row>
+          <v-row
+            class="mt-5"
+            v-if="tradeInCarAndOtherConfirma.isCorporateVehicles === true"
+          >
+            <v-col cols="2" class="ml-15 mt-5">
+              <v-combobox
+                v-model="
+                  tradeInPurchaseCommonRequiredDocuments.purchaseInvoiceShippingDestinationContactSlip
+                "
+                label=""
+                :items="[]"
+                variant="outlined"
+                readonly
+              ></v-combobox>
+            </v-col>
+          </v-row>
+          <v-row
+            v-if="this.tradeInCarAndOtherConfirma.isDeathOfPerson === true"
+          >
+            <v-toolbar-title class="mt-5 ml-15 d-flex align-center start">
+              　本人逝去・追加必要書類
+            </v-toolbar-title>
+          </v-row>
+          <v-row>
+            <v-col
+              v-if="this.tradeInCarAndOtherConfirma.isDeathOfPerson === true"
+              cols="2"
+              class="ml-15 mt-5"
+            >
+              <v-select
+                v-model="tradeInCarAndOtherConfirma.purchasePriceKubun"
+                label="買取価格"
+                :items="['', '10万円以上', '10万円以下']"
+                variant="outlined"
+              ></v-select>
             </v-col>
           </v-row>
           <v-row
@@ -4053,22 +4098,7 @@ export default {
               ></v-combobox>
             </v-col>
           </v-row>
-          <v-row
-            class="mt-5"
-            v-if="tradeInCarAndOtherConfirma.isCorporateVehicles === true"
-          >
-            <v-col cols="2" class="ml-15 mt-5">
-              <v-combobox
-                v-model="
-                  tradeInPurchaseCommonRequiredDocuments.purchaseInvoiceShippingDestinationContactSlip
-                "
-                label=""
-                :items="[]"
-                variant="outlined"
-                readonly
-              ></v-combobox>
-            </v-col>
-          </v-row>
+
           <v-row
             class="mt-5"
             v-if="
