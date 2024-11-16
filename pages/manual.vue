@@ -138,16 +138,14 @@ export default {
       tradeInCarAndOtherConfirma: {
         isCorporateVehicles: false, //法人車
         isDeathOfPerson: false, //本人逝去
+      },
+      passedAwayRequiredDocuments: {
         purchasePriceKubun: "", //買取価格
+        inheritanceDivisionAgreement: "遺産分割協議書",
+        familyRegister: "戸籍謄本",
+        revisedOriginalFamilyRegister: "改正原戸籍謄本",
       },
-      tradeInPurchaseCommonRequiredDocuments: {
-        ownershipReleaseRequest: "所有権解除依頼",
-        purchaseInvoiceShippingDestinationContactSlip: "仕入明細書発送先連絡票",
-        recyclingTicket: "リサイクル券",
-        vehicleInspectionCertificate: "車検証",
-        compulsoryAutomobileLiabilityInsuranceCertificate: "自賠責保険証",
-        automobileLiabilityInsuranceApprovalClaimForm: "自賠責承認請求書",
-      },
+
       purchaseDocuments: {
         purchaseDetails: "買取明細書",
         copyOfIdentityDocument: "本人確認書類コピー",
@@ -160,7 +158,6 @@ export default {
         isSealCertificate: false, //印鑑証明
         isStamping: false, //認印
         residentCard: false, //住民票
-
         inheritanceDivisionAgreement: "遺産分割協議書",
         familyRegister: "戸籍謄本",
         revisedOriginalFamilyRegister: "改正原戸籍謄本",
@@ -182,6 +179,14 @@ export default {
         letterOfConsent: "承諾書",
         purchaseTradeInAgreement: "買取・下取同意書",
         carCheckSheet: "カーチェックシート",
+      },
+      tradeInPurchaseCommonRequiredDocuments: {
+        ownershipReleaseRequest: "所有権解除依頼",
+        purchaseInvoiceShippingDestinationContactSlip: "仕入明細書発送先連絡票",
+        recyclingTicket: "リサイクル券",
+        vehicleInspectionCertificate: "車検証",
+        compulsoryAutomobileLiabilityInsuranceCertificate: "自賠責保険証",
+        automobileLiabilityInsuranceApprovalClaimForm: "自賠責承認請求書",
       },
       purchase: {},
 
@@ -789,7 +794,7 @@ export default {
           </v-row>
 
           <v-row v-if="this.start.startKubun === '下取・買取'">
-            <p class="ml-16">　※現在作成中</p>
+            <p class="ml-16">　※現在作成中（最終更新.2024.11.17.3:24）</p>
           </v-row>
 
           <v-row v-if="this.start.startKubun === '納車準備'">
@@ -817,7 +822,7 @@ export default {
               <v-select
                 @update:modelValue="newCarUsedCarKubunChange"
                 v-model="contracts.newCarUsedCarKubun"
-                label="新車or中古車"
+                label="（１）新車or中古車"
                 :items="['', '新車', '中古車']"
                 variant="outlined"
               ></v-select>
@@ -827,7 +832,7 @@ export default {
               <v-select
                 @update:modelValue="normalCarLightCarKubunChange"
                 v-model="contracts.normalCarLightCarKubun"
-                label="普通車or軽自動車"
+                label="（２）普通車or軽自動車"
                 :items="['', '普通車', '軽自動車']"
                 variant="outlined"
               ></v-select>
@@ -836,7 +841,7 @@ export default {
               <v-select
                 @update:modelValue="paymentKubunChange"
                 v-model="contracts.paymentKubun"
-                label="支払方法"
+                label="（３）支払方法"
                 :items="['', '現金', 'クレジット', '銀行ローン', '所有権留保']"
                 variant="outlined"
               ></v-select>
@@ -855,7 +860,7 @@ export default {
               <v-select
                 @update:modelValue="insuranceKubunChange"
                 v-model="contracts.insuranceKubun"
-                label="保険加入希望先"
+                label="（４）保険加入希望先"
                 :items="['', '当社加入', '他社加入', '未加入']"
                 variant="outlined"
               ></v-select>
@@ -3952,7 +3957,7 @@ export default {
             <v-col cols="2" class="">
               <v-select
                 v-model="tradeInPurchase.tradeInPurchaseKubun"
-                label="下取or買取"
+                label="（１）下取or買取"
                 :items="['', '下取', '買取']"
                 variant="outlined"
               ></v-select>
@@ -3961,7 +3966,7 @@ export default {
             <v-col cols="2" class="">
               <v-select
                 v-model="tradeInPurchase.normalCarLightCarKubun"
-                label="普通車or軽自動車"
+                label="（２）普通車or軽自動車"
                 :items="['', '普通車', '軽自動車']"
                 variant="outlined"
               ></v-select>
@@ -3969,7 +3974,7 @@ export default {
             <v-col cols="2" class="">
               <v-select
                 v-model="tradeInPurchase.nameChangeDeletionKubun"
-                label="名変or抹消"
+                label="（３）名変or抹消"
                 :items="['', '名変', '抹消']"
                 variant="outlined"
               ></v-select>
@@ -3978,7 +3983,7 @@ export default {
             <v-col cols="2" class="">
               <v-select
                 v-model="tradeInPurchase.ownershipKubun"
-                label="所有権"
+                label="（４）所有権"
                 :items="[
                   '',
                   '本人所有',
@@ -4065,11 +4070,138 @@ export default {
               class="ml-15 mt-5"
             >
               <v-select
-                v-model="tradeInCarAndOtherConfirma.purchasePriceKubun"
+                v-model="passedAwayRequiredDocuments.purchasePriceKubun"
                 label="買取価格"
                 :items="['', '10万円以上', '10万円以下']"
                 variant="outlined"
               ></v-select>
+            </v-col>
+          </v-row>
+          <v-row
+            class="mt-5"
+            v-if="
+              this.passedAwayRequiredDocuments.purchasePriceKubun ===
+              '10万円以上'
+            "
+          >
+            <v-col cols="2" class="ml-15 mt-5">
+              <v-combobox
+                v-model="
+                  passedAwayRequiredDocuments.inheritanceDivisionAgreement
+                "
+                label=""
+                :items="[]"
+                variant="outlined"
+                readonly
+              ></v-combobox>
+            </v-col>
+          </v-row>
+          <v-row
+            class="mt-5"
+            v-if="
+              this.passedAwayRequiredDocuments.purchasePriceKubun ===
+                '10万円以上' ||
+              this.passedAwayRequiredDocuments.purchasePriceKubun ===
+                '10万円以下'
+            "
+          >
+            <v-col cols="2" class="ml-15 mt-5">
+              <v-combobox
+                v-model="passedAwayRequiredDocuments.familyRegister"
+                label=""
+                :items="[]"
+                variant="outlined"
+                readonly
+              ></v-combobox>
+            </v-col>
+          </v-row>
+          <v-row
+            class="mt-5"
+            v-if="
+              this.passedAwayRequiredDocuments.purchasePriceKubun ===
+                '10万円以上' ||
+              this.passedAwayRequiredDocuments.purchasePriceKubun ===
+                '10万円以下'
+            "
+          >
+            <v-col cols="2" class="ml-15 mt-5">
+              <v-combobox
+                v-model="
+                  passedAwayRequiredDocuments.revisedOriginalFamilyRegister
+                "
+                label=""
+                :items="[]"
+                variant="outlined"
+                readonly
+              ></v-combobox>
+            </v-col>
+          </v-row>
+          <v-row
+            class="mt-5"
+            v-if="
+              this.passedAwayRequiredDocuments.purchasePriceKubun ===
+              '10万円以上'
+            "
+          >
+            <v-col cols="2" class="ml-15 mt-5">
+              <v-combobox
+                v-model="requiredDocumentsForRegularCars.powerOfAttorney"
+                label="代表相続人の"
+                :items="[]"
+                variant="outlined"
+                readonly
+              ></v-combobox>
+            </v-col>
+          </v-row>
+          <v-row
+            class="mt-5"
+            v-if="
+              this.passedAwayRequiredDocuments.purchasePriceKubun ===
+              '10万円以下'
+            "
+          >
+            <v-col cols="2" class="ml-15 mt-5">
+              <v-combobox
+                v-model="requiredDocumentsForRegularCars.powerOfAttorney"
+                label="相続人全員の"
+                :items="[]"
+                variant="outlined"
+                readonly
+              ></v-combobox>
+            </v-col>
+          </v-row>
+          <v-row
+            class="mt-5"
+            v-if="
+              this.passedAwayRequiredDocuments.purchasePriceKubun ===
+              '10万円以上'
+            "
+          >
+            <v-col cols="2" class="ml-15 mt-5">
+              <v-combobox
+                v-model="requiredDocumentsForRegularCars.transferCertificate"
+                label="代表相続人の"
+                :items="[]"
+                variant="outlined"
+                readonly
+              ></v-combobox>
+            </v-col>
+          </v-row>
+          <v-row
+            class="mt-5"
+            v-if="
+              this.passedAwayRequiredDocuments.purchasePriceKubun ===
+              '10万円以下'
+            "
+          >
+            <v-col cols="2" class="ml-15 mt-5">
+              <v-combobox
+                v-model="requiredDocumentsForRegularCars.transferCertificate"
+                label="相続人全員の"
+                :items="[]"
+                variant="outlined"
+                readonly
+              ></v-combobox>
             </v-col>
           </v-row>
           <v-row
