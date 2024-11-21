@@ -5070,9 +5070,7 @@ export default {
 .separator {
   max-width: 90%;
 }
-.body {
-  width: 97%;
-}
+
 .buy-trade {
   top: 5%;
 }
