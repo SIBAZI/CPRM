@@ -814,7 +814,7 @@ export default {
             <v-col cols="2" class=""> </v-col>
             <v-col cols="1" class=""> </v-col>
           </v-row>
-          <v-row v-if="this.start.startKubun === '下取・買取'">
+          <v-row v-if="this.start.startKubun === '成約時登録'">
             <p class="">　※調整中（最終更新.2024.11.27.3:50）</p>
           </v-row>
 
