@@ -1643,13 +1643,9 @@ export default {
             </v-col>
             <v-col
               v-if="
-                ((this.contracts.paymentKubun === '現金' ||
-                  this.contracts.paymentKubun === '銀行ローン' ||
-                  this.contracts.paymentKubun === 'クレジット' ||
-                  this.contracts.paymentKubun === '所有権留保') &&
-                  this.contracts.newCarUsedCarKubun === '新車') ||
-                (this.contracts.newCarUsedCarKubun === '中古車' &&
-                  this.contracts.normalCarLightCarKubun === '軽自動車')
+                (this.contracts.newCarUsedCarKubun === '新車' ||
+                  this.contracts.newCarUsedCarKubun === '中古車') &&
+                this.contracts.normalCarLightCarKubun === '軽自動車'
               "
               cols="2"
               class="mt-1"
@@ -1791,16 +1787,15 @@ export default {
               　〇　車庫証明（ご成約頂いたお車の保管場所を警察署に届け出するための手続きです。）
             </v-toolbar-title>
           </v-row>
-          <v-row class="mt-10 justify-center">
-            <v-col
-              cols="2"
-              class=""
-              v-if="
-                this.normalCarDocuments.poaOssKubun === '委任状' ||
-                (this.contracts.newCarUsedCarKubun === '中古車' &&
-                  this.contracts.normalCarLightCarKubun === '普通車')
-              "
-            >
+          <v-row
+            class="mt-10 justify-center"
+            v-if="
+              this.normalCarDocuments.poaOssKubun === '委任状' ||
+              (this.contracts.newCarUsedCarKubun === '中古車' &&
+                this.contracts.normalCarLightCarKubun === '普通車')
+            "
+          >
+            <v-col cols="2" class="">
               <v-select
                 @update:modelValue="NCgarageVerificationKubunChange"
                 label="車庫証明"
@@ -1811,21 +1806,6 @@ export default {
                 variant="outlined"
               ></v-select>
             </v-col>
-            <v-col
-              cols="2"
-              class=""
-              v-if="this.contracts.normalCarLightCarKubun === '軽自動車'"
-            >
-              <v-select
-                @update:modelValue="LCgarageVerificationKubunChange"
-                label="車庫証明"
-                v-model="
-                  lightCarDocumentsGarageVerification.LCgarageVerificationKubun
-                "
-                :items="['', '保管場所届出書', '代行不要']"
-                variant="outlined"
-              ></v-select>
-            </v-col>
 
             <v-col
               cols="2"
@@ -1842,106 +1822,95 @@ export default {
               >
               </v-checkbox>
             </v-col>
-            <v-col
-              cols="2"
-              class=""
-              v-if="
-                this.lightCarDocumentsGarageVerification
-                  .LCgarageVerificationKubun === '保管場所届出書'
-              "
-            >
-              <v-checkbox
-                @change="NCgarageVerificationKubunCompleted"
-                v-model="normalCarDocumentsGarageVerification.isFillIn"
-                label="ご記入"
-              >
-              </v-checkbox>
-            </v-col>
-            <v-col
-              cols="2"
-              class=""
-              v-if="
-                this.normalCarDocumentsGarageVerification
-                  .NCgarageVerificationKubun === '保管場所証明申請書'
-              "
-            >
-            </v-col>
-            <v-col
-              cols="2"
-              class=""
-              v-if="
-                this.normalCarDocumentsGarageVerification
-                  .NCgarageVerificationKubun === '保管場所証明申請書'
-              "
-            >
-            </v-col>
 
             <v-col
               cols="2"
               class=""
               v-if="
                 this.normalCarDocumentsGarageVerification
-                  .NCgarageVerificationKubun === '' ||
-                this.normalCarDocumentsGarageVerification
-                  .NCgarageVerificationKubun === '代行不要'
+                  .NCgarageVerificationKubun === '保管場所証明申請書'
               "
             >
             </v-col>
             <v-col
               cols="2"
               class=""
-              v-if="
-                this.normalCarDocumentsGarageVerification
-                  .NCgarageVerificationKubun === '' ||
-                this.normalCarDocumentsGarageVerification
-                  .NCgarageVerificationKubun === '代行不要'
-              "
-            >
-            </v-col>
-            <v-col
-              cols="2"
-              class=""
-              v-if="
-                this.normalCarDocumentsGarageVerification
-                  .NCgarageVerificationKubun === '' ||
-                this.normalCarDocumentsGarageVerification
-                  .NCgarageVerificationKubun === '代行不要'
-              "
-            >
-            </v-col>
-            <v-col
-              cols="2"
-              class=""
-              v-if="
-                this.normalCarDocumentsGarageVerification
-                  .NCgarageVerificationKubun === '' ||
-                this.normalCarDocumentsGarageVerification
-                  .NCgarageVerificationKubun === '代行不要'
-              "
-            >
-            </v-col>
-            <v-col
               v-if="
                 this.normalCarDocumentsGarageVerification
                   .NCgarageVerificationKubun === '保管場所証明申請書'
               "
-              cols="2"
-              class="mt-1"
             >
-              <div
-                class="ncgarage-verification-kubun-completed"
-                :class="{
-                  'is-fill-in-completed':
-                    this.normalCarDocumentsGarageVerification.isFillIn,
-                }"
-              >
-                完了
-              </div>
             </v-col>
             <v-col
+              cols="2"
+              class=""
               v-if="
-                this.lightCarDocumentsGarageVerification
-                  .LCgarageVerificationKubun === '保管場所届出書'
+                this.normalCarDocumentsGarageVerification
+                  .NCgarageVerificationKubun === '' ||
+                this.normalCarDocumentsGarageVerification
+                  .NCgarageVerificationKubun === '代行不要'
+              "
+            >
+            </v-col>
+            <v-col
+              cols="2"
+              class=""
+              v-if="
+                this.normalCarDocumentsGarageVerification
+                  .NCgarageVerificationKubun === '' ||
+                this.normalCarDocumentsGarageVerification
+                  .NCgarageVerificationKubun === '代行不要'
+              "
+            >
+            </v-col>
+            <v-col
+              cols="2"
+              class=""
+              v-if="
+                this.normalCarDocumentsGarageVerification
+                  .NCgarageVerificationKubun === '' ||
+                this.normalCarDocumentsGarageVerification
+                  .NCgarageVerificationKubun === '代行不要'
+              "
+            >
+            </v-col>
+            <v-col
+              cols="2"
+              class=""
+              v-if="
+                this.normalCarDocumentsGarageVerification
+                  .NCgarageVerificationKubun === '' ||
+                this.normalCarDocumentsGarageVerification
+                  .NCgarageVerificationKubun === '代行不要'
+              "
+            >
+            </v-col>
+            <!-- <v-col
+              cols="2"
+              class=""
+              v-if="
+                this.normalCarDocumentsGarageVerification
+                  .NCgarageVerificationKubun === '' ||
+                this.normalCarDocumentsGarageVerification
+                  .NCgarageVerificationKubun === '代行不要'
+              "
+            >
+            </v-col>
+            <v-col
+              cols="2"
+              class=""
+              v-if="
+                this.normalCarDocumentsGarageVerification
+                  .NCgarageVerificationKubun === '' ||
+                this.normalCarDocumentsGarageVerification
+                  .NCgarageVerificationKubun === '代行不要'
+              "
+            >
+            </v-col> -->
+            <v-col
+              v-if="
+                this.normalCarDocumentsGarageVerification
+                  .NCgarageVerificationKubun === '保管場所証明申請書'
               "
               cols="2"
               class="mt-1"
@@ -1975,7 +1944,117 @@ export default {
               label="完了日"
             ></v-text-field>
           </v-col> -->
-
+          </v-row>
+          <v-row
+            class="mt-10 justify-center"
+            v-if="this.contracts.normalCarLightCarKubun === '軽自動車'"
+          >
+            <v-col cols="2" class="">
+              <v-select
+                @update:modelValue="LCgarageVerificationKubunChange"
+                label="車庫証明"
+                v-model="
+                  lightCarDocumentsGarageVerification.LCgarageVerificationKubun
+                "
+                :items="['', '保管場所届出書', '代行不要']"
+                variant="outlined"
+              ></v-select>
+            </v-col>
+            <v-col
+              cols="2"
+              class=""
+              v-if="
+                this.lightCarDocumentsGarageVerification
+                  .LCgarageVerificationKubun === '保管場所届出書'
+              "
+            >
+              <v-checkbox
+                @change="NCgarageVerificationKubunCompleted"
+                v-model="normalCarDocumentsGarageVerification.isFillIn"
+                label="ご記入"
+              >
+              </v-checkbox>
+            </v-col>
+            <v-col
+              cols="2"
+              class=""
+              v-if="
+                this.lightCarDocumentsGarageVerification
+                  .LCgarageVerificationKubun === '保管場所届出書'
+              "
+            >
+            </v-col>
+            <v-col
+              cols="2"
+              class=""
+              v-if="
+                this.lightCarDocumentsGarageVerification
+                  .LCgarageVerificationKubun === '保管場所届出書'
+              "
+            >
+            </v-col>
+            <v-col
+              cols="2"
+              class=""
+              v-if="
+                this.lightCarDocumentsGarageVerification
+                  .LCgarageVerificationKubun === '' ||
+                this.lightCarDocumentsGarageVerification
+                  .LCgarageVerificationKubun === '代行不要'
+              "
+            >
+            </v-col>
+            <v-col
+              cols="2"
+              class=""
+              v-if="
+                this.lightCarDocumentsGarageVerification
+                  .LCgarageVerificationKubun === '' ||
+                this.lightCarDocumentsGarageVerification
+                  .LCgarageVerificationKubun === '代行不要'
+              "
+            >
+            </v-col>
+            <v-col
+              cols="2"
+              class=""
+              v-if="
+                this.lightCarDocumentsGarageVerification
+                  .LCgarageVerificationKubun === '' ||
+                this.lightCarDocumentsGarageVerification
+                  .LCgarageVerificationKubun === '代行不要'
+              "
+            >
+            </v-col>
+            <v-col
+              cols="2"
+              class=""
+              v-if="
+                this.lightCarDocumentsGarageVerification
+                  .LCgarageVerificationKubun === '' ||
+                this.lightCarDocumentsGarageVerification
+                  .LCgarageVerificationKubun === '代行不要'
+              "
+            >
+            </v-col>
+            <v-col
+              v-if="
+                this.lightCarDocumentsGarageVerification
+                  .LCgarageVerificationKubun === '保管場所届出書'
+              "
+              cols="2"
+              class="mt-1"
+            >
+              <div
+                class="ncgarage-verification-kubun-completed"
+                :class="{
+                  'is-fill-in-completed':
+                    this.normalCarDocumentsGarageVerification.isFillIn,
+                }"
+              >
+                完了
+              </div>
+            </v-col>
             <!-- <v-col
           cols="2"
           class=" lightCarDocumentsGarageVerification-completedDate"
@@ -1995,7 +2074,6 @@ export default {
           ></v-text-field>
         </v-col> -->
           </v-row>
-          <v-row class="justify-center"> </v-row>
           <v-row>
             <p
               v-if="
@@ -3468,23 +3546,21 @@ export default {
           <v-btn @click="aaa" density="compact" icon="mdi-printer"></v-btn>
         </v-col>
       </v-row> -->
-          <v-row>
-            <v-toolbar-title
-              class="mt-8 mb-5 d-flex align-center insurance"
-              v-if="
-                this.contracts.insuranceKubun === '当社加入' ||
-                this.contracts.insuranceKubun === '他社加入'
-              "
-            >
+          <v-row
+            v-if="
+              this.contracts.insuranceKubun === '当社加入' ||
+              this.contracts.insuranceKubun === '他社加入'
+            "
+          >
+            <v-toolbar-title class="mt-8 mb-5 d-flex align-center insurance">
               　〇　保険（お客様の大切なお車、お客様自身の安心・安全をサポートさせて頂く為のご提案です。）
             </v-toolbar-title>
           </v-row>
-          <v-row class="mt-5 justify-center">
-            <v-col
-              cols="2"
-              v-if="this.contracts.insuranceKubun === '当社加入'"
-              class=""
-            >
+          <v-row
+            class="mt-5 justify-center"
+            v-if="this.contracts.insuranceKubun === '当社加入'"
+          >
+            <v-col cols="2" class="">
               <v-select
                 @update:modelValue="isJocInsuranceCompanyChange"
                 label="保険会社"
@@ -3493,18 +3569,7 @@ export default {
                 variant="outlined"
               ></v-select>
             </v-col>
-            <v-col
-              cols="2"
-              v-if="this.contracts.insuranceKubun === '他社加入'"
-              class=""
-            >
-              <v-combobox
-                v-model="insurance.jacInsuranceCompany"
-                label="保険会社"
-                :items="[]"
-                variant="outlined"
-              ></v-combobox>
-            </v-col>
+
             <v-col
               cols="2 taxDeclaration"
               class=""
@@ -3520,6 +3585,95 @@ export default {
                 v-model="insurance.joiningProcedure"
               >
               </v-checkbox>
+            </v-col>
+
+            <v-col
+              cols="2"
+              class=""
+              v-if="
+                this.insurance.jocInsuranceCompany === '東京海上' ||
+                this.insurance.jocInsuranceCompany === '三井住友' ||
+                this.insurance.jocInsuranceCompany === '損保ジャパン'
+              "
+            >
+            </v-col>
+            <v-col
+              cols="2"
+              class=""
+              v-if="
+                this.insurance.jocInsuranceCompany === '東京海上' ||
+                this.insurance.jocInsuranceCompany === '三井住友' ||
+                this.insurance.jocInsuranceCompany === '損保ジャパン'
+              "
+            >
+            </v-col>
+            <v-col
+              cols="2"
+              class=""
+              v-if="
+                this.contracts.insuranceKubun === '当社加入' &&
+                this.insurance.jocInsuranceCompany === ''
+              "
+            >
+            </v-col>
+            <v-col
+              cols="2"
+              class=""
+              v-if="
+                this.contracts.insuranceKubun === '当社加入' &&
+                this.insurance.jocInsuranceCompany === ''
+              "
+            >
+            </v-col>
+            <v-col
+              cols="2"
+              class=""
+              v-if="
+                this.contracts.insuranceKubun === '当社加入' &&
+                this.insurance.jocInsuranceCompany === ''
+              "
+            >
+            </v-col>
+            <v-col
+              cols="2"
+              class=""
+              v-if="
+                this.contracts.insuranceKubun === '当社加入' &&
+                this.insurance.jocInsuranceCompany === ''
+              "
+            >
+            </v-col>
+
+            <v-col
+              cols="2"
+              class="mt-1"
+              v-if="
+                this.insurance.jocInsuranceCompany === '東京海上' ||
+                this.insurance.jocInsuranceCompany === '三井住友' ||
+                this.insurance.jocInsuranceCompany === '損保ジャパン'
+              "
+            >
+              <div
+                class="insurance-completed"
+                :class="{
+                  'is-fill-in-completed': insurance.joiningProcedure,
+                }"
+              >
+                完了
+              </div>
+            </v-col>
+          </v-row>
+          <v-row
+            class="mt-5 justify-center"
+            v-if="this.contracts.insuranceKubun === '他社加入'"
+          >
+            <v-col cols="2" class="">
+              <v-combobox
+                v-model="insurance.jacInsuranceCompany"
+                label="保険会社"
+                :items="[]"
+                variant="outlined"
+              ></v-combobox>
             </v-col>
             <v-col
               cols="2"
@@ -3557,42 +3711,6 @@ export default {
               cols="2"
               class=""
               v-if="
-                this.contracts.insuranceKubun === '当社加入' &&
-                this.insurance.jocInsuranceCompany === ''
-              "
-            >
-            </v-col>
-            <v-col
-              cols="2"
-              class=""
-              v-if="
-                this.contracts.insuranceKubun === '当社加入' &&
-                this.insurance.jocInsuranceCompany === ''
-              "
-            >
-            </v-col>
-            <v-col
-              cols="2"
-              class=""
-              v-if="
-                this.contracts.insuranceKubun === '当社加入' &&
-                this.insurance.jocInsuranceCompany === ''
-              "
-            >
-            </v-col>
-            <v-col
-              cols="2"
-              class=""
-              v-if="
-                this.contracts.insuranceKubun === '当社加入' &&
-                this.insurance.jocInsuranceCompany === ''
-              "
-            >
-            </v-col>
-            <v-col
-              cols="2"
-              class=""
-              v-if="
                 this.contracts.insuranceKubun === '他社加入' &&
                 this.insurance.jocInsuranceCompany === ''
               "
@@ -3606,24 +3724,6 @@ export default {
                 this.insurance.jocInsuranceCompany === ''
               "
             >
-            </v-col>
-            <v-col
-              cols="2"
-              class="mt-1"
-              v-if="
-                this.insurance.jocInsuranceCompany === '東京海上' ||
-                this.insurance.jocInsuranceCompany === '三井住友' ||
-                this.insurance.jocInsuranceCompany === '損保ジャパン'
-              "
-            >
-              <div
-                class="insurance-completed"
-                :class="{
-                  'is-fill-in-completed': insurance.joiningProcedure,
-                }"
-              >
-                完了
-              </div>
             </v-col>
             <v-col
               cols="2"
@@ -3825,16 +3925,15 @@ export default {
           >
             <v-divider class="mt-5 separator"></v-divider>
           </v-row>
-          <v-row class="mt-10 justify-center">
-            <v-col
-              cols="2"
-              v-if="
-                this.insurance.jocInsuranceCompany === '東京海上' ||
-                this.insurance.jocInsuranceCompany === '三井住友' ||
-                this.insurance.jocInsuranceCompany === '損保ジャパン'
-              "
-              class=""
-            >
+          <v-row
+            class="mt-10 justify-center"
+            v-if="
+              this.insurance.jocInsuranceCompany === '東京海上' ||
+              this.insurance.jocInsuranceCompany === '三井住友' ||
+              this.insurance.jocInsuranceCompany === '損保ジャパン'
+            "
+          >
+            <v-col cols="2" class="">
               <v-combobox
                 label=""
                 v-model="insurance.skyPlus"
@@ -3973,28 +4072,26 @@ export default {
             label="完了日"
           ></v-text-field>
         </v-col> -->
-          <v-row>
-            <v-toolbar-title
-              class="mt-8 mb-5 d-flex align-center credit"
-              v-if="
-                (this.contracts.insuranceKubun === '' ||
-                  this.contracts.insuranceKubun === '未加入') &&
-                this.contracts.paymentKubun === 'クレジット'
-              "
-            >
+          <v-row
+            v-if="
+              (this.contracts.insuranceKubun === '' ||
+                this.contracts.insuranceKubun === '未加入') &&
+              this.contracts.paymentKubun === 'クレジット'
+            "
+          >
+            <v-toolbar-title class="mt-8 mb-5 d-flex align-center credit">
               　〇　クレジット（お客様に通常クレジットまたはスカイプランでご成約頂いた際の手続きです。）
             </v-toolbar-title>
           </v-row>
 
-          <v-row>
-            <v-toolbar-title
-              class="mt-8 mb-5 d-flex align-center credit"
-              v-if="
-                (this.contracts.insuranceKubun === '当社加入' ||
-                  this.contracts.insuranceKubun === '他社加入') &&
-                this.contracts.paymentKubun === 'クレジット'
-              "
-            >
+          <v-row
+            v-if="
+              (this.contracts.insuranceKubun === '当社加入' ||
+                this.contracts.insuranceKubun === '他社加入') &&
+              this.contracts.paymentKubun === 'クレジット'
+            "
+          >
+            <v-toolbar-title class="mt-8 mb-5 d-flex align-center credit">
               　〇　クレジット（お客様に通常クレジットまたはスカイプランでご成約頂いた際の手続きです。）
             </v-toolbar-title>
           </v-row>
