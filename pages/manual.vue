@@ -824,7 +824,7 @@ export default {
           </v-row>
           <v-row v-if="this.start.startKubun === '下取・買取'">
             <p class="supporting-sentences">
-              　※現在作成中（LastUpdated.2024.11.30.AM3:40）
+              　※現在作成中（LastUpdated.2024.12.1.AM3:33）
             </p>
           </v-row>
 
