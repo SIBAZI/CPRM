@@ -824,7 +824,7 @@ export default {
           </v-row>
           <v-row v-if="this.start.startKubun === '下取・買取'">
             <p class="supporting-sentences">
-              　※現在作成中（LastUpdated.2024.12.4.AM2:47）
+              　※現在作成中（LastUpdated.2024.12.5.AM1:03）
             </p>
           </v-row>
 
@@ -3769,7 +3769,16 @@ export default {
               　　　話しやすさや相談のしやすさもネット保険では付帯することができない見えない保険内容の１つです。　<br />
               　<br />
               　４．ネット保険と比べて金額は高くなりますが、金額差以上の「お客様の安心・安全をサポートする気持ち」　<br />
-              　　　を第一にご案内致します。
+              　　　を第一にご案内いたします。
+            </p>
+          </v-row>
+          <v-row
+            v-if="
+              this.contracts.insuranceKubun === '他社加入'
+            "
+          >
+            <p class="explanation">
+              ・お客様が他社加入をご希望される場合は、ご加入予定の保険会社をお伺いさせて頂き納車日前に加入状況をお伺いしてください。
             </p>
           </v-row>
           <!-- <v-col
@@ -4992,9 +5001,11 @@ export default {
               v-if="
                 this.tradeInPurchase.normalCarLightCarKubun === '普通車' &&
                 (this.tradeInPurchase.nameChangeDeletionKubun === '名変' ||
-                  this.tradeInPurchase.nameChangeDeletionKubun === '抹消') &&
-                (this.tradeInPurchase.ownershipKubun === '交換コーナー利用' ||
-                  this.tradeInPurchase.ownershipKubun === 'その他所有')
+                 this.tradeInPurchase.nameChangeDeletionKubun === '抹消') &&
+                (this.tradeInPurchase.ownershipKubun === '本人所有' ||
+                 this.tradeInPurchase.ownershipKubun === 'アンフィニ所有' ||
+                 this.tradeInPurchase.ownershipKubun === '交換コーナー利用' ||
+                 this.tradeInPurchase.ownershipKubun === 'その他所有')
               "
             >
               <v-divider class="mt-5 separator"></v-divider>
@@ -5004,9 +5015,11 @@ export default {
               v-if="
                 this.tradeInPurchase.normalCarLightCarKubun === '普通車' &&
                 (this.tradeInPurchase.nameChangeDeletionKubun === '名変' ||
-                  this.tradeInPurchase.nameChangeDeletionKubun === '抹消') &&
-                (this.tradeInPurchase.ownershipKubun === '交換コーナー利用' ||
-                  this.tradeInPurchase.ownershipKubun === 'その他所有')
+                 this.tradeInPurchase.nameChangeDeletionKubun === '抹消') &&
+                (this.tradeInPurchase.ownershipKubun === '本人所有' ||
+                 this.tradeInPurchase.ownershipKubun === 'アンフィニ所有' ||
+                 this.tradeInPurchase.ownershipKubun === '交換コーナー利用' ||
+                 this.tradeInPurchase.ownershipKubun === 'その他所有')
               "
             >
               <v-col cols="2" class="mt-5">
@@ -5030,9 +5043,11 @@ export default {
                 this.tradeInPurchase.tradeInPurchaseKubun === '下取' &&
                 this.tradeInPurchase.normalCarLightCarKubun === '普通車' &&
                 (this.tradeInPurchase.nameChangeDeletionKubun === '名変' ||
-                  this.tradeInPurchase.nameChangeDeletionKubun === '抹消') &&
-                (this.tradeInPurchase.ownershipKubun === '交換コーナー利用' ||
-                  this.tradeInPurchase.ownershipKubun === 'その他所有')
+                 this.tradeInPurchase.nameChangeDeletionKubun === '抹消') &&
+                (this.tradeInPurchase.ownershipKubun === '本人所有' ||
+                 this.tradeInPurchase.ownershipKubun === 'アンフィニ所有' ||
+                 this.tradeInPurchase.ownershipKubun === '交換コーナー利用' ||
+                 this.tradeInPurchase.ownershipKubun === 'その他所有')
               "
             >
               <p class="explanation">
@@ -5047,9 +5062,11 @@ export default {
                 this.tradeInPurchase.tradeInPurchaseKubun === '買取' &&
                 this.tradeInPurchase.normalCarLightCarKubun === '普通車' &&
                 (this.tradeInPurchase.nameChangeDeletionKubun === '名変' ||
-                  this.tradeInPurchase.nameChangeDeletionKubun === '抹消') &&
-                (this.tradeInPurchase.ownershipKubun === '交換コーナー利用' ||
-                  this.tradeInPurchase.ownershipKubun === 'その他所有')
+                 this.tradeInPurchase.nameChangeDeletionKubun === '抹消') &&
+                (this.tradeInPurchase.ownershipKubun === '本人所有' ||
+                 this.tradeInPurchase.ownershipKubun === 'アンフィニ所有' ||
+                 this.tradeInPurchase.ownershipKubun === '交換コーナー利用' ||
+                 this.tradeInPurchase.ownershipKubun === 'その他所有')
               "
             >
               <p class="explanation">
@@ -5061,17 +5078,6 @@ export default {
             </v-row>
 
             <!-- 普通車・その他所有の委任状 -->
-            <v-row
-              v-if="
-                this.tradeInPurchase.normalCarLightCarKubun === '普通車' &&
-                (this.tradeInPurchase.nameChangeDeletionKubun === '名変' ||
-                  this.tradeInPurchase.nameChangeDeletionKubun === '抹消') &&
-                (this.tradeInPurchase.ownershipKubun === '交換コーナー利用' ||
-                  this.tradeInPurchase.ownershipKubun === 'その他所有')
-              "
-            >
-              <v-divider class="mt-5 separator"></v-divider>
-            </v-row>
             <v-row
               v-if="
                 this.tradeInPurchase.normalCarLightCarKubun === '普通車' &&
@@ -5090,7 +5096,7 @@ export default {
               <v-col cols="2" class="mt-5">
                 <v-combobox
                   v-model="requiredDocumentsForRegularCars.powerOfAttorney"
-                  label=""
+                  label="所有権解除"
                   :items="[]"
                   variant="outlined"
                   readonly
@@ -5103,7 +5109,8 @@ export default {
             </v-row>
             <v-row
               v-if="
-                this.tradeInPurchase.tradeInPurchaseKubun === '下取' &&
+                (this.tradeInPurchase.tradeInPurchaseKubun === '下取' ||
+                this.tradeInPurchase.tradeInPurchaseKubun === '買取')&&
                 this.tradeInPurchase.normalCarLightCarKubun === '普通車' &&
                 this.tradeInPurchase.ownershipKubun === 'その他所有'
               "
@@ -5115,20 +5122,7 @@ export default {
                 ！車検証の住所と印鑑証明の住所が違う場合は<b>住民票</b>が必要になります。　<br />
               </p>
             </v-row>
-            <v-row
-              v-if="
-                this.tradeInPurchase.tradeInPurchaseKubun === '買取' &&
-                this.tradeInPurchase.normalCarLightCarKubun === '普通車' &&
-                this.tradeInPurchase.ownershipKubun === 'その他所有'
-              "
-            >
-              <p class="explanation">
-                ・車検証に記載されている現所有者様に所有権の解除をご依頼した後に　<br />
-                　発行される<b>委任状</b>と<b>印鑑証明</b>です。　<br />
-                <br />
-                ！車検証の住所と印鑑証明の住所が違う場合は<b>住民票</b>が必要になります。　<br />
-              </p>
-            </v-row>
+            
             <!-- 軽自動車・申請依頼書 -->
             <v-row
               v-if="
@@ -5150,7 +5144,7 @@ export default {
                   v-model="
                     requiredDocumentsForLightVehicles.applicationRequestForm
                   "
-                  label=""
+                  label="所有権解除"
                   :items="[]"
                   variant="outlined"
                   readonly
@@ -5163,7 +5157,8 @@ export default {
             </v-row>
             <v-row
               v-if="
-                this.tradeInPurchase.tradeInPurchaseKubun === '下取' &&
+                (this.tradeInPurchase.tradeInPurchaseKubun === '下取' ||
+                this.tradeInPurchase.tradeInPurchaseKubun === '買取')&&
                 this.tradeInPurchase.normalCarLightCarKubun === '軽自動車' &&
                 this.tradeInPurchase.ownershipKubun === 'その他所有'
               "
@@ -5172,19 +5167,50 @@ export default {
                 ・車検証に記載されている現所有者様に所有権の解除をご依頼した後に　<br />
                 　発行される<b>申請依頼書</b>です。
               </p>
+            </v-row>
+
+            <!-- 普通車・譲渡証明書 -->
+            <v-row
+              v-if="
+                this.tradeInPurchase.normalCarLightCarKubun === '普通車' &&
+                this.tradeInPurchase.ownershipKubun === 'その他所有'
+              "
+            >
+              <v-divider class="mt-5 separator"></v-divider>
+            </v-row>
+            <v-row
+              class="mt-5 justify-center"
+              v-if="
+                this.tradeInPurchase.normalCarLightCarKubun === '普通車' &&
+                this.tradeInPurchase.ownershipKubun === 'その他所有'
+              "
+            >
+              <v-col cols="2" class="mt-5">
+                <v-combobox
+                  v-model="requiredDocumentsForRegularCars.transferCertificate"
+                  label="所有権解除"
+                  :items="[]"
+                  variant="outlined"
+                  readonly
+                ></v-combobox>
+              </v-col>
+              <v-col cols="2" class="mt-5"> </v-col>
+              <v-col cols="2" class="mt-5"> </v-col>
+              <v-col cols="2" class="mt-5"> </v-col>
+              <v-col cols="2" class="mt-5"> </v-col>
             </v-row>
             <v-row
               v-if="
-                this.tradeInPurchase.tradeInPurchaseKubun === '買取' &&
-                this.tradeInPurchase.normalCarLightCarKubun === '軽自動車' &&
+                this.tradeInPurchase.normalCarLightCarKubun === '普通車' &&
                 this.tradeInPurchase.ownershipKubun === 'その他所有'
               "
             >
               <p class="explanation">
                 ・車検証に記載されている現所有者様に所有権の解除をご依頼した後に　<br />
-                　発行される<b>申請依頼書</b>です。
+                　発行される<b>譲渡証明書</b>です。
               </p>
             </v-row>
+
             <!-- 軽自動車・承諾書 -->
             <v-row
               v-if="
@@ -5204,7 +5230,7 @@ export default {
               <v-col cols="2" class="mt-5">
                 <v-combobox
                   v-model="requiredDocumentsForLightVehicles.letterOfConsent"
-                  label=""
+                  label="所有権解除"
                   :items="[]"
                   variant="outlined"
                   readonly
@@ -5261,6 +5287,17 @@ export default {
               <v-col cols="2" class="mt-5"> </v-col>
               <v-col cols="2" class="mt-5"> </v-col>
             </v-row>
+            <v-row
+              v-if="
+                this.tradeInPurchase.tradeInPurchaseKubun === '買取' &&
+                (this.tradeInPurchase.normalCarLightCarKubun === '普通車' ||
+                  this.tradeInPurchase.normalCarLightCarKubun === '軽自動車')
+              "
+            >
+              <p class="explanation">
+                ・お車の買取の際は免許証または住民票のコピーが必要になります。　
+              </p>
+            </v-row>
 
             <v-row
               v-if="
@@ -5307,6 +5344,17 @@ export default {
               <v-col cols="2" class="mt-5"> </v-col>
               <v-col cols="2" class="mt-5"> </v-col>
             </v-row>
+            <v-row
+              v-if="
+                this.tradeInPurchase.tradeInPurchaseKubun === '買取' &&
+                (this.tradeInPurchase.normalCarLightCarKubun === '普通車' ||
+                  this.tradeInPurchase.normalCarLightCarKubun === '軽自動車')
+              "
+            >
+              <p class="explanation">
+                ・お車を買取させて頂く際に必要になる明細書です。　
+              </p>
+            </v-row>
 
             <!-- 振込先確認書 -->
             <v-row
@@ -5339,6 +5387,17 @@ export default {
               <v-col cols="2" class="mt-5"> </v-col>
               <v-col cols="2" class="mt-5"> </v-col>
               <v-col cols="2" class="mt-5"> </v-col>
+            </v-row>
+            <v-row
+              v-if="
+                this.tradeInPurchase.tradeInPurchaseKubun === '買取' &&
+                (this.tradeInPurchase.normalCarLightCarKubun === '普通車' ||
+                  this.tradeInPurchase.normalCarLightCarKubun === '軽自動車')
+              "
+            >
+              <p class="explanation">
+                ・お車を買取させて頂いた際にご提示した買取金額の振込先を確認する為の書類です。　
+              </p>
             </v-row>
 
             <!-- 普通車・委任状 -->
@@ -5639,10 +5698,10 @@ export default {
             <v-row
               v-if="
                 this.tradeInPurchase.tradeInPurchaseKubun === '下取' &&
-                  (this.tradeInPurchase.normalCarLightCarKubun === '普通車' &&
-                  this.tradeInPurchase.nameChangeDeletionKubun === '名変') ||
+                (this.tradeInPurchase.normalCarLightCarKubun === '普通車' &&
+                 this.tradeInPurchase.nameChangeDeletionKubun === '名変') ||
                 (this.tradeInPurchase.nameChangeDeletionKubun === '抹消' &&
-                  this.tradeInPurchase.ownershipKubun === 'その他所有')
+                 this.tradeInPurchase.ownershipKubun === 'その他所有')
               "
             >
               <p class="explanation">
@@ -5650,18 +5709,18 @@ export default {
                 <br />
                 　詳しい説明：お客様（➀）からお車をお預かりした際に自動車税の支払い権は弊社になります。　<br />
                 　　　　　　　↑例：7月に車をお預かりした場合、8月～来年4月の9カ月分を弊社がお支払いします。　<br />
-                　　　　　　　　　　ですが、弊社がお客様（➀）からお預かりしたお車を更に次のお客様（➁）に中古車として売却する際には　<br />
-                　　　　　　　　　　債権譲渡通知書を頂いていないと次のお客様（➁）に売却したのち弊社に返金されるはずの自動車税は　<br />
-                　　　　　　　　　　お客様（➀）に返金されてしまうため必要になります。
+                　　　　　　　ですが、弊社がお客様（➀）からお預かりしたお車を更に次のお客様（➁）に中古車として売却する際には　<br />
+                　　　　　　　債権譲渡通知書を頂いていないと次のお客様（➁）に売却したのち弊社に返金されるはずの自動車税は　<br />
+                　　　　　　　お客様（➀）に返金されてしまうため必要になります。
               </p>
             </v-row>
             <v-row
               v-if="
                 this.tradeInPurchase.tradeInPurchaseKubun === '買取' &&
-                  (this.tradeInPurchase.normalCarLightCarKubun === '普通車' &&
-                  this.tradeInPurchase.nameChangeDeletionKubun === '名変') ||
+                (this.tradeInPurchase.normalCarLightCarKubun === '普通車' &&
+                 this.tradeInPurchase.nameChangeDeletionKubun === '名変') ||
                 (this.tradeInPurchase.nameChangeDeletionKubun === '抹消' &&
-                  this.tradeInPurchase.ownershipKubun === 'その他所有')
+                 this.tradeInPurchase.ownershipKubun === 'その他所有')
               "
             >
               <p class="explanation">
@@ -5669,9 +5728,9 @@ export default {
                 <br />
                 　詳しい説明：お客様（➀）からお車をお預かりした際に自動車税の支払い権は弊社になります。　<br />
                 　　　　　　　↑例：7月に車をお預かりした場合、8月～来年4月の9カ月分を弊社がお支払いします。　<br />
-                　　　　　　　　　　ですが、弊社がお客様（➀）からお預かりしたお車を更に次のお客様（➁）に中古車として売却する際には　<br />
-                　　　　　　　　　　債権譲渡通知書を頂いていないと次のお客様（➁）に売却したのち弊社に返金されるはずの自動車税は　<br />
-                　　　　　　　　　　お客様（➀）に返金されてしまうため必要になります。
+                　　　　　　　ですが、弊社がお客様（➀）からお預かりしたお車を更に次のお客様（➁）に中古車として売却する際には　<br />
+                　　　　　　　債権譲渡通知書を頂いていないと次のお客様（➁）に売却したのち弊社に返金されるはずの自動車税は　<br />
+                　　　　　　　お客様（➀）に返金されてしまうため必要になります。
               </p>
             </v-row>
 
@@ -5959,6 +6018,16 @@ export default {
               <v-col cols="2" class="mt-5"> </v-col>
               <v-col cols="2" class="mt-5"> </v-col>
               <v-col cols="2" class="mt-5"> </v-col>
+            </v-row>
+            <v-row
+              v-if="
+                this.tradeInPurchase.normalCarLightCarKubun === '普通車' ||
+                this.tradeInPurchase.normalCarLightCarKubun === '軽自動車'
+              "
+            >
+              <p class="explanation">
+                ・査定をした際に発行することが出来る車の状態、査定金額が記録されている書類です。　
+              </p>
             </v-row>
             <v-row
               v-if="
