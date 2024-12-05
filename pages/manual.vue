@@ -790,17 +790,6 @@ export default {
               ></v-btn>
             </v-col>
           </v-row>
-          <!-- <v-row v-if="this.start.startKubun === ''">
-            <p class="">
-              　※お客様との接客を第一に考えるためのサポートマニュアルです。<br />
-              　　マニュアルに頼りきらず自身で手続きを覚えるつもりで<br />
-              　　スキルアップの補助として活用しましょう。<br />
-              　　全体像の把握、分からないことを明確化することが大切です。<br />
-              　　接客はマニュアルでは収まりません。<br />
-              　　自分の思い、言葉で説明できるように心がけましょう。<br />
-              　　最後に、お客様だけではなく周りの人も大切に。
-            </p>
-          </v-row> -->
           <v-row class="mt-12 justify-center">
             <v-col cols="3" class="">
               <v-select
@@ -4589,6 +4578,15 @@ export default {
             </v-row>
             <v-row
               v-if="
+                this.tradeInCarAndOtherConfirma.isDeathOfPerson === true
+              "
+            >
+              <p class="explanation">
+                ・お車の査定をさせて頂き買取価格が<b>10万円以上・以下</b>によって必要書類が異なります。　
+              </p>
+            </v-row>
+            <v-row
+              v-if="
                 this.passedAwayRequiredDocuments.purchasePriceKubun ===
                   '10万円以上' ||
                 this.passedAwayRequiredDocuments.purchasePriceKubun ===
@@ -4626,6 +4624,18 @@ export default {
                 '10万円以上'
               "
             >
+              <p class="explanation">
+                ・お車を査定させて頂き買取価格が<b>10万円以上</b>の場合<b>遺産分割協議書</b>が必要になります。<br />
+                　<br />
+                　遺産分割協議書には<b>相続権のある方全員のご署名と実印</b>が必要になります。
+              </p>
+            </v-row>
+            <v-row
+              v-if="
+                this.passedAwayRequiredDocuments.purchasePriceKubun ===
+                '10万円以上'
+              "
+            >
               <v-divider class="mt-5 separator"></v-divider>
             </v-row>
             <v-row
@@ -4650,6 +4660,27 @@ export default {
               <v-col cols="2" class="mt-5"> </v-col>
               <v-col cols="2" class="mt-5"> </v-col>
               <v-col cols="2" class="mt-5"> </v-col>
+            </v-row>
+            <v-row
+              v-if="
+                this.passedAwayRequiredDocuments.purchasePriceKubun ===
+                  '10万円以上' ||
+                this.passedAwayRequiredDocuments.purchasePriceKubun ===
+                  '10万円以下'
+              "
+            >
+              <p class="explanation">
+                ・個人の身分事項が記載された「戸籍簿」の写しです。　<br />
+                <br />
+                　市区町村の役所で発行できます。　<br />
+                <br />
+                　発行には　<br />
+                　➀本人確認ができる書類（運転免許証・個人番号カード・住民基本台帳カード・健康保険証等）　<br />
+                　➁申請書（各市区町村が定める様式に必要事項を記載）　<br />
+                　➂印鑑（朱肉を使う印鑑であれば認印でも可）　<br />
+                　➃手数料（1通につき）450円　<br />
+                　が必要になります。
+              </p>
             </v-row>
             <v-row
               v-if="
@@ -4694,6 +4725,28 @@ export default {
                   '10万円以下'
               "
             >
+              <p class="explanation">
+                ・戸籍法の改正にともない戸籍様式が書き換え（＝改製）られた際、書き換えられる前の戸籍謄本です。<br/>
+                　改製前に除籍された方、改製前になされた「認知」「養子縁組」「離婚」「養子離縁」などに関する事項が含まれています。<br/>
+                <br/>
+                　市区町村の役所で発行できます。　<br />
+                <br />
+                　発行には　<br />
+                　➀本人確認ができる書類（運転免許証・個人番号カード・住民基本台帳カード・健康保険証等）　<br />
+                　➁申請書（各市区町村が定める様式に必要事項を記載）　<br />
+                　➂印鑑（朱肉を使う印鑑であれば認印でも可）　<br />
+                　➃手数料（1通につき）750円　<br />
+                　が必要になります。
+              </p>
+            </v-row>
+            <v-row
+              v-if="
+                this.passedAwayRequiredDocuments.purchasePriceKubun ===
+                  '10万円以上' ||
+                this.passedAwayRequiredDocuments.purchasePriceKubun ===
+                  '10万円以下'
+              "
+            >
               <v-divider class="mt-5 separator"></v-divider>
             </v-row>
             <v-row
@@ -4716,6 +4769,16 @@ export default {
               <v-col cols="2" class="mt-5"> </v-col>
               <v-col cols="2" class="mt-5"> </v-col>
               <v-col cols="2" class="mt-5"> </v-col>
+            </v-row>
+            <v-row
+              v-if="
+                this.passedAwayRequiredDocuments.purchasePriceKubun ===
+                '10万円以上'
+              "
+            >
+              <p class="explanation">
+                ・代表相続人の<b>実印</b>と<b>印鑑証明</b>が必要になります。　
+              </p>
             </v-row>
             <v-row
               v-if="
@@ -4752,6 +4815,16 @@ export default {
                 '10万円以下'
               "
             >
+              <p class="explanation">
+                ・相続人全員の<b>実印</b>と<b>印鑑証明</b>が必要になります。　
+              </p>
+            </v-row>
+            <v-row
+              v-if="
+                this.passedAwayRequiredDocuments.purchasePriceKubun ===
+                '10万円以下'
+              "
+            >
               <v-divider class="mt-5 separator"></v-divider>
             </v-row>
             <v-row
@@ -4774,6 +4847,18 @@ export default {
               <v-col cols="2" class="mt-5"> </v-col>
               <v-col cols="2" class="mt-5"> </v-col>
               <v-col cols="2" class="mt-5"> </v-col>
+            </v-row>
+            <v-row
+              v-if="
+                this.passedAwayRequiredDocuments.purchasePriceKubun ===
+                '10万円以上'
+              "
+            >
+              <p class="explanation">
+                ・代表相続人の<b>実印</b>が必要になります。　<br />
+                　<br />
+                ！代表相続人の委任状で印鑑証明を頂いている場合は印鑑証明１枚のみで併用頂けます。　
+              </p>
             </v-row>
 
             <v-row
@@ -4796,6 +4881,18 @@ export default {
               <v-col cols="2" class="mt-5"> </v-col>
               <v-col cols="2" class="mt-5"> </v-col>
               <v-col cols="2" class="mt-5"> </v-col>
+            </v-row>
+            <v-row
+              v-if="
+                this.passedAwayRequiredDocuments.purchasePriceKubun ===
+                '10万円以下'
+              "
+            >
+              <p class="explanation">
+                ・相続人全員の<b>実印</b>が必要になります。　<br />
+                　<br />
+                ！相続人全員の委任状で印鑑証明を頂いている場合、印鑑証明は相続人全員それぞれ１枚のみで併用頂けます。　
+              </p>
             </v-row>
             <v-row
               v-if="
