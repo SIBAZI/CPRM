@@ -25,6 +25,10 @@ export default {
       // maintenancePackModal: false, //メンテナンスパック申込用紙記入例
       // taxDeclarationNameModal: false, //税申告書記入例
 
+      //買取・下取
+      tradeInPurchaseModal: false,//買取下取モーダル
+      inheritanceDivisionAgreementModal:false,//遺産分割協議書モーダル
+
       start: {
         startKubun: "", //成約時登録・買取・下取り・一般登録代行
       },
@@ -417,6 +421,14 @@ export default {
     insuranceImg() {
       window.open("/簡易事故受付カード.pdf", "_blank");
     },
+    //買取・下取img
+    tradeInPurchaseImg() {
+      window.open("/簡易事故受付カード.pdf", "_blank");
+    },
+    //遺産分割協議書img
+    inheritanceDivisionAgreementImg() {
+      window.open("/簡易事故受付カード.pdf", "_blank");
+    },
     removeMemo(index) {
       this.memos.splice(index, 1);
     },
@@ -806,10 +818,53 @@ export default {
                 variant="outlined"
               ></v-select>
             </v-col>
-            <v-col cols="2" class=""> </v-col>
-            <v-col cols="2" class=""> </v-col>
+            <v-col
+              cols="1"
+              v-if="this.start.startKubun === '下取・買取'"
+            >
+              <v-btn
+                class="mt-4 ml-6"
+                @click="tradeInPurchaseModal = true"
+                density="compact"
+                icon="mdi-help"
+              ></v-btn>
+            </v-col>
+            <v-col
+              cols="1"
+              v-if="this.start.startKubun === '下取・買取'"
+            >
+            <v-btn
+                class="mt-4 "
+                @click="tradeInPurchaseImg"
+                density="compact"
+                icon="mdi-printer"
+                ></v-btn>
+            </v-col>
+            <v-col cols="2" class="" > </v-col>
             <v-col cols="2" class=""> </v-col>
             <v-col cols="1" class=""> </v-col>
+            <v-col 
+              cols="1" 
+              class=""
+              v-if="this.start.startKubun === ''||
+                    this.start.startKubun === '成約時登録'||
+                    this.start.startKubun === '納車準備'||
+                    this.start.startKubun === '納車'||
+                    this.start.startKubun === '一般登録代行'
+                   "
+              > 
+            </v-col>
+            <v-col 
+              cols="1" 
+              class=""
+              v-if="this.start.startKubun === ''||
+                    this.start.startKubun === '成約時登録'||
+                    this.start.startKubun === '納車準備'||
+                    this.start.startKubun === '納車'||
+                    this.start.startKubun === '一般登録代行'
+                   "
+              > 
+            </v-col>
           </v-row>
           <v-row v-if="this.start.startKubun === '下取・買取'">
             <p class="supporting-sentences">
@@ -4516,7 +4571,7 @@ export default {
               "
             >
               <v-toolbar-title class="mt-5 d-flex align-center start">
-                　〇　法人車・追加必要書類（社員が記入、入力して準備する書類）
+                　〇　法人車・追加必要書類（社員が記入、入力、準備する書類）
               </v-toolbar-title>
             </v-row>
             <v-row
@@ -4552,6 +4607,20 @@ export default {
                 ・お預かりするお車が<b>法人車</b>の場合に必要になります。　
               </p>
             </v-row>
+            <v-row class="icon-ml">
+            <v-col
+              cols="1"
+              class="mt-3 d-flex align-center"
+              v-if="tradeInCarAndOtherConfirma.isCorporateVehicles === true"
+            >
+              <v-btn
+                href="登録書類について.xlsx"
+                target="_blank"
+                density="compact"
+                icon="mdi-printer"
+              ></v-btn>
+            </v-col>
+          </v-row>
             <v-row
               v-if="this.tradeInCarAndOtherConfirma.isDeathOfPerson === true"
             >
@@ -4630,6 +4699,52 @@ export default {
                 　遺産分割協議書には<b>相続権のある方全員のご署名と実印</b>が必要になります。
               </p>
             </v-row>
+            <v-row class="icon-ml">
+            <v-col
+              cols="1"
+              class="mt-3 d-flex align-center"
+              v-if="
+                this.passedAwayRequiredDocuments.purchasePriceKubun ===
+                '10万円以上'
+              "
+            >
+              <v-btn
+                @click="inheritanceDivisionAgreementModal = true"
+                density="compact"
+                icon="mdi-help"
+              ></v-btn>
+            </v-col>
+            <v-col
+              cols="1"
+              class="mt-3 d-flex align-center"
+              v-if="
+                this.passedAwayRequiredDocuments.purchasePriceKubun ===
+                '10万円以上'
+              "
+            >
+              <v-btn
+                @click="inheritanceDivisionAgreementImg"
+                density="compact"
+                icon="mdi-printer"
+              ></v-btn>
+            </v-col>
+
+            <v-col
+              cols="1"
+              class="mt-3 d-flex align-center"
+              v-if="
+                this.passedAwayRequiredDocuments.purchasePriceKubun ===
+                '10万円以上'
+              "
+            >
+              <v-btn
+                href="https://www.bk.mufg.jp/sonaeru/souzoku/column/003/index.html"
+                target="_blank"
+                density="compact"
+                icon="mdi-search-web"
+              ></v-btn>
+            </v-col>
+          </v-row>
             <v-row
               v-if="
                 this.passedAwayRequiredDocuments.purchasePriceKubun ===
@@ -4681,6 +4796,25 @@ export default {
                 　➃手数料（1通につき）450円　<br />
                 　が必要になります。
               </p>
+            </v-row>
+            <v-row class="icon-ml">
+            <v-col
+              cols="1"
+              class="mt-3 d-flex align-center"
+              v-if="
+                this.passedAwayRequiredDocuments.purchasePriceKubun ===
+                  '10万円以上' ||
+                this.passedAwayRequiredDocuments.purchasePriceKubun ===
+                  '10万円以下'
+              "
+            >
+              <v-btn
+                href="https://www.city.hiroshima.lg.jp/soshiki/1021/15207.html"
+                target="_blank"
+                density="compact"
+                icon="mdi-search-web"
+              ></v-btn>
+            </v-col>
             </v-row>
             <v-row
               v-if="
@@ -4739,6 +4873,26 @@ export default {
                 　が必要になります。
               </p>
             </v-row>
+            <v-row class="icon-ml">
+            <v-col
+              cols="1"
+              class="mt-3 d-flex align-center"
+              v-if="
+                this.passedAwayRequiredDocuments.purchasePriceKubun ===
+                  '10万円以上' ||
+                this.passedAwayRequiredDocuments.purchasePriceKubun ===
+                  '10万円以下'
+              "
+            >
+              <v-btn
+                href="https://www.city.hiroshima.lg.jp/site/faq/15007.html"
+                target="_blank"
+                density="compact"
+                icon="mdi-search-web"
+              ></v-btn>
+            </v-col>
+            </v-row>
+
             <v-row
               v-if="
                 this.passedAwayRequiredDocuments.purchasePriceKubun ===
@@ -6310,6 +6464,17 @@ export default {
           <img class="modal-img" src="/税申告書記入例.jpg" />
         </v-card>
       </v-dialog> -->
+      <!-- 買取・下取modal -->
+      <v-dialog v-model="tradeInPurchaseModal" max-width="40%">
+        <v-card>
+          <img class="modal-img" src="/希望番号伺書記入例.jpg" />
+        </v-card>
+      </v-dialog>
+      <v-dialog v-model="inheritanceDivisionAgreementModal" max-width="40%">
+        <v-card>
+          <img class="modal-img" src="/希望番号伺書記入例.jpg" />
+        </v-card>
+      </v-dialog>
       <div class="whole-bottom"></div>
       <div class="footer"></div>
     </v-app>
