@@ -952,10 +952,10 @@ export default {
             </v-toolbar-title>
           </v-row>
           <v-row>
-            <p class="mt-10 supporting-sentences">　ご成約頂いたお車は、</p>
+            <p class="mt-9 supporting-sentences">　ご成約頂いたお車は、</p>
           </v-row>
 
-          <v-row class="mt-10 justify-center">
+          <v-row class="mt-9 justify-center">
             <v-col cols="2" class="">
               <v-select
                 @update:modelValue="newCarUsedCarKubunChange"
@@ -4540,10 +4540,10 @@ export default {
               </v-toolbar-title>
             </v-row>
             <v-row>
-              <p class="mt-10 supporting-sentences">　お預かりするお車は、</p>
+              <p class="mt-9 supporting-sentences">　お預かりするお車は、</p>
             </v-row>
 
-            <v-row class="mt-10 justify-center">
+            <v-row class="mt-9 justify-center">
               <v-col cols="2" class="">
                 <v-select
                   @update:modelValue="tradeInPurchaseKubunChange"
