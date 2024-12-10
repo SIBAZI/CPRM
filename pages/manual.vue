@@ -762,7 +762,9 @@ export default {
       this.tradeInPurchase.normalCarLightCarKubun = '';
       this.tradeInPurchase.nameChangeDeletionKubun = '';
       this.tradeInPurchase.ownershipKubun = '';
+      this.passedAwayRequiredDocuments.purchasePriceKubun = '';
       this.tradeInCarAndOtherConfirma.isCorporateVehicles = false;
+      this.tradeInCarAndOtherConfirma.isDeathOfPerson = false;
     },
     isCorporateVehiclesChange() {
       this.tradeInPurchaseCommonRequiredDocuments.purchaseInvoiceShippingDestinationContactSlipPreparation = '';
@@ -4732,7 +4734,7 @@ export default {
               </v-col>
               <v-col cols="2" class="mt-5"> </v-col>
               <v-col cols="2" class="mt-5"> </v-col>
-                          <v-col cols="2" class="mt-1">
+              <v-col cols="2" class="mt-6">
               <div
                 class="tax-declaration-completed ml-15"
                 :class="{
