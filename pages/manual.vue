@@ -167,12 +167,10 @@ export default {
       },
 
       requiredDocumentsForRegularCars: {
-        isFillIn: "", //ご記入
-        isOfficialSeal: false, //実印（銀行印）
-        isSealCertificate: false, //印鑑証明
-        isStamping: false, //認印
-        residentCard: false, //住民票
         inheritanceDivisionAgreement: "遺産分割協議書",
+        inheritanceDivisionAgreementIsFillIn: false,//遺産分割協議書ご署名
+        inheritanceDivisionAgreementIsOfficialSeal: false,//遺産分割協議書実印
+        inheritanceDivisionAgreementSealCertificateOfRepresentativeHeir: false,//遺産分割協議書代表相続人の印鑑証明
         familyRegister: "戸籍謄本",
         revisedOriginalFamilyRegister: "改正原戸籍謄本",
         powerOfAttorney: "委任状",
@@ -203,7 +201,7 @@ export default {
         automobileLiabilityInsuranceApprovalClaimForm: "自賠責承認請求書",
         purchaseTradeInAgreement: "買取・下取同意書",
         carCheckSheet: "カーチェックシート",
-        preparation: false, //準備
+        purchaseInvoiceShippingDestinationContactSlipPreparation: false, //準備
         insuranceIncluded: "",//自動車保険付帯
         cabinetInput: '',//キャビネット入力
         dateOfCompletionOfDocumentSubmissionProcedure: '',//書類提出・手続き完了
@@ -730,7 +728,7 @@ export default {
       this.passedAwayRequiredDocuments.purchasePriceKubun = '';
       this.tradeInPurchaseCommonRequiredDocuments.insuranceIncluded = '';
       this.requiredDocumentsForRegularCars.connectedServiceSubscriptionStatus = '';
-      this.tradeInPurchaseCommonRequiredDocuments.preparation = '';
+      this.tradeInPurchaseCommonRequiredDocuments.purchaseInvoiceShippingDestinationContactSlipPreparation = '';
     },
     normalCarLightCarKubunChange() {
       this.tradeInCarAndOtherConfirma.isCorporateVehicles = false;
@@ -738,8 +736,8 @@ export default {
       this.passedAwayRequiredDocuments.purchasePriceKubun = '';
       this.tradeInPurchaseCommonRequiredDocuments.insuranceIncluded = '';
       this.requiredDocumentsForRegularCars.connectedServiceSubscriptionStatus = '';
-      this.tradeInPurchaseCommonRequiredDocuments.preparation = '';
-      this.tradeInPurchaseCommonRequiredDocuments.preparation = '';
+      this.tradeInPurchaseCommonRequiredDocuments.purchaseInvoiceShippingDestinationContactSlipPreparation = '';
+      this.tradeInPurchaseCommonRequiredDocuments.purchaseInvoiceShippingDestinationContactSlipPreparation = '';
     },
     nameChangeDeletionKubunChange() {
       this.tradeInCarAndOtherConfirma.isCorporateVehicles = false;
@@ -747,8 +745,8 @@ export default {
       this.passedAwayRequiredDocuments.purchasePriceKubun = '';
       this.tradeInPurchaseCommonRequiredDocuments.insuranceIncluded = '';
       this.requiredDocumentsForRegularCars.connectedServiceSubscriptionStatus = '';
-      this.tradeInPurchaseCommonRequiredDocuments.preparation = '';
-      this.tradeInPurchaseCommonRequiredDocuments.preparation = '';
+      this.tradeInPurchaseCommonRequiredDocuments.purchaseInvoiceShippingDestinationContactSlipPreparation = '';
+      this.tradeInPurchaseCommonRequiredDocuments.purchaseInvoiceShippingDestinationContactSlipPreparation = '';
     },
     ownershipKubunChange() {
       this.tradeInCarAndOtherConfirma.isCorporateVehicles = false;
@@ -756,8 +754,8 @@ export default {
       this.passedAwayRequiredDocuments.purchasePriceKubun = '';
       this.tradeInPurchaseCommonRequiredDocuments.insuranceIncluded = '';
       this.requiredDocumentsForRegularCars.connectedServiceSubscriptionStatus = '';
-      this.tradeInPurchaseCommonRequiredDocuments.preparation = '';
-      this.tradeInPurchaseCommonRequiredDocuments.preparation = '';
+      this.tradeInPurchaseCommonRequiredDocuments.purchaseInvoiceShippingDestinationContactSlipPreparation = '';
+      this.tradeInPurchaseCommonRequiredDocuments.purchaseInvoiceShippingDestinationContactSlipPreparation = '';
     },
     tradeInPurchaseClear() {
       this.tradeInPurchase.tradeInPurchaseKubun = '';
@@ -767,10 +765,13 @@ export default {
       this.tradeInCarAndOtherConfirma.isCorporateVehicles = false;
     },
     isCorporateVehiclesChange() {
-      this.tradeInPurchaseCommonRequiredDocuments.preparation = '';
+      this.tradeInPurchaseCommonRequiredDocuments.purchaseInvoiceShippingDestinationContactSlipPreparation = '';
     },
     isDeathOfPersonChange() {
       this.passedAwayRequiredDocuments.purchasePriceKubun = '';
+      this.requiredDocumentsForRegularCars.inheritanceDivisionAgreementIsFillIn = false;
+      this.requiredDocumentsForRegularCars.inheritanceDivisionAgreementIsOfficialSeal = false;
+      this.requiredDocumentsForRegularCars.inheritanceDivisionAgreementSealCertificateOfRepresentativeHeir = false;
     },
     insuranceIncludedChange() {
       this.tradeInPurchaseCommonRequiredDocuments.cabinetInput = '';
@@ -4724,7 +4725,7 @@ export default {
               </v-col>
               <v-col cols="2" class="mt-5">
                 <v-checkbox
-                  v-model="tradeInPurchaseCommonRequiredDocuments.preparation"
+                  v-model="tradeInPurchaseCommonRequiredDocuments.purchaseInvoiceShippingDestinationContactSlipPreparation"
                   label="準備"
                 >
                 </v-checkbox>
@@ -4735,7 +4736,7 @@ export default {
               <div
                 class="tax-declaration-completed ml-15"
                 :class="{
-                  'is-fill-in-completed': tradeInPurchaseCommonRequiredDocuments.preparation,
+                  'is-fill-in-completed': tradeInPurchaseCommonRequiredDocuments.purchaseInvoiceShippingDestinationContactSlipPreparation,
                 }"
               >
                 完了
@@ -4824,10 +4825,40 @@ export default {
                   readonly
                 ></v-combobox>
               </v-col>
-              <v-col cols="2" class="mt-5"> </v-col>
-              <v-col cols="2" class="mt-5"> </v-col>
-              <v-col cols="2" class="mt-5"> </v-col>
-              <v-col cols="2" class="mt-5"> </v-col>
+              <v-col cols="2" class="mt-5">
+                <v-checkbox
+                  v-model="requiredDocumentsForRegularCars.inheritanceDivisionAgreementIsFillIn"
+                  label="ご署名"
+                >
+                </v-checkbox>
+              </v-col>
+              <v-col cols="2" class="mt-5">
+                <v-checkbox
+                  v-model="requiredDocumentsForRegularCars.inheritanceDivisionAgreementIsOfficialSeal"
+                  label="実印"
+                >
+                </v-checkbox>
+              </v-col>
+              <v-col cols="2" class="mt-5">
+                <v-checkbox
+                  v-model="requiredDocumentsForRegularCars.inheritanceDivisionAgreementSealCertificateOfRepresentativeHeir"
+                  label="印鑑証明"
+                >
+                </v-checkbox>
+              </v-col>
+              <v-col cols="2" class="mt-6">
+              <div
+                class="tax-declaration-completed ml-15"
+                :class="{
+                  'is-fill-in-completed': requiredDocumentsForRegularCars.inheritanceDivisionAgreementIsFillIn &&
+                                          requiredDocumentsForRegularCars.inheritanceDivisionAgreementIsOfficialSeal&&
+                                          requiredDocumentsForRegularCars.inheritanceDivisionAgreementSealCertificateOfRepresentativeHeir,
+                }"
+              >
+                完了
+              </div>
+            </v-col>
+
             </v-row>
             <v-row
               v-if="
@@ -4838,7 +4869,9 @@ export default {
               <p class="explanation">
                 ・お車を査定させて頂き買取価格が<b>10万円以上</b>の場合<b>遺産分割協議書</b>が必要になります。<br />
                 　<br />
-                　遺産分割協議書には<b>相続権のある方全員のご署名と実印</b>が必要になります。
+                　遺産分割協議書には<b>相続権のある方全員のご署名と実印</b>が必要になります。<br />
+                　<br />
+                ！<b>印鑑証明は代表相続人のみ</b>必要になります。
               </p>
             </v-row>
             <v-row class="icon-ml">
