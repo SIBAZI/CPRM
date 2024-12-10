@@ -730,6 +730,7 @@ export default {
       this.passedAwayRequiredDocuments.purchasePriceKubun = '';
       this.tradeInPurchaseCommonRequiredDocuments.insuranceIncluded = '';
       this.requiredDocumentsForRegularCars.connectedServiceSubscriptionStatus = '';
+      this.tradeInPurchaseCommonRequiredDocuments.preparation = '';
     },
     normalCarLightCarKubunChange() {
       this.tradeInCarAndOtherConfirma.isCorporateVehicles = false;
@@ -737,6 +738,8 @@ export default {
       this.passedAwayRequiredDocuments.purchasePriceKubun = '';
       this.tradeInPurchaseCommonRequiredDocuments.insuranceIncluded = '';
       this.requiredDocumentsForRegularCars.connectedServiceSubscriptionStatus = '';
+      this.tradeInPurchaseCommonRequiredDocuments.preparation = '';
+      this.tradeInPurchaseCommonRequiredDocuments.preparation = '';
     },
     nameChangeDeletionKubunChange() {
       this.tradeInCarAndOtherConfirma.isCorporateVehicles = false;
@@ -744,6 +747,8 @@ export default {
       this.passedAwayRequiredDocuments.purchasePriceKubun = '';
       this.tradeInPurchaseCommonRequiredDocuments.insuranceIncluded = '';
       this.requiredDocumentsForRegularCars.connectedServiceSubscriptionStatus = '';
+      this.tradeInPurchaseCommonRequiredDocuments.preparation = '';
+      this.tradeInPurchaseCommonRequiredDocuments.preparation = '';
     },
     ownershipKubunChange() {
       this.tradeInCarAndOtherConfirma.isCorporateVehicles = false;
@@ -751,12 +756,18 @@ export default {
       this.passedAwayRequiredDocuments.purchasePriceKubun = '';
       this.tradeInPurchaseCommonRequiredDocuments.insuranceIncluded = '';
       this.requiredDocumentsForRegularCars.connectedServiceSubscriptionStatus = '';
+      this.tradeInPurchaseCommonRequiredDocuments.preparation = '';
+      this.tradeInPurchaseCommonRequiredDocuments.preparation = '';
     },
     tradeInPurchaseClear() {
       this.tradeInPurchase.tradeInPurchaseKubun = '';
       this.tradeInPurchase.normalCarLightCarKubun = '';
       this.tradeInPurchase.nameChangeDeletionKubun = '';
       this.tradeInPurchase.ownershipKubun = '';
+      this.tradeInCarAndOtherConfirma.isCorporateVehicles = false;
+    },
+    isCorporateVehiclesChange() {
+      this.tradeInPurchaseCommonRequiredDocuments.preparation = '';
     },
     isDeathOfPersonChange() {
       this.passedAwayRequiredDocuments.purchasePriceKubun = '';
@@ -4633,6 +4644,7 @@ export default {
             <v-row class="justify-center">
               <v-col cols="2" class="mt-10">
                 <v-checkbox
+                @change="isCorporateVehiclesChange"
                   v-if="
                     (this.tradeInPurchase.tradeInPurchaseKubun === '下取' ||
                       this.tradeInPurchase.tradeInPurchaseKubun === '買取') &&
@@ -4710,17 +4722,25 @@ export default {
                   readonly
                 ></v-combobox>
               </v-col>
-              <!-- <v-col cols="2" class="mt-5">
+              <v-col cols="2" class="mt-5">
                 <v-checkbox
                   v-model="tradeInPurchaseCommonRequiredDocuments.preparation"
                   label="準備"
                 >
                 </v-checkbox>
-              </v-col> -->
+              </v-col>
               <v-col cols="2" class="mt-5"> </v-col>
               <v-col cols="2" class="mt-5"> </v-col>
-              <v-col cols="2" class="mt-5"> </v-col>
-              <v-col cols="2" class="mt-5"> </v-col>
+                          <v-col cols="2" class="mt-1">
+              <div
+                class="tax-declaration-completed ml-15"
+                :class="{
+                  'is-fill-in-completed': tradeInPurchaseCommonRequiredDocuments.preparation,
+                }"
+              >
+                完了
+              </div>
+            </v-col>
             </v-row>
             <v-row
               v-if="tradeInCarAndOtherConfirma.isCorporateVehicles === true"
