@@ -7291,8 +7291,14 @@ export default {
               "
             >
             </v-col>
-
            </v-row>
+           <v-row
+             v-if="
+               this.tradeInPurchaseCommonRequiredDocuments.insuranceIncluded === '有'
+               "
+            >
+              <v-divider class="mt-5 separator"></v-divider>
+          </v-row>
            <v-row 
             class="mt-5 justify-center"
             v-if="
@@ -7346,6 +7352,13 @@ export default {
                 "
             >
             </v-col>
+          </v-row>
+          <v-row
+             v-if="
+               this.tradeInPurchaseCommonRequiredDocuments.insuranceIncluded === '有'
+               "
+            >
+              <v-divider class="mt-5 separator"></v-divider>
           </v-row>
           <v-row 
             class="mt-5 justify-center"
@@ -7469,8 +7482,16 @@ export default {
               "
             >
             </v-col>
-
            </v-row>
+           <v-row
+             v-if="
+                (this.tradeInPurchase.tradeInPurchaseKubun === '下取' ||
+                  this.tradeInPurchase.tradeInPurchaseKubun === '買取') &&
+                this.tradeInPurchase.normalCarLightCarKubun === '普通車' 
+               "
+            >
+              <v-divider class="mt-5 separator"></v-divider>
+          </v-row>
            <v-row 
             class="mt-5 justify-center"
             v-if="
