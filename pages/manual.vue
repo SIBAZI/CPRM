@@ -503,6 +503,7 @@ export default {
       this.taxDeclaration.completedDate = false;
       this.credit.creditDocuments = "";
       this.credit.creditTp = false;
+      this.delivery.deliveryDate = "";
     },
     newCarUsedCarKubunChange() {
       this.normalCarDocuments.poaOssKubun = "";
@@ -550,6 +551,7 @@ export default {
       this.lightCarDocumentsGarageVerification.completedDate = false;
       this.taxDeclaration.isFillIn = "";
       this.taxDeclaration.completedDate = false;
+      this.delivery.deliveryDate = "";
     },
     normalCarLightCarKubunChange() {
       this.normalCarDocuments.poaOssKubun = "";
@@ -598,6 +600,7 @@ export default {
       this.taxDeclaration.isFillIn = "";
       this.taxDeclaration.completedDate = false;
       this.normalCarDocuments.isRegisteredSeal = false;
+      this.delivery.deliveryDate = "";
     },
 
     paymentKubunChange() {
@@ -621,6 +624,7 @@ export default {
       this.lightCarDocuments.isStamping = false;
       this.lightCarDocuments.isResidentCard = false;
       this.credit.creditTp = "";
+      this.delivery.deliveryDate = "";
     },
     insuranceKubunChange() {
       this.insurance.jocInsuranceCompany = "";
@@ -765,6 +769,11 @@ export default {
       this.passedAwayRequiredDocuments.purchasePriceKubun = '';
       this.tradeInCarAndOtherConfirma.isCorporateVehicles = false;
       this.tradeInCarAndOtherConfirma.isDeathOfPerson = false;
+      this.tradeInPurchaseCommonRequiredDocuments.insuranceIncluded = '';
+      this.tradeInPurchaseCommonRequiredDocuments.cabinetInput = '';
+      this.tradeInPurchaseCommonRequiredDocuments.dateOfCompletionOfDocumentSubmissionProcedure = '';
+      this.requiredDocumentsForRegularCars.connectedServiceSubscriptionStatus = '';
+      this.requiredDocumentsForRegularCars.connectedServiceCancellationDate = '';
     },
     isCorporateVehiclesChange() {
       this.tradeInPurchaseCommonRequiredDocuments.purchaseInvoiceShippingDestinationContactSlipPreparation = '';
@@ -956,7 +965,7 @@ export default {
             <p class="supporting-sentences">　※現在作成中</p>
           </v-row>
           <v-row v-if="this.start.startKubun === '一般登録代行'">
-            <p class="supporting-sentences">　※現在作成中（LastUpdated.2024.12.11.AM3:01）</p>
+            <p class="supporting-sentences">　※現在作成中（LastUpdated.2024.12.12.AM0:57）</p>
           </v-row>
         </div>
         <div v-if="this.start.startKubun === '成約時登録'">
