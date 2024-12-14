@@ -5258,7 +5258,7 @@ export default {
               <p class="explanation">
                 ・代表相続人の<b>実印</b>が必要になります。　<br />
                 　<br />
-                ！代表相続人の委任状で印鑑証明を頂いている場合は印鑑証明１枚のみで併用頂けます。　
+                ！他書類で印鑑証明を頂いている場合は印鑑証明１枚のみで併用頂けます。　
               </p>
             </v-row>
             <v-row class="icon-ml">
@@ -6606,7 +6606,7 @@ export default {
                 ・お客様からお車の所有権利を譲渡頂くための書類になります。　<br />
                 　<b>実印</b>と<b>印鑑証明</b>が必要です。<br />
                 <br />
-                ！下取の委任状で印鑑証明を頂いている場合は印鑑証明１枚のみで併用頂けます。　
+                ！他書類で印鑑証明を頂いている場合は印鑑証明１枚のみで併用頂けます。　
               </p>
             </v-row>
             <v-row
@@ -6621,7 +6621,7 @@ export default {
                 ・お客様からお車の所有権利を譲渡頂くための書類になります。　<br />
                 　<b>実印</b>と<b>印鑑証明</b>が必要です。<br />
                 <br />
-                ！買取の委任状で印鑑証明を頂いている場合は印鑑証明１枚のみで併用頂けます。　
+                ！他書類で印鑑証明を頂いている場合は印鑑証明１枚のみで併用頂けます。　
               </p>
             </v-row>
             <v-row class="icon-ml">
@@ -7549,10 +7549,8 @@ export default {
            </v-row>
            <v-row
              v-if="
-                (this.tradeInPurchase.tradeInPurchaseKubun === '下取' ||
-                  this.tradeInPurchase.tradeInPurchaseKubun === '買取') &&
-                this.tradeInPurchase.normalCarLightCarKubun === '普通車' 
-               "
+              this.requiredDocumentsForRegularCars.connectedServiceSubscriptionStatus === '加入車'
+              "
             >
               <v-divider class="mt-5 separator"></v-divider>
           </v-row>
