@@ -172,9 +172,17 @@ export default {
         inheritanceDivisionAgreementIsOfficialSeal: false,//遺産分割協議書実印
         inheritanceDivisionAgreementSealCertificateOfRepresentativeHeir: false,//遺産分割協議書代表相続人の印鑑証明
         familyRegister: "戸籍謄本",
+        familyRegisterStorage: false,//戸籍謄本お預かり
         revisedOriginalFamilyRegister: "改正原戸籍謄本",
+        revisedOriginalFamilyRegisterStorage: false,//改正原戸籍謄本お預かり
         powerOfAttorney: "委任状",
+        powerOfAttorneyIsFillIn: false,//委任状ご記入
+        powerOfAttorneyIsOfficialSeal: false,//委任状実印
+        powerOfAttorneySealCertificateOfRepresentativeHeir: false,//委任状印鑑証明
         transferCertificate: "譲渡証明書",
+        transferCertificateIsFillIn: false,//譲渡証明書ご記入
+        transferCertificateIsOfficialSeal: false,//譲渡証明書実印
+        transferCertificateSealCertificateOfRepresentativeHeir: false,//譲渡証明書印鑑証明
         taxPaymentCertificate: "納税証明書",
         motorVehicleTaxPaymentSlip: "自動車税支払伺書",
         noticeOfAssignmentOfClaim: "債権譲渡通知書",
@@ -733,6 +741,14 @@ export default {
       this.tradeInPurchaseCommonRequiredDocuments.insuranceIncluded = '';
       this.requiredDocumentsForRegularCars.connectedServiceSubscriptionStatus = '';
       this.tradeInPurchaseCommonRequiredDocuments.purchaseInvoiceShippingDestinationContactSlipPreparation = '';
+      this.requiredDocumentsForRegularCars.familyRegisterStorage= false;
+      this.requiredDocumentsForRegularCars.revisedOriginalFamilyRegisterStorage= false;
+      this.requiredDocumentsForRegularCars.powerOfAttorneyIsFillIn= false;
+      this.requiredDocumentsForRegularCars.powerOfAttorneyIsOfficialSeal= false;
+      this.requiredDocumentsForRegularCars.powerOfAttorneySealCertificateOfRepresentativeHeir= false;
+      this.requiredDocumentsForRegularCars.transferCertificateIsFillIn= false;
+      this.requiredDocumentsForRegularCars.transferCertificateIsOfficialSeal= false;
+      this.requiredDocumentsForRegularCars.transferCertificateSealCertificateOfRepresentativeHeir= false;
     },
     normalCarLightCarKubunChange() {
       this.tradeInCarAndOtherConfirma.isCorporateVehicles = false;
@@ -742,6 +758,14 @@ export default {
       this.requiredDocumentsForRegularCars.connectedServiceSubscriptionStatus = '';
       this.tradeInPurchaseCommonRequiredDocuments.purchaseInvoiceShippingDestinationContactSlipPreparation = '';
       this.tradeInPurchaseCommonRequiredDocuments.purchaseInvoiceShippingDestinationContactSlipPreparation = '';
+      this.requiredDocumentsForRegularCars.familyRegisterStorage= false;
+      this.requiredDocumentsForRegularCars.revisedOriginalFamilyRegisterStorage= false;
+      this.requiredDocumentsForRegularCars.powerOfAttorneyIsFillIn= false;
+      this.requiredDocumentsForRegularCars.powerOfAttorneyIsOfficialSeal= false;
+      this.requiredDocumentsForRegularCars.powerOfAttorneySealCertificateOfRepresentativeHeir= false;
+      this.requiredDocumentsForRegularCars.transferCertificateIsFillIn= false;
+      this.requiredDocumentsForRegularCars.transferCertificateIsOfficialSeal= false;
+      this.requiredDocumentsForRegularCars.transferCertificateSealCertificateOfRepresentativeHeir= false;
     },
     nameChangeDeletionKubunChange() {
       this.tradeInCarAndOtherConfirma.isCorporateVehicles = false;
@@ -751,6 +775,14 @@ export default {
       this.requiredDocumentsForRegularCars.connectedServiceSubscriptionStatus = '';
       this.tradeInPurchaseCommonRequiredDocuments.purchaseInvoiceShippingDestinationContactSlipPreparation = '';
       this.tradeInPurchaseCommonRequiredDocuments.purchaseInvoiceShippingDestinationContactSlipPreparation = '';
+      this.requiredDocumentsForRegularCars.familyRegisterStorage= false;
+      this.requiredDocumentsForRegularCars.revisedOriginalFamilyRegisterStorage= false;
+      this.requiredDocumentsForRegularCars.powerOfAttorneyIsFillIn= false;
+      this.requiredDocumentsForRegularCars.powerOfAttorneyIsOfficialSeal= false;
+      this.requiredDocumentsForRegularCars.powerOfAttorneySealCertificateOfRepresentativeHeir= false;
+      this.requiredDocumentsForRegularCars.transferCertificateIsFillIn= false;
+      this.requiredDocumentsForRegularCars.transferCertificateIsOfficialSeal= false;
+      this.requiredDocumentsForRegularCars.transferCertificateSealCertificateOfRepresentativeHeir= false;
     },
     ownershipKubunChange() {
       this.tradeInCarAndOtherConfirma.isCorporateVehicles = false;
@@ -760,6 +792,15 @@ export default {
       this.requiredDocumentsForRegularCars.connectedServiceSubscriptionStatus = '';
       this.tradeInPurchaseCommonRequiredDocuments.purchaseInvoiceShippingDestinationContactSlipPreparation = '';
       this.tradeInPurchaseCommonRequiredDocuments.purchaseInvoiceShippingDestinationContactSlipPreparation = '';
+      this.requiredDocumentsForRegularCars.familyRegisterStorage= false;
+      this.requiredDocumentsForRegularCars.revisedOriginalFamilyRegisterStorage= false;
+      this.requiredDocumentsForRegularCars.powerOfAttorneyIsFillIn= false;
+      this.requiredDocumentsForRegularCars.powerOfAttorneyIsOfficialSeal= false;
+      this.requiredDocumentsForRegularCars.powerOfAttorneySealCertificateOfRepresentativeHeir= false;
+      this.requiredDocumentsForRegularCars.transferCertificateIsFillIn= false;
+      this.requiredDocumentsForRegularCars.transferCertificateIsOfficialSeal= false;
+      this.requiredDocumentsForRegularCars.transferCertificateSealCertificateOfRepresentativeHeir= false;
+
     },
     tradeInPurchaseClear() {
       this.tradeInPurchase.tradeInPurchaseKubun = '';
@@ -774,6 +815,14 @@ export default {
       this.tradeInPurchaseCommonRequiredDocuments.dateOfCompletionOfDocumentSubmissionProcedure = '';
       this.requiredDocumentsForRegularCars.connectedServiceSubscriptionStatus = '';
       this.requiredDocumentsForRegularCars.connectedServiceCancellationDate = '';
+      this.requiredDocumentsForRegularCars.familyRegisterStorage= false;
+      this.requiredDocumentsForRegularCars.revisedOriginalFamilyRegisterStorage= false;
+      this.requiredDocumentsForRegularCars.powerOfAttorneyIsFillIn= false;
+      this.requiredDocumentsForRegularCars.powerOfAttorneyIsOfficialSeal= false;
+      this.requiredDocumentsForRegularCars.powerOfAttorneySealCertificateOfRepresentativeHeir= false;
+      this.requiredDocumentsForRegularCars.transferCertificateIsFillIn= false;
+      this.requiredDocumentsForRegularCars.transferCertificateIsOfficialSeal= false;
+      this.requiredDocumentsForRegularCars.transferCertificateSealCertificateOfRepresentativeHeir= false;
     },
     isCorporateVehiclesChange() {
       this.tradeInPurchaseCommonRequiredDocuments.purchaseInvoiceShippingDestinationContactSlipPreparation = '';
@@ -783,6 +832,27 @@ export default {
       this.requiredDocumentsForRegularCars.inheritanceDivisionAgreementIsFillIn = false;
       this.requiredDocumentsForRegularCars.inheritanceDivisionAgreementIsOfficialSeal = false;
       this.requiredDocumentsForRegularCars.inheritanceDivisionAgreementSealCertificateOfRepresentativeHeir = false;
+      this.requiredDocumentsForRegularCars.familyRegisterStorage= false;
+      this.requiredDocumentsForRegularCars.revisedOriginalFamilyRegisterStorage= false;
+      this.requiredDocumentsForRegularCars.powerOfAttorneyIsFillIn= false;
+      this.requiredDocumentsForRegularCars.powerOfAttorneyIsOfficialSeal= false;
+      this.requiredDocumentsForRegularCars.powerOfAttorneySealCertificateOfRepresentativeHeir= false;
+      this.requiredDocumentsForRegularCars.transferCertificateIsFillIn= false;
+      this.requiredDocumentsForRegularCars.transferCertificateIsOfficialSeal= false;
+      this.requiredDocumentsForRegularCars.transferCertificateSealCertificateOfRepresentativeHeir= false;
+    },
+    purchasePriceKubunChange() {
+      this.requiredDocumentsForRegularCars.inheritanceDivisionAgreementIsFillIn = false;
+      this.requiredDocumentsForRegularCars.inheritanceDivisionAgreementIsOfficialSeal = false;
+      this.requiredDocumentsForRegularCars.inheritanceDivisionAgreementSealCertificateOfRepresentativeHeir = false;
+      this.requiredDocumentsForRegularCars.familyRegisterStorage= false;
+      this.requiredDocumentsForRegularCars.revisedOriginalFamilyRegisterStorage= false;
+      this.requiredDocumentsForRegularCars.powerOfAttorneyIsFillIn= false;
+      this.requiredDocumentsForRegularCars.powerOfAttorneyIsOfficialSeal= false;
+      this.requiredDocumentsForRegularCars.powerOfAttorneySealCertificateOfRepresentativeHeir= false;
+      this.requiredDocumentsForRegularCars.transferCertificateIsFillIn= false;
+      this.requiredDocumentsForRegularCars.transferCertificateIsOfficialSeal= false;
+      this.requiredDocumentsForRegularCars.transferCertificateSealCertificateOfRepresentativeHeir= false;
     },
     insuranceIncludedChange() {
       this.tradeInPurchaseCommonRequiredDocuments.cabinetInput = '';
@@ -4788,6 +4858,7 @@ export default {
             >
               <v-col cols="2" class="mt-5">
                 <v-select
+                  @update:modelValue="purchasePriceKubunChange"
                   v-model="passedAwayRequiredDocuments.purchasePriceKubun"
                   label="買取価格"
                   :items="['', '10万円以上', '10万円以下']"
@@ -4957,10 +5028,31 @@ export default {
                   readonly
                 ></v-combobox>
               </v-col>
+              <v-col cols="2" class="mt-5">
+              <v-checkbox
+                v-if="
+                  this.passedAwayRequiredDocuments.purchasePriceKubun ===
+                  '10万円以上' ||
+                  this.passedAwayRequiredDocuments.purchasePriceKubun ===
+                  '10万円以下'
+                "
+                v-model="requiredDocumentsForRegularCars.familyRegisterStorage"
+                label="お預かり"
+              >
+              </v-checkbox>
+              </v-col>
               <v-col cols="2" class="mt-5"> </v-col>
               <v-col cols="2" class="mt-5"> </v-col>
-              <v-col cols="2" class="mt-5"> </v-col>
-              <v-col cols="2" class="mt-5"> </v-col>
+              <v-col cols="2" class="mt-6">
+              <div
+                class="tax-declaration-completed ml-15"
+                :class="{
+                  'is-fill-in-completed': requiredDocumentsForRegularCars.familyRegisterStorage
+                }"
+              >
+                完了
+              </div>
+              </v-col>
             </v-row>
             <v-row
               v-if="
@@ -5032,10 +5124,31 @@ export default {
                   readonly
                 ></v-combobox>
               </v-col>
+              <v-col cols="2" class="mt-5">
+              <v-checkbox
+                v-if="
+                  this.passedAwayRequiredDocuments.purchasePriceKubun ===
+                  '10万円以上' ||
+                  this.passedAwayRequiredDocuments.purchasePriceKubun ===
+                  '10万円以下'
+                "
+                v-model="requiredDocumentsForRegularCars.revisedOriginalFamilyRegisterStorage"
+                label="お預かり"
+              >
+              </v-checkbox>
+              </v-col>
               <v-col cols="2" class="mt-5"> </v-col>
               <v-col cols="2" class="mt-5"> </v-col>
-              <v-col cols="2" class="mt-5"> </v-col>
-              <v-col cols="2" class="mt-5"> </v-col>
+              <v-col cols="2" class="mt-6">
+              <div
+                class="tax-declaration-completed ml-15"
+                :class="{
+                  'is-fill-in-completed': requiredDocumentsForRegularCars.revisedOriginalFamilyRegisterStorage
+                }"
+              >
+                完了
+              </div>
+              </v-col>
             </v-row>
             <v-row
               v-if="
@@ -5105,10 +5218,51 @@ export default {
                   readonly
                 ></v-combobox>
               </v-col>
-              <v-col cols="2" class="mt-5"> </v-col>
-              <v-col cols="2" class="mt-5"> </v-col>
-              <v-col cols="2" class="mt-5"> </v-col>
-              <v-col cols="2" class="mt-5"> </v-col>
+              <v-col cols="2" class="mt-5">
+              <v-checkbox
+                v-if="
+                  this.passedAwayRequiredDocuments.purchasePriceKubun ===
+                  '10万円以上'
+                "
+                v-model="requiredDocumentsForRegularCars.powerOfAttorneyIsFillIn"
+                label="ご記入"
+              >
+              </v-checkbox>
+              </v-col>
+              <v-col cols="2" class="mt-5">
+              <v-checkbox
+                v-if="
+                  this.passedAwayRequiredDocuments.purchasePriceKubun ===
+                  '10万円以上'
+                "
+                v-model="requiredDocumentsForRegularCars.powerOfAttorneyIsOfficialSeal"
+                label="実印"
+              >
+              </v-checkbox>
+              </v-col>
+              <v-col cols="2" class="mt-5">
+              <v-checkbox
+                v-if="
+                  this.passedAwayRequiredDocuments.purchasePriceKubun ===
+                  '10万円以上'
+                "
+                v-model="requiredDocumentsForRegularCars.powerOfAttorneySealCertificateOfRepresentativeHeir"
+                label="印鑑証明"
+              >
+              </v-checkbox>
+              </v-col>
+              <v-col cols="2" class="mt-6">
+              <div
+                class="tax-declaration-completed ml-15"
+                :class="{
+                  'is-fill-in-completed': requiredDocumentsForRegularCars.powerOfAttorneyIsFillIn&&
+                                          requiredDocumentsForRegularCars.powerOfAttorneyIsOfficialSeal&&
+                                          requiredDocumentsForRegularCars.powerOfAttorneySealCertificateOfRepresentativeHeir
+                }"
+              >
+                完了
+              </div>
+              </v-col>
             </v-row>
             <v-row
               v-if="
@@ -5174,10 +5328,51 @@ export default {
                   readonly
                 ></v-combobox>
               </v-col>
-              <v-col cols="2" class="mt-5"> </v-col>
-              <v-col cols="2" class="mt-5"> </v-col>
-              <v-col cols="2" class="mt-5"> </v-col>
-              <v-col cols="2" class="mt-5"> </v-col>
+              <v-col cols="2" class="mt-5">
+              <v-checkbox
+                v-if="
+                  this.passedAwayRequiredDocuments.purchasePriceKubun ===
+                  '10万円以下'
+                "
+                v-model="requiredDocumentsForRegularCars.powerOfAttorneyIsFillIn"
+                label="ご記入"
+              >
+              </v-checkbox>
+              </v-col>
+              <v-col cols="2" class="mt-5">
+              <v-checkbox
+                v-if="
+                  this.passedAwayRequiredDocuments.purchasePriceKubun ===
+                  '10万円以下'
+                "
+                v-model="requiredDocumentsForRegularCars.powerOfAttorneyIsOfficialSeal"
+                label="実印"
+              >
+              </v-checkbox>
+              </v-col>
+              <v-col cols="2" class="mt-5">
+              <v-checkbox
+                v-if="
+                  this.passedAwayRequiredDocuments.purchasePriceKubun ===
+                  '10万円以下'
+                "
+                v-model="requiredDocumentsForRegularCars.powerOfAttorneySealCertificateOfRepresentativeHeir"
+                label="印鑑証明"
+              >
+              </v-checkbox>
+              </v-col>
+              <v-col cols="2" class="mt-6">
+              <div
+                class="tax-declaration-completed ml-15"
+                :class="{
+                  'is-fill-in-completed': requiredDocumentsForRegularCars.powerOfAttorneyIsFillIn&&
+                                          requiredDocumentsForRegularCars.powerOfAttorneyIsOfficialSeal&&
+                                          requiredDocumentsForRegularCars.powerOfAttorneySealCertificateOfRepresentativeHeir
+                }"
+              >
+                完了
+              </div>
+              </v-col>
             </v-row>
             <v-row
               v-if="
@@ -5244,10 +5439,51 @@ export default {
                   readonly
                 ></v-combobox>
               </v-col>
-              <v-col cols="2" class="mt-5"> </v-col>
-              <v-col cols="2" class="mt-5"> </v-col>
-              <v-col cols="2" class="mt-5"> </v-col>
-              <v-col cols="2" class="mt-5"> </v-col>
+              <v-col cols="2" class="mt-5">
+              <v-checkbox
+                v-if="
+                  this.passedAwayRequiredDocuments.purchasePriceKubun ===
+                  '10万円以上'
+                "
+                v-model="requiredDocumentsForRegularCars.transferCertificateIsFillIn"
+                label="ご記入"
+              >
+              </v-checkbox>
+              </v-col>
+              <v-col cols="2" class="mt-5">
+              <v-checkbox
+                v-if="
+                  this.passedAwayRequiredDocuments.purchasePriceKubun ===
+                  '10万円以上'
+                "
+                v-model="requiredDocumentsForRegularCars.transferCertificateIsOfficialSeal"
+                label="実印"
+              >
+              </v-checkbox>
+              </v-col>
+              <v-col cols="2" class="mt-5">
+              <v-checkbox
+                v-if="
+                  this.passedAwayRequiredDocuments.purchasePriceKubun ===
+                  '10万円以上'
+                "
+                v-model="requiredDocumentsForRegularCars.transferCertificateSealCertificateOfRepresentativeHeir"
+                label="印鑑証明"
+              >
+              </v-checkbox>
+              </v-col>
+              <v-col cols="2" class="mt-6">
+              <div
+                class="tax-declaration-completed ml-15"
+                :class="{
+                  'is-fill-in-completed': requiredDocumentsForRegularCars.transferCertificateIsFillIn&&
+                                          requiredDocumentsForRegularCars.transferCertificateIsOfficialSeal&&
+                                          requiredDocumentsForRegularCars.transferCertificateSealCertificateOfRepresentativeHeir
+                }"
+              >
+                完了
+              </div>
+              </v-col>
             </v-row>
             <v-row
               v-if="
@@ -5308,10 +5544,51 @@ export default {
                   readonly
                 ></v-combobox>
               </v-col>
-              <v-col cols="2" class="mt-5"> </v-col>
-              <v-col cols="2" class="mt-5"> </v-col>
-              <v-col cols="2" class="mt-5"> </v-col>
-              <v-col cols="2" class="mt-5"> </v-col>
+              <v-col cols="2" class="mt-5">
+              <v-checkbox
+                v-if="
+                  this.passedAwayRequiredDocuments.purchasePriceKubun ===
+                  '10万円以下'
+                "
+                v-model="requiredDocumentsForRegularCars.transferCertificateIsFillIn"
+                label="ご記入"
+              >
+              </v-checkbox>
+              </v-col>
+              <v-col cols="2" class="mt-5">
+              <v-checkbox
+                v-if="
+                  this.passedAwayRequiredDocuments.purchasePriceKubun ===
+                  '10万円以下'
+                "
+                v-model="requiredDocumentsForRegularCars.transferCertificateIsOfficialSeal"
+                label="実印"
+              >
+              </v-checkbox>
+              </v-col>
+              <v-col cols="2" class="mt-5">
+              <v-checkbox
+                v-if="
+                  this.passedAwayRequiredDocuments.purchasePriceKubun ===
+                  '10万円以下'
+                "
+                v-model="requiredDocumentsForRegularCars.transferCertificateSealCertificateOfRepresentativeHeir"
+                label="印鑑証明"
+              >
+              </v-checkbox>
+              </v-col>
+              <v-col cols="2" class="mt-6">
+              <div
+                class="tax-declaration-completed ml-15"
+                :class="{
+                  'is-fill-in-completed': requiredDocumentsForRegularCars.transferCertificateIsFillIn&&
+                                          requiredDocumentsForRegularCars.transferCertificateIsOfficialSeal&&
+                                          requiredDocumentsForRegularCars.transferCertificateSealCertificateOfRepresentativeHeir
+                }"
+              >
+                完了
+              </div>
+              </v-col>
             </v-row>
             <v-row
               v-if="
