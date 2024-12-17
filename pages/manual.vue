@@ -8117,7 +8117,7 @@ export default {
 
 
       <div class="whole-bottom"></div>
-      <div class="footer"></div>
+      <div class="footer"><p class="copyright">Copyright🄫 2020 ENFINI HIROSHIMA. All Rights Reserved.</p></div>
     </v-app>
   </div>
 </template>
@@ -8158,7 +8158,7 @@ export default {
   background: #808080;
   color: #ffffff;
   border-radius: 5px;
-  max-width: 82%;
+  max-width: 83%;
   margin-left: 8%;
 }
 .supporting-sentences {
@@ -8168,7 +8168,7 @@ export default {
   background: #4db56a;
   color: #ffffff;
   border-radius: 5px;
-  max-width: 82%;
+  max-width: 83%;
   margin-left: 8%;
 }
 .normalCarDocuments-completedDate {
@@ -8178,7 +8178,7 @@ export default {
   background: #4db56a;
   color: #ffffff;
   border-radius: 5px;
-  max-width: 82%;
+  max-width: 83%;
   margin-left: 8%;
 }
 .lightCarDocuments-completedDate {
@@ -8188,7 +8188,7 @@ export default {
   background: #6e6eff;
   color: #ffffff;
   border-radius: 5px;
-  max-width: 82%;
+  max-width: 83%;
   margin-left: 8%;
 }
 .normalCarDocumentsGarageVerification-completedDate {
@@ -8198,7 +8198,7 @@ export default {
   background: #6e6eff;
   color: #ffffff;
   border-radius: 5px;
-  max-width: 82%;
+  max-width: 83%;
   margin-left: 8%;
 }
 .lightCarDocumentsGarageVerification-completedDate {
@@ -8208,7 +8208,7 @@ export default {
   background: #fc9325;
   color: #ffffff;
   border-radius: 5px;
-  max-width: 82%;
+  max-width: 83%;
   margin-left: 8%;
 }
 
@@ -8216,35 +8216,35 @@ export default {
   background: #ff3f3f;
   color: #ffffff;
   border-radius: 5px;
-  max-width: 82%;
+  max-width: 83%;
   margin-left: 8%;
 }
 .insurance {
   background: #33ccff;
   color: #ffffff;
   border-radius: 5px;
-  max-width: 82%;
+  max-width: 83%;
   margin-left: 8%;
 }
 .credit {
   background: #e6b422;
   color: #ffffff;
   border-radius: 5px;
-  max-width: 82%;
+  max-width: 83%;
   margin-left: 8%;
 }
 .goal {
   background: #808080;
   color: #ffffff;
   border-radius: 5px;
-  max-width: 82%;
+  max-width: 83%;
   margin-left: 8%;
 }
 .memo {
   background: #262626;
   color: #ffffff;
   border-radius: 5px;
-  max-width: 82%;
+  max-width: 83%;
   margin-left: 8%;
 }
 .storingMethod-completedDate {
@@ -8312,7 +8312,12 @@ export default {
   width: 100%;
   height: 45px;
   background-color: #101010;
+  justify-content: center;
+  display:flex;
+  align-items:center;
+  color: #ffffff;
 }
+
 .complete {
   width: 100px;
   height: 45px;
@@ -8465,7 +8470,7 @@ export default {
   background-color: #ff0000;
 }
 .separator {
-  max-width: 82%;
+  max-width: 83%;
   margin-left: 8%;
 }
 
