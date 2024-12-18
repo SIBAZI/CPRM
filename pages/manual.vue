@@ -162,9 +162,12 @@ export default {
 
       purchaseDocuments: {
         purchaseDetails: "買取明細書",
+        purchaseDetailsIsFillIn: false,//買取明細書ご記入
+        purchaseDetailsIsStamping: false,//買取明細書認印
         copyOfIdentityDocument: "本人確認書類コピー",
         copyOfIdentityDocumentStorage: false,//本人確認書類コピーお預かり
         confirmationOfTransferDestination: "振込先確認書",
+        confirmationOfTransferDestinationIsFillIn: false,//振込先確認書ご記入
       },
 
       requiredDocumentsForRegularCars: {
@@ -177,8 +180,11 @@ export default {
         revisedOriginalFamilyRegister: "改正原戸籍謄本",
         revisedOriginalFamilyRegisterStorage: false,//改正原戸籍謄本お預かり
         powerOfAttorney: "委任状",
-        powerOfAttorneyIsFillIn: false,//委任状ご記入
-        powerOfAttorneyIsOfficialSeal: false,//委任状実印
+        powerOfAttorneyIsFillIn: false,//委任状ご記入（本人逝去）
+        powerOfAttorneyIsOfficialSeal: false,//委任状実印（本人逝去）
+        powerOfAttorneyIsFillIn2: false,//委任状ご記入
+        powerOfAttorneyIsOfficialSeal2: false,//委任状実印
+        sealCertificate: false,//印鑑証明
         powerOfAttorneyStorage: false,//委任状お預かり
         powerOfAttorneySealCertificateOfRepresentativeHeir: false,//委任状印鑑証明
         transferCertificate: "譲渡証明書",
@@ -769,6 +775,12 @@ export default {
       this.requiredDocumentsForRegularCars.applicationRequestFormStorage= false;
       this.requiredDocumentsForLightVehicles.letterOfConsentStorage= false;
       this.copyOfIdentityDocumentStorage= false;
+      this.purchaseDocuments.purchaseDetailsIsFillIn= false;
+      this.purchaseDocuments.purchaseDetailsIsStamping= false;
+      this.purchaseDocuments.confirmationOfTransferDestinationIsFillIn= false;
+      this.requiredDocumentsForRegularCars.powerOfAttorneyIsFillIn2= false;
+      this.requiredDocumentsForRegularCars.powerOfAttorneyIsOfficialSeal2= false;
+      this.requiredDocumentsForRegularCars.sealCertificate= false;
     },
     normalCarLightCarKubunChange() {
       this.tradeInCarAndOtherConfirma.isCorporateVehicles = false;
@@ -795,6 +807,13 @@ export default {
       this.requiredDocumentsForRegularCars.applicationRequestFormStorage= false;
       this.requiredDocumentsForLightVehicles.letterOfConsentStorage= false;
       this.copyOfIdentityDocumentStorage= false;
+      this.purchaseDocuments.purchaseDetailsIsFillIn= false;
+      this.purchaseDocuments.purchaseDetailsIsStamping= false;
+      this.purchaseDocuments.confirmationOfTransferDestinationIsFillIn= false;
+      this.requiredDocumentsForRegularCars.powerOfAttorneyIsFillIn2= false;
+      this.requiredDocumentsForRegularCars.powerOfAttorneyIsOfficialSeal2= false;
+      this.requiredDocumentsForRegularCars.sealCertificate= false;
+
     },
     nameChangeDeletionKubunChange() {
       this.tradeInCarAndOtherConfirma.isCorporateVehicles = false;
@@ -821,6 +840,13 @@ export default {
       this.requiredDocumentsForRegularCars.applicationRequestFormStorage= false;
       this.requiredDocumentsForLightVehicles.letterOfConsentStorage= false;
       this.copyOfIdentityDocumentStorage= false;
+      this.purchaseDocuments.purchaseDetailsIsFillIn= false;
+      this.purchaseDocuments.purchaseDetailsIsStamping= false;
+      this.purchaseDocuments.confirmationOfTransferDestinationIsFillIn= false;
+      this.requiredDocumentsForRegularCars.powerOfAttorneyIsFillIn2= false;
+      this.requiredDocumentsForRegularCars.powerOfAttorneyIsOfficialSeal2= false;
+      this.requiredDocumentsForRegularCars.sealCertificate= false;
+
     },
     ownershipKubunChange() {
       this.tradeInCarAndOtherConfirma.isCorporateVehicles = false;
@@ -847,6 +873,13 @@ export default {
       this.requiredDocumentsForRegularCars.applicationRequestFormStorage= false;
       this.requiredDocumentsForLightVehicles.letterOfConsentStorage= false;
       this.copyOfIdentityDocumentStorage= false;
+      this.purchaseDocuments.purchaseDetailsIsFillIn= false;
+      this.purchaseDocuments.purchaseDetailsIsStamping= false;
+      this.purchaseDocuments.confirmationOfTransferDestinationIsFillIn= false;
+      this.requiredDocumentsForRegularCars.powerOfAttorneyIsFillIn2= false;
+      this.requiredDocumentsForRegularCars.powerOfAttorneyIsOfficialSeal2= false;
+      this.requiredDocumentsForRegularCars.sealCertificate= false;
+
     },
     tradeInPurchaseClear() {
       this.tradeInPurchase.tradeInPurchaseKubun = '';
@@ -878,6 +911,12 @@ export default {
       this.requiredDocumentsForRegularCars.applicationRequestFormStorage= false;
       this.requiredDocumentsForLightVehicles.letterOfConsentStorage= false;
       this.copyOfIdentityDocumentStorage= false;
+      this.purchaseDocuments.purchaseDetailsIsFillIn= false;
+      this.purchaseDocuments.purchaseDetailsIsStamping= false;
+      this.purchaseDocuments.confirmationOfTransferDestinationIsFillIn= false;
+      this.requiredDocumentsForRegularCars.powerOfAttorneyIsFillIn2= false;
+      this.requiredDocumentsForRegularCars.powerOfAttorneyIsOfficialSeal2= false;
+      this.requiredDocumentsForRegularCars.sealCertificate= false;
     },
     isCorporateVehiclesChange() {
       this.tradeInPurchaseCommonRequiredDocuments.purchaseInvoiceShippingDestinationContactSlipPreparation = '';
@@ -1090,7 +1129,7 @@ export default {
             <p class="supporting-sentences">　※現在作成中</p>
           </v-row>
           <v-row v-if="this.start.startKubun === '一般登録代行'">
-            <p class="supporting-sentences">　※現在作成中（LastUpdated.2024.12.15.AM03:18）</p>
+            <p class="supporting-sentences">　※現在作成中（LastUpdated.2024.12.18.AM03:47）</p>
           </v-row>
         </div>
         <div v-if="this.start.startKubun === '成約時登録'">
@@ -6628,10 +6667,32 @@ export default {
                   readonly
                 ></v-combobox>
               </v-col>
+              <v-col cols="2" class="mt-5">
+              <v-checkbox
+                v-model="purchaseDocuments.purchaseDetailsIsFillIn"
+                label="ご記入"
+              >
+              </v-checkbox>
+              </v-col>
+              <v-col cols="2" class="mt-5">
+              <v-checkbox
+                v-model="purchaseDocuments.purchaseDetailsIsStamping"
+                label="認印"
+              >
+              </v-checkbox>
+              </v-col>
               <v-col cols="2" class="mt-5"> </v-col>
-              <v-col cols="2" class="mt-5"> </v-col>
-              <v-col cols="2" class="mt-5"> </v-col>
-              <v-col cols="2" class="mt-5"> </v-col>
+              <v-col cols="2" class="mt-6">
+              <div
+                class="tax-declaration-completed ml-15"
+                :class="{
+                  'is-fill-in-completed': purchaseDocuments.purchaseDetailsIsFillIn&&
+                                          purchaseDocuments.purchaseDetailsIsStamping
+                }"
+              >
+                完了
+              </div>
+              </v-col>
             </v-row>
             <v-row
               v-if="
@@ -6693,10 +6754,25 @@ export default {
                   readonly
                 ></v-combobox>
               </v-col>
+              <v-col cols="2" class="mt-5">
+              <v-checkbox
+                v-model="purchaseDocuments.confirmationOfTransferDestinationIsFillIn"
+                label="ご記入"
+              >
+              </v-checkbox>
+              </v-col>
               <v-col cols="2" class="mt-5"> </v-col>
               <v-col cols="2" class="mt-5"> </v-col>
-              <v-col cols="2" class="mt-5"> </v-col>
-              <v-col cols="2" class="mt-5"> </v-col>
+              <v-col cols="2" class="mt-6">
+              <div
+                class="tax-declaration-completed ml-15"
+                :class="{
+                  'is-fill-in-completed': purchaseDocuments.confirmationOfTransferDestinationIsFillIn
+                }"
+              >
+                完了
+              </div>
+              </v-col>
             </v-row>
             <v-row
               v-if="
@@ -6755,10 +6831,39 @@ export default {
                   readonly
                 ></v-combobox>
               </v-col>
-              <v-col cols="2" class="mt-5"> </v-col>
-              <v-col cols="2" class="mt-5"> </v-col>
-              <v-col cols="2" class="mt-5"> </v-col>
-              <v-col cols="2" class="mt-5"> </v-col>
+              <v-col cols="2" class="mt-5">
+              <v-checkbox
+                v-model="requiredDocumentsForRegularCars.powerOfAttorneyIsFillIn2"
+                label="ご記入"
+              >
+              </v-checkbox>
+              </v-col>
+              <v-col cols="2" class="mt-5">
+              <v-checkbox
+                v-model="requiredDocumentsForRegularCars.powerOfAttorneyIsOfficialSeal2"
+                label="実印"
+              >
+              </v-checkbox>
+              </v-col>
+              <v-col cols="2" class="mt-5">
+              <v-checkbox
+                v-model="requiredDocumentsForRegularCars.sealCertificate"
+                label="印鑑証明"
+              >
+              </v-checkbox>
+              </v-col>
+              <v-col cols="2" class="mt-6">
+              <div
+                class="tax-declaration-completed ml-15"
+                :class="{
+                  'is-fill-in-completed': requiredDocumentsForRegularCars.powerOfAttorneyIsFillIn2&&
+                                          requiredDocumentsForRegularCars.powerOfAttorneyIsOfficialSeal2&&
+                                          requiredDocumentsForRegularCars.sealCertificate
+                }"
+              >
+                完了
+              </div>
+              </v-col>
             </v-row>
             <v-row
               v-if="
