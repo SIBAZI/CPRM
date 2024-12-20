@@ -576,7 +576,7 @@ export default {
       this.taxDeclaration.completedDate = false;
       this.delivery.deliveryDate = "";
     },
-    normalCarLightCarKubunChange() {
+    normalCarLightCarChange() {
       this.normalCarDocuments.poaOssKubun = "";
       this.normalCarDocuments.isFillIn = false;
       this.normalCarDocuments.isRegisteredSeal = false;
@@ -622,7 +622,6 @@ export default {
       this.lightCarDocumentsGarageVerification.completedDate = false;
       this.taxDeclaration.isFillIn = "";
       this.taxDeclaration.completedDate = false;
-      this.normalCarDocuments.isRegisteredSeal = false;
       this.delivery.deliveryDate = "";
     },
 
@@ -1155,7 +1154,7 @@ export default {
 
             <v-col cols="2" class="">
               <v-select
-                @update:modelValue="normalCarLightCarKubunChange"
+                @update:modelValue="normalCarLightCarChange"
                 v-model="contracts.normalCarLightCarKubun"
                 label="（２）普通車or軽自動車"
                 :items="['', '普通車', '軽自動車']"
