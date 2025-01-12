@@ -1243,7 +1243,7 @@ export default {
             <p class="supporting-sentences">　※現在作成中</p>
           </v-row>
           <v-row v-if="this.start.startKubun === '一般登録代行'">
-            <p class="supporting-sentences">　※現在作成中（LastUpdated.2025.01.08.AM02:17）</p>
+            <p class="supporting-sentences">　※現在作成中（LastUpdated.2025.01.12.AM02:57）</p>
           </v-row>
         </div>
         <div v-if="this.start.startKubun === '成約時登録'">
@@ -8508,6 +8508,16 @@ export default {
             </v-row>
           </div>
         </div>
+        <!-- 納車準備 -->
+        <div class="delivery-preparation">
+          <div v-if="this.start.startKubun === '納車準備'">
+            <v-row>
+              <v-toolbar-title class="mt-5 d-flex align-center start">
+                　▼　ここからは納車準備になります。
+              </v-toolbar-title>
+            </v-row>
+          </div>
+        </div>
       </div>
       <div class="whole-bottom"></div>
       <div class="footer"></div>
@@ -9083,7 +9093,5 @@ export default {
   margin-left: 8%;
 }
 
-.buy-trade {
-  top: 5%;
-}
+
 </style>
