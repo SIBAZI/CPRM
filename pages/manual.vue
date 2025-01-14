@@ -8516,6 +8516,49 @@ export default {
                 　▼　ここからは納車準備になります。
               </v-toolbar-title>
             </v-row>
+            <v-row>
+              <p class="mt-5 explanation">
+                ・新車、中古車が運輸支局で公道を走るための検査や手続きを終えた車は基本的に　<br>
+                　キャリアカーに乗って店舗に運ばれてきます。
+              </p>
+            </v-row>
+            <v-row class="icon-ml">
+            <v-col
+              cols="1"
+              class="mt-3 d-flex align-center"
+            >
+              <v-btn
+                @click="openModal('キャリアカー.jpg')"
+                density="compact"
+                icon="mdi-help"
+              ></v-btn>
+            </v-col>
+            </v-row>
+
+            <v-row>
+              <v-toolbar-title class="mt-5 d-flex align-center start">
+                　➀　ご成約頂いた現車の確認
+              </v-toolbar-title>
+            </v-row>
+            <v-row>
+              <p class="mt-5 explanation">
+                ・ご成約頂いた現車か間違いないことを確認して傷が無いか確認しましょう。　<br>
+                （中古車の場合はご成約頂いた時点の車の状態から傷が増えていないか確認します。）　<br>
+                　↑カーチェックシートを確認しましょう。【？】
+              </p>
+            </v-row>
+            <v-row class="icon-ml">
+            <v-col
+              cols="1"
+              class="mt-3 d-flex align-center"
+            >
+              <v-btn
+                @click="openModal('カーチェックシート.jpg')"
+                density="compact"
+                icon="mdi-help"
+              ></v-btn>
+            </v-col>
+            </v-row>
           </div>
         </div>
       </div>
