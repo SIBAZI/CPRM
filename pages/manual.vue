@@ -1243,7 +1243,7 @@ export default {
             <p class="supporting-sentences">　※現在作成中</p>
           </v-row>
           <v-row v-if="this.start.startKubun === '一般登録代行'">
-            <p class="supporting-sentences">　※現在作成中（LastUpdated.2025.01.19.AM02:51）</p>
+            <p class="supporting-sentences">　※現在作成中（LastUpdated.2025.01.20.AM01:13）</p>
           </v-row>
         </div>
         <div v-if="this.start.startKubun === '成約時登録'">
@@ -5916,7 +5916,7 @@ export default {
                 ・お客様が乗られているお車の情報が記録されている用紙です。　<br />
                 <br />
                 　主に車検証入れの中に保管されています。　<br />
-                　ご成約頂いたお車の納車日当日に車検証をお預かりしてください。　<br />
+                　ご成約頂いたお車の<b>納車日当日</b>に車検証をお預かりしてください。　<br />
                 <br />
                 ！車検証の住所と印鑑証明の住所が違う場合は<b>住民票</b>が必要になります。　
               </p>
@@ -6082,7 +6082,7 @@ export default {
                 ・自賠責保険の情報が記録されている用紙です。　<br />
                 <br />
                 　主に車検証入れの中に保管されています。　<br />
-                　ご成約頂いたお車の納車日当日に自賠責保険証をお預かりしてください。　<br />
+                　ご成約頂いたお車の<b>納車日当日</b>に自賠責保険証をお預かりしてください。　<br />
               </p>
             </v-row>
             <v-row
@@ -6197,7 +6197,7 @@ export default {
                 ・車を解体する際にかかる「リサイクル料金」を支払ったことを証明する用紙です。　<br />
                 <br />
                 　主に車検証入れの中に保管されています。　<br />
-                　ご成約頂いたお車の納車日当日にリサイクル券をお預かりしてください。　
+                　ご成約頂いたお車の<b>納車日当日</b>にリサイクル券をお預かりしてください。　
               </p>
             </v-row>
             <v-row
@@ -6327,7 +6327,7 @@ export default {
                 ・自動車税のお支払いを証明するための用紙です。　<br />
                 <br />
                 　主に車検証入れの中に保管されています。<br />
-                　ご成約頂いたお車の納車日当日に納税証明書をお預かりしてください。　<br />
+                　ご成約頂いたお車の<b>納車日当日</b>に納税証明書をお預かりしてください。　<br />
                 <br />
                 ！自動車税のお支払請求は毎年4月に届きます。　<br />
               </p>
@@ -8543,6 +8543,7 @@ export default {
             <v-row>
               <p class="mt-5 explanation">
                 ・ご成約頂いた現車か間違いないことを確認して傷が無いか確認しましょう。　<br>
+                　<br>
                 （中古車の場合はご成約頂いた時点の車の状態から傷が増えていないか確認します。）　<br>
                 　↑カーチェックシートを確認しましょう。【？】
               </p>
@@ -8554,6 +8555,30 @@ export default {
             >
               <v-btn
                 @click="openModal('カーチェックシート.jpg')"
+                density="compact"
+                icon="mdi-help"
+              ></v-btn>
+            </v-col>
+            </v-row>
+            <v-row>
+              <v-toolbar-title class="mt-5 d-flex align-center start">
+                　➁　牽引フックを外す
+              </v-toolbar-title>
+            </v-row>
+            <v-row>
+              <p class="mt-5 explanation">
+                ・牽引フックを外します。　<br>
+                　<br>
+                ※牽引フックを外す際は外しにくかったりするため怪我や車を傷つけてしまわないよう注意です。　
+              </p>
+            </v-row>
+            <v-row class="icon-ml">
+            <v-col
+              cols="1"
+              class="mt-3 d-flex align-center"
+            >
+              <v-btn
+                @click="openModal('牽引フック.jpg')"
                 density="compact"
                 icon="mdi-help"
               ></v-btn>
