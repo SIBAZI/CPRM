@@ -244,6 +244,12 @@ export default {
         cabinetInput: '',//キャビネット入力
         dateOfCompletionOfDocumentSubmissionProcedure: '',//書類提出・手続き完了
       },
+
+      //納車準備
+      deliveryPreparation: {
+        newCarUsedCarKubun: "", //新車・中古区分
+      },
+
       purchase: {},
 
       // memos: [
@@ -8540,15 +8546,43 @@ export default {
                 　➀　ご成約頂いた現車の確認
               </v-toolbar-title>
             </v-row>
+            <v-row class="mt-9 justify-center">
+            <v-col cols="2" class="">
+              <v-select
+                v-model="deliveryPreparation.newCarUsedCarKubun"
+                label="新車or中古車"
+                :items="['', '新車', '中古車']"
+                variant="outlined"
+              ></v-select>
+            </v-col>
+            <v-col cols="2" class=""></v-col>
+            <v-col cols="2" class=""></v-col>
+            <v-col cols="2" class=""></v-col>
+            <v-col cols="2" class=""></v-col>
+            </v-row>
+
             <v-row>
-              <p class="mt-5 explanation">
+              <p class="mt-5 explanation"
+                v-if="
+                this.deliveryPreparation.newCarUsedCarKubun === '新車'
+                "
+              >
                 ・ご成約頂いた現車か間違いないことを確認して傷が無いか確認しましょう。　<br>
-                　<br>
-                （中古車の場合はご成約頂いた時点の車の状態から傷が増えていないか確認します。）　<br>
+              </p>
+              <p class="mt-5 explanation"
+              v-if="
+                this.deliveryPreparation.newCarUsedCarKubun === '中古車'
+                "
+              >
+                ・ご成約頂いた現車か間違いないことを確認して、ご成約頂いた時点の車の状態から傷が増えていないか確認します。　<br>
                 　↑カーチェックシートを確認しましょう。【？】
               </p>
             </v-row>
-            <v-row class="icon-ml">
+            <v-row class="icon-ml"
+            v-if="
+                this.deliveryPreparation.newCarUsedCarKubun === '中古車'
+                "
+            >
             <v-col
               cols="1"
               class="mt-3 d-flex align-center"
@@ -8560,19 +8594,34 @@ export default {
               ></v-btn>
             </v-col>
             </v-row>
-            <v-row>
+            <v-row
+            v-if="
+                this.deliveryPreparation.newCarUsedCarKubun === '新車' ||
+                this.deliveryPreparation.newCarUsedCarKubun === '中古車'
+                "
+            >
               <v-toolbar-title class="mt-5 d-flex align-center start">
                 　➁　牽引フックを外す
               </v-toolbar-title>
             </v-row>
-            <v-row>
+            <v-row
+            v-if="
+                this.deliveryPreparation.newCarUsedCarKubun === '新車' ||
+                this.deliveryPreparation.newCarUsedCarKubun === '中古車'
+                "
+            >
               <p class="mt-5 explanation">
                 ・牽引フックを外します。　<br>
                 　<br>
                 ※牽引フックを外す際は外しにくかったりするため怪我や車を傷つけてしまわないよう注意です。　
               </p>
             </v-row>
-            <v-row class="icon-ml">
+            <v-row class="icon-ml"
+            v-if="
+                this.deliveryPreparation.newCarUsedCarKubun === '新車' ||
+                this.deliveryPreparation.newCarUsedCarKubun === '中古車'
+                "
+            >
             <v-col
               cols="1"
               class="mt-3 d-flex align-center"
@@ -8583,6 +8632,47 @@ export default {
                 icon="mdi-help"
               ></v-btn>
             </v-col>
+            </v-row>
+            <v-row
+            v-if="
+                this.deliveryPreparation.newCarUsedCarKubun === '新車' ||
+                this.deliveryPreparation.newCarUsedCarKubun === '中古車'
+                "
+            >
+              <v-toolbar-title class="mt-5 d-flex align-center start">
+                　➂　納車準備のための道具、書類一式を確認
+              </v-toolbar-title>
+            </v-row>
+            <v-row
+            v-if="
+                this.deliveryPreparation.newCarUsedCarKubun === '新車' ||
+                this.deliveryPreparation.newCarUsedCarKubun === '中古車'
+                "
+            >
+              <p class="mt-5 explanation">
+                ・ナンバープレート（ナンバープレートを停めるネジ）、車検証、自賠責保険証、車検ステッカーがセットになって　<br>
+                　が届いているか確認しましょう。　<br>
+              </p>
+            </v-row>
+            <v-row
+            v-if="
+                this.deliveryPreparation.newCarUsedCarKubun === '新車' ||
+                this.deliveryPreparation.newCarUsedCarKubun === '中古車'
+                "
+            >
+              <v-toolbar-title class="mt-5 d-flex align-center start">
+                　➃　ナンバープレート取付
+              </v-toolbar-title>
+            </v-row>
+            <v-row
+            v-if="
+                this.deliveryPreparation.newCarUsedCarKubun === '新車' ||
+                this.deliveryPreparation.newCarUsedCarKubun === '中古車'
+                "
+            >
+              <p class="mt-5 explanation">
+                ※オプションに<b>ナンバープレートホルダー</b>がある場合は付け忘れないように注意です。
+              </p>
             </v-row>
           </div>
         </div>
