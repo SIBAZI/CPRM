@@ -248,6 +248,11 @@ export default {
       //納車準備
       deliveryPreparation: {
         newCarUsedCarKubun: "", //新車・中古区分
+        normalCarLightCarKubun: "", //普通車・軽自動車区分
+        etcKubun: "", //（ETC）有・無区分
+        isExtendedWarranty: "", //（延長保証）有・無区分
+        isMaintenancePack: "", //（メンテナンスパック）有・無区分
+        isKeeperCoating: "",//（MGコーティング）有・無区分
       },
 
       purchase: {},
@@ -1075,6 +1080,13 @@ export default {
     connectedServiceSubscriptionStatusChange() {
       this.requiredDocumentsForRegularCars.connectedServiceCancellationDate = '';
     },
+    deliveryPreparationNewCarUsedCarKubunChange() {
+      this.deliveryPreparation.etcKubun = '';
+      this.deliveryPreparation.isExtendedWarranty = '';
+      this.deliveryPreparation.isMaintenancePack = '';
+      this.deliveryPreparation.isKeeperCoating = '';
+    }
+
 
 
 
@@ -8549,6 +8561,7 @@ export default {
             <v-row class="mt-9 justify-center">
             <v-col cols="2" class="">
               <v-select
+                @update:modelValue="deliveryPreparationNewCarUsedCarKubunChange"
                 v-model="deliveryPreparation.newCarUsedCarKubun"
                 label="新車or中古車"
                 :items="['', '新車', '中古車']"
@@ -8562,7 +8575,7 @@ export default {
             </v-row>
 
             <v-row>
-              <p class="mt-5 explanation"
+              <p class="mt-5 mb-5 explanation"
                 v-if="
                 this.deliveryPreparation.newCarUsedCarKubun === '新車'
                 "
@@ -8650,8 +8663,8 @@ export default {
                 "
             >
               <p class="mt-5 mb-5 explanation">
-                ・ナンバープレート（ナンバープレートを停めるネジ）、車検証、自賠責保険証、車検ステッカーがセットになって　<br>
-                　が届いているか確認しましょう。　<br>
+                ・<b>ナンバープレート（ナンバープレートを停めるネジ）、車検証、自賠責保険証、車検ステッカー</b>がセットになって　<br>
+                　店舗に届いているか確認しましょう。　<br>
               </p>
             </v-row>
             <v-row
@@ -8671,18 +8684,27 @@ export default {
                 "
             >
               <p class="mt-5 mb-5 explanation">
-                ※オプションに<b>ナンバープレートホルダー</b>がある場合は付け忘れないように注意です。
+                ・ナンバープレートを取り付けます。　<br>
+                　<br>
+                ！オプションに<b>ナンバープレートホルダー</b>、<b>盗難防止ネジ</b>がある場合は付け忘れがないように注意です。　
               </p>
             </v-row>
-            <v-row
+            <v-row class="icon-ml"
             v-if="
                 this.deliveryPreparation.newCarUsedCarKubun === '新車' ||
                 this.deliveryPreparation.newCarUsedCarKubun === '中古車'
                 "
             >
-              <v-toolbar-title class="mt-5 d-flex align-center start">
-                　➄　点検ステッカー準備
-              </v-toolbar-title>
+            <v-col
+              cols="1"
+              class="mt-3 d-flex align-center"
+            >
+              <v-btn
+                @click="openModal('ナンバープレートホルダー・盗難防止ネジ.jpg')"
+                density="compact"
+                icon="mdi-help"
+              ></v-btn>
+            </v-col>
             </v-row>
             <v-row
             v-if="
@@ -8691,7 +8713,7 @@ export default {
                 "
             >
               <v-toolbar-title class="mt-5 d-flex align-center start">
-                　➅　車検ステッカー、点検ステッカー貼り付け
+                　➄　点検ステッカー準備、貼付
               </v-toolbar-title>
             </v-row>
             <v-row
@@ -8700,49 +8722,52 @@ export default {
                 this.deliveryPreparation.newCarUsedCarKubun === '中古車'
                 "
             >
-              <v-toolbar-title class="mt-5 d-flex align-center start">
-                　➆　メンテナンスノート記入
-              </v-toolbar-title>
+              <p class="mt-5 mb-5 explanation">
+                ・納車から12ヶ月後の点検をお知らせするステッカーを準備しましょう。 <br>
+                　<br>
+                ！点検ステッカーは<b>助手席に座った場所から見てフロントガラスの左上</b>に貼ります。　
+              </p>
             </v-row>
-            <v-row
+            <v-row class="icon-ml"
             v-if="
                 this.deliveryPreparation.newCarUsedCarKubun === '新車' ||
                 this.deliveryPreparation.newCarUsedCarKubun === '中古車'
                 "
             >
-              <v-toolbar-title class="mt-5 d-flex align-center start">
-                　➇　説明書入れ準備
-              </v-toolbar-title>
-            </v-row>
-            <v-row
-            v-if="
-                this.deliveryPreparation.newCarUsedCarKubun === '新車' ||
-                this.deliveryPreparation.newCarUsedCarKubun === '中古車'
-                "
+            <v-col
+              cols="1"
+              class="mt-3 d-flex align-center"
             >
-              <v-toolbar-title class="mt-5 d-flex align-center start">
-                　➈　車検証入れ準備
-              </v-toolbar-title>
-            </v-row>
-            <v-row
-            v-if="
-                this.deliveryPreparation.newCarUsedCarKubun === '新車' ||
-                this.deliveryPreparation.newCarUsedCarKubun === '中古車'
-                "
+            <p>作成方法　</p>
+              <v-btn
+                @click="openModal('点検ステッカー作成方法.jpg')"
+                density="compact"
+                icon="mdi-help"
+              ></v-btn>
+            </v-col>
+            <v-col
+              cols="1"
+              class="mt-3 d-flex align-center"
             >
-              <v-toolbar-title class="mt-5 d-flex align-center start">
-                　➉　車庫証明届け出、受け取り
-              </v-toolbar-title>
-            </v-row>
-            <v-row
-            v-if="
-                this.deliveryPreparation.newCarUsedCarKubun === '新車' ||
-                this.deliveryPreparation.newCarUsedCarKubun === '中古車'
-                "
+            <p>貼付場所　</p>
+              <v-btn
+                @click="openModal('点検ステッカー貼り場所.jpg')"
+                density="compact"
+                icon="mdi-help"
+              ></v-btn>
+            </v-col>
+            <v-col
+              cols="1"
+              class="mt-3 d-flex align-center"
             >
-              <v-toolbar-title class="mt-5 d-flex align-center start">
-                　⑪　納車前点検依頼（社外品の装備などあれば取付依頼）
-              </v-toolbar-title>
+            <p>　　　　　　</p>
+              <v-btn
+                href="https://www.jaspa.or.jp/user/mycar/tabid649.html"
+                target="_blank"
+                density="compact"
+                icon="mdi-search-web"
+              ></v-btn>
+            </v-col>
             </v-row>
 
             <v-row
@@ -8752,9 +8777,394 @@ export default {
                 "
             >
               <v-toolbar-title class="mt-5 d-flex align-center start">
-                　⑫　MGコーティング依頼（※オプションに付帯の場合）
+                　➅　車検ステッカー貼付
               </v-toolbar-title>
             </v-row>
+            <v-row
+            v-if="
+                this.deliveryPreparation.newCarUsedCarKubun === '新車' ||
+                this.deliveryPreparation.newCarUsedCarKubun === '中古車'
+                "
+            >
+              <p class="mt-5 mb-5 explanation">
+                ・車検ステッカーを貼り付けましょう。 <br>
+                　<br>
+                ！車検ステッカーは<b>運転席に座った場所から見てフロントガラスの右上</b>に貼ります。　
+              </p>
+            </v-row>
+            <v-row class="icon-ml"
+            v-if="
+                this.deliveryPreparation.newCarUsedCarKubun === '新車' ||
+                this.deliveryPreparation.newCarUsedCarKubun === '中古車'
+                "
+            >
+            <v-col
+              cols="1"
+              class="mt-3 d-flex align-center"
+            >
+              <v-btn
+                @click="openModal('車検ステッカー貼り場所.jpg')"
+                density="compact"
+                icon="mdi-help"
+              ></v-btn>
+            </v-col>
+            </v-row>
+            <v-row
+            v-if="
+                this.deliveryPreparation.newCarUsedCarKubun === '新車' ||
+                this.deliveryPreparation.newCarUsedCarKubun === '中古車'
+                "
+            >
+              <v-toolbar-title class="mt-5 d-flex align-center start">
+                　➆　ETCセットアップ依頼
+              </v-toolbar-title>
+            </v-row>
+            <v-row class="mt-9 justify-center"
+            v-if="
+                this.deliveryPreparation.newCarUsedCarKubun === '新車' ||
+                this.deliveryPreparation.newCarUsedCarKubun === '中古車'
+                "
+            >
+            <v-col cols="2" class="">
+              <v-select
+                label="ETC"
+                v-model="deliveryPreparation.etcKubun"
+                :items="['', '有', '無']"
+                variant="outlined"
+              ></v-select>
+            </v-col>
+            <v-col cols="2" class=""></v-col>
+            <v-col cols="2" class=""></v-col>
+            <v-col cols="2" class=""></v-col>
+            <v-col cols="2" class=""></v-col>
+            </v-row>
+            <v-row
+            v-if="
+                this.deliveryPreparation.etcKubun === '有'
+                "
+            >
+              <p class="mt-5 mb-5 explanation">
+                ・ETCセットアップを依頼します。 <br>
+                　<br>
+                ！セットアップの依頼方法は店舗によってそれぞれです。確認してメモを取りましょう。　<br>
+              </p>
+            </v-row>
+            <v-row class="icon-ml"
+            v-if="
+                this.deliveryPreparation.etcKubun === '有'
+                "
+            >
+            <v-col
+              cols="1"
+              class="mt-3 d-flex align-center"
+            >
+              <v-btn
+                @click="openModal('ETCセットアップ申込書（従業員）記入例.jpg')"
+                density="compact"
+                icon="mdi-help"
+              ></v-btn>
+            </v-col>
+            </v-row>
+            <v-row
+            v-if="
+                this.deliveryPreparation.newCarUsedCarKubun === '新車' ||
+                this.deliveryPreparation.newCarUsedCarKubun === '中古車'
+                "
+            >
+              <v-toolbar-title class="mt-5 d-flex align-center start">
+                　➇　延長保証申込書記入
+              </v-toolbar-title>
+            </v-row>
+            <v-row class="mt-9 justify-center"
+            v-if="
+                this.deliveryPreparation.newCarUsedCarKubun === '新車' ||
+                this.deliveryPreparation.newCarUsedCarKubun === '中古車'
+                "
+            >
+            <v-col cols="2" class="">
+              <v-select
+                label="延長保証"
+                v-model="deliveryPreparation.isExtendedWarranty"
+                :items="['', '有', '無']"
+                variant="outlined"
+              ></v-select>
+            </v-col>
+            <v-col cols="2" class=""></v-col>
+            <v-col cols="2" class=""></v-col>
+            <v-col cols="2" class=""></v-col>
+            <v-col cols="2" class=""></v-col>
+            </v-row>
+            <v-row
+            v-if="
+                this.deliveryPreparation.isExtendedWarranty === '有' 
+                "
+            >
+              <p class="mt-5 mb-5 explanation">
+                ・延長保証申込書を記入します。 <br>
+                　<br>
+                ！車に付帯されている<b>ディーラーオプション</b>を確認して申込用紙内にあるチェックを入れましょう。　<br>
+              </p>
+            </v-row>
+            <v-row
+            v-if="
+                this.deliveryPreparation.newCarUsedCarKubun === '新車' ||
+                this.deliveryPreparation.newCarUsedCarKubun === '中古車'
+                "
+            >
+              <v-toolbar-title class="mt-5 d-flex align-center start">
+                　➈　パックdeメンテ申込書記入
+              </v-toolbar-title>
+            </v-row>
+            <v-row class="mt-9 justify-center"
+            v-if="
+                this.deliveryPreparation.newCarUsedCarKubun === '新車' ||
+                this.deliveryPreparation.newCarUsedCarKubun === '中古車'
+                "
+            >
+            <v-col cols="2" class="">
+              <v-select
+                label="パックdeメンテ"
+                v-model="deliveryPreparation.isMaintenancePack"
+                :items="['', '有', '無']"
+                variant="outlined"
+              ></v-select>
+            </v-col>
+            <v-col cols="2" class=""></v-col>
+            <v-col cols="2" class=""></v-col>
+            <v-col cols="2" class=""></v-col>
+            <v-col cols="2" class=""></v-col>
+            </v-row>
+
+            <v-row
+            v-if="
+                this.deliveryPreparation.isMaintenancePack === '有'
+                "
+            >
+              <p class="mt-5 mb-5 explanation">
+                ・パックdeメンテ申込書を記入します。　<br>
+                　<br>
+                ！<b>印紙</b>を忘れないようにしましょう。
+              </p>
+            </v-row>
+
+            <v-row
+            v-if="
+                this.deliveryPreparation.newCarUsedCarKubun === '新車' ||
+                this.deliveryPreparation.newCarUsedCarKubun === '中古車'
+                "
+            >
+              <v-toolbar-title class="mt-5 d-flex align-center start">
+                　➉　メンテナンスノート記入
+              </v-toolbar-title>
+            </v-row>
+            <v-row
+            v-if="
+                this.deliveryPreparation.newCarUsedCarKubun === '新車' ||
+                this.deliveryPreparation.newCarUsedCarKubun === '中古車'
+                "
+            >
+              <p class="mt-5 mb-5 explanation">
+                ・メンテナンスノートを記入します。 <br>
+                　<br>
+                ！<b>保証書のページ</b>と<b>納車時確認ページ</b>をご記入ください。　<br>
+              </p>
+            </v-row>
+            <v-row
+            v-if="
+                this.deliveryPreparation.newCarUsedCarKubun === '新車' ||
+                this.deliveryPreparation.newCarUsedCarKubun === '中古車'
+                "
+            >
+              <v-toolbar-title class="mt-5 d-flex align-center start">
+                　⑪　説明書入れ準備
+              </v-toolbar-title>
+            </v-row>
+            <v-row
+            v-if="
+                this.deliveryPreparation.newCarUsedCarKubun === '新車' ||
+                this.deliveryPreparation.newCarUsedCarKubun === '中古車'
+                "
+            >
+              <p class="mt-5 mb-5 explanation">
+                ・説明書入れを準備します。 <br>
+                　<br>
+                ！説明書入れの中には基本的に<b>取扱説明書</b>と<b>メンテナンスノート</b>を入れます。　<br>
+              </p>
+            </v-row>
+
+            <v-row
+            v-if="
+                this.deliveryPreparation.newCarUsedCarKubun === '新車' ||
+                this.deliveryPreparation.newCarUsedCarKubun === '中古車'
+                "
+            >
+              <v-toolbar-title class="mt-5 d-flex align-center start">
+                　⑫　車検証入れ準備
+              </v-toolbar-title>
+            </v-row>
+            <v-row
+            v-if="
+                this.deliveryPreparation.newCarUsedCarKubun === '新車' ||
+                this.deliveryPreparation.newCarUsedCarKubun === '中古車'
+                "
+            >
+              <p class="mt-5 mb-5 explanation">
+                ・車検証入れを準備します。 <br>
+                　<br>
+                ！車検証入れに入れるもの　<br>
+                （１）車検証　<br>
+                （２）自賠責保険証　<br>
+                （３）リサイクル券　<br>
+                （４）ETCセットアップ用紙（※車にETCが取り付けられてる場合）　<br>
+                （５）延長保証確認書（※延長保証が付帯されている場合）　<br>
+                （６）パックdeメンテ申込書（※パックdeメンテにご加入されている場合）　
+              </p>
+            </v-row>
+
+            <v-row
+            v-if="
+                this.deliveryPreparation.newCarUsedCarKubun === '新車' ||
+                this.deliveryPreparation.newCarUsedCarKubun === '中古車'
+                "
+            >
+              <v-toolbar-title class="mt-5 d-flex align-center start">
+                　⑬　車庫証明届け出、受け取り
+              </v-toolbar-title>
+            </v-row>
+            <v-row class="mt-9 justify-center"
+            v-if="
+                this.deliveryPreparation.newCarUsedCarKubun === '新車' ||
+                this.deliveryPreparation.newCarUsedCarKubun === '中古車'
+                "
+            >
+            <v-col cols="2" class="">
+              <v-select
+                v-model="deliveryPreparation.normalCarLightCarKubun"
+                label="普通車or軽自動車"
+                :items="['', '普通車', '軽自動車']"
+                variant="outlined"
+              ></v-select>
+            </v-col>
+            <v-col cols="2" class=""></v-col>
+            <v-col cols="2" class=""></v-col>
+            <v-col cols="2" class=""></v-col>
+            <v-col cols="2" class=""></v-col>
+            </v-row>
+            <v-row
+            v-if="
+                this.deliveryPreparation.normalCarLightCarKubun === '普通車' 
+                "
+            >
+              <p class="mt-5 mb-5 explanation">
+                ・車庫証明を警察署に提出しましょう。　 <br>
+                　 <br>
+                ！車庫証明を提出する警察署は車を保管する場所によって様々です。　 <br>
+                　↑例：車を南区に保管されている場合は南警察署など。　 <br>
+                　 <br>
+                ！<b>保管場所証明申請書</b>、<b>自認書または使用承諾書</b>、<b>配置図をセット</b>で提出致します。　
+              </p>
+            </v-row>
+            <v-row
+            v-if="
+                this.deliveryPreparation.normalCarLightCarKubun === '軽自動車' 
+                "
+            >
+              <p class="mt-5 mb-5 explanation">
+                ・車庫証明を警察署に提出しましょう。　 <br>
+                　 <br>
+                ！車庫証明を提出する警察署は車を保管する場所によって様々です。　 <br>
+                　↑例：車を南区に保管されている場合は南警察署など。　 <br>
+                　 <br>
+                ！<b>保管場所届出書</b>、<b>自認書または使用承諾書</b>、<b>配置図をセット</b>で提出致します。　
+              </p>
+            </v-row>
+            <v-row
+            v-if="
+                this.deliveryPreparation.newCarUsedCarKubun === '新車' ||
+                this.deliveryPreparation.newCarUsedCarKubun === '中古車'
+                "
+            >
+              <v-toolbar-title class="mt-5 d-flex align-center start">
+                　⑭　納車前点検依頼（社外品の装備などあれば取付依頼）
+              </v-toolbar-title>
+            </v-row>
+            <v-row
+            v-if="
+                this.deliveryPreparation.newCarUsedCarKubun === '新車' ||
+                this.deliveryPreparation.newCarUsedCarKubun === '中古車' 
+                "
+            >
+              <p class="mt-5 mb-5 explanation">
+                ・カルテを発行して納車前点検の依頼をしましょう。　 <br>
+                　 <br>
+                ！店舗によって納車前点検の依頼方法は様々です。確認してメモを取りましょう。　 <br>
+                　 <br>
+                ！社外品の装備などあれば依頼方法や取り付け方法をサービスの人に確認してメモを取りましょう。　
+              </p>
+            </v-row>
+
+
+            <v-row
+            v-if="
+                this.deliveryPreparation.newCarUsedCarKubun === '新車' ||
+                this.deliveryPreparation.newCarUsedCarKubun === '中古車'
+                "
+            >
+              <v-toolbar-title class="mt-5 d-flex align-center start">
+                　⑫　Keeperコーティング依頼（※オプションに付帯の場合）
+              </v-toolbar-title>
+            </v-row>
+            <v-row class="mt-9 justify-center"
+            v-if="
+                this.deliveryPreparation.newCarUsedCarKubun === '新車' ||
+                this.deliveryPreparation.newCarUsedCarKubun === '中古車'
+                "
+            >
+            <v-col cols="2" class="">
+              <v-select
+                label="Keeperコーティング"
+                v-model="deliveryPreparation.isKeeperCoating"
+                :items="['', '有', '無']"
+                variant="outlined"
+              ></v-select>
+            </v-col>
+            <v-col cols="2" class=""></v-col>
+            <v-col cols="2" class=""></v-col>
+            <v-col cols="2" class=""></v-col>
+            <v-col cols="2" class=""></v-col>
+            </v-row>
+            <v-row
+            v-if="
+                this.deliveryPreparation.isKeeperCoating === '有'
+                "
+            >
+              <p class="mt-5 mb-5 explanation">
+                ・Keeperコーティングの依頼をしましょう。　 <br>
+                　 <br>
+                ！店舗によってKeeperコーティングの依頼方法は様々です。確認してメモを取りましょう。　 <br>
+                　 <br>
+                ！依頼方法は基本的にKeeperコーティングの施工員様に店舗に来てもらうか、　<br>
+                　Keeperの店舗に車を持ち込みする方法があります。
+              </p>
+            </v-row>
+            <v-row class="icon-ml"
+            v-if="
+                this.deliveryPreparation.isKeeperCoating === '有'
+                "
+            >
+            <v-col
+              cols="1"
+              class="mt-3 d-flex align-center"
+            >
+              <v-btn
+                href="https://www.keepercoating.jp/lineup/"
+                target="_blank"
+                density="compact"
+                icon="mdi-search-web"
+              ></v-btn>
+            </v-col>
+            </v-row>
+
 
             <v-row
             v-if="
@@ -8772,10 +9182,47 @@ export default {
                 this.deliveryPreparation.newCarUsedCarKubun === '中古車'
                 "
             >
+              <p class="mt-5 mb-5 explanation">
+                ・燃料を入れます。　 <br>
+                　 <br>
+                ！<b>ガソリン車</b>、<b>ディーゼル車</b>、<b>ハイオク車</b>を間違えないように注意しましょう。
+              </p>
+            </v-row>
+
+            <v-row
+            v-if="
+                this.deliveryPreparation.newCarUsedCarKubun === '新車' ||
+                this.deliveryPreparation.newCarUsedCarKubun === '中古車'
+                "
+            >
               <v-toolbar-title class="mt-5 d-flex align-center start">
                 　⑭　洗車
               </v-toolbar-title>
             </v-row>
+            <v-row
+            v-if="
+                this.deliveryPreparation.newCarUsedCarKubun === '新車' ||
+                this.deliveryPreparation.newCarUsedCarKubun === '中古車'
+                "
+            >
+              <p class="mt-5 mb-5 explanation">
+                ・傷つけてしまわないよう優しく丁寧に洗車しましょう。　 <br>
+                　 <br>
+                ！機械洗車ではなく<b>手洗い洗車</b>が推奨されています。
+              </p>
+            </v-row>
+            <v-row
+            v-if="
+                this.deliveryPreparation.newCarUsedCarKubun === '新車' ||
+                this.deliveryPreparation.newCarUsedCarKubun === '中古車'
+                "
+            >
+              <v-toolbar-title class="mt-16 d-flex align-center goal">
+                　▲　納車準備は以上になります。
+              </v-toolbar-title>
+            </v-row>
+
+
 
 
 
