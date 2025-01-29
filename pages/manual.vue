@@ -8629,7 +8629,7 @@ export default {
               <p class="mt-5 explanation">
                 ・牽引フックを外します。　<br>
                 　<br>
-                ※牽引フックを外す際は外しにくかったりするため怪我や車を傷つけてしまわないよう注意です。　
+                ！牽引フックを外す際は外しにくかったりするため怪我や車を傷つけてしまわないよう注意です。　
               </p>
             </v-row>
             <v-row class="icon-ml"
@@ -8726,10 +8726,26 @@ export default {
                 "
             >
               <p class="mt-5 mb-5 explanation">
-                ・ホイールカバーまたはホイールキャップを取り付けましょう。　
+                ・ホイールカバーまたはホイールキャップをタイヤに取り付けましょう。　
               </p>
             </v-row>
-
+            <v-row class="icon-ml"
+            v-if="
+                this.deliveryPreparation.newCarUsedCarKubun === '新車' ||
+                this.deliveryPreparation.newCarUsedCarKubun === '中古車'
+                "
+            >
+            <v-col
+              cols="1"
+              class="mt-3 d-flex align-center"
+            >
+              <v-btn
+                @click="openModal('ホイールキャップ・ホイールカバー.jpg')"
+                density="compact"
+                icon="mdi-help"
+              ></v-btn>
+            </v-col>
+            </v-row>
             <v-row
             v-if="
                 this.deliveryPreparation.newCarUsedCarKubun === '新車' ||
@@ -9059,9 +9075,9 @@ export default {
                 （２）自賠責保険証　<br>
                 （３）リサイクル券　<br>
                 （４）ETCセットアップ用紙（※車にETCが取り付けられてる場合）　<br>
-                （５）延長保証確認書（※延長保証が付帯されている場合）　<br>
-                （６）パックdeメンテ申込書（※パックdeメンテにご加入されている場合）　<br>
-                （７）スカイプラス加入証（※保険を当社でご加入される場合）　
+                （５）パックdeメンテ申込書（※パックdeメンテにご加入されている場合）　<br>
+                （６）スカイプラス加入証（※保険を当社でご加入される場合）　<br>
+                （７）マツダ純正用品保証書　<br>
               </p>
             </v-row>
 
@@ -9243,7 +9259,9 @@ export default {
               <p class="mt-5 mb-5 explanation">
                 ・燃料を入れます。　 <br>
                 　 <br>
-                ！<b>ガソリン車</b>、<b>ディーゼル車</b>、<b>ハイオク車</b>を間違えないように注意しましょう。
+                ！<b>ガソリン車</b>、<b>ディーゼル車</b>、<b>ハイオク車</b>を間違えないように注意しましょう。　 <br>
+                　 <br>
+                ！店舗でそれぞれですが、基本的に燃料は<b>10リットル</b>給油します。
               </p>
             </v-row>
 
