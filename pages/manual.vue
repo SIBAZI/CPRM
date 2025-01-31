@@ -1264,7 +1264,7 @@ export default {
             <p class="supporting-sentences">　※現在作成中</p>
           </v-row>
           <v-row v-if="this.start.startKubun === '一般登録代行'">
-            <p class="supporting-sentences">　※現在作成中（LastUpdated.2025.01.30.AM01.14）</p>
+            <p class="supporting-sentences">　※現在作成中（LastUpdated.2025.02.01.AM02.57）</p>
           </v-row>
         </div>
         <div v-if="this.start.startKubun === '成約時登録'">
