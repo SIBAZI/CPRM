@@ -7451,12 +7451,14 @@ export default {
             <!-- 債権譲渡通知書 -->
             <v-row
               v-if="
-                (this.tradeInPurchase.tradeInPurchaseKubun === '下取' ||
-                this.tradeInPurchase.tradeInPurchaseKubun === '買取') &&
+                ((this.tradeInPurchase.tradeInPurchaseKubun === '下取' ||
+                  this.tradeInPurchase.tradeInPurchaseKubun === '買取') &&
                 (this.tradeInPurchase.normalCarLightCarKubun === '普通車' &&
-                  this.tradeInPurchase.nameChangeDeletionKubun === '名変') ||
+                  this.tradeInPurchase.nameChangeDeletionKubun === '名変')) ||
+                ((this.tradeInPurchase.tradeInPurchaseKubun === '下取' ||
+                  this.tradeInPurchase.tradeInPurchaseKubun === '買取') &&
                 (this.tradeInPurchase.nameChangeDeletionKubun === '抹消' &&
-                  this.tradeInPurchase.ownershipKubun === 'その他所有')
+                  this.tradeInPurchase.ownershipKubun === 'その他所有'))
               "
             >
               <v-divider class="mt-5 separator"></v-divider>
@@ -7464,12 +7466,14 @@ export default {
             <v-row
               class="mt-5 justify-center"
               v-if="
-                (this.tradeInPurchase.tradeInPurchaseKubun === '下取' ||
+                ((this.tradeInPurchase.tradeInPurchaseKubun === '下取' ||
                   this.tradeInPurchase.tradeInPurchaseKubun === '買取') &&
-                  (this.tradeInPurchase.normalCarLightCarKubun === '普通車' &&
-                  this.tradeInPurchase.nameChangeDeletionKubun === '名変') ||
+                (this.tradeInPurchase.normalCarLightCarKubun === '普通車' &&
+                  this.tradeInPurchase.nameChangeDeletionKubun === '名変')) ||
+                ((this.tradeInPurchase.tradeInPurchaseKubun === '下取' ||
+                  this.tradeInPurchase.tradeInPurchaseKubun === '買取') &&
                 (this.tradeInPurchase.nameChangeDeletionKubun === '抹消' &&
-                  this.tradeInPurchase.ownershipKubun === 'その他所有')
+                  this.tradeInPurchase.ownershipKubun === 'その他所有'))
               "
             >
               <v-col cols="2" class="mt-5">
@@ -7512,11 +7516,12 @@ export default {
             </v-row>
             <v-row
               v-if="
-                this.tradeInPurchase.tradeInPurchaseKubun === '下取' &&
+                (this.tradeInPurchase.tradeInPurchaseKubun === '下取' &&
                 (this.tradeInPurchase.normalCarLightCarKubun === '普通車' &&
-                 this.tradeInPurchase.nameChangeDeletionKubun === '名変') ||
+                 this.tradeInPurchase.nameChangeDeletionKubun === '名変')) ||
+                (this.tradeInPurchase.tradeInPurchaseKubun === '下取' &&
                 (this.tradeInPurchase.nameChangeDeletionKubun === '抹消' &&
-                 this.tradeInPurchase.ownershipKubun === 'その他所有')
+                 this.tradeInPurchase.ownershipKubun === 'その他所有'))
               "
             >
               <p class="explanation">
@@ -7531,11 +7536,12 @@ export default {
             </v-row>
             <v-row
               v-if="
-                this.tradeInPurchase.tradeInPurchaseKubun === '買取' &&
+                (this.tradeInPurchase.tradeInPurchaseKubun === '買取' &&
                 (this.tradeInPurchase.normalCarLightCarKubun === '普通車' &&
-                 this.tradeInPurchase.nameChangeDeletionKubun === '名変') ||
+                 this.tradeInPurchase.nameChangeDeletionKubun === '名変')) ||
+                (this.tradeInPurchase.tradeInPurchaseKubun === '買取' &&
                 (this.tradeInPurchase.nameChangeDeletionKubun === '抹消' &&
-                 this.tradeInPurchase.ownershipKubun === 'その他所有')
+                 this.tradeInPurchase.ownershipKubun === 'その他所有'))
               "
             >
               <p class="explanation">
@@ -7553,12 +7559,14 @@ export default {
               cols="1"
               class="mt-3 d-flex align-center"
               v-if="
-                (this.tradeInPurchase.tradeInPurchaseKubun === '下取' ||
+                ((this.tradeInPurchase.tradeInPurchaseKubun === '下取' ||
                   this.tradeInPurchase.tradeInPurchaseKubun === '買取') &&
                 (this.tradeInPurchase.normalCarLightCarKubun === '普通車' &&
-                  this.tradeInPurchase.nameChangeDeletionKubun === '名変') ||
+                  this.tradeInPurchase.nameChangeDeletionKubun === '名変')) ||
+                ((this.tradeInPurchase.tradeInPurchaseKubun === '下取' ||
+                  this.tradeInPurchase.tradeInPurchaseKubun === '買取') &&
                 (this.tradeInPurchase.nameChangeDeletionKubun === '抹消' &&
-                  this.tradeInPurchase.ownershipKubun === 'その他所有')
+                  this.tradeInPurchase.ownershipKubun === 'その他所有'))
               "
               >
               <v-btn
@@ -7571,12 +7579,14 @@ export default {
               cols="1"
               class="mt-3 d-flex align-center"
               v-if="
-                (this.tradeInPurchase.tradeInPurchaseKubun === '下取' ||
+                ((this.tradeInPurchase.tradeInPurchaseKubun === '下取' ||
                   this.tradeInPurchase.tradeInPurchaseKubun === '買取') &&
                 (this.tradeInPurchase.normalCarLightCarKubun === '普通車' &&
-                  this.tradeInPurchase.nameChangeDeletionKubun === '名変') ||
+                  this.tradeInPurchase.nameChangeDeletionKubun === '名変')) ||
+                ((this.tradeInPurchase.tradeInPurchaseKubun === '下取' ||
+                  this.tradeInPurchase.tradeInPurchaseKubun === '買取') &&
                 (this.tradeInPurchase.nameChangeDeletionKubun === '抹消' &&
-                  this.tradeInPurchase.ownershipKubun === 'その他所有')
+                  this.tradeInPurchase.ownershipKubun === 'その他所有'))
               "
             >
               <v-btn
@@ -7589,12 +7599,14 @@ export default {
               cols="1"
               class="mt-3 d-flex align-center"
               v-if="
-                (this.tradeInPurchase.tradeInPurchaseKubun === '下取' ||
+                ((this.tradeInPurchase.tradeInPurchaseKubun === '下取' ||
                   this.tradeInPurchase.tradeInPurchaseKubun === '買取') &&
                 (this.tradeInPurchase.normalCarLightCarKubun === '普通車' &&
-                  this.tradeInPurchase.nameChangeDeletionKubun === '名変') ||
+                  this.tradeInPurchase.nameChangeDeletionKubun === '名変')) ||
+                ((this.tradeInPurchase.tradeInPurchaseKubun === '下取' ||
+                  this.tradeInPurchase.tradeInPurchaseKubun === '買取') &&
                 (this.tradeInPurchase.nameChangeDeletionKubun === '抹消' &&
-                  this.tradeInPurchase.ownershipKubun === 'その他所有')
+                  this.tradeInPurchase.ownershipKubun === 'その他所有'))
               "
             >
               <v-btn
