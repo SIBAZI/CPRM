@@ -87,6 +87,9 @@ export default {
         isFillIn: "", //ご記入
         completedDate: false, //完了日
       },
+      locationMap: {
+        locationMapName: "所在図",//所在図
+      },
       desiredNumber: {
         isDesiredNumber: "", //（希望番号）有・無区分
         isFillIn: "", //ご記入
@@ -1264,7 +1267,7 @@ export default {
             <p class="supporting-sentences">　※現在作成中</p>
           </v-row>
           <v-row v-if="this.start.startKubun === '一般登録代行'">
-            <p class="supporting-sentences">　※現在作成中（LastUpdated.2025.02.01.AM02.57）</p>
+            <p class="supporting-sentences">　※現在作成中（LastUpdated.2025.02.05.AM01.35）</p>
           </v-row>
         </div>
         <div v-if="this.start.startKubun === '成約時登録'">
@@ -2537,7 +2540,7 @@ export default {
             >
               ・普通車用の車庫証明、4枚綴り（つづり）です。　 <br />
               　<br />
-              　保管場所証明申請書、自認書または使用承諾書、配置図を3点セットで警察署に提出致します。　
+              　保管場所証明申請書、自認書または使用承諾書、配置図、所在図の4点セットで警察署に提出致します。　
             </p>
             <p
               v-if="
@@ -2548,7 +2551,7 @@ export default {
             >
               ・軽自動車用の車庫証明、4枚綴り（つづり）です。　<br />
               　<br />
-              　保管場所届出書、自認書または使用承諾書、配置図を3点セットで警察署に提出致します。　
+              　保管場所届出書、自認書または使用承諾書、配置図、所在図の4点セットで警察署に提出致します。　
             </p>
           </v-row>
 
@@ -2927,6 +2930,66 @@ export default {
                 icon="mdi-printer"
               ></v-btn>
             </v-col>
+          </v-row>
+          <v-row
+            v-if="
+              this.normalCarDocuments.poaOssKubun === 'OSS委任状' ||
+              this.normalCarDocumentsGarageVerification
+                .NCgarageVerificationKubun === '保管場所証明申請書' ||
+              this.lightCarDocumentsGarageVerification
+                .LCgarageVerificationKubun === '保管場所届出書'
+            "
+          >
+            <v-divider class="mt-5 separator"></v-divider>
+          </v-row>
+          <v-row
+            class="mt-10 justify-center"
+            v-if="
+              this.normalCarDocuments.poaOssKubun === 'OSS委任状' ||
+              this.normalCarDocumentsGarageVerification
+                .NCgarageVerificationKubun === '保管場所証明申請書' ||
+              this.lightCarDocumentsGarageVerification
+                .LCgarageVerificationKubun === '保管場所届出書'
+            "
+          >
+            <v-col cols="2" class="">
+              <v-combobox
+                v-model="locationMap.locationMapName"
+                label=""
+                :items="[]"
+                variant="outlined"
+                readonly
+              ></v-combobox>
+            </v-col>
+            <v-col cols="2" class=""> </v-col>
+            <v-col cols="2" class=""> </v-col>
+            <v-col cols="2" class=""> </v-col>
+            <v-col cols="2" class=""> </v-col>
+          </v-row>
+          <v-row
+            v-if="
+              this.normalCarDocuments.poaOssKubun === 'OSS委任状' ||
+              this.normalCarDocumentsGarageVerification
+                .NCgarageVerificationKubun === '保管場所証明申請書' ||
+              this.lightCarDocumentsGarageVerification
+                .LCgarageVerificationKubun === '保管場所届出書'
+            "
+          >
+            <p class="explanation">
+              ・お客様に地図を確認頂きながら<b>本拠の位置</b>と<b>保管場所</b>を確認しましょう。　<br>
+              　<br>
+              ！所在図の書き方（基本的に従業員が記入します）　<br>
+              　<br>
+              （１）Yahoo地図でお客様の本拠の位置と保管場所を確認して<b>モノトーン</b>で印刷　<br>
+              　<br>
+              （２）本拠の位置と保管場所をマーカーで囲んで線で繋ぐ　<br>
+              　　　↑本拠の位置と保管場所の区別がつくように「本拠」と「保管場所」の文字を記入しましょう。　<br>
+              　<br>
+              （３）本拠の位置と保管場所の距離（例：100ｍ）と記入する。　<br>
+              　　　↑本拠の位置と保管場所が同じ場合は（本拠の位置と保管場所は同じ）と記入
+            </p>
+          </v-row>
+          <v-row class="icon-ml">
             <v-col
               cols="1"
               class="mt-3 d-flex align-center"
@@ -2939,13 +3002,14 @@ export default {
               "
             >
               <v-btn
-                href="https://www.google.com/maps/@34.3902772,132.5019091,15z?entry=ttu&g_ep=EgoyMDI0MTEwNi4wIKXMDSoASAFQAw%3D%3D"
+                href="https://map.yahoo.co.jp/?lat=35.65451&lon=139.73644&zoom=12&maptype=basic"
                 target="_blank"
                 density="compact"
                 icon="mdi-map-marker-outline"
               ></v-btn>
             </v-col>
           </v-row>
+
 
           <!-- <v-row>
         <v-col
@@ -9334,10 +9398,78 @@ export default {
                 　▲　納車準備は以上になります。
               </v-toolbar-title>
             </v-row>
-
-
-
-
+          </div>
+        </div>
+        <!-- 納車準備 -->
+        <div class="Delivery">
+          <div v-if="this.start.startKubun === '納車'">
+            <v-row>
+              <v-toolbar-title class="mt-5 d-flex align-center start">
+                　▼　ここからは納車になります。
+              </v-toolbar-title>
+            </v-row>
+            <v-row
+            v-if="this.start.startKubun === '納車'"
+            >
+              <p class="mt-5 mb-5 explanation">
+                ・お客様のご意向に合わせてお車を先にご説明するか、<br>
+                　書類の説明や手続きを先にするか進めていきましょう。
+              </p>
+            </v-row>
+            <v-row>
+              <v-toolbar-title class="mt-5 d-flex align-center start">
+                　➀　車検証入れの書類説明
+              </v-toolbar-title>
+            </v-row>
+            <v-row
+            v-if="this.start.startKubun === '納車'"
+            >
+              <p class="mt-5 mb-5 explanation">
+                （１）車検証　<br>
+                　<br>
+                　　　！所有者、使用者、住所にお間違いがないか確認しましょう。　<br>
+                　<br>
+                （２）自賠責保険証　<br>
+                　<br>
+                　　　！ご氏名と住所にお間違いがないか確認しましょう。　<br>
+                　<br>
+                （３）リサイクル券　<br>
+                　<br>
+                　　　！ご氏名と住所にお間違いがないか確認しましょう。　<br>
+                　<br>
+                （４）車庫証明　<br>
+                　<br>
+                　　　！本拠の位置と保管場所の位置にお間違いがないか確認しましょう。　<br>
+                　<br>
+                （５）ETCセットアップ用紙（※車にETCが取り付けられてる場合）　<br>
+                　<br>
+                （６）パックdeメンテ申込書（※パックdeメンテにご加入されている場合）　<br>
+                　<br>
+                （７）スカイプラス加入証（※保険を当社でご加入される場合）　<br>
+                　<br>
+                （８）マツダ純正用品保証書　<br>
+              </p>
+            </v-row>
+            <v-row>
+              <v-toolbar-title class="mt-5 d-flex align-center start">
+                　➁　説明書入れの書類説明
+              </v-toolbar-title>
+            </v-row>
+            <v-row
+            v-if="this.start.startKubun === '納車'"
+            >
+              <p class="mt-5 mb-5 explanation">
+                （１）説明書の説明　<br>
+                　<br>
+                　　　！何についての説明書か簡単にご説明しましょう。　<br>
+                　<br>
+                （２）メンテナンスノートの説明　<br>
+                　<br>
+                　　　！保証書のページをご説明しましょう。　<br>
+                　<br>
+                　　　！<b>納車確認のページにサインを頂き＜店舗控え＞を忘れずにちぎりましょう。</b>　<br>
+              </p>
+            </v-row>
 
 
 
