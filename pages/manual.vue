@@ -1267,7 +1267,7 @@ export default {
             <p class="supporting-sentences">　※現在作成中</p>
           </v-row>
           <v-row v-if="this.start.startKubun === '一般登録代行'">
-            <p class="supporting-sentences">　※現在作成中（LastUpdated.2025.02.05.AM01.35）</p>
+            <p class="supporting-sentences">　※現在作成中（LastUpdated.2025.02.06.AM00.14）</p>
           </v-row>
         </div>
         <div v-if="this.start.startKubun === '成約時登録'">
@@ -2982,7 +2982,7 @@ export default {
               　<br>
               （１）Yahoo地図でお客様の本拠の位置と保管場所を確認して<b>モノトーン</b>で印刷　<br>
               　<br>
-              （２）本拠の位置と保管場所をマーカーで囲んで線で繋ぐ　<br>
+              （２）本拠の位置と保管場所をマーカーで囲み線で繋ぐ　<br>
               　　　↑本拠の位置と保管場所の区別がつくように「本拠」と「保管場所」の文字を記入しましょう。　<br>
               　<br>
               （３）本拠の位置と保管場所の距離（例：100ｍ）と記入する。　<br>
