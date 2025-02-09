@@ -36,6 +36,11 @@ export default {
       noticeOfAssignmentOfClaimModal:false,//債権譲渡通知書モーダル
       taxPaymentSlipModal:false,//税支払伺書モーダル
 
+      //納車準備
+      standardCarWarrantyModal: false,//保証書（普通車）モーダル
+      lightCarWarrantyModal: false,//保証書（軽自動車）モーダル
+      usedCarWarrantyModal: false,//保証書（中古車）モーダル
+
       start: {
         startKubun: "", //成約時登録・買取・下取り・一般登録代行
       },
@@ -258,6 +263,7 @@ export default {
         isMaintenancePack: "", //（メンテナンスパック）有・無区分
         isKeeperCoating: "",//（MGコーティング）有・無区分
         isInsurance: "",//（保険）当社加入・他社加入区分
+        UcarKubun:"",//マツダ認定U-car認定証
       },
 
       purchase: {},
@@ -8886,6 +8892,49 @@ export default {
                 "
             >
               <v-toolbar-title class="mt-5 d-flex align-center start">
+                　〇　鍵の準備
+              </v-toolbar-title>
+            </v-row>
+            <v-row
+            v-if="
+                (this.deliveryPreparation.newCarUsedCarKubun === '新車' ||
+                 this.deliveryPreparation.newCarUsedCarKubun === '中古車')&&
+                (this.deliveryPreparation.normalCarLightCarKubun === '普通車' ||
+                 this.deliveryPreparation.normalCarLightCarKubun === '軽自動車')
+                "
+            >
+              <p class="mt-5 mb-5 explanation">
+                ・鍵がキーレスの場合はキーレス鍵の中に本鍵を入れましょう。　
+              </p>
+            </v-row>
+            <v-row class="icon-ml"
+            v-if="
+                (this.deliveryPreparation.newCarUsedCarKubun === '新車' ||
+                 this.deliveryPreparation.newCarUsedCarKubun === '中古車')&&
+                (this.deliveryPreparation.normalCarLightCarKubun === '普通車' ||
+                 this.deliveryPreparation.normalCarLightCarKubun === '軽自動車')
+                "
+            >
+            <v-col
+              cols="1"
+              class="mt-3 d-flex align-center"
+            >
+              <v-btn
+                @click="openModal('キーレス鍵.jpg')"
+                density="compact"
+                icon="mdi-help"
+              ></v-btn>
+            </v-col>
+            </v-row>
+            <v-row
+            v-if="
+                (this.deliveryPreparation.newCarUsedCarKubun === '新車' ||
+                 this.deliveryPreparation.newCarUsedCarKubun === '中古車')&&
+                (this.deliveryPreparation.normalCarLightCarKubun === '普通車' ||
+                 this.deliveryPreparation.normalCarLightCarKubun === '軽自動車')
+                "
+            >
+              <v-toolbar-title class="mt-5 d-flex align-center start">
                 　〇　点検ステッカー準備、貼付
               </v-toolbar-title>
             </v-row>
@@ -9172,8 +9221,9 @@ export default {
 
             <v-row
             v-if="
-                this.deliveryPreparation.newCarUsedCarKubun === '新車' ||
-                this.deliveryPreparation.newCarUsedCarKubun === '中古車'
+                 this.deliveryPreparation.newCarUsedCarKubun === '新車' &&
+                (this.deliveryPreparation.normalCarLightCarKubun === '普通車' ||
+                 this.deliveryPreparation.normalCarLightCarKubun === '軽自動車')
                 "
             >
               <v-toolbar-title class="mt-5 d-flex align-center start">
@@ -9182,8 +9232,9 @@ export default {
             </v-row>
             <v-row
             v-if="
-                this.deliveryPreparation.newCarUsedCarKubun === '新車' ||
-                this.deliveryPreparation.newCarUsedCarKubun === '中古車'
+                 this.deliveryPreparation.newCarUsedCarKubun === '新車' &&
+                (this.deliveryPreparation.normalCarLightCarKubun === '普通車' ||
+                 this.deliveryPreparation.normalCarLightCarKubun === '軽自動車')
                 "
             >
               <p class="mt-5 mb-5 explanation">
@@ -9192,10 +9243,98 @@ export default {
                 ！車に付帯されている<b>ディーラーオプション</b>を確認して申込用紙内にあるチェックを入れましょう。　<br>
               </p>
             </v-row>
+            <v-row class="icon-ml"
+            v-if="
+                 this.deliveryPreparation.newCarUsedCarKubun === '新車' &&
+                (this.deliveryPreparation.normalCarLightCarKubun === '普通車' ||
+                 this.deliveryPreparation.normalCarLightCarKubun === '軽自動車')
+                "
+            >
+            <v-col
+              cols="1"
+              class="mt-3 d-flex align-center"
+            >
+              <v-btn
+                @click="openModal('マツダ純正用品保証書記入例.jpg')"
+                density="compact"
+                icon="mdi-help"
+              ></v-btn>
+            </v-col>
+            </v-row>
             <v-row
             v-if="
-                this.deliveryPreparation.newCarUsedCarKubun === '新車' ||
-                this.deliveryPreparation.newCarUsedCarKubun === '中古車'
+                 this.deliveryPreparation.newCarUsedCarKubun === '中古車' &&
+                (this.deliveryPreparation.normalCarLightCarKubun === '普通車' ||
+                 this.deliveryPreparation.normalCarLightCarKubun === '軽自動車')
+                "
+            >
+              <v-toolbar-title class="mt-5 d-flex align-center start">
+                　〇　マツダ認定U-car認定証
+              </v-toolbar-title>
+            </v-row>
+            <v-row class="mt-9 justify-center"
+            v-if="
+                 this.deliveryPreparation.newCarUsedCarKubun === '中古車' &&
+                (this.deliveryPreparation.normalCarLightCarKubun === '普通車' ||
+                 this.deliveryPreparation.normalCarLightCarKubun === '軽自動車')
+                "
+            >
+            <v-col cols="2" class="">
+              <v-select
+                label="マツダ認定U-car"
+                v-model="deliveryPreparation.UcarKubun"
+                :items="['', '有', '無']"
+                variant="outlined"
+              ></v-select>
+            </v-col>
+            <v-col cols="2" class=""></v-col>
+            <v-col cols="2" class=""></v-col>
+            <v-col cols="2" class=""></v-col>
+            <v-col cols="2" class=""></v-col>
+            </v-row>
+            <v-row
+            v-if="
+                 this.deliveryPreparation.UcarKubun === '有'
+                 "
+            >
+              <p class="mt-5 mb-5 explanation">
+                ・ご成約頂いた中古車が認定U-car対象車の場合必要になります。
+              </p>
+            </v-row>
+            <v-row class="icon-ml"
+            v-if="
+                 this.deliveryPreparation.UcarKubun === '有'
+                 "
+            >
+            <v-col
+              cols="1"
+              class="mt-3 d-flex align-center"
+            >
+              <v-btn
+                @click="openModal('マツダ認定U-car認定証記入例.jpg')"
+                density="compact"
+                icon="mdi-help"
+              ></v-btn>
+            </v-col>
+            <v-col
+              cols="1"
+              class="mt-3 d-flex align-center"
+            >
+              <v-btn
+                href="https://www.mazda.co.jp/purchase/ucar/nintei/"
+                target="_blank"
+                density="compact"
+                icon="mdi-search-web"
+              ></v-btn>
+            </v-col>
+
+            </v-row>
+            <v-row
+            v-if="
+                (this.deliveryPreparation.newCarUsedCarKubun === '新車' ||
+                 this.deliveryPreparation.newCarUsedCarKubun === '中古車')&&
+                (this.deliveryPreparation.normalCarLightCarKubun === '普通車' ||
+                 this.deliveryPreparation.normalCarLightCarKubun === '軽自動車')
                 "
             >
               <v-toolbar-title class="mt-5 d-flex align-center start">
@@ -9204,8 +9343,9 @@ export default {
             </v-row>
             <v-row
             v-if="
-                this.deliveryPreparation.newCarUsedCarKubun === '新車' ||
-                this.deliveryPreparation.newCarUsedCarKubun === '中古車'
+                 this.deliveryPreparation.newCarUsedCarKubun === '新車' &&
+                (this.deliveryPreparation.normalCarLightCarKubun === '普通車' ||
+                 this.deliveryPreparation.normalCarLightCarKubun === '軽自動車')
                 "
             >
               <p class="mt-5 mb-5 explanation">
@@ -9216,8 +9356,107 @@ export default {
             </v-row>
             <v-row
             v-if="
-                this.deliveryPreparation.newCarUsedCarKubun === '新車' ||
-                this.deliveryPreparation.newCarUsedCarKubun === '中古車'
+                 this.deliveryPreparation.newCarUsedCarKubun === '中古車' &&
+                (this.deliveryPreparation.normalCarLightCarKubun === '普通車' ||
+                 this.deliveryPreparation.normalCarLightCarKubun === '軽自動車')
+                "
+            >
+              <p class="mt-5 mb-5 explanation">
+                ・一般保証の内容や点検内容が記載されているノートです。 <br>
+                　<br>
+                ！<b>保証書のページ</b>と<b>納車時確認ページ</b>を記入します。　<br>
+                　<br>
+                ！中古車の保証期間が残っている場合は元々あるメンテナンスノートの　<br>
+                　<b>保証書のページ（保証継承ページ）</b>にも記入が必要です。
+              </p>
+            </v-row>
+
+            <v-row class="icon-ml">
+            <v-col
+            v-if="
+                 this.deliveryPreparation.newCarUsedCarKubun === '新車' &&
+                 this.deliveryPreparation.normalCarLightCarKubun === '普通車'
+                "
+              cols="1"
+              class="mt-3 d-flex align-center"
+            >
+            <p>保証書　　</p>
+            <v-btn
+                @click="standardCarWarrantyModal = true"
+                density="compact"
+                icon="mdi-help"
+              ></v-btn>
+          </v-col>
+            <v-col
+            v-if="
+                 this.deliveryPreparation.newCarUsedCarKubun === '新車' &&
+                 this.deliveryPreparation.normalCarLightCarKubun === '軽自動車'
+                "
+              cols="1"
+              class="mt-3 d-flex align-center"
+            >
+            <p>保証書　　</p>
+            <v-btn
+                @click="lightCarWarrantyModal = true"
+                density="compact"
+                icon="mdi-help"
+              ></v-btn>
+            </v-col>
+            <v-col
+            v-if="
+                 this.deliveryPreparation.newCarUsedCarKubun === '新車' &&
+                (this.deliveryPreparation.normalCarLightCarKubun === '普通車'||
+                 this.deliveryPreparation.normalCarLightCarKubun === '軽自動車')
+                "
+              cols="1"
+              class="mt-3 d-flex align-center"
+            >
+            <p>納車時確認　</p>
+              <v-btn
+                @click="openModal('納車準備（新車）記入例.jpg')"
+                density="compact"
+                icon="mdi-help"
+              ></v-btn>
+            </v-col>
+            <v-col
+            v-if="
+                 this.deliveryPreparation.newCarUsedCarKubun === '中古車' &&
+                (this.deliveryPreparation.normalCarLightCarKubun === '普通車'||
+                 this.deliveryPreparation.normalCarLightCarKubun === '軽自動車')
+                "
+              cols="1"
+              class="mt-3 d-flex align-center"
+            >
+            <p>保証書　　</p>
+            <v-btn
+                @click="usedCarWarrantyModal = true"
+                density="compact"
+                icon="mdi-help"
+              ></v-btn>
+            </v-col>
+            <v-col
+            v-if="
+                 this.deliveryPreparation.newCarUsedCarKubun === '中古車' &&
+                (this.deliveryPreparation.normalCarLightCarKubun === '普通車'||
+                 this.deliveryPreparation.normalCarLightCarKubun === '軽自動車')
+                "
+              cols="1"
+              class="mt-3 d-flex align-center"
+            >
+            <p>納車時確認　</p>
+              <v-btn
+                @click="openModal('納車準備（中古車）記入例.jpg')"
+                density="compact"
+                icon="mdi-help"
+              ></v-btn>
+            </v-col>
+            </v-row>
+            <v-row
+            v-if="
+                (this.deliveryPreparation.newCarUsedCarKubun === '新車' ||
+                 this.deliveryPreparation.newCarUsedCarKubun === '中古車')&&
+                (this.deliveryPreparation.normalCarLightCarKubun === '普通車' ||
+                 this.deliveryPreparation.normalCarLightCarKubun === '軽自動車')
                 "
             >
               <v-toolbar-title class="mt-5 d-flex align-center start">
@@ -9226,8 +9465,10 @@ export default {
             </v-row>
             <v-row
             v-if="
-                this.deliveryPreparation.newCarUsedCarKubun === '新車' ||
-                this.deliveryPreparation.newCarUsedCarKubun === '中古車'
+                (this.deliveryPreparation.newCarUsedCarKubun === '新車' ||
+                 this.deliveryPreparation.newCarUsedCarKubun === '中古車')&&
+                (this.deliveryPreparation.normalCarLightCarKubun === '普通車' ||
+                 this.deliveryPreparation.normalCarLightCarKubun === '軽自動車')
                 "
             >
               <p class="mt-5 mb-5 explanation">
@@ -9240,8 +9481,10 @@ export default {
 
             <v-row
             v-if="
-                this.deliveryPreparation.newCarUsedCarKubun === '新車' ||
-                this.deliveryPreparation.newCarUsedCarKubun === '中古車'
+                (this.deliveryPreparation.newCarUsedCarKubun === '新車' ||
+                 this.deliveryPreparation.newCarUsedCarKubun === '中古車')&&
+                (this.deliveryPreparation.normalCarLightCarKubun === '普通車' ||
+                 this.deliveryPreparation.normalCarLightCarKubun === '軽自動車')
                 "
             >
               <v-toolbar-title class="mt-5 d-flex align-center start">
@@ -9250,8 +9493,9 @@ export default {
             </v-row>
             <v-row
             v-if="
-                this.deliveryPreparation.newCarUsedCarKubun === '新車' ||
-                this.deliveryPreparation.newCarUsedCarKubun === '中古車'
+                 this.deliveryPreparation.newCarUsedCarKubun === '新車' &&
+                (this.deliveryPreparation.normalCarLightCarKubun === '普通車' ||
+                 this.deliveryPreparation.normalCarLightCarKubun === '軽自動車')
                 "
             >
               <p class="mt-5 mb-5 explanation">
@@ -9266,11 +9510,30 @@ export default {
                 （７）マツダ純正用品保証書　<br>
               </p>
             </v-row>
-
             <v-row
             v-if="
-                this.deliveryPreparation.newCarUsedCarKubun === '新車' ||
-                this.deliveryPreparation.newCarUsedCarKubun === '中古車'
+                 this.deliveryPreparation.newCarUsedCarKubun === '中古車' &&
+                (this.deliveryPreparation.normalCarLightCarKubun === '普通車' ||
+                 this.deliveryPreparation.normalCarLightCarKubun === '軽自動車')
+                "
+            >
+              <p class="mt-5 mb-5 explanation">
+                ・車検証入れに入れる物一覧 <br>
+                　<br>
+                （１）車検証　<br>
+                （２）自賠責保険証　<br>
+                （３）リサイクル券　<br>
+                （４）ETCセットアップ用紙（※車にETCが取り付けられてる場合）　<br>
+                （５）パックdeメンテ申込書（※パックdeメンテにご加入されている場合）　<br>
+                （６）マツダ認定U-car認定証（※中古車がマツダ認定U-car対象車の場合）　<br>
+              </p>
+            </v-row>
+            <v-row
+            v-if="
+                (this.deliveryPreparation.newCarUsedCarKubun === '新車' ||
+                 this.deliveryPreparation.newCarUsedCarKubun === '中古車')&&
+                (this.deliveryPreparation.normalCarLightCarKubun === '普通車' ||
+                 this.deliveryPreparation.normalCarLightCarKubun === '軽自動車')
                 "
             >
               <v-toolbar-title class="mt-5 d-flex align-center start">
@@ -9279,6 +9542,8 @@ export default {
             </v-row>
             <v-row
             v-if="
+                (this.deliveryPreparation.newCarUsedCarKubun === '新車' ||
+                 this.deliveryPreparation.newCarUsedCarKubun === '中古車')&&
                 this.deliveryPreparation.normalCarLightCarKubun === '普通車' 
                 "
             >
@@ -9288,7 +9553,7 @@ export default {
                 ！車庫証明を提出する警察署は車を保管する場所によって様々です。　 <br>
                 　↑例：車を南区に保管されている場合は南警察署など。　 <br>
                 　 <br>
-                ！<b>保管場所証明申請書</b>、<b>自認書または使用承諾書</b>、<b>配置図をセット</b>で提出致します。　<br>
+                ！<b>保管場所証明申請書</b>、<b>自認書または使用承諾書</b>、<b>配置図</b>、<b>所在図</b>をセットで提出致します。　<br>
                 　 <br>
                 ！車庫証明の金額について　 <br>
                 　<br>
@@ -9302,6 +9567,8 @@ export default {
             </v-row>
             <v-row
             v-if="
+                (this.deliveryPreparation.newCarUsedCarKubun === '新車' ||
+                 this.deliveryPreparation.newCarUsedCarKubun === '中古車')&&
                 this.deliveryPreparation.normalCarLightCarKubun === '軽自動車' 
                 "
             >
@@ -9311,7 +9578,7 @@ export default {
                 ！車庫証明を提出する警察署は車を保管する場所によって様々です。　 <br>
                 　↑例：車を南区に保管されている場合は南警察署など。　 <br>
                 　 <br>
-                ！<b>保管場所届出書</b>、<b>自認書または使用承諾書</b>、<b>配置図をセット</b>で提出致します。　 <br>
+                ！<b>保管場所届出書</b>、<b>自認書または使用承諾書</b>、<b>配置図</b>、<b>所在図</b>をセットで提出致します。　 <br>
                 　 <br>
                 ！車庫証明の金額について　 <br>
                 　 <br>
@@ -9745,6 +10012,7 @@ export default {
           <img class="modal-img" src="/税申告書記入例.jpg" />
         </v-card>
       </v-dialog> -->
+
       <!-- 買取・下取modal -->
       <v-dialog v-model="tradeInPurchaseModal" max-width="37%">
         <v-card>
@@ -9786,6 +10054,25 @@ export default {
           <img class="modal-img" src="/自動車税支払伺書記入例.jpg" />
         </v-card>
       </v-dialog>
+
+      <!-- 納車準備modal -->
+      <v-dialog v-model="standardCarWarrantyModal" max-width="33%">
+        <v-card>
+          <img class="modal-img" src="/保証書（普通車）記入例.jpg" />
+        </v-card>
+      </v-dialog>
+      <v-dialog v-model="lightCarWarrantyModal" max-width="33%">
+        <v-card>
+          <img class="modal-img" src="/保証書（軽自動車）記入例.jpg" />
+        </v-card>
+      </v-dialog>
+      <v-dialog v-model="usedCarWarrantyModal" max-width="33%">
+        <v-card>
+          <img class="modal-img" src="/保証書（中古車）記入例.jpg" />
+        </v-card>
+      </v-dialog>
+
+
 
 
 
