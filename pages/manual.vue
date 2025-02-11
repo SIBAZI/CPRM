@@ -3812,10 +3812,10 @@ export default {
               　メンテナンスパック（パックdeメンテ）にご加入頂くための書類です。　<br />
               　<br />
               　ご商談の際は36Sコース　<br />
-              　（5年間半年ごとの点検、5年後2回目の車検　<br />
-              　　※5年間半年ごとの点検＝半年ごとの6ヶ月点検（MSC）と12ヶ月点検※　<br />
-              　　※5年後2回目の車検＝1回目の車検は納車から3年後、2回目の車検は納車から5年後※　<br />
-              　　がセットになったプラン）　<br />
+              　5年間半年ごとの点検、5年後2回目の車検　<br />
+              　※5年間半年ごとの点検＝半年ごとの6ヶ月点検（MSC）と12ヶ月点検※　<br />
+              　※5年後2回目の車検＝1回目の車検は納車から3年後、2回目の車検は納車から5年後※　<br />
+              　がセットになったプラン　<br />
               　をおすすめとしてご提案させて頂いています。　
             </p>
           </v-row>
@@ -4956,6 +4956,23 @@ export default {
               　▲　お手続きは以上になります。お時間頂きありがとうございました。
             </v-toolbar-title>
           </v-row>
+          <v-row
+            v-if="
+              (this.contracts.newCarUsedCarKubun === '新車' ||
+                this.contracts.newCarUsedCarKubun === '中古車') &&
+              (this.contracts.normalCarLightCarKubun === '普通車' ||
+                this.contracts.normalCarLightCarKubun === '軽自動車') &&
+              (this.contracts.paymentKubun === '現金' ||
+                this.contracts.paymentKubun === 'クレジット' ||
+                this.contracts.paymentKubun === '銀行ローン' ||
+                this.contracts.paymentKubun === '所有権留保')
+            "
+          >
+            <p class="mt-5 explanation">
+              ※所属長に書類を提出する際には<b>書類の向き</b>を揃えましょう。　
+            </p>
+          </v-row>
+
         </div>
         <!-- 下取・買取 -->
         <div class="buy-trade">
@@ -8642,6 +8659,18 @@ export default {
               <v-toolbar-title class="mt-16 d-flex align-center goal">
                 　▲　お手続きは以上になります。お時間頂きありがとうございました。
               </v-toolbar-title>
+            </v-row>
+            <v-row
+              v-if="
+                (this.tradeInPurchase.tradeInPurchaseKubun === '下取' ||
+                  this.tradeInPurchase.tradeInPurchaseKubun === '買取') &&
+                (this.tradeInPurchase.normalCarLightCarKubun === '普通車' ||
+                  this.tradeInPurchase.normalCarLightCarKubun === '軽自動車')
+              "
+            >
+            <p class="mt-5 explanation">
+              ※所属長に書類を提出する際には<b>書類の向き</b>を揃えましょう。　
+            </p>
             </v-row>
           </div>
         </div>
