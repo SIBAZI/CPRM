@@ -46,6 +46,7 @@ export default {
       },
       contracts: {
         userCode: "", //ユーザーコード
+        name:"", //お名前
         orderDate: "", //受注日
         carModel: "", //成約車種
         storeKubun: "", //店舗区分
@@ -58,7 +59,19 @@ export default {
       },
       normalCarDocuments: {
         poaKubun: "委任状", //委任状
+        poaKubunExplanation1: false,//委任状説明１
+        poaKubunExplanation2: false,//委任状説明２
+        poaKubunExplanation3: false,//委任状説明３
+        poaKubunExplanation4: false,//委任状説明４
         poaOssKubun: "", //委任状・OSS
+        poaOssKubunExplanation1: false,//OSS説明１
+        poaOssKubunExplanation2: false,//OSS説明２
+        poaOssKubunExplanation3: false,//OSS説明３
+        poaOssKubunExplanation4: false,//OSS説明４
+        poaOssKubunExplanation5: false,//OSS説明５
+        poaOssKubunExplanation6: false,//OSS説明６
+        poaOssKubunExplanation7: false,//OSS説明７
+        poaOssKubunExplanation8: false,//OSS説明８
         isFillIn: "", //ご記入
         isRegisteredSeal: false, //実印（銀行印）
         isSealCertificate: false, //印鑑証明
@@ -68,6 +81,7 @@ export default {
       },
       lightCarDocuments: {
         lightCarDocumentsKubun: "申請依頼書", //申請依頼書
+        lightCarDocumentsKubunExplanation1: false,//申請依頼書説明１
         isFillIn: "", //ご記入
         isStamping: false, //認印
         isResidentCard: false, //住民票
@@ -473,6 +487,56 @@ export default {
     //     promisedDay: "",
     //   });
     // },
+    poaKubunExplanation1() {
+      this.normalCarDocuments.poaKubunExplanation1 = !this.normalCarDocuments.poaKubunExplanation1
+      // if (this.normalCarDocuments.poaKubunExplanation1 === false) {
+      //   this.normalCarDocuments.poaKubunExplanation1 = true
+      // } else {
+      //   this.normalCarDocuments.poaKubunExplanation1 = false
+      // }
+    },
+    poaKubunExplanation2() {
+      this.normalCarDocuments.poaKubunExplanation2 = !this.normalCarDocuments.poaKubunExplanation2
+    },
+    poaKubunExplanation3() {
+      this.normalCarDocuments.poaKubunExplanation3 = !this.normalCarDocuments.poaKubunExplanation3
+    },
+    poaKubunExplanation4() {
+      this.normalCarDocuments.poaKubunExplanation4 = !this.normalCarDocuments.poaKubunExplanation4
+    },
+    poaOssKubunExplanation1() {
+      this.normalCarDocuments.poaOssKubunExplanation1 = !this.normalCarDocuments.poaOssKubunExplanation1
+    },
+    poaOssKubunExplanation2() {
+      this.normalCarDocuments.poaOssKubunExplanation2 = !this.normalCarDocuments.poaOssKubunExplanation2
+    },
+    poaOssKubunExplanation3() {
+      this.normalCarDocuments.poaOssKubunExplanation3 = !this.normalCarDocuments.poaOssKubunExplanation3
+    },
+    poaOssKubunExplanation4() {
+      this.normalCarDocuments.poaOssKubunExplanation4 = !this.normalCarDocuments.poaOssKubunExplanation4
+    },
+    poaOssKubunExplanation5() {
+      this.normalCarDocuments.poaOssKubunExplanation5 = !this.normalCarDocuments.poaOssKubunExplanation5
+    },
+    poaOssKubunExplanation6() {
+      this.normalCarDocuments.poaOssKubunExplanation6 = !this.normalCarDocuments.poaOssKubunExplanation6
+    },
+    poaOssKubunExplanation7() {
+      this.normalCarDocuments.poaOssKubunExplanation7 = !this.normalCarDocuments.poaOssKubunExplanation7
+    },
+    poaOssKubunExplanation8() {
+      this.normalCarDocuments.poaOssKubunExplanation8 = !this.normalCarDocuments.poaOssKubunExplanation8
+    },
+    lightCarDocumentsKubunExplanation1() {
+      this.lightCarDocuments.lightCarDocumentsKubunExplanation1 = !this.lightCarDocuments.lightCarDocumentsKubunExplanation1
+    },
+
+
+
+
+
+
     poaImg() {
       window.open("/委任状（書類代行）.pdf", "_blank");
     },
@@ -571,6 +635,20 @@ export default {
       this.credit.creditDocuments = "";
       this.credit.creditTp = false;
       this.delivery.deliveryDate = "";
+      this.normalCarDocuments.poaKubunExplanation1 = false;
+      this.normalCarDocuments.poaKubunExplanation2 = false;
+      this.normalCarDocuments.poaKubunExplanation3 = false;
+      this.normalCarDocuments.poaKubunExplanation4 = false;
+      this.normalCarDocuments.poaOssKubunExplanation1 = false;
+      this.normalCarDocuments.poaOssKubunExplanation2 = false;
+      this.normalCarDocuments.poaOssKubunExplanation3 = false;
+      this.normalCarDocuments.poaOssKubunExplanation4 = false;
+      this.normalCarDocuments.poaOssKubunExplanation5 = false;
+      this.normalCarDocuments.poaOssKubunExplanation6 = false;
+      this.normalCarDocuments.poaOssKubunExplanation7 = false;
+      this.normalCarDocuments.poaOssKubunExplanation8 = false;
+
+      this.lightCarDocuments.lightCarDocumentsKubunExplanation1 = false;
     },
     newCarUsedCarKubunChange() {
       this.normalCarDocuments.poaOssKubun = "";
@@ -619,6 +697,17 @@ export default {
       this.taxDeclaration.isFillIn = "";
       this.taxDeclaration.completedDate = false;
       this.delivery.deliveryDate = "";
+      this.normalCarDocuments.poaKubunExplanation1 = false;
+      this.normalCarDocuments.poaKubunExplanation2 = false;
+      this.normalCarDocuments.poaKubunExplanation3 = false;
+      this.normalCarDocuments.poaKubunExplanation4 = false;
+      this.normalCarDocuments.poaOssKubunExplanation5 = false;
+      this.normalCarDocuments.poaOssKubunExplanation6 = false;
+      this.normalCarDocuments.poaOssKubunExplanation7 = false;
+      this.normalCarDocuments.poaOssKubunExplanation8 = false;
+
+      this.lightCarDocuments.lightCarDocumentsKubunExplanation1 = false;
+
     },
     normalCarLightCarChange() {
       this.normalCarDocuments.poaOssKubun = "";
@@ -667,6 +756,20 @@ export default {
       this.taxDeclaration.isFillIn = "";
       this.taxDeclaration.completedDate = false;
       this.delivery.deliveryDate = "";
+      this.normalCarDocuments.poaKubunExplanation1 = false;
+      this.normalCarDocuments.poaKubunExplanation2 = false;
+      this.normalCarDocuments.poaKubunExplanation3 = false;
+      this.normalCarDocuments.poaKubunExplanation4 = false;
+      this.normalCarDocuments.poaOssKubunExplanation1 = false;
+      this.normalCarDocuments.poaOssKubunExplanation2 = false;
+      this.normalCarDocuments.poaOssKubunExplanation3 = false;
+      this.normalCarDocuments.poaOssKubunExplanation4 = false;
+      this.normalCarDocuments.poaOssKubunExplanation5 = false;
+      this.normalCarDocuments.poaOssKubunExplanation6 = false;
+      this.normalCarDocuments.poaOssKubunExplanation7 = false;
+      this.normalCarDocuments.poaOssKubunExplanation8 = false;
+
+      this.lightCarDocuments.lightCarDocumentsKubunExplanation1 = false;
     },
 
     paymentKubunChange() {
@@ -691,6 +794,20 @@ export default {
       this.lightCarDocuments.isResidentCard = false;
       this.credit.creditTp = "";
       this.delivery.deliveryDate = "";
+      this.normalCarDocuments.poaKubunExplanation1 = false;
+      this.normalCarDocuments.poaKubunExplanation2 = false;
+      this.normalCarDocuments.poaKubunExplanation3 = false;
+      this.normalCarDocuments.poaKubunExplanation4 = false;
+      this.normalCarDocuments.poaOssKubunExplanation1 = false;
+      this.normalCarDocuments.poaOssKubunExplanation2 = false;
+      this.normalCarDocuments.poaOssKubunExplanation3 = false;
+      this.normalCarDocuments.poaOssKubunExplanation4 = false;
+      this.normalCarDocuments.poaOssKubunExplanation5 = false;
+      this.normalCarDocuments.poaOssKubunExplanation6 = false;
+      this.normalCarDocuments.poaOssKubunExplanation7 = false;
+      this.normalCarDocuments.poaOssKubunExplanation8 = false;
+
+      this.lightCarDocuments.lightCarDocumentsKubunExplanation1 = false;
     },
     insuranceKubunChange() {
       this.insurance.jocInsuranceCompany = "";
@@ -715,6 +832,15 @@ export default {
       this.storingMethod.completedDate = false;
       this.arrangementDiagram.isFillIn = "";
       this.arrangementDiagram.completedDate = false;
+      this.normalCarDocuments.poaOssKubunExplanation1 = false;
+      this.normalCarDocuments.poaOssKubunExplanation2 = false;
+      this.normalCarDocuments.poaOssKubunExplanation3 = false;
+      this.normalCarDocuments.poaOssKubunExplanation4 = false;
+      this.normalCarDocuments.poaOssKubunExplanation5 = false;
+      this.normalCarDocuments.poaOssKubunExplanation6 = false;
+      this.normalCarDocuments.poaOssKubunExplanation7 = false;
+      this.normalCarDocuments.poaOssKubunExplanation8 = false;
+
     },
     lightCarDocumentsKubunChange() {
       this.lightCarDocuments.isFillIn = "";
@@ -729,6 +855,7 @@ export default {
       this.storingMethod.completedDate = false;
       this.arrangementDiagram.isFillIn = "";
       this.arrangementDiagram.completedDate = false;
+      this.lightCarDocuments.lightCarDocumentsKubunExplanation1 = false;
     },
     NCgarageVerificationKubunChange() {
       this.normalCarDocumentsGarageVerification.NCgarageVerificationKubun = "";
@@ -1241,6 +1368,104 @@ export default {
                 variant="outlined"
               ></v-select>
             </v-col>
+            <v-col 
+              cols="2"
+              v-if="this.start.startKubun === ''"
+            >
+            </v-col>
+            <v-col 
+              cols="2"
+              v-if="this.start.startKubun === ''"
+            >
+            </v-col>
+            <v-col 
+              cols="2"
+              v-if="this.start.startKubun === ''"
+            >
+            </v-col>
+            <v-col 
+              cols="1"
+              v-if="this.start.startKubun === ''"
+            >
+            </v-col>
+            <v-col 
+              cols="2"
+              v-if="this.start.startKubun === '成約時登録'"
+            >
+            </v-col>
+            <v-col 
+              cols="2"
+              v-if="this.start.startKubun === '成約時登録'"
+            >
+            </v-col>
+            <v-col 
+              cols="1"
+              v-if="this.start.startKubun === '成約時登録'"
+            >
+            </v-col>
+            <v-col 
+              cols="1"
+              v-if="this.start.startKubun === '納車準備'"
+            >
+            </v-col>
+            <v-col 
+              cols="2"
+              v-if="this.start.startKubun === '納車準備'"
+            >
+            </v-col>
+            <v-col 
+              cols="2"
+              v-if="this.start.startKubun === '納車準備'"
+            >
+            </v-col>
+            <v-col 
+              cols="2"
+              v-if="this.start.startKubun === '納車準備'"
+            >
+            </v-col>
+            <v-col 
+              cols="1"
+              v-if="this.start.startKubun === '納車'"
+            >
+            </v-col>
+            <v-col 
+              cols="2"
+              v-if="this.start.startKubun === '納車'"
+            >
+            </v-col>
+            <v-col 
+              cols="2"
+              v-if="this.start.startKubun === '納車'"
+            >
+            </v-col>
+            <v-col 
+              cols="2"
+              v-if="this.start.startKubun === '納車'"
+            >
+            </v-col>
+            <v-col 
+              cols="1"
+              v-if="this.start.startKubun === '一般登録代行'"
+            >
+            </v-col>
+            <v-col 
+              cols="2"
+              v-if="this.start.startKubun === '一般登録代行'"
+            >
+            </v-col>
+            <v-col 
+              cols="2"
+              v-if="this.start.startKubun === '一般登録代行'"
+            >
+            </v-col>
+            <v-col 
+              cols="2"
+              v-if="this.start.startKubun === '一般登録代行'"
+            >
+            </v-col>
+
+
+
             <v-col
               cols="1"
               v-if="this.start.startKubun === '下取・買取'"
@@ -1263,30 +1488,28 @@ export default {
                 icon="mdi-printer"
                 ></v-btn>
             </v-col>
-            <v-col cols="2" class="" > </v-col>
-            <v-col cols="2" class=""> </v-col>
-            <v-col cols="1" class=""> </v-col>
             <v-col 
-              cols="1" 
-              class=""
-              v-if="this.start.startKubun === ''||
-                    this.start.startKubun === '成約時登録'||
-                    this.start.startKubun === '納車準備'||
-                    this.start.startKubun === '納車'||
-                    this.start.startKubun === '一般登録代行'
-                   "
-              > 
+              cols="2"
+              v-if="this.start.startKubun === '下取・買取'"
+            >
             </v-col>
             <v-col 
-              cols="1" 
-              class=""
-              v-if="this.start.startKubun === ''||
-                    this.start.startKubun === '成約時登録'||
-                    this.start.startKubun === '納車準備'||
-                    this.start.startKubun === '納車'||
-                    this.start.startKubun === '一般登録代行'
-                   "
-              > 
+              cols="1"
+              v-if="this.start.startKubun === '下取・買取'"
+            >
+            </v-col>
+            <v-col 
+              cols="2" 
+              v-if="this.start.startKubun === '成約時登録'||
+                    this.start.startKubun === '下取・買取'
+              "
+              >
+              <v-combobox
+                v-model="contracts.name"
+                label="お客様名"
+                :items="[]"
+                variant="outlined"
+              ></v-combobox>
             </v-col>
           </v-row>
           <v-row v-if="this.start.startKubun === '一般登録代行'">
@@ -1352,7 +1575,7 @@ export default {
               ></v-select>
             </v-col>
             <v-col cols="2" class="mt-2">
-              <v-btn class="ml-16" @click="rattocClear"> clear </v-btn>
+              <v-btn class="ml-16 clear" @click="rattocClear"> clear </v-btn>
             </v-col>
             <!-- <v-col cols="2" class="mt-2 ">
               <v-btn @click="openModal('委任状（実印）記入例.jpg')">
@@ -1494,14 +1717,7 @@ export default {
           ></v-text-field>
         </v-col> -->
           </v-row>
-          <v-row
-            v-if="
-              this.contracts.newCarUsedCarKubun === '中古車' &&
-              this.contracts.normalCarLightCarKubun === '普通車' &&
-              this.contracts.paymentKubun === '現金' &&
-              this.normalCarDocuments.poaKubun === '委任状'
-            "
-          >
+          <v-row v-show="normalCarDocuments.poaKubunExplanation1">
             <p class="explanation">
               ・現金でのお支払いの場合、お車の所有者はお客様になりますので<b>実印</b>と<b>印鑑証明</b>が必要となります。　<br />
               <br />
@@ -1513,47 +1729,93 @@ export default {
               ・現金でのお支払いの場合、お車の所有者はお客様になりますので<b>実印</b>と<b>印鑑証明</b>が必要となります。
             </ExplanationText>
           </v-row> -->
-          <v-row
-            v-if="
-              this.contracts.newCarUsedCarKubun === '中古車' &&
-              this.contracts.normalCarLightCarKubun === '普通車' &&
-              this.contracts.paymentKubun === 'クレジット' &&
-              this.normalCarDocuments.poaKubun === '委任状'
-            "
-          >
+          <v-row v-show="normalCarDocuments.poaKubunExplanation2">
             <p class="explanation">
               ・クレジットでのお支払いの場合、<b>認印</b>と<b>住民票</b>が必要となります。　
             </p>
           </v-row>
 
-          <v-row
-            v-if="
-              this.contracts.newCarUsedCarKubun === '中古車' &&
-              this.contracts.normalCarLightCarKubun === '普通車' &&
-              this.contracts.paymentKubun === '銀行ローン' &&
-              this.normalCarDocuments.poaKubun === '委任状'
-            "
-          >
+          <v-row v-show="normalCarDocuments.poaKubunExplanation3">
             <p class="explanation">
               ・銀行ローンでのお支払いの場合、お車の所有者はお客様になりますので<b>実印</b>と<b>印鑑証明</b>が必要となります。　<br />
               <br />
               ！お車の使用者が所有者と別の場合、使用者様の<b>委任状（認印）</b>がもう１枚必要になります。　
             </p>
           </v-row>
-          <v-row
-            v-if="
-              this.contracts.newCarUsedCarKubun === '中古車' &&
-              this.contracts.normalCarLightCarKubun === '普通車' &&
-              this.contracts.paymentKubun === '所有権留保' &&
-              this.normalCarDocuments.poaKubun === '委任状'
-            "
-          >
+
+          <v-row v-show="normalCarDocuments.poaKubunExplanation4">
             <p class="explanation">
               ・所有権留保の場合、<b>認印</b>と<b>住民票</b>が必要となります。　
             </p>
           </v-row>
 
           <v-row class="icon-ml">
+            <v-col
+              cols="1"
+              class="mt-3 d-flex align-center"
+              v-if="
+              this.contracts.newCarUsedCarKubun === '中古車' &&
+              this.contracts.normalCarLightCarKubun === '普通車' &&
+              this.contracts.paymentKubun === '現金' &&
+              this.normalCarDocuments.poaKubun === '委任状'
+              "
+            >
+              <v-btn
+                @click="poaKubunExplanation1"
+                density="compact"
+                icon="mdi-comment-alert-outline"
+              ></v-btn>
+            </v-col>
+            <v-col
+              cols="1"
+              class="mt-3 d-flex align-center"
+              v-if="
+              this.contracts.newCarUsedCarKubun === '中古車' &&
+              this.contracts.normalCarLightCarKubun === '普通車' &&
+              this.contracts.paymentKubun === 'クレジット' &&
+              this.normalCarDocuments.poaKubun === '委任状'
+              "
+            >
+              <v-btn
+                @click="poaKubunExplanation2"
+                density="compact"
+                icon="mdi-comment-alert-outline"
+              ></v-btn>
+            </v-col>
+            <v-col
+              cols="1"
+              class="mt-3 d-flex align-center"
+              v-if="
+              this.contracts.newCarUsedCarKubun === '中古車' &&
+              this.contracts.normalCarLightCarKubun === '普通車' &&
+              this.contracts.paymentKubun === '銀行ローン' &&
+              this.normalCarDocuments.poaKubun === '委任状'
+              "
+            >
+              <v-btn
+                @click="poaKubunExplanation3"
+                density="compact"
+                icon="mdi-comment-alert-outline"
+              ></v-btn>
+            </v-col>
+            <v-col
+              cols="1"
+              class="mt-3 d-flex align-center"
+              v-if="
+              this.contracts.newCarUsedCarKubun === '中古車' &&
+              this.contracts.normalCarLightCarKubun === '普通車' &&
+              this.contracts.paymentKubun === '所有権留保' &&
+              this.normalCarDocuments.poaKubun === '委任状'
+              "
+            >
+              <v-btn
+                @click="poaKubunExplanation4"
+                density="compact"
+                icon="mdi-comment-alert-outline"
+              ></v-btn>
+            </v-col>
+
+
             <v-col
               cols="1"
               class="mt-3 d-flex align-center"
@@ -1573,7 +1835,7 @@ export default {
             </v-col>
             <v-col
               cols="1"
-              class="d-flex align-center"
+              class="mt-3 d-flex align-center"
               v-if="
                 this.contracts.newCarUsedCarKubun === '中古車' &&
                 this.contracts.normalCarLightCarKubun === '普通車' &&
@@ -1607,7 +1869,7 @@ export default {
             </v-col>
             <v-col
               cols="1"
-              class="d-flex align-center"
+              class="mt-3 d-flex align-center"
               v-if="
                 this.contracts.newCarUsedCarKubun === '中古車' &&
                 this.contracts.normalCarLightCarKubun === '普通車' &&
@@ -1791,11 +2053,7 @@ export default {
         </v-col> -->
           </v-row>
           <v-row
-            v-if="
-              this.contracts.newCarUsedCarKubun === '新車' &&
-              this.contracts.paymentKubun === '現金' &&
-              this.normalCarDocuments.poaOssKubun === 'OSS委任状'
-            "
+            v-show="normalCarDocuments.poaOssKubunExplanation1"
           >
             <p class="explanation">
               ・現金でのお支払いの場合、お車の所有者お客様になりますので<b>実印</b>と<b>印鑑証明</b>が必要となります。　<br />
@@ -1808,11 +2066,7 @@ export default {
             </p>
           </v-row>
           <v-row
-            v-if="
-              this.contracts.newCarUsedCarKubun === '新車' &&
-              this.contracts.paymentKubun === 'クレジット' &&
-              this.normalCarDocuments.poaOssKubun === 'OSS委任状'
-            "
+            v-show="normalCarDocuments.poaOssKubunExplanation2"
           >
             <p class="explanation">
               ・クレジットでのお支払いの場合、<b>認印</b>と<b>住民票</b>が必要となります。　<br />
@@ -1822,27 +2076,18 @@ export default {
             </p>
           </v-row>
           <v-row
-            v-if="
-              this.contracts.newCarUsedCarKubun === '新車' &&
-              this.contracts.paymentKubun === '銀行ローン' &&
-              this.normalCarDocuments.poaOssKubun === 'OSS委任状'
-            "
+            v-show="normalCarDocuments.poaOssKubunExplanation3"
           >
             <p class="explanation">
-              ・銀行ローンでのお支払いの場合、お車の所有者はお客様になりますので<b>実印</b>と<b>印鑑証明</b>が必要となります。　<br />
-              <br />
-              ！お車の使用者が所有者と別の場合、使用者様の<b>委任状（認印）</b>がもう１枚必要になります。　<br />
-              <br />
+              ・銀行ローンでのお支払いの場合、お車の所有者お客様になりますので<b>実印</b>と<b>印鑑証明</b>が必要となります。　<br />
+              　<br />
               　ワンストップサービス（OSS）は、自動車を保有するために必要となる手続きと税金や手数料の納付を　<br />
               　インターネット上で一括して行うことを可能とした国土交通省が提供しているサービスです。　
             </p>
           </v-row>
+
           <v-row
-            v-if="
-              this.contracts.newCarUsedCarKubun === '新車' &&
-              this.contracts.paymentKubun === '所有権留保' &&
-              this.normalCarDocuments.poaOssKubun === 'OSS委任状'
-            "
+            v-show="normalCarDocuments.poaOssKubunExplanation4"
           >
             <p class="explanation">
               ・所有権留保の場合、<b>認印</b>と<b>住民票</b>が必要となります。　<br />
@@ -1852,11 +2097,7 @@ export default {
             </p>
           </v-row>
           <v-row
-            v-if="
-              this.contracts.newCarUsedCarKubun === '新車' &&
-              this.contracts.paymentKubun === '現金' &&
-              this.normalCarDocuments.poaOssKubun === '委任状'
-            "
+            v-show="normalCarDocuments.poaOssKubunExplanation5"
           >
             <p class="explanation">
               ・現金でのお支払いの場合、お車の所有者はお客様になりますので<b>実印</b>と<b>印鑑証明</b>が必要となります。　<br />
@@ -1868,11 +2109,7 @@ export default {
             </p>
           </v-row>
           <v-row
-            v-if="
-              this.contracts.newCarUsedCarKubun === '新車' &&
-              this.contracts.paymentKubun === 'クレジット' &&
-              this.normalCarDocuments.poaOssKubun === '委任状'
-            "
+            v-show="normalCarDocuments.poaOssKubunExplanation6"
           >
             <p class="explanation">
               ・クレジットでのお支払いの場合、<b>認印</b>と<b>住民票</b>が必要となります。　<br />
@@ -1883,11 +2120,7 @@ export default {
           </v-row>
 
           <v-row
-            v-if="
-              this.contracts.newCarUsedCarKubun === '新車' &&
-              this.contracts.paymentKubun === '銀行ローン' &&
-              this.normalCarDocuments.poaOssKubun === '委任状'
-            "
+            v-show="normalCarDocuments.poaOssKubunExplanation7"
           >
             <p class="explanation">
               ・銀行ローンでのお支払いの場合、お車の所有者はお客様になりますので<b>実印</b>と<b>印鑑証明</b>が必要となります。　<br />
@@ -1899,11 +2132,7 @@ export default {
             </p>
           </v-row>
           <v-row
-            v-if="
-              this.contracts.newCarUsedCarKubun === '新車' &&
-              this.contracts.paymentKubun === '所有権留保' &&
-              this.normalCarDocuments.poaOssKubun === '委任状'
-            "
+            v-show="normalCarDocuments.poaOssKubunExplanation8"
           >
             <p class="explanation">
               ・所有権留保の場合、<b>認印</b>と<b>住民票</b>が必要となります。　<br />
@@ -1914,6 +2143,65 @@ export default {
           </v-row>
 
           <v-row class="icon-ml">
+            
+            <v-col
+              cols="1"
+              class="mt-3 d-flex align-center"
+              v-if="
+                this.contracts.paymentKubun === '現金' &&
+                this.normalCarDocuments.poaOssKubun === 'OSS委任状'
+              "
+            >
+              <v-btn
+                @click="poaOssKubunExplanation1"
+                density="compact"
+                icon="mdi-comment-alert-outline"
+              ></v-btn>
+            </v-col>
+
+            <v-col
+              cols="1"
+              class="mt-3 d-flex align-center"
+              v-if="
+                this.contracts.paymentKubun === 'クレジット' &&
+                this.normalCarDocuments.poaOssKubun === 'OSS委任状'
+              "
+            >
+              <v-btn
+                @click="poaOssKubunExplanation2"
+                density="compact"
+                icon="mdi-comment-alert-outline"
+              ></v-btn>
+            </v-col>
+            <v-col
+              cols="1"
+              class="mt-3 d-flex align-center"
+              v-if="
+                this.contracts.paymentKubun === '銀行ローン' &&
+                this.normalCarDocuments.poaOssKubun === 'OSS委任状'
+              "
+            >
+              <v-btn
+                @click="poaOssKubunExplanation3"
+                density="compact"
+                icon="mdi-comment-alert-outline"
+              ></v-btn>
+            </v-col>
+            <v-col
+              cols="1"
+              class="mt-3 d-flex align-center"
+              v-if="
+                this.contracts.paymentKubun === '所有権留保' &&
+                this.normalCarDocuments.poaOssKubun === 'OSS委任状'
+              "
+            >
+              <v-btn
+                @click="poaOssKubunExplanation4"
+                density="compact"
+                icon="mdi-comment-alert-outline"
+              ></v-btn>
+            </v-col>
+            
             <v-col
               cols="1"
               class="mt-3 d-flex align-center"
@@ -1995,6 +2283,62 @@ export default {
           </v-row>
 
           <v-row class="icon-ml">
+            <v-col
+              cols="1"
+              class="mt-3 d-flex align-center"
+              v-if="
+                this.contracts.paymentKubun === '現金' &&
+                this.normalCarDocuments.poaOssKubun === '委任状'
+              "
+            >
+              <v-btn
+                @click="poaOssKubunExplanation5"
+                density="compact"
+                icon="mdi-comment-alert-outline"
+              ></v-btn>
+            </v-col>
+            <v-col
+              cols="1"
+              class="mt-3 d-flex align-center"
+              v-if="
+                this.contracts.paymentKubun === 'クレジット' &&
+                this.normalCarDocuments.poaOssKubun === '委任状'
+              "
+            >
+              <v-btn
+                @click="poaOssKubunExplanation6"
+                density="compact"
+                icon="mdi-comment-alert-outline"
+              ></v-btn>
+            </v-col>
+            <v-col
+              cols="1"
+              class="mt-3 d-flex align-center"
+              v-if="
+                this.contracts.paymentKubun === '銀行ローン' &&
+                this.normalCarDocuments.poaOssKubun === '委任状'
+              "
+            >
+              <v-btn
+                @click="poaOssKubunExplanation7"
+                density="compact"
+                icon="mdi-comment-alert-outline"
+              ></v-btn>
+            </v-col>
+            <v-col
+              cols="1"
+              class="mt-3 d-flex align-center"
+              v-if="
+                this.contracts.paymentKubun === '所有権留保' &&
+                this.normalCarDocuments.poaOssKubun === '委任状'
+              "
+            >
+              <v-btn
+                @click="poaOssKubunExplanation8"
+                density="compact"
+                icon="mdi-comment-alert-outline"
+              ></v-btn>
+            </v-col>
             <v-col
               cols="1"
               class="mt-3 d-flex align-center"
@@ -2157,17 +2501,28 @@ export default {
         </v-col> -->
           </v-row>
           <v-row
-            v-if="
-              (this.contracts.newCarUsedCarKubun === '新車' ||
-                this.contracts.newCarUsedCarKubun === '中古車') &&
-              this.contracts.normalCarLightCarKubun === '軽自動車'
-            "
+            v-show="lightCarDocuments.lightCarDocumentsKubunExplanation1"
           >
             <p class="explanation">
               ・軽自動車の場合、<b>認印</b>と<b>住民票</b>が必要となります。　
             </p>
           </v-row>
           <v-row class="icon-ml">
+            <v-col
+              cols="1"
+              class="mt-3 d-flex align-center"
+              v-if="
+              (this.contracts.newCarUsedCarKubun === '新車' ||
+                this.contracts.newCarUsedCarKubun === '中古車') &&
+              this.contracts.normalCarLightCarKubun === '軽自動車'
+              "
+            >
+              <v-btn
+                @click="lightCarDocumentsKubunExplanation1"
+                density="compact"
+                icon="mdi-comment-alert-outline"
+              ></v-btn>
+            </v-col>
             <v-col
               cols="1"
               class="mt-3 d-flex align-center"
@@ -2975,7 +3330,7 @@ export default {
                 .LCgarageVerificationKubun === '保管場所届出書'
             "
           >
-            <v-col cols="2" class="">
+            <v-col cols="2" class="locationMapName">
               <v-combobox
                 v-model="locationMap.locationMapName"
                 label=""
@@ -5030,7 +5385,7 @@ export default {
                 ></v-select>
               </v-col>
               <v-col cols="2" class="mt-2">
-                <v-btn class="ml-16" @click="tradeInPurchaseClear"> clear </v-btn>
+                <v-btn class="ml-16 clear" @click="tradeInPurchaseClear"> clear </v-btn>
               </v-col>
             </v-row>
             <v-row
@@ -5062,6 +5417,7 @@ export default {
               </p>
             </v-row>
             <v-row
+              class="purchase-trade-in-etc"
               v-if="
                 (this.tradeInPurchase.tradeInPurchaseKubun === '下取' ||
                   this.tradeInPurchase.tradeInPurchaseKubun === '買取') &&
@@ -5069,11 +5425,11 @@ export default {
                   this.tradeInPurchase.normalCarLightCarKubun === '軽自動車')
               "
             >
-              <v-toolbar-title class="mt-5 d-flex align-center start">
+              <v-toolbar-title class="mt-5 d-flex align-center start ">
                 　<b>※</b>　その他・確認事項（該当する場合は内容にチェックしてください。）
               </v-toolbar-title>
             </v-row>
-            <v-row class="justify-center">
+            <v-row class="justify-center purchase-trade-in-etc">
               <v-col cols="2" class="mt-10">
                 <v-checkbox
                 @change="isCorporateVehiclesChange"
@@ -10947,5 +11303,14 @@ export default {
   margin-left: 8%;
 }
 
-
+@media print {
+  .supporting-sentences{display:none;}
+  .clear{display:none;}
+  .explanation{display:none;}
+  .icon-ml{display:none;}
+  .separator{display:none;}
+  .purchase-trade-in-etc{display:none;}
+  .locationMapName{display:none;}
+  .footer{display:none;}
+}
 </style>
