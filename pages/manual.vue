@@ -1467,6 +1467,7 @@ export default {
 
 
             <v-col
+              class="start-icon-ml"
               cols="1"
               v-if="this.start.startKubun === '下取・買取'"
             >
@@ -1478,6 +1479,7 @@ export default {
               ></v-btn>
             </v-col>
             <v-col
+              class="start-icon-ml"
               cols="1"
               v-if="this.start.startKubun === '下取・買取'"
             >
@@ -1598,7 +1600,7 @@ export default {
             "
           >
             <v-toolbar-title class="d-flex align-center normalCarDocuments">
-              　〇　委任状（ご成約頂いたお車の登録、検査手続きを代行させて頂く手続きです。）
+              　〇　委任状（お車の登録、検査手続きを代行させて頂く手続きです。）
             </v-toolbar-title>
           </v-row>
           <v-row
@@ -1893,7 +1895,7 @@ export default {
             "
           >
             <v-toolbar-title class="d-flex align-center normalCarDocuments">
-              　〇　委任状・OSS委任状（ご成約頂いたお車の登録、検査手続きを代行させて頂く手続きです。）
+              　〇　委任状・OSS委任状（お車の登録、検査手続きを代行させて頂く手続きです。）
             </v-toolbar-title>
           </v-row>
           <v-row
@@ -2603,7 +2605,7 @@ export default {
                 this.normalCarDocuments.poaOssKubun === 'OSS委任状'
               "
             >
-              　〇　車庫証明（ご成約頂いたお車の保管場所を警察署に届け出するための手続きです。）
+              　〇　車庫証明（お車の保管場所を警察署に届け出するための手続きです。）
             </v-toolbar-title>
           </v-row>
           <v-row>
@@ -2614,7 +2616,7 @@ export default {
                 this.contracts.newCarUsedCarKubun === '中古車')&&
                 (this.contracts.normalCarLightCarKubun === '軽自動車')"
             >
-              　〇　車庫証明（ご成約頂いたお車の保管場所を警察署に届け出するための手続きです。）
+              　〇　車庫証明（お車の保管場所を警察署に届け出するための手続きです。）
             </v-toolbar-title>
           </v-row>
           <v-row
@@ -4495,7 +4497,7 @@ export default {
 
       <v-row v-if="this.contracts.paymentKubun === 'クレジット'">
             <v-toolbar-title class="mt-8 mb-5 d-flex align-center credit">
-              　〇　クレジット（お客様に通常クレジットまたはスカイプランでご成約頂いた際の手続きです。）
+              　〇　クレジット（通常クレジットまたはスカイプランでご成約頂いた際の手続きです。）
             </v-toolbar-title>
           </v-row>
           <v-row
@@ -4506,7 +4508,7 @@ export default {
               <v-select
                 @update:modelValue="isCreditChange"
                 v-model="credit.creditTp"
-                label="通常クレジットorスカイプラン"
+                label="クレジットorスカイプラン"
                 :items="['', '通常クレジット', 'スカイプラン']"
                 variant="outlined"
               ></v-select>
@@ -4670,7 +4672,7 @@ export default {
             "
           >
             <v-toolbar-title class="mt-8 mb-5 d-flex align-center insurance">
-              　〇　保険（お客様の大切なお車、お客様自身の安心・安全をサポートさせて頂く為のご提案です。）
+              　〇　保険（大切なお車、お客様自身の安心・安全をサポートさせて頂く為のご提案です。）
             </v-toolbar-title>
           </v-row>
           <v-row
@@ -11304,6 +11306,64 @@ export default {
 }
 
 @media print {
+  .start {
+    color: #101010;
+    background-color: #ffffff;
+  }
+  .start-icon-ml{visibility:hidden;}
+  .normalCarDocuments {
+    color: #101010;
+    background-color: #ffffff;
+  }
+  .lightCarDocuments {
+    color: #101010;
+    background-color: #ffffff;
+  }
+  .other-documents {
+    color: #101010;
+    background-color: #ffffff;
+  }
+  .normalCarDocumentsGarageVerification {
+    color: #101010;
+    background-color: #ffffff;
+  }
+  .lightCarDocumentsGarageVerification {
+    color: #101010;
+    background-color: #ffffff;
+  }
+  .insurance {
+    color: #101010;
+    background-color: #ffffff;
+  }
+  .credit {
+    color: #101010;
+    background-color: #ffffff;
+  }
+  .deliveryDate {
+    color: #101010;
+    background-color: #ffffff;
+  }
+  .goal {
+    color: #101010;
+    background-color: #ffffff;
+  }
+  .complete{display:none;}
+  .ncgarage-verification-kubun-completed{display:none;}
+  .self-certification-consent-to-use-kubun-completed{display:none;}
+  .arrangement-diagram-completed{display:none;}
+  .desired-number-completed{display:none;}
+  .etc-kubun-completed{display:none;}
+  .extended-warranty-completed{display:none;}
+  .maintenance-pack-completed{display:none;}
+  .jaf-payment-kubun-completed{display:none;}
+  .tax-declaration-completed{display:none;}
+  .credit-documents-completed{display:none;}
+  .insurance-completed{display:none;}
+  .insurance-completed2{display:none;}
+  .sky-plus-completed{display:none;}
+  .delivery-date-completed{display:none;}
+  .tax-declaration-completed{display:none;}
+
   .supporting-sentences{display:none;}
   .clear{display:none;}
   .explanation{display:none;}
@@ -11312,5 +11372,10 @@ export default {
   .purchase-trade-in-etc{display:none;}
   .locationMapName{display:none;}
   .footer{display:none;}
+  .body{zoom: 70%; }
 }
+@page {
+  size:portrait;
+}
+
 </style>
