@@ -89,29 +89,36 @@ export default {
       },
       normalCarDocumentsGarageVerification: {
         NCgarageVerificationKubun: "", //（車庫証明）保管場所証明申請書区分
+        NCgarageVerificationKubunExplanation1: false,//保管場所証明申請書説明１
         isFillIn: "", //ご記入
         completedDate: false, //完了日
       },
       lightCarDocumentsGarageVerification: {
         LCgarageVerificationKubun: "", //（車庫証明）保管場所届出書・代行不要区分
+        LCgarageVerificationKubunExplanation1: "", //（車庫証明）保管場所届出書説明
         isFillIn: "", //ご記入
         completedDate: false, //完了日
       },
       storingMethod: {
         selfCertificationConsentToUseKubun: "", //自認書・使用承諾証証明書区分
+        selfCertificationConsentToUseKubunExplanation1: "", //自認書・使用承諾証証明書説明１
+        selfCertificationConsentToUseKubunExplanation2: "", //自認書・使用承諾証証明書説明２
         isFillIn: "", //ご記入
         completedDate: false, //完了日
       },
       arrangementDiagram: {
         arrangementDiagramName: "配置図", //配置図
+        arrangementDiagramNameExplanation1: "", //配置図説明１
         isFillIn: "", //ご記入
         completedDate: false, //完了日
       },
       locationMap: {
         locationMapName: "所在図",//所在図
+        locationMapExplanation1: "", //所在図説明１
       },
       desiredNumber: {
         isDesiredNumber: "", //（希望番号）有・無区分
+        isDesiredNumberExplanation1: "", //（希望番号）有・無説明１
         isFillIn: "", //ご記入
         completedDate: false, //完了日
       },
@@ -531,6 +538,29 @@ export default {
     lightCarDocumentsKubunExplanation1() {
       this.lightCarDocuments.lightCarDocumentsKubunExplanation1 = !this.lightCarDocuments.lightCarDocumentsKubunExplanation1
     },
+    NCgarageVerificationKubunExplanation1() {
+      this.normalCarDocumentsGarageVerification.NCgarageVerificationKubunExplanation1 = !this.normalCarDocumentsGarageVerification.NCgarageVerificationKubunExplanation1
+    },
+    LCgarageVerificationKubunExplanation1() {
+      this.lightCarDocumentsGarageVerification.LCgarageVerificationKubunExplanation1 = !this.lightCarDocumentsGarageVerification.LCgarageVerificationKubunExplanation1
+    },
+    selfCertificationConsentToUseKubunExplanation1() {
+      this.storingMethod.selfCertificationConsentToUseKubunExplanation1 = !this.storingMethod.selfCertificationConsentToUseKubunExplanation1
+    },
+    selfCertificationConsentToUseKubunExplanation2() {
+      this.storingMethod.selfCertificationConsentToUseKubunExplanation2 = !this.storingMethod.selfCertificationConsentToUseKubunExplanation2
+    },
+    arrangementDiagramNameExplanation1() {
+      this.arrangementDiagram.arrangementDiagramNameExplanation1 = !this.arrangementDiagram.arrangementDiagramNameExplanation1
+    },
+    locationMapExplanation1() {
+      this.locationMap.locationMapExplanation1 = !this.locationMap.locationMapExplanation1
+    },
+    isDesiredNumberExplanation1() {
+      this.desiredNumber.isDesiredNumberExplanation1 = !this.desiredNumber.isDesiredNumberExplanation1
+    },
+
+
 
 
 
@@ -647,8 +677,14 @@ export default {
       this.normalCarDocuments.poaOssKubunExplanation6 = false;
       this.normalCarDocuments.poaOssKubunExplanation7 = false;
       this.normalCarDocuments.poaOssKubunExplanation8 = false;
-
       this.lightCarDocuments.lightCarDocumentsKubunExplanation1 = false;
+      this.normalCarDocumentsGarageVerification.NCgarageVerificationKubunExplanation1 = false;
+      this.lightCarDocumentsGarageVerification.LCgarageVerificationKubunExplanation1 = false;
+      this.storingMethod.selfCertificationConsentToUseKubunExplanation1 = false;
+      this.storingMethod.selfCertificationConsentToUseKubunExplanation2 = false;
+      this.arrangementDiagram.arrangementDiagramNameExplanation1 = false;
+      this.locationMap.locationMapExplanation1 = false;
+      this.desiredNumber.isDesiredNumberExplanation1 = false;
     },
     newCarUsedCarKubunChange() {
       this.normalCarDocuments.poaOssKubun = "";
@@ -705,9 +741,14 @@ export default {
       this.normalCarDocuments.poaOssKubunExplanation6 = false;
       this.normalCarDocuments.poaOssKubunExplanation7 = false;
       this.normalCarDocuments.poaOssKubunExplanation8 = false;
-
       this.lightCarDocuments.lightCarDocumentsKubunExplanation1 = false;
-
+      this.normalCarDocumentsGarageVerification.NCgarageVerificationKubunExplanation1 = false;
+      this.lightCarDocumentsGarageVerification.LCgarageVerificationKubunExplanation1 = false;
+      this.storingMethod.selfCertificationConsentToUseKubunExplanation1 = false;
+      this.storingMethod.selfCertificationConsentToUseKubunExplanation2 = false;
+      this.arrangementDiagram.arrangementDiagramNameExplanation1 = false;
+      this.locationMap.locationMapExplanation1 = false;
+      this.desiredNumber.isDesiredNumberExplanation1 = false;
     },
     normalCarLightCarChange() {
       this.normalCarDocuments.poaOssKubun = "";
@@ -768,8 +809,14 @@ export default {
       this.normalCarDocuments.poaOssKubunExplanation6 = false;
       this.normalCarDocuments.poaOssKubunExplanation7 = false;
       this.normalCarDocuments.poaOssKubunExplanation8 = false;
-
       this.lightCarDocuments.lightCarDocumentsKubunExplanation1 = false;
+      this.normalCarDocumentsGarageVerification.NCgarageVerificationKubunExplanation1 = false;
+      this.lightCarDocumentsGarageVerification.LCgarageVerificationKubunExplanation1 = false;
+      this.storingMethod.selfCertificationConsentToUseKubunExplanation1 = false;
+      this.storingMethod.selfCertificationConsentToUseKubunExplanation2 = false;
+      this.arrangementDiagram.arrangementDiagramNameExplanation1 = false;
+      this.locationMap.locationMapExplanation1 = false;
+      this.desiredNumber.isDesiredNumberExplanation1 = false;
     },
 
     paymentKubunChange() {
@@ -806,8 +853,14 @@ export default {
       this.normalCarDocuments.poaOssKubunExplanation6 = false;
       this.normalCarDocuments.poaOssKubunExplanation7 = false;
       this.normalCarDocuments.poaOssKubunExplanation8 = false;
-
       this.lightCarDocuments.lightCarDocumentsKubunExplanation1 = false;
+      this.normalCarDocumentsGarageVerification.NCgarageVerificationKubunExplanation1 = false;
+      this.lightCarDocumentsGarageVerification.LCgarageVerificationKubunExplanation1 = false;
+      this.storingMethod.selfCertificationConsentToUseKubunExplanation1 = false;
+      this.storingMethod.selfCertificationConsentToUseKubunExplanation2 = false;
+      this.arrangementDiagram.arrangementDiagramNameExplanation1 = false;
+      this.locationMap.locationMapExplanation1 = false;
+      this.desiredNumber.isDesiredNumberExplanation1 = false;
     },
     insuranceKubunChange() {
       this.insurance.jocInsuranceCompany = "";
@@ -840,7 +893,6 @@ export default {
       this.normalCarDocuments.poaOssKubunExplanation6 = false;
       this.normalCarDocuments.poaOssKubunExplanation7 = false;
       this.normalCarDocuments.poaOssKubunExplanation8 = false;
-
     },
     lightCarDocumentsKubunChange() {
       this.lightCarDocuments.isFillIn = "";
@@ -866,6 +918,7 @@ export default {
       this.storingMethod.completedDate = false;
       this.arrangementDiagram.isFillIn = "";
       this.arrangementDiagram.completedDate = false;
+      this.normalCarDocumentsGarageVerification.NCgarageVerificationKubunExplanation1 = false;
     },
     LCgarageVerificationKubunChange() {
       this.lightCarDocumentsGarageVerification.LCgarageVerificationKubun = "";
@@ -876,16 +929,20 @@ export default {
       this.storingMethod.completedDate = false;
       this.arrangementDiagram.isFillIn = "";
       this.arrangementDiagram.completedDate = false;
+      this.lightCarDocumentsGarageVerification.LCgarageVerificationKubunExplanation1 = false;
     },
     selfCertificationConsentToUseKubunChange() {
       this.storingMethod.selfCertificationConsentToUseKubun = "";
       this.storingMethod.isFillIn = "";
       this.storingMethod.completedDate = false;
+      this.storingMethod.selfCertificationConsentToUseKubunExplanation1 = false;
+      this.storingMethod.selfCertificationConsentToUseKubunExplanation2 = false;
     },
     isDesiredNumberChange() {
       this.desiredNumber.isDesiredNumber = "";
       this.desiredNumber.isFillIn = "";
       this.desiredNumber.completedDate = false;
+      this.desiredNumber.isDesiredNumberExplanation1 = false;
     },
     etcKubunChange() {
       this.etc.etcKubun = "";
@@ -2912,10 +2969,7 @@ export default {
           </v-row>
           <v-row>
             <p
-              v-if="
-                this.normalCarDocumentsGarageVerification
-                  .NCgarageVerificationKubun === '保管場所証明申請書'
-              "
+              v-show="normalCarDocumentsGarageVerification.NCgarageVerificationKubunExplanation1"
               class="explanation"
             >
               ・普通車用の車庫証明、4枚綴り（つづり）です。　 <br />
@@ -2923,11 +2977,8 @@ export default {
               　保管場所証明申請書、自認書または使用承諾書、配置図、所在図の4点セットで警察署に提出致します。　
             </p>
             <p
-              v-if="
-                this.lightCarDocumentsGarageVerification
-                  .LCgarageVerificationKubun === '保管場所届出書'
-              "
-              class="explanation"
+            v-show="lightCarDocumentsGarageVerification.LCgarageVerificationKubunExplanation1"
+            class="explanation"
             >
               ・軽自動車用の車庫証明、4枚綴り（つづり）です。　<br />
               　<br />
@@ -2936,6 +2987,20 @@ export default {
           </v-row>
 
           <v-row class="icon-ml">
+            <v-col
+              cols="1"
+              class="mt-3 d-flex align-center"
+              v-if="
+                this.normalCarDocumentsGarageVerification
+                  .NCgarageVerificationKubun === '保管場所証明申請書'
+              "
+            >
+              <v-btn
+                @click="NCgarageVerificationKubunExplanation1"
+                density="compact"
+                icon="mdi-comment-alert-outline"
+              ></v-btn>
+            </v-col>
             <v-col
               cols="1"
               class="mt-3 d-flex align-center"
@@ -2963,6 +3028,20 @@ export default {
                 target="_blank"
                 density="compact"
                 icon="mdi-search-web"
+              ></v-btn>
+            </v-col>
+            <v-col
+              cols="1"
+              class="mt-3 d-flex align-center"
+              v-if="
+                this.lightCarDocumentsGarageVerification
+                  .LCgarageVerificationKubun === '保管場所届出書'
+              "
+            >
+              <v-btn
+                @click="LCgarageVerificationKubunExplanation1"
+                density="compact"
+                icon="mdi-comment-alert-outline"
               ></v-btn>
             </v-col>
             <v-col
@@ -3111,19 +3190,14 @@ export default {
           </v-row>
 
           <v-row
-            v-if="
-              this.storingMethod.selfCertificationConsentToUseKubun === '自認書'
-            "
+            v-show = "storingMethod.selfCertificationConsentToUseKubunExplanation1"
           >
             <p class="explanation">
               ・ご成約頂いたお車の保管場所がお客様の所有物である事を証明するための書類です。　
             </p>
           </v-row>
           <v-row
-            v-if="
-              this.storingMethod.selfCertificationConsentToUseKubun ===
-              '使用承諾証'
-            "
+            v-show = "storingMethod.selfCertificationConsentToUseKubunExplanation2"
           >
             <p class="explanation">
               ・駐車場がお客様自身の管理ではない場合、駐車場の管理者様に使用の許可を得るための書類です。　
@@ -3131,6 +3205,20 @@ export default {
           </v-row>
 
           <v-row class="icon-ml">
+            <v-col
+              cols="1"
+              class="mt-3 d-flex align-center"
+              v-if="
+                this.storingMethod.selfCertificationConsentToUseKubun ===
+                '自認書'
+              "
+            >
+              <v-btn
+                @click="selfCertificationConsentToUseKubunExplanation1"
+                density="compact"
+                icon="mdi-comment-alert-outline"
+              ></v-btn>
+            </v-col>
             <v-col
               cols="1"
               class="mt-3 d-flex align-center"
@@ -3157,6 +3245,20 @@ export default {
                 @click="selfCertificationImg"
                 density="compact"
                 icon="mdi-printer"
+              ></v-btn>
+            </v-col>
+            <v-col
+              cols="1"
+              class="mt-3 d-flex align-center"
+              v-if="
+                this.storingMethod.selfCertificationConsentToUseKubun ===
+                '使用承諾証'
+              "
+            >
+              <v-btn
+                @click="selfCertificationConsentToUseKubunExplanation2"
+                density="compact"
+                icon="mdi-comment-alert-outline"
               ></v-btn>
             </v-col>
             <v-col
@@ -3262,13 +3364,7 @@ export default {
         </v-col> -->
           </v-row>
           <v-row
-            v-if="
-              this.normalCarDocuments.poaOssKubun === 'OSS委任状' ||
-              this.normalCarDocumentsGarageVerification
-                .NCgarageVerificationKubun === '保管場所証明申請書' ||
-              this.lightCarDocumentsGarageVerification
-                .LCgarageVerificationKubun === '保管場所届出書'
-            "
+            v-show="arrangementDiagram.arrangementDiagramNameExplanation1"
           >
             <p class="explanation">
               ・お客様がお車の保管場所にどのように車を保管されているか確認するための書類です。　
@@ -3276,6 +3372,23 @@ export default {
           </v-row>
 
           <v-row class="icon-ml">
+            <v-col
+              cols="1"
+              class="mt-3 d-flex align-center"
+              v-if="
+                this.normalCarDocuments.poaOssKubun === 'OSS委任状' ||
+                this.normalCarDocumentsGarageVerification
+                  .NCgarageVerificationKubun === '保管場所証明申請書' ||
+                this.lightCarDocumentsGarageVerification
+                  .LCgarageVerificationKubun === '保管場所届出書'
+              "
+            >
+              <v-btn
+                @click="arrangementDiagramNameExplanation1"
+                density="compact"
+                icon="mdi-comment-alert-outline"
+              ></v-btn>
+            </v-col>
             <v-col
               cols="1"
               class="mt-3 d-flex align-center"
@@ -3347,13 +3460,7 @@ export default {
             <v-col cols="2" class=""> </v-col>
           </v-row>
           <v-row
-            v-if="
-              this.normalCarDocuments.poaOssKubun === 'OSS委任状' ||
-              this.normalCarDocumentsGarageVerification
-                .NCgarageVerificationKubun === '保管場所証明申請書' ||
-              this.lightCarDocumentsGarageVerification
-                .LCgarageVerificationKubun === '保管場所届出書'
-            "
+            v-show="locationMap.locationMapExplanation1"
           >
             <p class="explanation">
               ・お客様に地図を確認頂きながら<b>本拠の位置</b>と<b>保管場所</b>を確認しましょう。　<br>
@@ -3370,6 +3477,23 @@ export default {
             </p>
           </v-row>
           <v-row class="icon-ml">
+            <v-col
+              cols="1"
+              class="mt-3 d-flex align-center"
+              v-if="
+                this.normalCarDocuments.poaOssKubun === 'OSS委任状' ||
+                this.normalCarDocumentsGarageVerification
+                  .NCgarageVerificationKubun === '保管場所証明申請書' ||
+                this.lightCarDocumentsGarageVerification
+                  .LCgarageVerificationKubun === '保管場所届出書'
+              "
+            >
+              <v-btn
+                @click="locationMapExplanation1"
+                density="compact"
+                icon="mdi-comment-alert-outline"
+              ></v-btn>
+            </v-col>
             <v-col
               cols="1"
               class="mt-3 d-flex align-center"
@@ -3559,7 +3683,9 @@ export default {
           ></v-text-field>
         </v-col> -->
           </v-row>
-          <v-row v-if="this.desiredNumber.isDesiredNumber === '有'">
+          <v-row 
+            v-show="desiredNumber.isDesiredNumberExplanation1"
+          >
             <p class="explanation">
               ・希望番号が（有）の場合は<b>希望番号申請書</b>が必要になります。　<br />
               　お客様からお伺いした希望番号（4桁の数字）を届け出するための書類です。　<br />
@@ -3570,6 +3696,17 @@ export default {
           </v-row>
 
           <v-row class="icon-ml">
+            <v-col
+              cols="1"
+              class="mt-3 d-flex align-center"
+              v-if="this.desiredNumber.isDesiredNumber === '有'"
+            >
+              <v-btn
+                @click="isDesiredNumberExplanation1"
+                density="compact"
+                icon="mdi-comment-alert-outline"
+              ></v-btn>
+            </v-col>
             <v-col
               cols="1"
               class="mt-3 d-flex align-center"
