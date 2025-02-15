@@ -95,56 +95,63 @@ export default {
       },
       lightCarDocumentsGarageVerification: {
         LCgarageVerificationKubun: "", //（車庫証明）保管場所届出書・代行不要区分
-        LCgarageVerificationKubunExplanation1: "", //（車庫証明）保管場所届出書説明
+        LCgarageVerificationKubunExplanation1: false, //（車庫証明）保管場所届出書説明
         isFillIn: "", //ご記入
         completedDate: false, //完了日
       },
       storingMethod: {
         selfCertificationConsentToUseKubun: "", //自認書・使用承諾証証明書区分
-        selfCertificationConsentToUseKubunExplanation1: "", //自認書・使用承諾証証明書説明１
-        selfCertificationConsentToUseKubunExplanation2: "", //自認書・使用承諾証証明書説明２
+        selfCertificationConsentToUseKubunExplanation1: false, //自認書・使用承諾証証明書説明１
+        selfCertificationConsentToUseKubunExplanation2: false, //自認書・使用承諾証証明書説明２
         isFillIn: "", //ご記入
         completedDate: false, //完了日
       },
       arrangementDiagram: {
         arrangementDiagramName: "配置図", //配置図
-        arrangementDiagramNameExplanation1: "", //配置図説明１
+        arrangementDiagramNameExplanation1: false, //配置図説明１
         isFillIn: "", //ご記入
         completedDate: false, //完了日
       },
       locationMap: {
         locationMapName: "所在図",//所在図
-        locationMapExplanation1: "", //所在図説明１
+        locationMapExplanation1: false, //所在図説明１
       },
       desiredNumber: {
         isDesiredNumber: "", //（希望番号）有・無区分
-        isDesiredNumberExplanation1: "", //（希望番号）有・無説明１
+        isDesiredNumberExplanation1: false, //（希望番号）有・無説明１
         isFillIn: "", //ご記入
         completedDate: false, //完了日
       },
       etc: {
         etcKubun: "", //（ETC）有・無区分
+        etcKubunExplanation1: false,//（ETC）有・無区分説明１
+        etcKubunExplanation2: false,//（ETC）有・無区分説明２
         isFillIn: "", //ご記入
         completedDate: false, //完了日
       },
       extendedWarranty: {
         isExtendedWarranty: "", //（延長保証）有・無区分
+        isExtendedWarrantyExplanation1: false, //（延長保証）有・無区分説明１
+        isExtendedWarrantyExplanation2: false, //（延長保証）有・無区分説明２
         isFillIn: "", //ご記入
         completedDate: false, //完了日
       },
       maintenancePack: {
         isMaintenancePack: "", //（メンテナンスパック）有・無区分
+        isMaintenancePackExplanation1: false, //（メンテナンスパック）有・無区分説明１
         isFillIn: "", //ご記入
         completedDate: false, //完了日
       },
       jaf: {
         isJafPaymentKubun: "", //（JAF）有（口座振替）・有（クレジット）・無区分
+        isJafPaymentKubunExplanation1: false, //（JAF）有（口座振替）・有（クレジット）・無区分説明１
         isFillIn: "", //ご記入
         isBankSeal: false, //銀行印
         completedDate: false, //完了日
       },
       taxDeclaration: {
         taxDeclarationName: "税申告書", //税申告書
+        taxDeclarationNameExplanation1:false,//税申告書説明１
         isFillIn: "", //ご記入
         completedDate: false, //完了日
       },
@@ -159,10 +166,13 @@ export default {
 
       insurance: {
         jocInsuranceCompany: "", //当社加入保険会社
+        jocInsuranceCompanyExplanation1: false,//当社加入保険会社説明１
         jacInsuranceCompany: "", //他社加入保険会社
+        jacInsuranceCompanyExplanation1: false,//社加入保険会社説明１
         joiningProcedure: "", //手続き
         confirmationOfMembership: "", //加入確認
         skyPlus: "スカイプラス", //スカイプラス
+        skyPlusExplanation1: false, //スカイプラス説明１
         skyPlusExplanation: "", //スカイプラス説明
         completedDate: "", //完了日
       },
@@ -559,9 +569,36 @@ export default {
     isDesiredNumberExplanation1() {
       this.desiredNumber.isDesiredNumberExplanation1 = !this.desiredNumber.isDesiredNumberExplanation1
     },
-
-
-
+    etcKubunExplanation1() {
+      this.etc.etcKubunExplanation1 = !this.etc.etcKubunExplanation1
+    },
+    etcKubunExplanation2() {
+      this.etc.etcKubunExplanation2 = !this.etc.etcKubunExplanation2
+    },
+    isExtendedWarrantyExplanation1() {
+      this.extendedWarranty.isExtendedWarrantyExplanation1 = !this.extendedWarranty.isExtendedWarrantyExplanation1
+    },
+    isExtendedWarrantyExplanation2() {
+      this.extendedWarranty.isExtendedWarrantyExplanation2 = !this.extendedWarranty.isExtendedWarrantyExplanation2
+    },
+    isMaintenancePackExplanation1() {
+      this.maintenancePack.isMaintenancePackExplanation1 = !this.maintenancePack.isMaintenancePackExplanation1
+    },
+    isJafPaymentKubunExplanation1() {
+      this.jaf.isJafPaymentKubunExplanation1 = !this.jaf.isJafPaymentKubunExplanation1
+    },
+    taxDeclarationNameExplanation1() {
+      this.taxDeclaration.taxDeclarationNameExplanation1 = !this.taxDeclaration.taxDeclarationNameExplanation1
+    },
+    jocInsuranceCompanyExplanation1() {
+      this.insurance.jocInsuranceCompanyExplanation1 = !this.insurance.jocInsuranceCompanyExplanation1
+    },
+    jacInsuranceCompanyExplanation1() {
+      this.insurance.jacInsuranceCompanyExplanation1 = !this.insurance.jacInsuranceCompanyExplanation1
+    },
+    skyPlusExplanation1() {
+      this.insurance.skyPlusExplanation1 = !this.insurance.skyPlusExplanation1
+    },
 
 
 
@@ -685,6 +722,16 @@ export default {
       this.arrangementDiagram.arrangementDiagramNameExplanation1 = false;
       this.locationMap.locationMapExplanation1 = false;
       this.desiredNumber.isDesiredNumberExplanation1 = false;
+      this.etc.etcKubunExplanation1 = false;
+      this.etc.etcKubunExplanation2 = false;
+      this.extendedWarranty.isExtendedWarrantyExplanation1 = false;
+      this.extendedWarranty.isExtendedWarrantyExplanation2 = false;
+      this.maintenancePack.isMaintenancePackExplanation1 = false;
+      this.jaf.isJafPaymentKubunExplanation1 = false;
+      this.taxDeclaration.taxDeclarationNameExplanation1 = false;
+      this.insurance.jocInsuranceCompanyExplanation1 = false;
+      this.insurance.jacInsuranceCompanyExplanation1 = false;
+      this.insurance.skyPlusExplanation1 = false;
     },
     newCarUsedCarKubunChange() {
       this.normalCarDocuments.poaOssKubun = "";
@@ -749,6 +796,14 @@ export default {
       this.arrangementDiagram.arrangementDiagramNameExplanation1 = false;
       this.locationMap.locationMapExplanation1 = false;
       this.desiredNumber.isDesiredNumberExplanation1 = false;
+      this.etc.etcKubunExplanation1 = false;
+      this.etc.etcKubunExplanation2 = false;
+      this.extendedWarranty.isExtendedWarrantyExplanation1 = false;
+      this.extendedWarranty.isExtendedWarrantyExplanation2 = false;
+      this.maintenancePack.isMaintenancePackExplanation1 = false;
+      this.jaf.isJafPaymentKubunExplanation1 = false;
+      this.taxDeclaration.taxDeclarationNameExplanation1 = false;
+
     },
     normalCarLightCarChange() {
       this.normalCarDocuments.poaOssKubun = "";
@@ -817,6 +872,14 @@ export default {
       this.arrangementDiagram.arrangementDiagramNameExplanation1 = false;
       this.locationMap.locationMapExplanation1 = false;
       this.desiredNumber.isDesiredNumberExplanation1 = false;
+      this.etc.etcKubunExplanation1 = false;
+      this.etc.etcKubunExplanation2 = false;
+      this.extendedWarranty.isExtendedWarrantyExplanation1 = false;
+      this.extendedWarranty.isExtendedWarrantyExplanation2 = false;
+      this.maintenancePack.isMaintenancePackExplanation1 = false;
+      this.jaf.isJafPaymentKubunExplanation1 = false;
+      this.taxDeclaration.taxDeclarationNameExplanation1 = false;
+
     },
 
     paymentKubunChange() {
@@ -861,6 +924,14 @@ export default {
       this.arrangementDiagram.arrangementDiagramNameExplanation1 = false;
       this.locationMap.locationMapExplanation1 = false;
       this.desiredNumber.isDesiredNumberExplanation1 = false;
+      this.etc.etcKubunExplanation1 = false;
+      this.etc.etcKubunExplanation2 = false;
+      this.extendedWarranty.isExtendedWarrantyExplanation1 = false;
+      this.extendedWarranty.isExtendedWarrantyExplanation2 = false;
+      this.maintenancePack.isMaintenancePackExplanation1 = false;
+      this.jaf.isJafPaymentKubunExplanation1 = false;
+      this.taxDeclaration.taxDeclarationNameExplanation1 = false;
+
     },
     insuranceKubunChange() {
       this.insurance.jocInsuranceCompany = "";
@@ -868,6 +939,9 @@ export default {
       this.insurance.joiningProcedure = "";
       this.insurance.confirmationOfMembership = "";
       this.insurance.completedDate = false;
+      this.insurance.jocInsuranceCompanyExplanation1 = false;
+      this.insurance.jacInsuranceCompanyExplanation1 = false;
+      this.insurance.skyPlusExplanation1 = false;
     },
     poaOssKubunChange() {
       this.normalCarDocuments.poaOssKubun = "";
@@ -948,22 +1022,28 @@ export default {
       this.etc.etcKubun = "";
       this.etc.isFillIn = "";
       this.etc.completedDate = false;
+      this.etc.etcKubunExplanation1 = false;
+      this.etc.etcKubunExplanation2 = false;
     },
     isExtendedWarrantyChange() {
       this.extendedWarranty.isExtendedWarranty = "";
       this.extendedWarranty.isFillIn = "";
       this.extendedWarranty.completedDate = false;
+      this.extendedWarranty.isExtendedWarrantyExplanation1 = false;
+      this.extendedWarranty.isExtendedWarrantyExplanation2 = false;
     },
     isMaintenancePackChange() {
       this.maintenancePack.isMaintenancePack = "";
       this.maintenancePack.isFillIn = "";
       this.maintenancePack.completedDate = false;
+      this.maintenancePack.isMaintenancePackExplanation1 = false;
     },
     isJafPaymentKubunChange() {
       this.jaf.isJafPaymentKubun = "";
       this.jaf.isFillIn = "";
       this.jaf.isBankSeal = false;
       this.jaf.completedDate = false;
+      this.jaf.isJafPaymentKubunExplanation1 = false;
     },
     isCreditChange() {
       this.credit.creditDocuments = "";
@@ -975,6 +1055,9 @@ export default {
     isJocInsuranceCompanyChange() {
       this.insurance.joiningProcedure = false;
       this.insurance.skyPlusExplanation = false;
+      this.insurance.jocInsuranceCompanyExplanation1 = false;
+      this.insurance.jacInsuranceCompanyExplanation1 = false;
+      this.insurance.skyPlusExplanation1 = false;
     },
 
 
@@ -3895,13 +3978,13 @@ export default {
           ></v-text-field>
         </v-col> -->
           </v-row>
-          <v-row v-if="this.etc.etcKubun === '有（ETC）'">
+          <v-row v-show="etc.etcKubunExplanation1">
             <p class="explanation">
               ・ETCが（有）の場合は<b>セットアップ申込書</b>が必要になります。　<br />
               　ご成約頂いたお車のETCを使用できるようにするための書類です。　
             </p>
           </v-row>
-          <v-row v-if="this.etc.etcKubun === '有（ETC-2.0）'">
+          <v-row v-show="etc.etcKubunExplanation2">
             <p class="explanation">
               ・ETC2.0が（有）の場合は<b>セットアップ申込書</b>が必要になります。　<br />
               　ご成約頂いたお車のETCを使用できるようにするための書類です。　<br />
@@ -3913,6 +3996,28 @@ export default {
           </v-row>
 
           <v-row class="icon-ml">
+            <v-col
+              cols="1"
+              class="mt-3 d-flex align-center"
+              v-if="this.etc.etcKubun === '有（ETC）'"
+            >
+              <v-btn
+                @click="etcKubunExplanation1"
+                density="compact"
+                icon="mdi-comment-alert-outline"
+              ></v-btn>
+            </v-col>
+            <v-col
+              cols="1"
+              class="mt-3 d-flex align-center"
+              v-if="etc.etcKubun === '有（ETC-2.0）'"
+              >
+              <v-btn
+                @click="etcKubunExplanation2"
+                density="compact"
+                icon="mdi-comment-alert-outline"
+              ></v-btn>
+            </v-col>
             <v-col
               cols="1"
               class="mt-3 d-flex align-center"
@@ -4089,10 +4194,7 @@ export default {
         </v-col> -->
           </v-row>
           <v-row
-            v-if="
-              this.contracts.newCarUsedCarKubun === '新車' &&
-              this.extendedWarranty.isExtendedWarranty === '有'
-            "
+            v-show="extendedWarranty.isExtendedWarrantyExplanation1"
           >
             <p class="explanation">
               ・延長保証が（有）の場合は<b>延長保証申込書</b>が必要になります。　<br />
@@ -4105,10 +4207,7 @@ export default {
             </p>
           </v-row>
           <v-row
-            v-if="
-              this.contracts.newCarUsedCarKubun === '中古車' &&
-              this.extendedWarranty.isExtendedWarranty === '有'
-            "
+            v-show="extendedWarranty.isExtendedWarrantyExplanation2"
           >
             <p class="explanation">
               ・延長保証が（有）の場合は<b>保証申込書</b>が必要になります。　<br />
@@ -4122,6 +4221,20 @@ export default {
           </v-row>
 
           <v-row class="icon-ml">
+            <v-col
+              cols="1"
+              class="mt-3 d-flex align-center"
+              v-if="
+                this.contracts.newCarUsedCarKubun === '新車' &&
+                this.extendedWarranty.isExtendedWarranty === '有'
+              "
+            >
+              <v-btn
+                @click="isExtendedWarrantyExplanation1"
+                density="compact"
+                icon="mdi-comment-alert-outline"
+              ></v-btn>
+            </v-col>
             <v-col
               cols="1"
               class="mt-3 d-flex align-center"
@@ -4149,6 +4262,20 @@ export default {
                 target="_blank"
                 density="compact"
                 icon="mdi-search-web"
+              ></v-btn>
+            </v-col>
+            <v-col
+              cols="1"
+              class="mt-3 d-flex align-center"
+              v-if="
+                this.contracts.newCarUsedCarKubun === '中古車' &&
+                this.extendedWarranty.isExtendedWarranty === '有'
+              "
+            >
+              <v-btn
+                @click="isExtendedWarrantyExplanation2"
+                density="compact"
+                icon="mdi-comment-alert-outline"
               ></v-btn>
             </v-col>
             <v-col
@@ -4300,7 +4427,7 @@ export default {
           ></v-text-field>
         </v-col> -->
           </v-row>
-          <v-row v-if="this.maintenancePack.isMaintenancePack === '有'">
+          <v-row v-show="maintenancePack.isMaintenancePackExplanation1">
             <p class="explanation">
               ・メンテナンスパックが（有）の場合は<b>パックdeメンテ申込書</b>が必要になります。　<br />
               　メンテナンスパック（パックdeメンテ）にご加入頂くための書類です。　<br />
@@ -4318,6 +4445,16 @@ export default {
             class="icon-ml"
             v-if="this.maintenancePack.isMaintenancePack === '有'"
           >
+            <v-col
+              cols="1"
+              class="mt-3 d-flex align-center"
+            >
+              <v-btn
+                @click="isMaintenancePackExplanation1"
+                density="compact"
+                icon="mdi-comment-alert-outline"
+              ></v-btn>
+            </v-col>
             <v-col cols="1" class="mt-3 d-flex align-center">
               <v-btn
                 @click="openModal('メンテナンスパック申込用紙記入例.jpg')"
@@ -4482,10 +4619,7 @@ export default {
         </v-col> -->
           </v-row>
           <v-row
-            v-if="
-              this.jaf.isJafPaymentKubun === '有（口座振替）' ||
-              this.jaf.isJafPaymentKubun === '有（クレジット）'
-            "
+            v-show="jaf.isJafPaymentKubunExplanation1"
           >
             <p class="explanation">
               ・JAFが（有）の場合は<b>電子手続き</b>が必要になります。　<br />
@@ -4494,6 +4628,20 @@ export default {
           </v-row>
 
           <v-row class="icon-ml">
+            <v-col
+              cols="1"
+              class="mt-3 d-flex align-center"
+              v-if="
+                this.jaf.isJafPaymentKubun === '有（口座振替）' ||
+                this.jaf.isJafPaymentKubun === '有（クレジット）'
+              "
+            >
+              <v-btn
+                @click="isJafPaymentKubunExplanation1"
+                density="compact"
+                icon="mdi-comment-alert-outline"
+              ></v-btn>
+            </v-col>
             <v-col
               cols="1"
               class="mt-3 d-flex align-center"
@@ -4585,11 +4733,7 @@ export default {
         </v-col> -->
           </v-row>
           <v-row 
-              v-if="
-              (this.contracts.newCarUsedCarKubun === '新車' ||
-              this.contracts.newCarUsedCarKubun === '中古車')&&
-              this.contracts.normalCarLightCarKubun === '軽自動車'
-              "
+            v-show="taxDeclaration.taxDeclarationNameExplanation1"
           >
             <p class="explanation">
               ・ご成約頂いたお車が軽自動車の場合は<b>軽自動車税申告書</b>が必要になります。　<br />
@@ -4605,6 +4749,16 @@ export default {
               this.contracts.normalCarLightCarKubun === '軽自動車'
               "
           >
+            <v-col
+              cols="1"
+              class="mt-3 d-flex align-center"
+            >
+              <v-btn
+                @click="taxDeclarationNameExplanation1"
+                density="compact"
+                icon="mdi-comment-alert-outline"
+              ></v-btn>
+            </v-col>
             <v-col cols="1" class="mt-3 d-flex align-center">
               <v-btn
                 @click="openModal('税申告書記入例.jpg')"
@@ -4997,11 +5151,7 @@ export default {
             </v-col>
           </v-row>
           <v-row
-            v-if="
-              this.insurance.jocInsuranceCompany === '東京海上' ||
-              this.insurance.jocInsuranceCompany === '三井住友' ||
-              this.insurance.jocInsuranceCompany === '損保ジャパン'
-            "
+            v-show="insurance.jocInsuranceCompanyExplanation1"
           >
             <p class="explanation">
               ・保険をご加入頂く場合は<b>電子手続き</b>が必要になります。　<br />
@@ -5024,9 +5174,7 @@ export default {
             </p>
           </v-row>
           <v-row
-            v-if="
-              this.contracts.insuranceKubun === '他社加入'
-            "
+            v-show="insurance.jacInsuranceCompanyExplanation1"
           >
             <p class="explanation">
               ・お客様が他社加入をご希望される場合は、ご加入予定の保険会社をお伺いさせて頂き納車日前に加入状況をお伺いしてください。
@@ -5052,6 +5200,35 @@ export default {
           <!-- </v-col> -->
 
           <v-row class="icon-ml">
+            <v-col
+              cols="1"
+              class="mt-3 d-flex align-center"
+              v-if="
+              this.insurance.jocInsuranceCompany === '東京海上' ||
+              this.insurance.jocInsuranceCompany === '三井住友' ||
+              this.insurance.jocInsuranceCompany === '損保ジャパン'
+            "
+            >
+              <v-btn
+                @click="jocInsuranceCompanyExplanation1"
+                density="compact"
+                icon="mdi-comment-alert-outline"
+              ></v-btn>
+            </v-col>
+            <v-col
+              cols="1"
+              class="mt-3 d-flex align-center"
+              v-if="
+              this.contracts.insuranceKubun === '他社加入'
+            "
+            >
+              <v-btn
+                @click="jacInsuranceCompanyExplanation1"
+                density="compact"
+                icon="mdi-comment-alert-outline"
+              ></v-btn>
+            </v-col>
+
             <v-col
               cols="1"
               class="mt-3 d-flex align-center"
@@ -5230,11 +5407,7 @@ export default {
           </v-row>
 
           <v-row
-            v-if="
-              this.insurance.jocInsuranceCompany === '東京海上' ||
-              this.insurance.jocInsuranceCompany === '三井住友' ||
-              this.insurance.jocInsuranceCompany === '損保ジャパン'
-            "
+            v-show="insurance.skyPlusExplanation1"
           >
             <p class="explanation">
               ※マツダ販売店で自動車保険を契約された方限定の特典です※　<br />
@@ -5245,6 +5418,21 @@ export default {
           </v-row>
 
           <v-row class="icon-ml">
+            <v-col
+              cols="1"
+              class="mt-3 d-flex align-center"
+              v-if="
+              this.insurance.jocInsuranceCompany === '東京海上' ||
+              this.insurance.jocInsuranceCompany === '三井住友' ||
+              this.insurance.jocInsuranceCompany === '損保ジャパン'
+            "
+            >
+              <v-btn
+                @click="skyPlusExplanation1"
+                density="compact"
+                icon="mdi-comment-alert-outline"
+              ></v-btn>
+            </v-col>
             <v-col
               cols="1"
               class="mt-3 d-flex align-center"
