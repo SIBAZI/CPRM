@@ -315,6 +315,11 @@ export default {
       // ],
     };
   },
+  
+  mounted () {
+    this.showCurrentTime();
+  },
+
   methods: {
     openModal(imgName) {
       this.modalImgPath = "/" + imgName;
@@ -504,6 +509,23 @@ export default {
     //     promisedDay: "",
     //   });
     // },
+    showCurrentTime() {
+      // const now = new Date();
+
+      // const Year = now.getFullYear();
+      // const hour = now.getMonth();
+      // const minute = now.getDate();
+
+      // const time = `作成日時：${Year}年${hour + 1}月${minute}日`;
+
+      // document.getElementById('currentTime').textContent = time;
+
+      document.getElementById('currentTime').textContent = dayjs().format('作成日時：YYYY年MM月DD日（HH：mm）');
+
+    },
+
+
+
     poaKubunExplanation1() {
       this.normalCarDocuments.poaKubunExplanation1 = !this.normalCarDocuments.poaKubunExplanation1
       // if (this.normalCarDocuments.poaKubunExplanation1 === false) {
@@ -1405,6 +1427,7 @@ export default {
   <div>
     <v-app class="body">
       <div>
+
         <!-- <v-app-bar class="h-5" color="grey-lighten-2">
         <v-app-bar-title> 　　　ユーザー登録画面 </v-app-bar-title>
         <v-col cols="1" class="mx-10">
@@ -1472,6 +1495,9 @@ export default {
       </v-row> -->
 
         <div>
+
+          <p id="currentTime"></p>
+
           <v-row class="logo-top" v-if="this.start.startKubun === ''">
             <v-col class="logo-div">
               <img
@@ -1534,27 +1560,12 @@ export default {
             >
             </v-col>
             <v-col 
-              cols="2"
-              v-if="this.start.startKubun === '成約時登録'"
-            >
-            </v-col>
-            <v-col 
               cols="1"
               v-if="this.start.startKubun === '成約時登録'"
             >
             </v-col>
             <v-col 
               cols="1"
-              v-if="this.start.startKubun === '納車準備'"
-            >
-            </v-col>
-            <v-col 
-              cols="2"
-              v-if="this.start.startKubun === '納車準備'"
-            >
-            </v-col>
-            <v-col 
-              cols="2"
               v-if="this.start.startKubun === '納車準備'"
             >
             </v-col>
@@ -1631,11 +1642,6 @@ export default {
                 ></v-btn>
             </v-col>
             <v-col 
-              cols="2"
-              v-if="this.start.startKubun === '下取・買取'"
-            >
-            </v-col>
-            <v-col 
               cols="1"
               v-if="this.start.startKubun === '下取・買取'"
             >
@@ -1643,12 +1649,27 @@ export default {
             <v-col 
               cols="2" 
               v-if="this.start.startKubun === '成約時登録'||
-                    this.start.startKubun === '下取・買取'
+                    this.start.startKubun === '下取・買取'||
+                    this.start.startKubun === '納車準備'
               "
               >
               <v-combobox
                 v-model="contracts.name"
                 label="お客様名"
+                :items="[]"
+                variant="outlined"
+              ></v-combobox>
+            </v-col>
+            <v-col 
+              cols="2" 
+              v-if="this.start.startKubun === '成約時登録'||
+                    this.start.startKubun === '下取・買取'||
+                    this.start.startKubun === '納車準備'
+              "
+              >
+              <v-combobox
+                v-model="contracts.name"
+                label="担当者名"
                 :items="[]"
                 variant="outlined"
               ></v-combobox>
@@ -11282,6 +11303,9 @@ export default {
 .body {
   overflow-x: hidden;
 }
+#currentTime {
+  color: #ffffff;
+}
 .logo-top {
   margin-top: 10%;
 }
@@ -11631,6 +11655,9 @@ export default {
 }
 
 @media print {
+  #currentTime {
+  color: #101010;
+  }
   .start {
     color: #101010;
     background-color: #ffffff;
