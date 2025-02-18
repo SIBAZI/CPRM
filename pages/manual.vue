@@ -89,7 +89,6 @@ export default {
       },
       normalCarDocumentsGarageVerification: {
         NCgarageVerificationKubun: "", //（車庫証明）保管場所証明申請書区分
-        NCgarageVerificationKubunExplanation1: false,//保管場所証明申請書説明１
         isFillIn: "", //ご記入
         completedDate: false, //完了日
       },
@@ -266,6 +265,7 @@ export default {
         ownershipReleaseRequest: "所有権解除依頼",
         ownershipReleaseRequestRequest: false,//所有権解除依頼
         purchaseInvoiceShippingDestinationContactSlip: "仕入明細書発送先連絡票",
+        purchaseInvoiceShippingDestinationContactSlipExplanation1: false,//仕入明細書発送先連絡票説明１
         recyclingTicket: "リサイクル券",
         vehicleInspectionCertificate: "車検証",
         vehicleInspectionCertificateStorage: false,//車検証お預かり
@@ -509,6 +509,11 @@ export default {
     //     promisedDay: "",
     //   });
     // },
+
+    windowPrint() {
+      window.print();
+    },
+
     showCurrentTime() {
       // const now = new Date();
 
@@ -525,7 +530,8 @@ export default {
     },
 
 
-
+    //登録書類説明関数
+    
     poaKubunExplanation1() {
       this.normalCarDocuments.poaKubunExplanation1 = !this.normalCarDocuments.poaKubunExplanation1
       // if (this.normalCarDocuments.poaKubunExplanation1 === false) {
@@ -621,6 +627,8 @@ export default {
     skyPlusExplanation1() {
       this.insurance.skyPlusExplanation1 = !this.insurance.skyPlusExplanation1
     },
+
+
 
 
 
@@ -1495,6 +1503,20 @@ export default {
       </v-row> -->
 
         <div>
+
+          <!-- <div class ="window-print">
+          <v-btn
+            v-if="this.start.startKubun === '成約時登録'||
+                  this.start.startKubun === '買取・下取'||
+                  this.start.startKubun === '納車準備'||
+                  this.start.startKubun === '納車'
+                "
+            class ="window-print-btn"
+            @click="windowPrint"
+            density="medium"
+            icon="mdi-printer"
+          ></v-btn>
+          </div> -->
 
           <p id="currentTime"></p>
 
@@ -11297,6 +11319,16 @@ export default {
 .body {
   overflow-x: hidden;
 }
+// .window-print {
+//   margin-left: 3%;
+// }
+
+// .window-print-btn {
+//   margin-top: 2%;
+//   position: sticky;
+//   top: 0;
+// }
+
 #currentTime {
   color: #ffffff;
 }
