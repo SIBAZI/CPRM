@@ -10634,7 +10634,7 @@ export default {
                  "
             >
               <v-toolbar-title class="mt-5 d-flex align-center start">
-                　➀　車検証入れの書類説明
+                　〇　車検証入れの書類説明
               </v-toolbar-title>
             </v-row>
             <v-row
@@ -10700,7 +10700,7 @@ export default {
                  "
             >
               <v-toolbar-title class="mt-5 d-flex align-center start">
-                　➁　説明書入れの書類説明
+                　〇　説明書入れの書類説明
               </v-toolbar-title>
             </v-row>
             <v-row
@@ -10752,7 +10752,7 @@ export default {
                  "
             >
               <v-toolbar-title class="mt-5 d-flex align-center start">
-                　➂　保険加入確認・手続き
+                　〇　保険加入確認・手続き
               </v-toolbar-title>
             </v-row>
             <v-row class="mt-9 justify-center"
@@ -11285,12 +11285,6 @@ export default {
           <img class="modal-img" src="/保証書（中古車）記入例.jpg" />
         </v-card>
       </v-dialog>
-
-
-
-
-
-
 
 
       <div class="whole-bottom"></div>
