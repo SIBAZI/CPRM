@@ -3,30 +3,15 @@ import dayjs from "dayjs";
 export default {
   data() {
     return {
-      //成約時登録
-      isOpenModal: false,
-      // modalImgPath: "",
-      // poaRegisteredSealModal: false, //委任状（実印）モーダル
-      // poaStampingModal: false, //委任状（認印）モーダル
-      // ossRegisteredSealModal: false, //OSS（実印）モーダル
-      // ossStampingModal: false, //OSS委任状(認印)モーダル
-      // lightCarDocumentsOwnerAndUserModal: false, //申請依頼書(所有者・使用者）モーダル
-      // lightCarDocumentsUserModal: false, //申請依頼書(使用者）モーダル
-      // NCgarageVerificationModal: false, //保管場所証明申請書モーダル
-      // LCgarageVerificationKubun: false, //保管場所届出書モーダル
-      // selfCertification: false, //自認書モーダル
-      locationMapModal: false, //所在図モーダル
-      // ConsentToUseModal: false, //使用承諾証モーダル
-      // arrangementDiagramNameModal: false, //配置図モーダル
-      desiredNumberModal: false, //希望番号伺書モーダル
-      // etcModal: false, //ETC申込用紙モーダル
-      // etc2Modal: false, //ETC2.0申込用紙モーダル
-      // newCarExtendedWarrantyModal: false, //新車延長保証モーダル
-      usedCarExtendedWarrantyModal: false, //中古車延長保証モーダル
-      // maintenancePackModal: false, //メンテナンスパック申込用紙記入例
-      // taxDeclarationNameModal: false, //税申告書記入例
 
-      //買取・下取
+      //成約時登録モーダル
+      isOpenModal: false,
+      modalImgPath: "",
+      locationMapModal: false, //所在図モーダル
+      desiredNumberModal: false, //希望番号伺書モーダル
+      usedCarExtendedWarrantyModal: false, //中古車延長保証モーダル
+
+      //買取・下取モーダル
       tradeInPurchaseModal: false,//買取下取モーダル
       inheritanceDivisionAgreementModal:false,//遺産分割協議書モーダル
       compulsoryAutomobileLiabilityInsuranceCertificateModal:false,//自賠責保険証モーダル
@@ -36,28 +21,27 @@ export default {
       noticeOfAssignmentOfClaimModal:false,//債権譲渡通知書モーダル
       taxPaymentSlipModal:false,//税支払伺書モーダル
 
-      //納車準備
+      //納車準備モーダル
       standardCarWarrantyModal: false,//保証書（普通車）モーダル
       lightCarWarrantyModal: false,//保証書（軽自動車）モーダル
       usedCarWarrantyModal: false,//保証書（中古車）モーダル
 
+      //スタート画面
       start: {
         startKubun: "", //成約時登録・買取・下取り・一般登録代行
       },
+
+      //成約時登録/始まり
       contracts: {
-        userCode: "", //ユーザーコード
         name:"", //お名前
-        orderDate: "", //受注日
-        carModel: "", //成約車種
-        storeKubun: "", //店舗区分
         managerName: "", //担当者名
         newCarUsedCarKubun: "", //新車・中古区分
         normalCarLightCarKubun: "", //普通車・軽自動車区分
         paymentKubun: "", //支払区分
-        //tradeInCarKubun: "", //下取車有・買取有・下取買取無区分
         insuranceKubun: "", //（保険）当社加入・他社加入
       },
 
+      //成約時登録/マツダ社員
       mazdaEmployee: {
         mazdaEmployeeCheck: false,//マツダ社員
         mazdaEmployeeDocuments: "マツダ社員書類",
@@ -65,6 +49,7 @@ export default {
         mazdaEmployeeDocumentsExplanation: false,//マツダ社員書類
       },
 
+      //成約時登録/委任状
       normalCarDocuments: {
         poaKubun: "委任状", //委任状
         poaKubunExplanation1: false,//委任状説明１
@@ -80,88 +65,114 @@ export default {
         poaOssKubunExplanation6: false,//OSS説明６
         poaOssKubunExplanation7: false,//OSS説明７
         poaOssKubunExplanation8: false,//OSS説明８
-        isFillIn: "", //ご記入
+        isFillIn: false, //ご記入
         isRegisteredSeal: false, //実印（銀行印）
         isSealCertificate: false, //印鑑証明
         isStamping: false, //認印
         isResidentCard: false, //住民票
         completedDate: false, //完了日
       },
+
+      //成約時登録/申請依頼書
       lightCarDocuments: {
         lightCarDocumentsKubun: "申請依頼書", //申請依頼書
         lightCarDocumentsKubunExplanation1: false,//申請依頼書説明１
-        isFillIn: "", //ご記入
+        isFillIn: false, //ご記入
         isStamping: false, //認印
         isResidentCard: false, //住民票
         completedDate: false, //完了日
       },
+
+      //成約時登録/保管場所証明申請書
       normalCarDocumentsGarageVerification: {
         NCgarageVerificationKubun: "", //（車庫証明）保管場所証明申請書区分
-        isFillIn: "", //ご記入
+        isFillIn: false, //ご記入
         completedDate: false, //完了日
       },
+
+      //成約時登録/保管場所届出書
       lightCarDocumentsGarageVerification: {
         LCgarageVerificationKubun: "", //（車庫証明）保管場所届出書・代行不要区分
         LCgarageVerificationKubunExplanation1: false, //（車庫証明）保管場所届出書説明
-        isFillIn: "", //ご記入
+        isFillIn: false, //ご記入
         completedDate: false, //完了日
       },
+
+      //成約時登録/自認書or使用承諾書
       storingMethod: {
         selfCertificationConsentToUseKubun: "", //自認書・使用承諾証証明書区分
         selfCertificationConsentToUseKubunExplanation1: false, //自認書・使用承諾証証明書説明１
         selfCertificationConsentToUseKubunExplanation2: false, //自認書・使用承諾証証明書説明２
-        isFillIn: "", //ご記入
+        isFillIn: false, //ご記入
         completedDate: false, //完了日
       },
+
+      //成約時登録/配置図
       arrangementDiagram: {
-        arrangementDiagramName: "配置図", //配置図
+        arrangementDiagramName: "配置図",
         arrangementDiagramNameExplanation1: false, //配置図説明１
-        isFillIn: "", //ご記入
+        isFillIn: false, //ご記入
         completedDate: false, //完了日
       },
+
+      //成約時登録/所在図
       locationMap: {
         locationMapName: "所在図",//所在図
         locationMapExplanation1: false, //所在図説明１
       },
+
+      //成約時登録/希望番号
       desiredNumber: {
         isDesiredNumber: "", //（希望番号）有・無区分
         isDesiredNumberExplanation1: false, //（希望番号）有・無説明１
-        isFillIn: "", //ご記入
+        isFillIn: false, //ご記入
         completedDate: false, //完了日
       },
+
+      //成約時登録/ETC
       etc: {
         etcKubun: "", //（ETC）有・無区分
         etcKubunExplanation1: false,//（ETC）有・無区分説明１
         etcKubunExplanation2: false,//（ETC）有・無区分説明２
-        isFillIn: "", //ご記入
+        isFillIn: false, //ご記入
         completedDate: false, //完了日
       },
+
+      //成約時登録/延長保証
       extendedWarranty: {
         isExtendedWarranty: "", //（延長保証）有・無区分
         isExtendedWarrantyExplanation1: false, //（延長保証）有・無区分説明１
         isExtendedWarrantyExplanation2: false, //（延長保証）有・無区分説明２
-        isFillIn: "", //ご記入
+        isFillIn: false, //ご記入
         completedDate: false, //完了日
       },
+
+      //成約時登録/メンテナンスパック
       maintenancePack: {
         isMaintenancePack: "", //（メンテナンスパック）有・無区分
         isMaintenancePackExplanation1: false, //（メンテナンスパック）有・無区分説明１
-        isFillIn: "", //ご記入
+        isFillIn: false, //ご記入
         completedDate: false, //完了日
       },
+
+      //成約時登録/JAF
       jaf: {
         isJafPaymentKubun: "", //（JAF）有（口座振替）・有（クレジット）・無区分
         isJafPaymentKubunExplanation1: false, //（JAF）有（口座振替）・有（クレジット）・無区分説明１
-        isFillIn: "", //ご記入
+        isFillIn: false, //ご記入
         isBankSeal: false, //銀行印
         completedDate: false, //完了日
       },
+
+      //成約時登録/税申告書
       taxDeclaration: {
         taxDeclarationName: "税申告書", //税申告書
         taxDeclarationNameExplanation1:false,//税申告書説明１
-        isFillIn: "", //ご記入
+        isFillIn: false, //ご記入
         completedDate: false, //完了日
       },
+
+      //成約時登録/クレジット
       credit: {
         creditTp: "", //クレジット種類
         creditDocuments: "", //クレジット書類
@@ -171,24 +182,26 @@ export default {
         completedDate: false, //完了日
       },
 
+      //成約時登録/保険
       insurance: {
         jocInsuranceCompany: "", //当社加入保険会社
         jocInsuranceCompanyExplanation1: false,//当社加入保険会社説明１
         jacInsuranceCompany: "", //他社加入保険会社
         jacInsuranceCompanyExplanation1: false,//社加入保険会社説明１
-        joiningProcedure: "", //手続き
-        confirmationOfMembership: "", //加入確認
+        joiningProcedure: false, //手続き
+        confirmationOfMembership: false, //加入確認
         skyPlus: "スカイプラス", //スカイプラス
+        skyPlusExplanation: "", //スカイプラスお客様に説明
         skyPlusExplanation1: false, //スカイプラス説明１
-        skyPlusExplanation: "", //スカイプラス説明
-        completedDate: "", //完了日
+        completedDate: false, //完了日
       },
 
+      //成約時登録/納車予定日
       delivery: {
-        deliveryDate: "", //納車予定日
+        deliveryDate: false, //納車予定日
       },
 
-      //下取・買取
+      //下取・買取/始まり
       tradeInPurchase: {
         tradeInPurchaseKubun: "", //下取・買取
         normalCarLightCarKubun: "", //普通車・軽自動車区分
@@ -197,10 +210,13 @@ export default {
         vehicleNumber: "",//車体番号
       },
 
+      //下取・買取/法人者・本人逝去チェックボックス
       tradeInCarAndOtherConfirma: {
         isCorporateVehicles: false, //法人車
         isDeathOfPerson: false, //本人逝去
       },
+      
+      //下取・買取/本人逝去
       passedAwayRequiredDocuments: {
         purchasePriceKubun: "", //買取価格
         inheritanceDivisionAgreement: "遺産分割協議書",
@@ -328,6 +344,7 @@ export default {
   
   mounted () {
     this.showCurrentTime();
+    window.addEventListener('beforeprint', this.showCurrentTime);
   },
 
   methods: {
@@ -520,10 +537,6 @@ export default {
     //   });
     // },
 
-    windowPrint() {
-      window.print();
-    },
-
     showCurrentTime() {
       // const now = new Date();
 
@@ -539,6 +552,10 @@ export default {
 
     },
 
+    windowPrint() {
+      this.showCurrentTime();
+      window.print();
+    },
 
     //登録書類説明関数
     
@@ -11370,12 +11387,14 @@ export default {
           <v-btn @click="addMemo" density="compact" icon="mdi-plus"></v-btn>
         </v-col>
       </v-row> -->
+
       <ModalImg
         :isOpen="isOpenModal"
         :imgPath="modalImgPath"
         @update="isOpenModal = $event"
       >
       </ModalImg>
+      
       <!-- 委任状（実印）modal -->
       <!-- <v-dialog v-model="poaRegisteredSealModal" max-width="70%">
         <v-card>
@@ -11572,7 +11591,7 @@ export default {
   position: fixed;
 }
 #currentTime {
-  color: #ffffff;
+  display:none;
 }
 .logo-top {
   margin-top: 10%;
@@ -11937,7 +11956,7 @@ export default {
     display:none;
   }
   #currentTime {
-    color: #101010;
+    display:initial;
   }
   .start {
     color: #101010;
@@ -11996,6 +12015,7 @@ export default {
   .sky-plus-completed{display:none;}
   .delivery-date-completed{display:none;}
   .tax-declaration-completed{display:none;}
+  .mazdaEmployee-documents-completed{display:none;}
 
   .supporting-sentences{display:none;}
   .clear{display:none;}
