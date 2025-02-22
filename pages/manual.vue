@@ -1700,7 +1700,7 @@ export default {
               "
               >
               <v-combobox
-                v-model="contracts.name"
+                v-model="contracts.managerName"
                 label="担当者名"
                 :items="[]"
                 variant="outlined"
@@ -5613,7 +5613,7 @@ export default {
               <v-col cols="2" class=""> </v-col>
               <v-col cols="2" class="">
               <div
-                class="mazdaEmployee-documents-completed  ml-10"
+                class="mazdaEmployee-documents-completed  ml-15"
                 :class="{
                   'is-fill-in-completed': mazdaEmployee.mazdaEmployeeDocumentsExplanation,
                 }"
@@ -5626,7 +5626,9 @@ export default {
             v-if="mazdaEmployee.mazdaEmployeeCheck === true"
           >
             <p class="explanation">
-              ・お客様がマツダ社員様の場合、書類をご説明してお渡ししてください。　<br />
+              ・お客様にマツダの会社で社員書類をご準備頂く必要があります。　<br />
+              　<br />
+              ！こちらからお渡しする書類はありません。
             </p>
           </v-row>
 
