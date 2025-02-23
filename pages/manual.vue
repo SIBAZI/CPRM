@@ -711,6 +711,7 @@ export default {
       this.contracts.normalCarLightCarKubun = "";
       this.contracts.paymentKubun = "";
       this.contracts.insuranceKubun = "";
+      this.mazdaEmployee.mazdaEmployeeCheck = false;
       this.normalCarDocuments.poaOssKubun = "";
       this.normalCarDocuments.isFillIn = false;
       this.normalCarDocuments.isRegisteredSeal = false;
@@ -791,6 +792,7 @@ export default {
       this.insurance.skyPlusExplanation1 = false;
     },
     newCarUsedCarKubunChange() {
+      this.mazdaEmployee.mazdaEmployeeCheck = false;
       this.normalCarDocuments.poaOssKubun = "";
       this.normalCarDocuments.isFillIn = false;
       this.normalCarDocuments.isRegisteredSeal = false;
@@ -863,6 +865,7 @@ export default {
 
     },
     normalCarLightCarChange() {
+      this.mazdaEmployee.mazdaEmployeeCheck = false;
       this.normalCarDocuments.poaOssKubun = "";
       this.normalCarDocuments.isFillIn = false;
       this.normalCarDocuments.isRegisteredSeal = false;
@@ -940,6 +943,7 @@ export default {
     },
 
     paymentKubunChange() {
+      this.mazdaEmployee.mazdaEmployeeCheck = false;
       this.credit.isFillIn = "";
       this.credit.isRegisteredSeal = false;
       this.credit.completedDate = false;
@@ -11586,7 +11590,7 @@ export default {
   overflow-x: hidden;
 }
 .window-print-btn {
-  right: 4%;
+  right: 3%;
   top: 50%;
   position: fixed;
 }
