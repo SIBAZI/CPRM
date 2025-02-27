@@ -3237,14 +3237,16 @@ export default {
             </p>
           </v-row>
 
-          <v-row class="icon-ml">
+          <v-row 
+           class="icon-ml"
+           v-if="
+                this.normalCarDocumentsGarageVerification
+                  .NCgarageVerificationKubun === '保管場所証明申請書'
+                "
+          >
             <v-col
               cols="1"
               class="mt-3 d-flex align-center"
-              v-if="
-                this.normalCarDocumentsGarageVerification
-                  .NCgarageVerificationKubun === '保管場所証明申請書'
-              "
             >
               <v-btn
                 @click="NCgarageVerificationKubunExplanation1"
@@ -3255,10 +3257,6 @@ export default {
             <v-col
               cols="1"
               class="mt-3 d-flex align-center"
-              v-if="
-                this.normalCarDocumentsGarageVerification
-                  .NCgarageVerificationKubun === '保管場所証明申請書'
-              "
             >
               <v-btn
                 @click="openModal('保管場所証明申請書記入例.jpg')"
@@ -3269,10 +3267,6 @@ export default {
             <v-col
               cols="1"
               class="mt-3 d-flex align-center"
-              v-if="
-                this.normalCarDocumentsGarageVerification
-                  .NCgarageVerificationKubun === '保管場所証明申請書'
-              "
             >
               <v-btn
                 href="https://www.pref.hiroshima.lg.jp/site/police/055-05505-hokan.html"
@@ -3281,13 +3275,17 @@ export default {
                 icon="mdi-search-web"
               ></v-btn>
             </v-col>
+          </v-row>
+          <v-row 
+           class="icon-ml"
+           v-if="
+                this.lightCarDocumentsGarageVerification
+                  .LCgarageVerificationKubun === '保管場所届出書'
+                "
+          >
             <v-col
               cols="1"
               class="mt-3 d-flex align-center"
-              v-if="
-                this.lightCarDocumentsGarageVerification
-                  .LCgarageVerificationKubun === '保管場所届出書'
-              "
             >
               <v-btn
                 @click="LCgarageVerificationKubunExplanation1"
@@ -3298,10 +3296,6 @@ export default {
             <v-col
               cols="1"
               class="mt-3 d-flex align-center"
-              v-if="
-                this.lightCarDocumentsGarageVerification
-                  .LCgarageVerificationKubun === '保管場所届出書'
-              "
             >
               <v-btn
                 @click="openModal('保管場所届出書記入例.jpg')"
@@ -3312,10 +3306,6 @@ export default {
             <v-col
               cols="1"
               class="mt-3 d-flex align-center"
-              v-if="
-                this.lightCarDocumentsGarageVerification
-                  .LCgarageVerificationKubun === '保管場所届出書'
-              "
             >
               <v-btn
                 href="https://www.pref.hiroshima.lg.jp/site/police/055-05505-kei-hokan.html"
@@ -3455,14 +3445,16 @@ export default {
             </p>
           </v-row>
 
-          <v-row class="icon-ml">
+          <v-row 
+           class="icon-ml"
+           v-if="
+                this.storingMethod.selfCertificationConsentToUseKubun ===
+                '自認書'
+                "
+          >
             <v-col
               cols="1"
               class="mt-3 d-flex align-center"
-              v-if="
-                this.storingMethod.selfCertificationConsentToUseKubun ===
-                '自認書'
-              "
             >
               <v-btn
                 @click="selfCertificationConsentToUseKubunExplanation1"
@@ -3473,10 +3465,6 @@ export default {
             <v-col
               cols="1"
               class="mt-3 d-flex align-center"
-              v-if="
-                this.storingMethod.selfCertificationConsentToUseKubun ===
-                '自認書'
-              "
             >
               <v-btn
                 @click="openModal('自認書記入例.jpg')"
@@ -3487,10 +3475,6 @@ export default {
             <v-col
               cols="1"
               class="mt-3 d-flex align-center"
-              v-if="
-                this.storingMethod.selfCertificationConsentToUseKubun ===
-                '自認書'
-              "
             >
               <v-btn
                 @click="selfCertificationImg"
@@ -3498,13 +3482,17 @@ export default {
                 icon="mdi-printer"
               ></v-btn>
             </v-col>
+          </v-row>
+          <v-row 
+           class="icon-ml"
+           v-if="
+                this.storingMethod.selfCertificationConsentToUseKubun ===
+                '使用承諾証'
+                "
+          >
             <v-col
               cols="1"
               class="mt-3 d-flex align-center"
-              v-if="
-                this.storingMethod.selfCertificationConsentToUseKubun ===
-                '使用承諾証'
-              "
             >
               <v-btn
                 @click="selfCertificationConsentToUseKubunExplanation2"
@@ -3515,10 +3503,6 @@ export default {
             <v-col
               cols="1"
               class="mt-3 d-flex align-center"
-              v-if="
-                this.storingMethod.selfCertificationConsentToUseKubun ===
-                '使用承諾証'
-              "
             >
               <v-btn
                 @click="openModal('使用承諾証記入例.jpg')"
@@ -3529,10 +3513,6 @@ export default {
             <v-col
               cols="1"
               class="mt-3 d-flex align-center"
-              v-if="
-                this.storingMethod.selfCertificationConsentToUseKubun ===
-                '使用承諾証'
-              "
             >
               <v-btn
                 @click="consentToUseImg"
@@ -3541,6 +3521,7 @@ export default {
               ></v-btn>
             </v-col>
           </v-row>
+
           <v-row
             v-if="
               this.normalCarDocuments.poaOssKubun === 'OSS委任状' ||
@@ -3622,17 +3603,19 @@ export default {
             </p>
           </v-row>
 
-          <v-row class="icon-ml">
-            <v-col
-              cols="1"
-              class="mt-3 d-flex align-center"
-              v-if="
+          <v-row 
+           class="icon-ml"
+           v-if="
                 this.normalCarDocuments.poaOssKubun === 'OSS委任状' ||
                 this.normalCarDocumentsGarageVerification
                   .NCgarageVerificationKubun === '保管場所証明申請書' ||
                 this.lightCarDocumentsGarageVerification
                   .LCgarageVerificationKubun === '保管場所届出書'
               "
+           >
+            <v-col
+              cols="1"
+              class="mt-3 d-flex align-center"
             >
               <v-btn
                 @click="arrangementDiagramNameExplanation1"
@@ -3643,13 +3626,6 @@ export default {
             <v-col
               cols="1"
               class="mt-3 d-flex align-center"
-              v-if="
-                this.normalCarDocuments.poaOssKubun === 'OSS委任状' ||
-                this.normalCarDocumentsGarageVerification
-                  .NCgarageVerificationKubun === '保管場所証明申請書' ||
-                this.lightCarDocumentsGarageVerification
-                  .LCgarageVerificationKubun === '保管場所届出書'
-              "
             >
               <v-btn
                 @click="openModal('配置図記入例.jpg')"
@@ -3660,13 +3636,6 @@ export default {
             <v-col
               cols="1"
               class="mt-3 d-flex align-center"
-              v-if="
-                this.normalCarDocuments.poaOssKubun === 'OSS委任状' ||
-                this.normalCarDocumentsGarageVerification
-                  .NCgarageVerificationKubun === '保管場所証明申請書' ||
-                this.lightCarDocumentsGarageVerification
-                  .LCgarageVerificationKubun === '保管場所届出書'
-              "
             >
               <v-btn
                 @click="arrangementDiagramNameImg"
@@ -3727,17 +3696,19 @@ export default {
               　　　↑本拠の位置と保管場所が同じ場合は（本拠の位置および保管場所）と記入
             </p>
           </v-row>
-          <v-row class="icon-ml">
-            <v-col
-              cols="1"
-              class="mt-3 d-flex align-center"
-              v-if="
+          <v-row 
+           class="icon-ml"
+           v-if="
                 this.normalCarDocuments.poaOssKubun === 'OSS委任状' ||
                 this.normalCarDocumentsGarageVerification
                   .NCgarageVerificationKubun === '保管場所証明申請書' ||
                 this.lightCarDocumentsGarageVerification
                   .LCgarageVerificationKubun === '保管場所届出書'
               "
+           >
+            <v-col
+              cols="1"
+              class="mt-3 d-flex align-center"
             >
               <v-btn
                 @click="locationMapExplanation1"
@@ -3748,13 +3719,6 @@ export default {
             <v-col
               cols="1"
               class="mt-3 d-flex align-center"
-              v-if="
-                this.normalCarDocuments.poaOssKubun === 'OSS委任状' ||
-                this.normalCarDocumentsGarageVerification
-                  .NCgarageVerificationKubun === '保管場所証明申請書' ||
-                this.lightCarDocumentsGarageVerification
-                  .LCgarageVerificationKubun === '保管場所届出書'
-              "
             >
               <v-btn
                 @click="locationMapModal = true"
@@ -3765,13 +3729,6 @@ export default {
             <v-col
               cols="1"
               class="mt-3 d-flex align-center"
-              v-if="
-                this.normalCarDocuments.poaOssKubun === 'OSS委任状' ||
-                this.normalCarDocumentsGarageVerification
-                  .NCgarageVerificationKubun === '保管場所証明申請書' ||
-                this.lightCarDocumentsGarageVerification
-                  .LCgarageVerificationKubun === '保管場所届出書'
-              "
             >
               <v-btn
                 href="https://map.yahoo.co.jp/?lat=35.65451&lon=139.73644&zoom=12&maptype=basic"
@@ -3826,16 +3783,18 @@ export default {
             </v-toolbar-title>
           </v-row>
 
-          <v-row class="mt-5 justify-center">
-            <v-col
-              cols="2"
-              class=""
-              v-if="
+          <v-row 
+           class="mt-5 justify-center"
+           v-if="
               (this.contracts.newCarUsedCarKubun === '新車' ||
               this.contracts.newCarUsedCarKubun === '中古車')&&
               (this.contracts.normalCarLightCarKubun === '普通車' ||
                 this.contracts.normalCarLightCarKubun === '軽自動車')
               "
+           >
+            <v-col
+              cols="2"
+              class=""
             >
               <v-select
                 @update:modelValue="isDesiredNumberChange"
@@ -3946,11 +3905,13 @@ export default {
             </p>
           </v-row>
 
-          <v-row class="icon-ml">
+          <v-row 
+           class="icon-ml" 
+           v-if="this.desiredNumber.isDesiredNumber === '有'"
+          >
             <v-col
               cols="1"
               class="mt-3 d-flex align-center"
-              v-if="this.desiredNumber.isDesiredNumber === '有'"
             >
               <v-btn
                 @click="isDesiredNumberExplanation1"
@@ -3961,7 +3922,6 @@ export default {
             <v-col
               cols="1"
               class="mt-3 d-flex align-center"
-              v-if="this.desiredNumber.isDesiredNumber === '有'"
             >
               <v-btn
                 @click="desiredNumberModal = true"
@@ -3972,7 +3932,6 @@ export default {
             <v-col
               cols="1"
               class="mt-3 d-flex align-center"
-              v-if="this.desiredNumber.isDesiredNumber === '有'"
             >
               <v-btn
                 @click="desiredNumberImg"
@@ -3984,7 +3943,6 @@ export default {
             <v-col
               cols="1"
               class="mt-3 d-flex align-center"
-              v-if="this.desiredNumber.isDesiredNumber === '有'"
             >
               <v-btn
                 href="https://www.mlit.go.jp/jidosha/jidosha_tk6_000004.html"
@@ -4014,16 +3972,18 @@ export default {
           <v-btn @click="aaa" density="compact" icon="mdi-printer"></v-btn>
         </v-col>
       </v-row> -->
-          <v-row class="mt-10 justify-center">
-            <v-col
-              cols="2"
-              class=""
-              v-if="
+          <v-row 
+           class="mt-10 justify-center"
+           v-if="
               (this.contracts.newCarUsedCarKubun === '新車' ||
               this.contracts.newCarUsedCarKubun === '中古車')&&
               (this.contracts.normalCarLightCarKubun === '普通車' ||
                this.contracts.normalCarLightCarKubun === '軽自動車')
               "
+           >
+            <v-col
+              cols="2"
+              class=""
             >
               <v-select
                 @update:modelValue="etcKubunChange"
@@ -4253,16 +4213,18 @@ export default {
           <v-btn @click="aaa" density="compact" icon="mdi-help"></v-btn>
         </v-col>
       </v-row> -->
-          <v-row class="mt-10 justify-center">
-            <v-col
-              cols="2"
-              class=""
-              v-if="
+          <v-row 
+           class="mt-10 justify-center"
+           v-if="
               (this.contracts.newCarUsedCarKubun === '新車' ||
               this.contracts.newCarUsedCarKubun === '中古車')&&
               (this.contracts.normalCarLightCarKubun === '普通車' ||
               this.contracts.normalCarLightCarKubun === '軽自動車')
               "
+          >
+            <v-col
+              cols="2"
+              class=""
             >
               <v-select
                 @update:modelValue="isExtendedWarrantyChange"
@@ -4388,14 +4350,16 @@ export default {
             </p>
           </v-row>
 
-          <v-row class="icon-ml">
-            <v-col
-              cols="1"
-              class="mt-3 d-flex align-center"
-              v-if="
+          <v-row 
+           class="icon-ml"
+           v-if="
                 this.contracts.newCarUsedCarKubun === '新車' &&
                 this.extendedWarranty.isExtendedWarranty === '有'
               "
+          >
+            <v-col
+              cols="1"
+              class="mt-3 d-flex align-center"
             >
               <v-btn
                 @click="isExtendedWarrantyExplanation1"
@@ -4406,10 +4370,6 @@ export default {
             <v-col
               cols="1"
               class="mt-3 d-flex align-center"
-              v-if="
-                this.contracts.newCarUsedCarKubun === '新車' &&
-                this.extendedWarranty.isExtendedWarranty === '有'
-              "
             >
               <v-btn
                 @click="openModal('延長保証記入例.jpg')"
@@ -4420,10 +4380,6 @@ export default {
             <v-col
               cols="1"
               class="mt-3 d-flex align-center"
-              v-if="
-                this.contracts.newCarUsedCarKubun === '新車' &&
-                this.extendedWarranty.isExtendedWarranty === '有'
-              "
             >
               <v-btn
                 href="https://www.mazda.co.jp/purchase/carlife-care/encho-hosho/5years/"
@@ -4432,13 +4388,17 @@ export default {
                 icon="mdi-search-web"
               ></v-btn>
             </v-col>
-            <v-col
-              cols="1"
-              class="mt-3 d-flex align-center"
-              v-if="
+          </v-row>
+          <v-row 
+           class="icon-ml"
+           v-if="
                 this.contracts.newCarUsedCarKubun === '中古車' &&
                 this.extendedWarranty.isExtendedWarranty === '有'
               "
+          >
+            <v-col
+              cols="1"
+              class="mt-3 d-flex align-center"
             >
               <v-btn
                 @click="isExtendedWarrantyExplanation2"
@@ -4449,10 +4409,6 @@ export default {
             <v-col
               cols="1"
               class="mt-3 d-flex align-center"
-              v-if="
-                this.contracts.newCarUsedCarKubun === '中古車' &&
-                this.extendedWarranty.isExtendedWarranty === '有'
-              "
             >
               <v-btn
                 @click="usedCarExtendedWarrantyModal = true"
@@ -4486,16 +4442,18 @@ export default {
           >
             <v-divider class="mt-5 separator"></v-divider>
           </v-row>
-          <v-row class="mt-10 justify-center">
-            <v-col
-              cols="2"
-              class=""
-              v-if="
+          <v-row 
+           class="mt-10 justify-center"
+           v-if="
               (this.contracts.newCarUsedCarKubun === '新車' ||
               this.contracts.newCarUsedCarKubun === '中古車')&&
               (this.contracts.normalCarLightCarKubun === '普通車' ||
               this.contracts.normalCarLightCarKubun === '軽自動車')
               "
+           >
+            <v-col
+              cols="2"
+              class=""
             >
               <v-select
                 @update:modelValue="isMaintenancePackChange"
@@ -4653,16 +4611,17 @@ export default {
           >
             <v-divider class="mt-5 separator"></v-divider>
           </v-row>
-          <v-row class="mt-10 justify-center">
-            <v-col
-              cols="2"
-              class=""
-              v-if="
+          <v-row 
+           class="mt-10 justify-center"
+           v-if="
               (this.contracts.newCarUsedCarKubun === '新車' ||
               this.contracts.newCarUsedCarKubun === '中古車')&&
               (this.contracts.normalCarLightCarKubun === '普通車' ||
               this.contracts.normalCarLightCarKubun === '軽自動車')
               "
+           >
+            <v-col
+              cols="2"
             >
               <v-select
                 @update:modelValue="isJafPaymentKubunChange"
@@ -4799,14 +4758,16 @@ export default {
             </p>
           </v-row>
 
-          <v-row class="icon-ml">
-            <v-col
-              cols="1"
-              class="mt-3 d-flex align-center"
-              v-if="
+          <v-row 
+           class="icon-ml"
+           v-if="
                 this.jaf.isJafPaymentKubun === '有（口座振替）' ||
                 this.jaf.isJafPaymentKubun === '有（クレジット）'
               "
+          >
+            <v-col
+              cols="1"
+              class="mt-3 d-flex align-center"
             >
               <v-btn
                 @click="isJafPaymentKubunExplanation1"
@@ -4817,10 +4778,6 @@ export default {
             <v-col
               cols="1"
               class="mt-3 d-flex align-center"
-              v-if="
-                this.jaf.isJafPaymentKubun === '有（口座振替）' ||
-                this.jaf.isJafPaymentKubun === '有（クレジット）'
-              "
             >
               <v-btn
                 href="https://jafenta.jp/site/login/"
@@ -4832,10 +4789,6 @@ export default {
             <v-col
               cols="1"
               class="mt-3 d-flex align-center"
-              v-if="
-                this.jaf.isJafPaymentKubun === '有（口座振替）' ||
-                this.jaf.isJafPaymentKubun === '有（クレジット）'
-              "
             >
               <v-btn
                 href="https://jaf.or.jp/individual"
@@ -5628,7 +5581,7 @@ export default {
               v-if="
                 this.mazdaEmployee.mazdaEmployeeCheck === true
               "
-            >
+          >
               <v-toolbar-title class="mt-5 d-flex align-center start">
                 　〇　マツダ社員の場合
               </v-toolbar-title>
@@ -5923,6 +5876,11 @@ export default {
 
         <!-- 下取・買取 -->
           <div v-if="this.start.startKubun === '下取・買取'">
+            <v-row>
+              <p class="explanation">
+                ！下取・買取の手続きの前にまずは<b>査定</b>をしましょう。
+              </p>
+            </v-row>
             <v-row>
               <v-toolbar-title class="mt-5 d-flex align-center start">
                 　▼　ここからは下取・買取のお手続きになります。
