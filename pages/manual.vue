@@ -332,13 +332,21 @@ export default {
 
       purchase: {},
 
-      // memos: [
-      //   {
-      //     recordDate: "", //記念日
-      //     memoField: "", //メモ
-      //     promisedDay: "", //約束日
-      //   },
-      // ],
+      memos: [
+        {
+          memoField: "", //メモ
+          promisedDay: "", //約束日
+        },
+      ],
+
+      memos2: [
+        {
+          memoField2: "", //メモ
+          promisedDay2: "", //約束日
+        },
+      ],
+
+
     };
   },
   
@@ -529,13 +537,20 @@ export default {
     //   }
     // },
 
-    // addMemo() {
-    //   this.memos.push({
-    //     recordDate: "",
-    //     memoField: "",
-    //     promisedDay: "",
-    //   });
-    // },
+    addMemo() {
+      this.memos.push({
+        memoField: "",
+        promisedDay: "",
+      });
+    },
+
+    addMemo2() {
+      this.memos2.push({
+        memoField2: "",
+        promisedDay2: "",
+      });
+    },
+
 
     showCurrentTime() {
       // const now = new Date();
@@ -706,6 +721,10 @@ export default {
     removeMemo(index) {
       this.memos.splice(index, 1);
     },
+    removeMemo2(index) {
+      this.memos2.splice(index, 1);
+    },
+
     rattocClear() {
       this.contracts.newCarUsedCarKubun = "";
       this.contracts.normalCarLightCarKubun = "";
@@ -1732,6 +1751,7 @@ export default {
             <p class="supporting-sentences">　※現在作成中</p>
           </v-row>
         </div>
+        
         <div v-if="this.start.startKubun === '成約時登録'">
           <v-row>
             <v-toolbar-title class="mt-5 start">
@@ -4581,9 +4601,13 @@ export default {
               　メンテナンスパック（パックdeメンテ）にご加入頂くための書類です。　<br />
               　<br />
               　ご商談の際は36Sコース　<br />
-              　5年間半年ごとの点検、5年後2回目の車検　<br />
-              　※5年間半年ごとの点検＝半年ごとの6ヶ月点検（MSC）と12ヶ月点検※　<br />
-              　※5年後2回目の車検＝1回目の車検は納車から3年後、2回目の車検は納車から5年後※　<br />
+              　<br />
+              　5年間半年ごとの点検　<br />
+              　↑半年ごとの6ヶ月点検（MSC）と12ヶ月点検　<br />
+              　<br />
+              　5年後2回目の車検　<br />
+              　↑1回目の車検は納車から3年後、2回目の車検は納車から5年後　<br />
+              　<br />
               　がセットになったプラン　<br />
               　をおすすめとしてご提案させて頂いています。　
             </p>
@@ -5308,7 +5332,8 @@ export default {
               　<br />
               　１．ネット保険はお客様自身で保険の内容をご理解頂き選ぶ必要がありますが、対面型の保険はお客様に合った　<br />
               　　　的確な保険内容をご提示することができます。　<br />
-              　　　また保険の見直しや内容の変更等は担当者にお電話頂くだけでお客様の状況にあった保険内容に変更することもできます。　<br />
+              　　　また保険の見直しや内容の変更等は担当者にお電話頂くだけでお客様の状況にあった保険内容に　<br />
+              　　　変更することもできます。　<br />
               　<br />
               　２．事故をしてしまった場合、気が動転してどのように対応すればいいかわからなくなってしまった場合でも　<br />
               　　　担当者にお電話を頂くだけで、状況に応じてどのような対応をすればいいか手順を踏みながら丁寧に　<br />
@@ -5714,10 +5739,9 @@ export default {
               　〇　納車日（ご成約頂いたお車が登録されて２週間後がご納車日の目安となります。）
             </v-toolbar-title>
           </v-row>
-          <v-row class="mt-5 justify-center">
-            <v-col
-              cols="2"
-              v-if="
+          <v-row 
+           class="mt-5 justify-center"
+           v-if="
                 (this.contracts.newCarUsedCarKubun === '新車' ||
                   this.contracts.newCarUsedCarKubun === '中古車') &&
                 (this.contracts.normalCarLightCarKubun === '普通車' ||
@@ -5727,6 +5751,9 @@ export default {
                   this.contracts.paymentKubun === '銀行ローン' ||
                   this.contracts.paymentKubun === '所有権留保')
               "
+          >
+            <v-col
+              cols="2"
               class=""
             >
               <v-text-field
@@ -5739,52 +5766,9 @@ export default {
                 label="納車希望日"
               ></v-text-field>
             </v-col>
-            <v-col
-              cols="2"
-              class=""
-              v-if="
-                (this.contracts.newCarUsedCarKubun === '新車' ||
-                  this.contracts.newCarUsedCarKubun === '中古車') &&
-                (this.contracts.normalCarLightCarKubun === '普通車' ||
-                  this.contracts.normalCarLightCarKubun === '軽自動車') &&
-                (this.contracts.paymentKubun === '現金' ||
-                  this.contracts.paymentKubun === 'クレジット' ||
-                  this.contracts.paymentKubun === '銀行ローン' ||
-                  this.contracts.paymentKubun === '所有権留保')
-              "
-            >
-            </v-col>
-            <v-col
-              cols="2"
-              class=""
-              v-if="
-                (this.contracts.newCarUsedCarKubun === '新車' ||
-                  this.contracts.newCarUsedCarKubun === '中古車') &&
-                (this.contracts.normalCarLightCarKubun === '普通車' ||
-                  this.contracts.normalCarLightCarKubun === '軽自動車') &&
-                (this.contracts.paymentKubun === '現金' ||
-                  this.contracts.paymentKubun === 'クレジット' ||
-                  this.contracts.paymentKubun === '銀行ローン' ||
-                  this.contracts.paymentKubun === '所有権留保')
-              "
-            >
-            </v-col>
-            <v-col
-              cols="2"
-              class=""
-              v-if="
-                (this.contracts.newCarUsedCarKubun === '新車' ||
-                  this.contracts.newCarUsedCarKubun === '中古車') &&
-                (this.contracts.normalCarLightCarKubun === '普通車' ||
-                  this.contracts.normalCarLightCarKubun === '軽自動車') &&
-                (this.contracts.paymentKubun === '現金' ||
-                  this.contracts.paymentKubun === 'クレジット' ||
-                  this.contracts.paymentKubun === '銀行ローン' ||
-                  this.contracts.paymentKubun === '所有権留保')
-              "
-            >
-            </v-col>
-
+            <v-col cols="2"></v-col>
+            <v-col cols="2"></v-col>
+            <v-col cols="2"></v-col>
             <v-col
               cols="2"
               class="mt-1"
@@ -5861,8 +5845,83 @@ export default {
           </v-row>
 
         </div>
+        <v-row
+           v-if="
+                 this.start.startKubun === '成約時登録'
+                "
+          >
+          <v-toolbar-title class="mt-16 d-flex align-center memo">
+          　◇　成約時登録メモ
+          </v-toolbar-title>
+          </v-row>
+
+          <v-row class="mt-10 memo-contents" v-for="(memo, index) in memos" :key="index">
+
+          <!-- <v-col>
+          {{ index }}
+          </v-col> -->
+
+          <v-col cols="7" 
+          v-if="
+                 this.start.startKubun === '成約時登録'
+                "
+          >
+          <v-text-field
+            v-model="memo.memoField"
+            @input="memoField(memo)"
+            :counter="10"
+            label="メモ"
+            required
+            hide-details
+          ></v-text-field>
+          </v-col>
+
+          <v-col cols="2"
+          v-if="
+                 this.start.startKubun === '成約時登録'
+                "
+          >
+          <v-text-field
+            type="date"
+            v-model="memo.promisedDay"
+            label="約束日"
+          ></v-text-field>
+          </v-col>
+
+          <v-col cols="1" class="d-flex align-center " 
+           v-if="
+                 this.start.startKubun === '成約時登録'&&
+                 memos.length >= 2
+                "
+          >
+          <v-btn
+            class="memo-btn"
+            @click="removeMemo(index)"
+            density="compact"
+            icon="mdi-close"
+          ></v-btn>
+          </v-col>
+          <v-col
+          cols="1"
+          class="d-flex align-center memo-btn"
+          v-if="
+                this.start.startKubun === '成約時登録'&&
+                index == memos.length - 1
+               "
+          >
+          <v-btn class="memo-btn" @click="addMemo" density="compact" icon="mdi-plus"></v-btn>
+          </v-col>
+
+          </v-row>
+
+
+
+
+
+
+
+
         <!-- 下取・買取 -->
-        <div class="buy-trade">
           <div v-if="this.start.startKubun === '下取・買取'">
             <v-row>
               <v-toolbar-title class="mt-5 d-flex align-center start">
@@ -6054,7 +6113,7 @@ export default {
               <v-col cols="2" class=""> </v-col>
               <v-col cols="2" class="">
               <div
-                class="tax-declaration-completed ml-10"
+                class="tax-declaration-completed ml-15"
                 :class="{
                   'is-fill-in-completed': tradeInPurchaseCommonRequiredDocuments.purchaseInvoiceShippingDestinationContactSlipPreparation,
                 }"
@@ -6169,7 +6228,7 @@ export default {
               </v-col>
               <v-col cols="2" class="">
               <div
-                class="tax-declaration-completed ml-10"
+                class="tax-declaration-completed ml-15"
                 :class="{
                   'is-fill-in-completed': requiredDocumentsForRegularCars.inheritanceDivisionAgreementIsFillIn &&
                                           requiredDocumentsForRegularCars.inheritanceDivisionAgreementIsOfficialSeal&&
@@ -6284,7 +6343,7 @@ export default {
               <v-col cols="2" class=""> </v-col>
               <v-col cols="2" class="">
               <div
-                class="tax-declaration-completed ml-10"
+                class="tax-declaration-completed ml-15"
                 :class="{
                   'is-fill-in-completed': requiredDocumentsForRegularCars.familyRegisterStorage
                 }"
@@ -6380,7 +6439,7 @@ export default {
               <v-col cols="2" class=""> </v-col>
               <v-col cols="2" class="">
               <div
-                class="tax-declaration-completed ml-10"
+                class="tax-declaration-completed ml-15"
                 :class="{
                   'is-fill-in-completed': requiredDocumentsForRegularCars.revisedOriginalFamilyRegisterStorage
                 }"
@@ -6492,7 +6551,7 @@ export default {
               </v-col>
               <v-col cols="2" class="">
               <div
-                class="tax-declaration-completed ml-10"
+                class="tax-declaration-completed ml-15"
                 :class="{
                   'is-fill-in-completed': requiredDocumentsForRegularCars.powerOfAttorneyIsFillIn&&
                                           requiredDocumentsForRegularCars.powerOfAttorneyIsOfficialSeal&&
@@ -6602,7 +6661,7 @@ export default {
               </v-col>
               <v-col cols="2" class="">
               <div
-                class="tax-declaration-completed ml-10"
+                class="tax-declaration-completed ml-15"
                 :class="{
                   'is-fill-in-completed': requiredDocumentsForRegularCars.powerOfAttorneyIsFillIn&&
                                           requiredDocumentsForRegularCars.powerOfAttorneyIsOfficialSeal&&
@@ -6713,7 +6772,7 @@ export default {
               </v-col>
               <v-col cols="2" class="">
               <div
-                class="tax-declaration-completed ml-10"
+                class="tax-declaration-completed ml-15"
                 :class="{
                   'is-fill-in-completed': requiredDocumentsForRegularCars.transferCertificateIsFillIn&&
                                           requiredDocumentsForRegularCars.transferCertificateIsOfficialSeal&&
@@ -6818,7 +6877,7 @@ export default {
               </v-col>
               <v-col cols="2" class="mt-6">
               <div
-                class="tax-declaration-completed ml-10"
+                class="tax-declaration-completed ml-15"
                 :class="{
                   'is-fill-in-completed': requiredDocumentsForRegularCars.transferCertificateIsFillIn&&
                                           requiredDocumentsForRegularCars.transferCertificateIsOfficialSeal&&
@@ -6927,7 +6986,7 @@ export default {
               <v-col cols="2" class=""> </v-col>
               <v-col cols="2" class="">
               <div
-                class="tax-declaration-completed ml-10"
+                class="tax-declaration-completed ml-15"
                 :class="{
                   'is-fill-in-completed': tradeInPurchaseCommonRequiredDocuments.vehicleInspectionCertificateStorage
                 }"
@@ -7093,7 +7152,7 @@ export default {
               <v-col cols="2" class=""> </v-col>
               <v-col cols="2" class="">
               <div
-                class="tax-declaration-completed ml-10"
+                class="tax-declaration-completed ml-15"
                 :class="{
                   'is-fill-in-completed': tradeInPurchaseCommonRequiredDocuments.compulsoryAutomobileLiabilityInsuranceCertificateStorage
                 }"
@@ -7208,7 +7267,7 @@ export default {
               <v-col cols="2" class=""> </v-col>
               <v-col cols="2" class="">
               <div
-                class="tax-declaration-completed ml-10"
+                class="tax-declaration-completed ml-15"
                 :class="{
                   'is-fill-in-completed': tradeInPurchaseCommonRequiredDocuments.automobileLiabilityInsuranceApprovalClaimFormStorage
                 }"
@@ -7335,7 +7394,7 @@ export default {
               <v-col cols="2" class=""> </v-col>
               <v-col cols="2" class="">
               <div
-                class="tax-declaration-completed ml-10"
+                class="tax-declaration-completed ml-15"
                 :class="{
                   'is-fill-in-completed': requiredDocumentsForRegularCars.taxPaymentCertificateStorage
                 }"
@@ -7346,8 +7405,7 @@ export default {
             </v-row>
             <v-row
               v-if="
-                ((this.tradeInPurchase.tradeInPurchaseKubun === '下取' ||
-                this.tradeInPurchase.tradeInPurchaseKubun === '買取') &&
+                ((this.tradeInPurchase.tradeInPurchaseKubun === '下取') &&
                 (this.tradeInPurchase.normalCarLightCarKubun === '普通車') &&
                 (this.tradeInPurchase.nameChangeDeletionKubun === '名変')) ||
                 ((this.tradeInPurchase.tradeInPurchaseKubun === '下取' ||
@@ -7369,8 +7427,7 @@ export default {
             </v-row>
             <v-row
               v-if="
-                ((this.tradeInPurchase.tradeInPurchaseKubun === '下取' ||
-                this.tradeInPurchase.tradeInPurchaseKubun === '買取') &&
+                ((this.tradeInPurchase.tradeInPurchaseKubun === '買取') &&
                 (this.tradeInPurchase.normalCarLightCarKubun === '普通車') &&
                 (this.tradeInPurchase.nameChangeDeletionKubun === '名変')) ||
                 ((this.tradeInPurchase.tradeInPurchaseKubun === '下取' ||
@@ -7481,7 +7538,7 @@ export default {
               <v-col cols="2" class=""> </v-col>
               <v-col cols="2" class="">
               <div
-                class="tax-declaration-completed ml-10"
+                class="tax-declaration-completed ml-15"
                 :class="{
                   'is-fill-in-completed': requiredDocumentsForRegularCars.powerOfAttorneyStorage
                 }"
@@ -7550,7 +7607,7 @@ export default {
               <v-col cols="2" class=""> </v-col>
               <v-col cols="2" class="">
               <div
-                class="tax-declaration-completed ml-10"
+                class="tax-declaration-completed ml-15"
                 :class="{
                   'is-fill-in-completed': requiredDocumentsForRegularCars.applicationRequestFormStorage
                 }"
@@ -7613,7 +7670,7 @@ export default {
               <v-col cols="2" class=""> </v-col>
               <v-col cols="2" class="">
               <div
-                class="tax-declaration-completed ml-10"
+                class="tax-declaration-completed ml-15"
                 :class="{
                   'is-fill-in-completed': requiredDocumentsForRegularCars.transferCertificateStorage
                 }"
@@ -7676,7 +7733,7 @@ export default {
               <v-col cols="2" class=""> </v-col>
               <v-col cols="2" class="">
               <div
-                class="tax-declaration-completed ml-10"
+                class="tax-declaration-completed ml-15"
                 :class="{
                   'is-fill-in-completed': requiredDocumentsForLightVehicles.letterOfConsentStorage
                 }"
@@ -7760,7 +7817,7 @@ export default {
               <v-col cols="2" class=""> </v-col>
               <v-col cols="2" class="">
               <div
-                class="tax-declaration-completed ml-10"
+                class="tax-declaration-completed ml-15"
                 :class="{
                   'is-fill-in-completed': purchaseDocuments.copyOfIdentityDocumentStorage
                 }"
@@ -7840,7 +7897,7 @@ export default {
               <v-col cols="2" class=""> </v-col>
               <v-col cols="2" class="">
               <div
-                class="tax-declaration-completed ml-10"
+                class="tax-declaration-completed ml-15"
                 :class="{
                   'is-fill-in-completed': purchaseDocuments.purchaseDetailsIsFillIn&&
                                           purchaseDocuments.purchaseDetailsIsStamping
@@ -7921,7 +7978,7 @@ export default {
               <v-col cols="2" class="mt-5"> </v-col>
               <v-col cols="2" class="mt-6">
               <div
-                class="tax-declaration-completed ml-10"
+                class="tax-declaration-completed ml-15"
                 :class="{
                   'is-fill-in-completed': purchaseDocuments.confirmationOfTransferDestinationIsFillIn
                 }"
@@ -8010,7 +8067,7 @@ export default {
               </v-col>
               <v-col cols="2" class="mt-6">
               <div
-                class="tax-declaration-completed ml-10"
+                class="tax-declaration-completed ml-15"
                 :class="{
                   'is-fill-in-completed': requiredDocumentsForRegularCars.powerOfAttorneyIsFillIn2&&
                                           requiredDocumentsForRegularCars.powerOfAttorneyIsOfficialSeal2&&
@@ -8156,7 +8213,7 @@ export default {
               </v-col>
               <v-col cols="2" class="">
               <div
-                class="tax-declaration-completed ml-10"
+                class="tax-declaration-completed ml-15"
                 :class="{
                   'is-fill-in-completed': requiredDocumentsForLightVehicles.applicationRequestFormStorageIsFillIn&&
                                           requiredDocumentsForLightVehicles.applicationRequestFormStorageIsStamping&&
@@ -8280,7 +8337,7 @@ export default {
               <v-col cols="2" class=""> </v-col>
               <v-col cols="2" class="">
               <div
-                class="tax-declaration-completed ml-10"
+                class="tax-declaration-completed ml-15"
                 :class="{
                   'is-fill-in-completed': tradeInPurchaseCommonRequiredDocuments.automobileLiabilityInsuranceApprovalClaimFormIsFillIn&&
                                           tradeInPurchaseCommonRequiredDocuments.automobileLiabilityInsuranceApprovalClaimFormIsStamping
@@ -8388,7 +8445,7 @@ export default {
               </v-col>
               <v-col cols="2" class="">
               <div
-                class="tax-declaration-completed ml-10"
+                class="tax-declaration-completed ml-15"
                 :class="{
                   'is-fill-in-completed': requiredDocumentsForRegularCars.transferCertificateIsFillIn2&&
                                           requiredDocumentsForRegularCars.transferCertificateIsOfficialSeal2&&
@@ -8521,7 +8578,7 @@ export default {
               <v-col cols="2" class=""></v-col>
               <v-col cols="2" class="">
               <div
-                class="tax-declaration-completed ml-10"
+                class="tax-declaration-completed ml-15"
                 :class="{
                   'is-fill-in-completed': requiredDocumentsForRegularCars.noticeOfAssignmentOfClaimIsFillIn&&
                                           requiredDocumentsForRegularCars.noticeOfAssignmentOfClaimIsStamping
@@ -8694,7 +8751,7 @@ export default {
               </v-col>
               <v-col cols="2" class="mt-6">
               <div
-                class="tax-declaration-completed ml-10"
+                class="tax-declaration-completed ml-15"
                 :class="{
                   'is-fill-in-completed': requiredDocumentsForLightVehicles.taxAbolitionIsFillIn
                 }"
@@ -8845,7 +8902,7 @@ export default {
               <v-col cols="2" class=""></v-col>
               <v-col cols="2" class="">
               <div
-                class="tax-declaration-completed ml-10"
+                class="tax-declaration-completed ml-15"
                 :class="{
                   'is-fill-in-completed': tradeInPurchaseCommonRequiredDocuments.purchaseTradeInAgreementIsFillIn
                 }"
@@ -8968,7 +9025,7 @@ export default {
               <v-col cols="2" class=""></v-col>
               <v-col cols="2" class="">
               <div
-                class="tax-declaration-completed ml-10"
+                class="tax-declaration-completed ml-15"
                 :class="{
                   'is-fill-in-completed': tradeInPurchaseCommonRequiredDocuments.ownershipReleaseRequestRequest
                 }"
@@ -9052,7 +9109,7 @@ export default {
               <v-col cols="2" class=""></v-col>
               <v-col cols="2" class="">
               <div
-                class="tax-declaration-completed ml-10"
+                class="tax-declaration-completed ml-15"
                 :class="{
                   'is-fill-in-completed': requiredDocumentsForRegularCars.motorVehicleTaxPaymentSlipPreparation
                 }"
@@ -9159,7 +9216,7 @@ export default {
               <v-col cols="2" class="mt-5"></v-col>
               <v-col cols="2" class="mt-6">
               <div
-                class="tax-declaration-completed ml-10"
+                class="tax-declaration-completed ml-15"
                 :class="{
                   'is-fill-in-completed': tradeInPurchaseCommonRequiredDocuments.carCheckSheetPreparation
                 }"
@@ -9334,7 +9391,7 @@ export default {
                 "
             >
             <div
-                class="tax-declaration-completed ml-10"
+                class="tax-declaration-completed ml-15"
                 :class="{
                   'is-fill-in-completed': tradeInPurchaseCommonRequiredDocuments.cabinetInput
                 }"
@@ -9403,7 +9460,7 @@ export default {
                 "
             >
             <div
-                class="tax-declaration-completed ml-10"
+                class="tax-declaration-completed ml-15"
                 :class="{
                   'is-fill-in-completed': tradeInPurchaseCommonRequiredDocuments.dateOfCompletionOfDocumentSubmissionProcedure
                 }"
@@ -9540,7 +9597,7 @@ export default {
               "
             >
             <div
-                class="tax-declaration-completed ml-10"
+                class="tax-declaration-completed ml-15"
                 :class="{
                   'is-fill-in-completed': requiredDocumentsForRegularCars.connectedServiceCancellationDate
                 }"
@@ -9615,8 +9672,80 @@ export default {
               ※所属長に書類を提出する際には<b>書類の向き</b>を揃えましょう。　
             </p>
             </v-row>
+            <v-row
+            v-if="
+                  this.start.startKubun === '下取・買取'
+                 "
+          >
+          <v-toolbar-title class="mt-16 d-flex align-center memo">
+          　◇　下取・買取メモ
+          </v-toolbar-title>
+          </v-row>
+
+          <v-row class="mt-10 memo-contents" v-for="(memo2, index) in memos2" :key="index">
+
+          <!-- <v-col>
+          {{ index }}
+          </v-col> -->
+
+          <v-col cols="7" 
+          v-if="
+                  this.start.startKubun === '下取・買取'
+               "
+          >
+          <v-text-field
+            v-model="memo2.memoField2"
+            @input="memoField2(memo2)"
+            :counter="10"
+            label="メモ"
+            required
+            hide-details
+          ></v-text-field>
+          </v-col>
+
+          <v-col cols="2"
+          v-if="
+                  this.start.startKubun === '下取・買取'
+               "
+          >
+          <v-text-field
+            type="date"
+            v-model="memo2.promisedDay2"
+            label="約束日"
+          ></v-text-field>
+          </v-col>
+
+          <v-col cols="1" class="d-flex align-center " 
+           v-if="
+                this.start.startKubun === '下取・買取'&&
+                memos2.length >= 2
+                "
+          >
+          <v-btn
+            class="memo-btn"
+            @click="removeMemo2(index)"
+            density="compact"
+            icon="mdi-close"
+          ></v-btn>
+          </v-col>
+          <v-col
+          cols="1"
+          class="d-flex align-center memo-btn"
+          v-if="
+               this.start.startKubun === '下取・買取'&&
+               index == memos2.length - 1
+               "
+          >
+          <v-btn class="memo-btn" @click="addMemo2" density="compact" icon="mdi-plus"></v-btn>
+          </v-col>
+
+          </v-row>
+
           </div>
-        </div>
+
+
+
+
         <!-- 納車準備 -->
         <div class="delivery-preparation">
           <div v-if="this.start.startKubun === '納車準備'">
@@ -11342,11 +11471,6 @@ export default {
       </div>
       <div class="whole-bottom"></div>
       <div class="footer"></div>
-      <!-- <v-row>
-        <v-toolbar-title class=" d-flex align-center memo">
-          　▼メモ
-        </v-toolbar-title>
-      </v-row> -->
 
       <!-- <v-row class="mt-5" v-for="(memo, index) in memos" :key="index">
         <v-col>
@@ -11718,6 +11842,9 @@ export default {
   max-width: 83%;
   margin-left: 8%;
 }
+.memo-contents {
+  margin-left: 10%;
+}
 .storingMethod-completedDate {
   color: #ff0000;
 }
@@ -12003,6 +12130,10 @@ export default {
     color: #101010;
     background-color: #ffffff;
   }
+  .memo {
+    color: #101010;
+    background-color: #ffffff;
+  }
   .complete{display:none;}
   .ncgarage-verification-kubun-completed{display:none;}
   .self-certification-consent-to-use-kubun-completed{display:none;}
@@ -12020,6 +12151,7 @@ export default {
   .delivery-date-completed{display:none;}
   .tax-declaration-completed{display:none;}
   .mazdaEmployee-documents-completed{display:none;}
+  .memo-btn{display:none;}
 
   .supporting-sentences{display:none;}
   .clear{display:none;}
