@@ -5808,7 +5808,13 @@ export default {
           </v-toolbar-title>
           </v-row>
 
-          <v-row class="mt-10 memo-contents" v-for="(memo, index) in memos" :key="index">
+          <v-row 
+           class="mt-10 memo-contents" 
+           :class="{
+                  'memo-contents-change1': this.start.startKubun === '下取・買取'||this.start.startKubun === '納車準備'||this.start.startKubun === '納車'||this.start.startKubun === '一般登録代行',
+                }"
+           v-for="(memo, index) in memos" :key="index"
+          >
 
           <!-- <v-col>
           {{ index }}
@@ -9640,7 +9646,12 @@ export default {
           </v-toolbar-title>
           </v-row>
 
-          <v-row class="mt-10 memo-contents" v-for="(memo2, index) in memos2" :key="index">
+          <v-row 
+           class="mt-10 memo-contents" 
+           :class="{
+                  'memo-contents-change2': this.start.startKubun === '成約時登録'||this.start.startKubun === '納車準備'||this.start.startKubun === '納車'||this.start.startKubun === '一般登録代行',
+                }"
+           v-for="(memo2, index) in memos2" :key="index">
 
           <!-- <v-col>
           {{ index }}
@@ -12038,6 +12049,12 @@ export default {
 .separator {
   max-width: 83%;
   margin-left: 8%;
+}
+.memo-contents-change1 {
+  display:none;
+}
+.memo-contents-change2 {
+  display:none;
 }
 
 @media print {
