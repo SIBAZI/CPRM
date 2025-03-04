@@ -220,8 +220,11 @@ export default {
       passedAwayRequiredDocuments: {
         purchasePriceKubun: "", //買取価格
         inheritanceDivisionAgreement: "遺産分割協議書",
+        inheritanceDivisionAgreementExplanation1: false,//遺産分割協議書説明
         familyRegister: "戸籍謄本",
+        familyRegisterExplanation1: false,//戸籍謄本説明
         revisedOriginalFamilyRegister: "改正原戸籍謄本",
+        revisedOriginalFamilyRegisterExplanation1: false,//改正原戸籍謄本説明
       },
 
       purchaseDocuments: {
@@ -250,6 +253,8 @@ export default {
         powerOfAttorneyIsOfficialSeal2: false,//委任状実印
         sealCertificate: false,//印鑑証明
         powerOfAttorneyStorage: false,//委任状お預かり
+        powerOfAttorneyExplanation1: false,//委任状説明１
+        powerOfAttorneyExplanation2: false,//委任状説明２
         powerOfAttorneySealCertificateOfRepresentativeHeir: false,//委任状印鑑証明
         transferCertificate: "譲渡証明書",
         transferCertificateIsFillIn: false,//譲渡証明書ご記入
@@ -259,6 +264,8 @@ export default {
         transferCertificateIsFillIn2: false,//譲渡証明書ご記入
         transferCertificateIsOfficialSeal2: false,//譲渡証明書実印
         transferCertificateSealCertificateOfRepresentativeHeir2: false,//譲渡証明書印鑑証明
+        transferCertificateExplanation1: false,//譲渡証明書説明１
+        transferCertificateExplanation2: false,//譲渡証明書説明２
         taxPaymentCertificate: "納税証明書",
         taxPaymentCertificateStorage: false,//納税証明書お預かり
         motorVehicleTaxPaymentSlip: "自動車税支払伺書",
@@ -669,6 +676,29 @@ export default {
     skyPlusExplanation1() {
       this.insurance.skyPlusExplanation1 = !this.insurance.skyPlusExplanation1
     },
+
+    inheritanceDivisionAgreementExplanation1() {
+      this.passedAwayRequiredDocuments.inheritanceDivisionAgreementExplanation1 = !this.passedAwayRequiredDocuments.inheritanceDivisionAgreementExplanation1
+    },
+    familyRegisterExplanation1() {
+      this.passedAwayRequiredDocuments.familyRegisterExplanation1 = !this.passedAwayRequiredDocuments.familyRegisterExplanation1
+    },
+    revisedOriginalFamilyRegisterExplanation1() {
+      this.passedAwayRequiredDocuments.revisedOriginalFamilyRegisterExplanation1 = !this.passedAwayRequiredDocuments.revisedOriginalFamilyRegisterExplanation1
+    },
+    powerOfAttorneyExplanation1() {
+      this.requiredDocumentsForRegularCars.powerOfAttorneyExplanation1 = !this.requiredDocumentsForRegularCars.powerOfAttorneyExplanation1
+    },
+    powerOfAttorneyExplanation2() {
+      this.requiredDocumentsForRegularCars.powerOfAttorneyExplanation2 = !this.requiredDocumentsForRegularCars.powerOfAttorneyExplanation2
+    },
+    transferCertificateExplanation1() {
+      this.requiredDocumentsForRegularCars.transferCertificateExplanation1 = !this.requiredDocumentsForRegularCars.transferCertificateExplanation1
+    },
+    transferCertificateExplanation2() {
+      this.requiredDocumentsForRegularCars.transferCertificateExplanation2 = !this.requiredDocumentsForRegularCars.transferCertificateExplanation2
+    },
+
 
 
 
@@ -1194,6 +1224,13 @@ export default {
       this.tradeInPurchaseCommonRequiredDocuments.cabinetInput= false;
       this.tradeInPurchaseCommonRequiredDocuments.dateOfCompletionOfDocumentSubmissionProcedure= false;
       this.requiredDocumentsForRegularCars.connectedServiceCancellationDate= false;
+      this.passedAwayRequiredDocuments.inheritanceDivisionAgreementExplanation1= false;
+      this.passedAwayRequiredDocuments.familyRegisterExplanation1= false;
+      this.passedAwayRequiredDocuments.revisedOriginalFamilyRegisterExplanation1= false;
+      this.requiredDocumentsForRegularCars.powerOfAttorneyExplanation1= false;
+      this.requiredDocumentsForRegularCars.powerOfAttorneyExplanation2= false;
+      this.requiredDocumentsForRegularCars.transferCertificateExplanation1= false;
+      this.requiredDocumentsForRegularCars.transferCertificateExplanation2= false;
     },
     normalCarLightCarKubunChange() {
       this.tradeInCarAndOtherConfirma.isCorporateVehicles = false;
@@ -1246,6 +1283,14 @@ export default {
       this.tradeInPurchaseCommonRequiredDocuments.cabinetInput= false;
       this.tradeInPurchaseCommonRequiredDocuments.dateOfCompletionOfDocumentSubmissionProcedure= false;
       this.requiredDocumentsForRegularCars.connectedServiceCancellationDate= false;
+      this.passedAwayRequiredDocuments.inheritanceDivisionAgreementExplanation1= false;
+      this.passedAwayRequiredDocuments.familyRegisterExplanation1= false;
+      this.passedAwayRequiredDocuments.revisedOriginalFamilyRegisterExplanation1= false;
+      this.requiredDocumentsForRegularCars.powerOfAttorneyExplanation1= false;
+      this.requiredDocumentsForRegularCars.powerOfAttorneyExplanation2= false;
+      this.requiredDocumentsForRegularCars.transferCertificateExplanation1= false;
+      this.requiredDocumentsForRegularCars.transferCertificateExplanation2= false;
+
 
     },
     nameChangeDeletionKubunChange() {
@@ -1299,6 +1344,14 @@ export default {
       this.tradeInPurchaseCommonRequiredDocuments.cabinetInput= false;
       this.tradeInPurchaseCommonRequiredDocuments.dateOfCompletionOfDocumentSubmissionProcedure= false;
       this.requiredDocumentsForRegularCars.connectedServiceCancellationDate= false;
+      this.passedAwayRequiredDocuments.inheritanceDivisionAgreementExplanation1= false;
+      this.passedAwayRequiredDocuments.familyRegisterExplanation1= false;
+      this.passedAwayRequiredDocuments.revisedOriginalFamilyRegisterExplanation1= false;
+      this.requiredDocumentsForRegularCars.powerOfAttorneyExplanation1= false;
+      this.requiredDocumentsForRegularCars.powerOfAttorneyExplanation2= false;
+      this.requiredDocumentsForRegularCars.transferCertificateExplanation1= false;
+      this.requiredDocumentsForRegularCars.transferCertificateExplanation2= false;
+
 
     },
     ownershipKubunChange() {
@@ -1352,6 +1405,14 @@ export default {
       this.tradeInPurchaseCommonRequiredDocuments.cabinetInput= false;
       this.tradeInPurchaseCommonRequiredDocuments.dateOfCompletionOfDocumentSubmissionProcedure= false;
       this.requiredDocumentsForRegularCars.connectedServiceCancellationDate= false;
+      this.passedAwayRequiredDocuments.inheritanceDivisionAgreementExplanation1= false;
+      this.passedAwayRequiredDocuments.familyRegisterExplanation1= false;
+      this.passedAwayRequiredDocuments.revisedOriginalFamilyRegisterExplanation1= false;
+      this.requiredDocumentsForRegularCars.powerOfAttorneyExplanation1= false;
+      this.requiredDocumentsForRegularCars.powerOfAttorneyExplanation2= false;
+      this.requiredDocumentsForRegularCars.transferCertificateExplanation1= false;
+      this.requiredDocumentsForRegularCars.transferCertificateExplanation2= false;
+
 
     },
     tradeInPurchaseClear() {
@@ -1410,9 +1471,18 @@ export default {
       this.tradeInPurchaseCommonRequiredDocuments.cabinetInput= false;
       this.tradeInPurchaseCommonRequiredDocuments.dateOfCompletionOfDocumentSubmissionProcedure= false;
       this.requiredDocumentsForRegularCars.connectedServiceCancellationDate= false;
+      this.passedAwayRequiredDocuments.inheritanceDivisionAgreementExplanation1= false;
+      this.passedAwayRequiredDocuments.familyRegisterExplanation1= false;
+      this.passedAwayRequiredDocuments.revisedOriginalFamilyRegisterExplanation1= false;
+      this.requiredDocumentsForRegularCars.powerOfAttorneyExplanation1= false;
+      this.requiredDocumentsForRegularCars.powerOfAttorneyExplanation2= false;
+      this.requiredDocumentsForRegularCars.transferCertificateExplanation1= false;
+      this.requiredDocumentsForRegularCars.transferCertificateExplanation2= false;
+
     },
     isCorporateVehiclesChange() {
       this.tradeInPurchaseCommonRequiredDocuments.purchaseInvoiceShippingDestinationContactSlipPreparation = '';
+      
     },
     isDeathOfPersonChange() {
       this.passedAwayRequiredDocuments.purchasePriceKubun = '';
@@ -1427,6 +1497,14 @@ export default {
       this.requiredDocumentsForRegularCars.transferCertificateIsFillIn= false;
       this.requiredDocumentsForRegularCars.transferCertificateIsOfficialSeal= false;
       this.requiredDocumentsForRegularCars.transferCertificateSealCertificateOfRepresentativeHeir= false;
+      this.passedAwayRequiredDocuments.inheritanceDivisionAgreementExplanation1= false;
+      this.passedAwayRequiredDocuments.familyRegisterExplanation1= false;
+      this.passedAwayRequiredDocuments.revisedOriginalFamilyRegisterExplanation1= false;
+      this.requiredDocumentsForRegularCars.powerOfAttorneyExplanation1= false;
+      this.requiredDocumentsForRegularCars.powerOfAttorneyExplanation2= false;
+      this.requiredDocumentsForRegularCars.transferCertificateExplanation1= false;
+      this.requiredDocumentsForRegularCars.transferCertificateExplanation2= false;
+
     },
     purchasePriceKubunChange() {
       this.requiredDocumentsForRegularCars.inheritanceDivisionAgreementIsFillIn = false;
@@ -1440,6 +1518,14 @@ export default {
       this.requiredDocumentsForRegularCars.transferCertificateIsFillIn= false;
       this.requiredDocumentsForRegularCars.transferCertificateIsOfficialSeal= false;
       this.requiredDocumentsForRegularCars.transferCertificateSealCertificateOfRepresentativeHeir= false;
+      this.passedAwayRequiredDocuments.inheritanceDivisionAgreementExplanation1= false;
+      this.passedAwayRequiredDocuments.familyRegisterExplanation1= false;
+      this.passedAwayRequiredDocuments.revisedOriginalFamilyRegisterExplanation1= false;
+      this.requiredDocumentsForRegularCars.powerOfAttorneyExplanation1= false;
+      this.requiredDocumentsForRegularCars.powerOfAttorneyExplanation2= false;
+      this.requiredDocumentsForRegularCars.transferCertificateExplanation1= false;
+      this.requiredDocumentsForRegularCars.transferCertificateExplanation2= false;
+
     },
     insuranceIncludedChange() {
       this.tradeInPurchaseCommonRequiredDocuments.cabinetInput = '';
@@ -6205,10 +6291,7 @@ export default {
 
             </v-row>
             <v-row
-              v-if="
-                this.passedAwayRequiredDocuments.purchasePriceKubun ===
-                '10万円以上'
-              "
+             v-show="passedAwayRequiredDocuments.inheritanceDivisionAgreementExplanation1"
             >
               <p class="explanation">
                 ・お車を査定させて頂き買取価格が<b>10万円以上</b>の場合<b>遺産分割協議書</b>が必要になります。<br />
@@ -6218,7 +6301,24 @@ export default {
                 ！<b>印鑑証明は代表相続人のみ</b>必要になります。
               </p>
             </v-row>
-            <v-row class="icon-ml">
+            <v-row 
+             class="icon-ml"
+             >
+            <v-col
+              cols="1"
+              class="mt-3 d-flex align-center"
+              v-if="
+                this.passedAwayRequiredDocuments.purchasePriceKubun ===
+                '10万円以上'
+              "
+            >
+              <v-btn
+                @click="inheritanceDivisionAgreementExplanation1"
+                density="compact"
+                icon="mdi-comment-alert-outline"
+              ></v-btn>
+            </v-col>
+
             <v-col
               cols="1"
               class="mt-3 d-flex align-center"
@@ -6317,12 +6417,7 @@ export default {
               </v-col>
             </v-row>
             <v-row
-              v-if="
-                this.passedAwayRequiredDocuments.purchasePriceKubun ===
-                  '10万円以上' ||
-                this.passedAwayRequiredDocuments.purchasePriceKubun ===
-                  '10万円以下'
-              "
+              v-show="passedAwayRequiredDocuments.familyRegisterExplanation1"
             >
               <p class="explanation">
                 ・個人の身分事項が記載された「戸籍簿」の写しです。　<br />
@@ -6338,6 +6433,23 @@ export default {
               </p>
             </v-row>
             <v-row class="icon-ml">
+            <v-col
+              cols="1"
+              class="mt-3 d-flex align-center"
+              v-if="
+                this.passedAwayRequiredDocuments.purchasePriceKubun ===
+                  '10万円以上' ||
+                this.passedAwayRequiredDocuments.purchasePriceKubun ===
+                  '10万円以下'
+              "
+            >
+              <v-btn
+                @click="familyRegisterExplanation1"
+                density="compact"
+                icon="mdi-comment-alert-outline"
+              ></v-btn>
+            </v-col>
+
             <v-col
               cols="1"
               class="mt-3 d-flex align-center"
@@ -6413,12 +6525,7 @@ export default {
               </v-col>
             </v-row>
             <v-row
-              v-if="
-                this.passedAwayRequiredDocuments.purchasePriceKubun ===
-                  '10万円以上' ||
-                this.passedAwayRequiredDocuments.purchasePriceKubun ===
-                  '10万円以下'
-              "
+              v-show="passedAwayRequiredDocuments.revisedOriginalFamilyRegisterExplanation1"
             >
               <p class="explanation">
                 ・戸籍法の改正にともない戸籍様式が書き換え（＝改製）られた際、書き換えられる前の戸籍謄本です。<br/>
@@ -6435,6 +6542,23 @@ export default {
               </p>
             </v-row>
             <v-row class="icon-ml">
+            <v-col
+              cols="1"
+              class="mt-3 d-flex align-center"
+              v-if="
+                this.passedAwayRequiredDocuments.purchasePriceKubun ===
+                  '10万円以上' ||
+                this.passedAwayRequiredDocuments.purchasePriceKubun ===
+                  '10万円以下'
+              "
+            >
+              <v-btn
+                @click="revisedOriginalFamilyRegisterExplanation1"
+                density="compact"
+                icon="mdi-comment-alert-outline"
+              ></v-btn>
+            </v-col>
+
             <v-col
               cols="1"
               class="mt-3 d-flex align-center"
@@ -6527,16 +6651,28 @@ export default {
               </v-col>
             </v-row>
             <v-row
-              v-if="
-                this.passedAwayRequiredDocuments.purchasePriceKubun ===
-                '10万円以上'
-              "
+              v-show="requiredDocumentsForRegularCars.powerOfAttorneyExplanation1"
             >
               <p class="explanation">
                 ・代表相続人の<b>実印</b>と<b>印鑑証明</b>が必要になります。　
               </p>
             </v-row>
             <v-row class="icon-ml">
+              <v-col
+              cols="1"
+              class="mt-3 d-flex align-center"
+              v-if="
+                this.passedAwayRequiredDocuments.purchasePriceKubun ===
+                '10万円以上'
+              "
+            >
+              <v-btn
+                @click="powerOfAttorneyExplanation1"
+                density="compact"
+                icon="mdi-comment-alert-outline"
+              ></v-btn>
+            </v-col>
+
             <v-col
               cols="1"
               class="mt-3 d-flex align-center"
@@ -6637,16 +6773,28 @@ export default {
               </v-col>
             </v-row>
             <v-row
-              v-if="
-                this.passedAwayRequiredDocuments.purchasePriceKubun ===
-                '10万円以下'
-              "
+              v-show="requiredDocumentsForRegularCars.powerOfAttorneyExplanation2"
             >
               <p class="explanation">
                 ・相続人全員の<b>実印</b>と<b>印鑑証明</b>が必要になります。　
               </p>
             </v-row>
             <v-row class="icon-ml">
+            <v-col
+              cols="1"
+              class="mt-3 d-flex align-center"
+              v-if="
+                this.passedAwayRequiredDocuments.purchasePriceKubun ===
+                '10万円以下'
+              "
+            >
+              <v-btn
+                @click="powerOfAttorneyExplanation2"
+                density="compact"
+                icon="mdi-comment-alert-outline"
+              ></v-btn>
+            </v-col>
+
             <v-col
               cols="1"
               class="mt-3 d-flex align-center"
@@ -6748,10 +6896,7 @@ export default {
               </v-col>
             </v-row>
             <v-row
-              v-if="
-                this.passedAwayRequiredDocuments.purchasePriceKubun ===
-                '10万円以上'
-              "
+              v-show="requiredDocumentsForRegularCars.transferCertificateExplanation1"
             >
               <p class="explanation">
                 ・代表相続人の<b>実印</b>が必要になります。　<br />
@@ -6760,6 +6905,21 @@ export default {
               </p>
             </v-row>
             <v-row class="icon-ml">
+              <v-col
+              cols="1"
+              class="mt-3 d-flex align-center"
+              v-if="
+                this.passedAwayRequiredDocuments.purchasePriceKubun ===
+                '10万円以上'
+              "
+            >
+              <v-btn
+                @click="transferCertificateExplanation1"
+                density="compact"
+                icon="mdi-comment-alert-outline"
+              ></v-btn>
+            </v-col>
+
             <v-col
               cols="1"
               class="mt-3 d-flex align-center"
@@ -6853,10 +7013,7 @@ export default {
               </v-col>
             </v-row>
             <v-row
-              v-if="
-                this.passedAwayRequiredDocuments.purchasePriceKubun ===
-                '10万円以下'
-              "
+              v-show="requiredDocumentsForRegularCars.transferCertificateExplanation2"
             >
               <p class="explanation">
                 ・相続人全員の<b>実印</b>が必要になります。　<br />
@@ -6865,6 +7022,21 @@ export default {
               </p>
             </v-row>
             <v-row class="icon-ml">
+              <v-col
+              cols="1"
+              class="mt-3 d-flex align-center"
+              v-if="
+                this.passedAwayRequiredDocuments.purchasePriceKubun ===
+                '10万円以下'
+              "
+            >
+              <v-btn
+                @click="transferCertificateExplanation2"
+                density="compact"
+                icon="mdi-comment-alert-outline"
+              ></v-btn>
+            </v-col>
+
             <v-col
               cols="1"
               class="mt-3 d-flex align-center"
