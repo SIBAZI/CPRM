@@ -1540,6 +1540,7 @@ export default {
       this.deliveryPreparation.isMaintenancePack = '';
       this.deliveryPreparation.isKeeperCoating = '';
       this.deliveryPreparation.isInsurance = '';
+      this.deliveryPreparation.UcarKubun = '';
     },
     deliveryPreparationNormalCarLightCarKubunChange() {
       this.deliveryPreparation.etcKubun = '';
@@ -1547,10 +1548,12 @@ export default {
       this.deliveryPreparation.isMaintenancePack = '';
       this.deliveryPreparation.isKeeperCoating = '';
       this.deliveryPreparation.isInsurance = '';
+      this.deliveryPreparation.UcarKubun = '';
     },
     deliveryNewCarUsedCarKubunChange() {
       this.delivery.insuranceKubun = '';
       this.delivery.jocInsuranceCompany = '';
+      this.delivery.connectedServices = '';
     },
     deliveryInsuranceKubunChange() {
       this.delivery.jocInsuranceCompany = '';
@@ -7544,8 +7547,7 @@ export default {
                 ((this.tradeInPurchase.tradeInPurchaseKubun === '下取') &&
                 (this.tradeInPurchase.normalCarLightCarKubun === '普通車') &&
                 (this.tradeInPurchase.nameChangeDeletionKubun === '名変')) ||
-                ((this.tradeInPurchase.tradeInPurchaseKubun === '下取' ||
-                 this.tradeInPurchase.tradeInPurchaseKubun === '買取') &&
+                ((this.tradeInPurchase.tradeInPurchaseKubun === '下取' ) &&
                 (this.tradeInPurchase.normalCarLightCarKubun === '普通車') &&
                 (this.tradeInPurchase.nameChangeDeletionKubun === '抹消') &&
                 (this.tradeInPurchase.ownershipKubun === '交換コーナー利用' ||
@@ -7566,8 +7568,7 @@ export default {
                 ((this.tradeInPurchase.tradeInPurchaseKubun === '買取') &&
                 (this.tradeInPurchase.normalCarLightCarKubun === '普通車') &&
                 (this.tradeInPurchase.nameChangeDeletionKubun === '名変')) ||
-                ((this.tradeInPurchase.tradeInPurchaseKubun === '下取' ||
-                 this.tradeInPurchase.tradeInPurchaseKubun === '買取') &&
+                ((this.tradeInPurchase.tradeInPurchaseKubun === '買取') &&
                 (this.tradeInPurchase.normalCarLightCarKubun === '普通車') &&
                 (this.tradeInPurchase.nameChangeDeletionKubun === '抹消') &&
                 (this.tradeInPurchase.ownershipKubun === '交換コーナー利用' ||
@@ -7623,7 +7624,7 @@ export default {
               "
             >
               <v-btn
-                href="https://www.city.hiroshima.lg.jp/site/faq/15007.html"
+                href="https://www.pref.hiroshima.lg.jp/site/zei/1176862855636.html"
                 target="_blank"
                 density="compact"
                 icon="mdi-search-web"
